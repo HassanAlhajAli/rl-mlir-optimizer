@@ -230,24 +230,32 @@ def test_comparison_configuration_cannot_unseal_performance():
         compare_deployments.prepare(config)
 
 
-@pytest.mark.parametrize("tamper", [None, "cost", "counter", "missing_case"])
-def test_saved_evidence_audit_rejects_accounting_or_coverage_changes(tmp_path, monkeypatch, tamper):
+@pytest.mark.parametrize("best_fixed,tamper", [(False, None), (False, "cost"), (False, "counter"),
+                                             (False, "missing_case"), (True, None), (True, "fixed_schedule")])
+def test_saved_evidence_audit_rejects_accounting_or_coverage_changes(tmp_path, monkeypatch, best_fixed, tamper):
     workload = load(DEFAULT_CORPUS, "train")[0]
     worker = SimulatedWorker(workload)
     monkeypatch.setattr(compare_deployments, "Worker", lambda *_: nullcontext(worker))
     monkeypatch.setattr(compare_deployments, "provenance", lambda *_: {
         "revision": "synthetic-test", "binary_hash": "synthetic-test", "corpus_sha256": FrozenCorpus().sha256})
     monkeypatch.setattr(compare_deployments, "initialize", lambda *_: {"initialization_counts": {}})
-    monkeypatch.setattr(compare_deployments, "selectors_for", lambda *_: ({"reference": fixed, "heuristic": fixed}, {}))
+    selectors = {"reference": fixed, "heuristic": fixed}
+    artifacts = {}
+    if best_fixed:
+        selectors["best_fixed"] = fixed
+        artifacts["best_fixed"] = {"selected": {"name": "reference", "schedule": []}}
+    monkeypatch.setattr(compare_deployments, "selectors_for", lambda *_: (selectors, artifacts))
     monkeypatch.setattr(compare_deployments.os, "sched_setaffinity", lambda *_: None)
     config = json.loads((ROOT / "configs/comparison-development.json").read_text())
     config.update(split="train", workload_ids=[workload["id"]], rounds=1, reuse_counts=[1])
+    if best_fixed:
+        config["best_fixed"] = "synthetic-unused-artifact.json"
     path = tmp_path / "config.json"
     path.write_text(json.dumps(config))
     output = tmp_path / "comparison"
     monkeypatch.setattr(sys, "argv", ["compare_deployments", "--config", str(path), "--output", str(output)])
     compare_deployments.main()
-    assert audit(output)["cases"] == 2
+    assert audit(output)["cases"] == len(selectors)
     if tamper == "counter":
         state = json.loads((output / "run.json").read_text())
         state["worker_counts"]["actual_invocations"] += 1
@@ -256,6 +264,9 @@ def test_saved_evidence_audit_rejects_accounting_or_coverage_changes(tmp_path, m
         events = [json.loads(line) for line in (output / "events.jsonl").read_text().splitlines()]
         if tamper == "cost":
             events[1]["attempts"][0]["total_with_selection_ms"] += 1.
+        elif tamper == "fixed_schedule":
+            record = next(e for e in events if e["status"] == "accepted" and e["method"] == "best_fixed")
+            record["selection"]["schedule"] = [{"kind": "TILE", "axis": 0, "size": 8}]
         else:
             events = events[:-2]
         (output / "events.jsonl").write_text("\n".join(json.dumps(e) for e in events) + "\n")

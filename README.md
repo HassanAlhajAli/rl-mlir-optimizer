@@ -20,6 +20,7 @@ The question is whether learning improves total deployment cost, including compi
 - [Budgeted adaptation design](docs/adaptation-design.md)
 - [Evaluation seal and remaining prerequisites](docs/evaluation-seal.md)
 - [Complete deployment comparison controller](docs/deployment-comparison.md)
+- [Training-selected fixed schedule baseline](docs/fixed-baseline.md)
 - [PPO, imitation and adaptation integration](results/integration-003/observations.md)
 - [Bounded campaign and continuation](docs/campaign.md)
 - [Original protocol issue](https://github.com/HassanAlhajAli/rl-mlir-optimizer/issues/1)

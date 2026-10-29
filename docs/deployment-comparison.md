@@ -6,7 +6,8 @@ or perform learning updates. Final method freezing, the full baseline registry,
 adaptation orchestration and final statistical analysis remain unfinished.
 
 The controller accepts the fixed reference and locality heuristic, plus named
-compatible actor checkpoints and an optional compatible cost predictor. Model
+compatible actor checkpoints, an optional compatible cost predictor and an
+optional [training-selected fixed schedule](fixed-baseline.md). Model
 load time is recorded separately. Frozen selectors receive an analysis-only
 worker interface: they cannot make compilation or performance queries while
 choosing their schedule. The caller measures the entire selector callback,

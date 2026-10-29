@@ -76,3 +76,13 @@ A environment/JIT; B two-family compiler/runtime; C training-only landscape; D c
 Local only, no paid cloud.100 distinct pilot measurements estimate allocation of48hardware hours including validation/final. Initial max4096distinct kernel/schedule requests per PPO run, uniformly reduce before training if budget requires. Track logical/distinct/cachehits/compiles/executions/training and total time. Resumable bounded queues; repeated correctness failure stops unattended work. Overnight only a verified fixed stage.
 
 Issue before code, protocol first commit. Coherent commits with explanations, C++ RAII, explicit configs/errors, versioned records, separate compiler/runtime/learning/orchestration/reporting. CI deterministic correctness only. Private plan/decision/experiment/code-reading/AI-use records outside repository. Completion means reproducible build, visible transformation, JIT execution, train/load policy, frozen/adaptation comparisons, raw evidence, and clear attribution to built/reused/AI-assisted components.
+
+## Fixed-baseline specification, 2026-10-29
+
+The previously required best-fixed baseline now has a [concrete candidate grid
+and selection rule](fixed-baseline.md). It selects one literal schedule using
+equal family/program/reuse weighting on training data, requires identical full
+coverage for every candidate, and performs no test-time search. This records a
+development decision before collecting its measurements; earlier development
+performance has already been inspected. No held-out access, new PPO budget or
+compiler-continuation authorization is implied.

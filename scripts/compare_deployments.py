@@ -31,9 +31,9 @@ def json_safe(value):
 def prepare(config):
     fields = {"schema_version", "split", "workload_ids", "reuse_counts", "rounds",
               "order_seed", "hint_factor", "policies", "predictor"}
-    if set(config) != fields or config["schema_version"] != 1:
+    if set(config) - {"best_fixed"} != fields or config["schema_version"] != 1:
         raise ValueError("unsupported or incomplete comparison configuration")
-    if not isinstance(config["policies"], dict) or {"reference", "heuristic", "predictor"} & config["policies"].keys():
+    if not isinstance(config["policies"], dict) or {"reference", "heuristic", "predictor", "best_fixed"} & config["policies"].keys():
         raise ValueError("policy names must be distinct from built-in selectors")
     if not math.isfinite(config["hint_factor"]) or config["hint_factor"] <= 0:
         raise ValueError("positive finite hint factor required")
@@ -44,6 +44,8 @@ def prepare(config):
     methods = ["reference", "heuristic", *config["policies"]]
     if config["predictor"] is not None:
         methods.append("predictor")
+    if config.get("best_fixed") is not None:
+        methods.append("best_fixed")
     order = interleaved_order(workloads, methods, config["reuse_counts"], config["rounds"], config["order_seed"])
     return workloads, order
 
@@ -53,6 +55,7 @@ def selectors_for(config, metadata):
     from rlmlir.policies import load_policy
     from rlmlir.predictor import CostPredictor, rank_schedules
     from rlmlir.selection import heuristic, sample_schedule
+    from rlmlir.fixed_baseline import fixed_selector, load_fixed
 
     selectors = {
         "reference": lambda *_: {"schedule": []},
@@ -77,6 +80,14 @@ def selectors_for(config, metadata):
         selectors["predictor"] = lambda w, p, n: rank_schedules(w, p, n, model)
         artifacts["predictor"] = {"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
                                   "seed": saved["metadata"]["seed"]}
+    if config.get("best_fixed") is not None:
+        path = ROOT / config["best_fixed"]
+        saved = load_fixed(path, metadata)
+        selectors["best_fixed"] = fixed_selector(saved)
+        artifacts["best_fixed"] = {"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                                   "selected": saved["selection"]["selected"],
+                                   "full_training_coverage": saved["selection"]["full_training_coverage"],
+                                   "protocol": saved["protocol"]}
     return selectors, artifacts
 
 

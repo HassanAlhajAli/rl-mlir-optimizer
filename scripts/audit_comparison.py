@@ -37,6 +37,8 @@ def audit(directory):
     methods = ["reference", "heuristic", *config["policies"]]
     if config["predictor"] is not None:
         methods.append("predictor")
+    if config.get("best_fixed") is not None:
+        methods.append("best_fixed")
     expected = interleaved_order([workloads[i] for i in config["workload_ids"]], methods,
                                  config["reuse_counts"], config["rounds"], config["order_seed"])
     require(meta["order"] == expected, "seeded order mismatch")
@@ -51,6 +53,9 @@ def audit(directory):
         require(start["workload"] == record["workload"], "workload changed during case")
         require(all(record[k] == meta[k] for k in ("revision", "binary_hash", "corpus_sha256", "comparison_protocol")), "provenance mismatch")
         require(record["correct"] is True and not record["cleanup_errors"], "incorrect case or failed cleanup")
+        if record["method"] == "best_fixed":
+            require(record["selection"]["schedule"] == meta["artifacts"]["best_fixed"]["selected"]["schedule"],
+                    "best-fixed schedule changed across deployments")
         require(record["reuse_hint"] == record["reuse"] * config["hint_factor"], "reuse hint mismatch")
         require(math.isfinite(record["selection_ms"]) and record["selection_ms"] >= 0, "invalid selection cost")
         with gzip.open(directory / f"case-{index:05d}-ir.json.gz", "rt") as stream:

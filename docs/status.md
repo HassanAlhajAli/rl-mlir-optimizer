@@ -31,3 +31,8 @@ performance or resolve the compiler continuation gate.
 The [complete-deployment controller integration](../results/comparison-controller-integration-001/observations.md)
 passed30native cases, with one unresolved timing flag retained. It compares the
 reference and heuristic only; no new learned-policy performance claim follows.
+
+The [training-selected fixed baseline](fixed-baseline.md) now has a complete-grid
+collector, evidence checks, selection rule and deployment integration. It has
+synthetic correctness coverage only. The 2,048-cell current-backend training grid
+has not run and no fitted fixed artifact exists. This does not reopen training.
