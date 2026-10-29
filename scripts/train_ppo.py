@@ -18,7 +18,7 @@ from rlmlir.corpus import load
 from rlmlir.environment import CompilerEnv
 from rlmlir.evaluator import BudgetReached, Evaluator
 from rlmlir.worker import Worker
-from rlmlir.experiment import initialize, provenance, measurement_lease
+from rlmlir.experiment import initialize, provenance, measurement_lease, require_compatible_provenance
 
 
 class Checkpoints(BaseCallback):
@@ -63,7 +63,8 @@ def main():
     previous = json.loads((args.resume/"run.json").read_text()) if args.resume else None
     prior = previous.get("cumulative_counters",previous["counters"]) if previous else {}
     if previous:
-        for field in ("binary_hash","corpus_sha256","objective","seed","observation_version"):
+        require_compatible_provenance(previous,meta,context="PPO continuation")
+        for field in ("objective","seed"):
             if previous.get(field) != meta.get(field):
                 raise SystemExit(f"cannot resume with a changed {field}")
         meta["resumed_from"] = str(args.resume)

@@ -62,7 +62,7 @@ def test_budget_stops_before_compilation(tmp_path):
         def request(self, *_args, **_kwargs):
             raise AssertionError("budget exhaustion reached the compiler")
     evaluator = Evaluator(NoCompiler(),tmp_path,"test-binary","test-revision",max_new=0,max_requests=1)
-    workload = {"family":"matmul","shape":[1,1,1],"split":"train"}
+    workload = load(ROOT / "configs/corpus.json", "train")[0]
     with pytest.raises(BudgetReached,match="distinct"):
         evaluator.measure(workload,[])
     assert evaluator.new_measurements == 0 and evaluator.requests == 1
@@ -83,7 +83,7 @@ def test_seeded_measurements_do_not_reset_request_limit(tmp_path):
         process = Process()
         def request(self,*args,**kwargs):
             raise RuntimeError("expected diagnostic stop")
-    workload = {"family":"matmul","shape":[1,1,1],"split":"train"}
+    workload = load(ROOT / "configs/corpus.json", "train")[0]
     first = Evaluator(RejectCompiler(),tmp_path/"first","binary","revision",max_new=1)
     with pytest.raises(RuntimeError,match="diagnostic"):
         first.measure(workload,[])

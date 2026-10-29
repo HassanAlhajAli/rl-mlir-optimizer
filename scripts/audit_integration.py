@@ -14,6 +14,7 @@ from sb3_contrib import MaskablePPO
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "python"))
 from rlmlir.policies import policy_digest
+from rlmlir.corpus import FrozenCorpus
 
 
 def read(path):
@@ -38,13 +39,15 @@ def audit(directory):
     queue = read(directory / "queue.json")
     check(queue["status"] == "complete", "queue is not complete")
     check(all(j["status"] == "complete" and j["exit_code"] == 0 for j in queue["jobs"]), "failed stage")
-    corpus = {w["id"]: w for w in read(ROOT / "configs/corpus.json")["workloads"]}
+    corpus = FrozenCorpus()
+    for path in directory.glob("*/run.json"):
+        check(read(path)["corpus_sha256"] == corpus.sha256, "stage corpus hash mismatch")
     tables, summaries = {}, {}
     for path in sorted(directory.rglob("measurements.jsonl")):
         records = lines(path)
         for record in records:
             check(record["status"] == "accepted" and record["correct"], f"failed measurement: {path}")
-            check(record["workload"] == corpus[record["workload"]["id"]], "changed workload")
+            corpus.require_development(record["workload"])
             check(record["workload"]["split"] in ("train", "validation"), "held-out measurement")
             check(all(math.isfinite(record[k]) and record[k] >= 0 for k in ("compile_ms", "execution_ms", "installation_ms")), "bad cost")
             with gzip.open(path.parent / (record["key"] + ".json.gz"), "rt") as stream:
@@ -66,6 +69,7 @@ def audit(directory):
             outcome = item["outcome"]
             measured = records[outcome["measurement_key"]]
             check(item["workload"] == measured["workload"], "trajectory/measurement mismatch")
+            check(measured["actions"] == [a for a in item["actions"] if a["kind"] != "STOP"], "trajectory schedule mismatch")
             check(all(s["mask"][s["action"]] for s in item["transitions"]), "illegal recorded action")
             check(item["transitions"][-1]["terminal"], "unfinished saved trajectory")
             if "reward" in outcome:
@@ -98,7 +102,7 @@ def audit(directory):
         check(hashlib.sha256((directory / "pretrain" / name).read_bytes()).hexdigest() == pretrain[field], "pretraining artifact hash mismatch")
     demonstrations = read(directory / "pretrain/demonstrations.json")["demonstrations"]
     for demo in demonstrations:
-        check(demo["workload"]["split"] in ("train", "validation"), "held-out demonstration")
+        corpus.require_development(demo["workload"])
         check(demo["recheck_key"] in tables[directory / "pretrain/rechecks"], "missing demonstration recheck")
     adaptation = {}
     for path in sorted((directory / "adaptation").glob("*/result.json")):
@@ -125,6 +129,7 @@ def audit(directory):
         check(sequences[0][:8] == sequences[1][:8] == sequences[2][:8], "reset/first-group control differs")
         controls[str(budget)] = {"first_eight_identical": True, "all_candidates_identical": sequences[0] == sequences[1] == sequences[2]}
     return {"schema_version": 1, "status": "passed", "queue_elapsed_seconds": queue["elapsed_seconds"],
+            "corpus_sha256": corpus.sha256,
             "measurements": summaries, "trajectory_counts": trajectory_counts, "ppo_updates": ppo,
             "demonstration_splits": dict(Counter(d["workload"]["split"] for d in demonstrations)),
             "demonstration_near_ties": sum(d["near_tie"] for d in demonstrations),

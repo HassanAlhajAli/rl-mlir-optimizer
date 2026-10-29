@@ -11,6 +11,7 @@ import torch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"python"))
 from rlmlir.evaluator import Evaluator
+from rlmlir.corpus import FrozenCorpus
 from rlmlir.experiment import initialize, provenance, measurement_lease, require_compatible_provenance
 from rlmlir.imitation import fit_actor, fit_critic
 from rlmlir.objective import deployment_ms
@@ -19,6 +20,9 @@ from rlmlir.worker import Worker
 
 
 def load_pool(runs,expected_provenance):
+    corpus = FrozenCorpus()
+    if expected_provenance.get("corpus_sha256") != corpus.sha256:
+        raise ValueError("experience pool does not match the frozen corpus")
     pool, provenance_records = [], []
     for directory in runs:
         meta = json.loads((directory/"run.json").read_text())
@@ -30,9 +34,13 @@ def load_pool(runs,expected_provenance):
                                    "trajectory_sha256":hashlib.sha256(trajectory_file.read_bytes()).hexdigest()})
         for line in trajectory_file.read_text().splitlines():
             item = json.loads(line)
-            if item["workload"]["split"] not in ("train","validation"):
-                raise ValueError("held-out trajectory in pretraining pool")
+            corpus.require_development(item["workload"])
             record = data[item["outcome"]["measurement_key"]]
+            corpus.require_development(record["workload"])
+            if (record["workload"] != item["workload"] or record.get("correct") is not True
+                    or record["binary_hash"] != expected_provenance["binary_hash"]
+                    or record["actions"] != [a for a in item["actions"] if a["kind"] != "STOP"]):
+                raise ValueError("trajectory does not match its accepted measurement")
             if "installation_ms" not in record:
                 raise ValueError("pool predates complete cost measurement protocol")
             selection = item["outcome"].get("analysis_ms",0.) + item["outcome"].get("policy_ms",0.)

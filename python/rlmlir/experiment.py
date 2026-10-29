@@ -8,6 +8,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 from .kernels import matmul
+from .corpus import FrozenCorpus
 
 COMPATIBILITY_FIELDS = ("binary_hash", "corpus_sha256", "observation_version",
                         "measurement_protocol", "compiler", "target")
@@ -27,7 +28,7 @@ def provenance(root: Path):
     executable = root/"build/rlmlir-worker"
     return {"revision":subprocess.check_output(["git","rev-parse","HEAD"],cwd=root,text=True).strip(),
             "binary_hash":hashlib.sha256(executable.read_bytes()).hexdigest(),
-            "corpus_sha256":(root/"configs/corpus.sha256").read_text().strip(),
+            "corpus_sha256":FrozenCorpus(root/"configs/corpus.json").sha256,
             "python":platform.python_version(),"os":platform.platform(),
             "guest_affinity":sorted(os.sched_getaffinity(0)),
             "compiler":"LLVM/MLIR 18.1.3","target":"x86-64-v3",

@@ -18,6 +18,7 @@ The question is whether learning improves total deployment cost, including compi
 - [Main campaign interruption and vector repair](docs/compiler-repair-002.md)
 - [Interrupted PPO campaign evidence](results/ppo-campaign-001/observations.md)
 - [Budgeted adaptation design](docs/adaptation-design.md)
+- [Evaluation seal and remaining prerequisites](docs/evaluation-seal.md)
 - [PPO, imitation and adaptation integration](results/integration-003/observations.md)
 - [Bounded campaign and continuation](docs/campaign.md)
 - [Original protocol issue](https://github.com/HassanAlhajAli/rl-mlir-optimizer/issues/1)

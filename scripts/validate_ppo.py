@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"python"))
 from rlmlir.corpus import load
 from rlmlir.evaluator import Evaluator
-from rlmlir.experiment import initialize,provenance,measurement_lease
+from rlmlir.experiment import initialize,provenance,measurement_lease,require_compatible_provenance
 from rlmlir.objective import deployment_ms,reward
 from rlmlir.policies import save_policy
 from rlmlir.selection import sample_schedule
@@ -32,9 +32,7 @@ def main():
     os.sched_setaffinity(0,{min(os.sched_getaffinity(0))})
     meta = provenance(ROOT)
     trained = json.loads((args.run/"run.json").read_text())
-    for key in ("binary_hash","corpus_sha256","observation_version"):
-        if trained.get(key) != meta[key]:
-            raise SystemExit("training/validation mismatch: "+key)
+    require_compatible_provenance(trained,meta,context="validation checkpoint selection")
     behavior = sorted(args.run.glob("behavior-*.zip"),key=lambda p:int(p.stem.split("-")[1]))
     indices = np.linspace(0,len(behavior)-1,min(args.behavior_checkpoints,len(behavior)),dtype=int)
     checkpoints = [behavior[i] for i in indices] + [args.run/"latest-policy.zip"]

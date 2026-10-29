@@ -7,6 +7,7 @@ import time
 from collections import Counter
 from pathlib import Path
 
+from .corpus import FrozenCorpus
 from .kernels import GENERATORS, REFERENCES
 from .measurement import calibrate, validate
 
@@ -18,6 +19,7 @@ class BudgetReached(RuntimeError):
 class Evaluator:
     def __init__(self, worker, directory: Path, binary_hash: str, revision: str,
                  max_new=4096, max_requests=8192, max_seconds=48*3600, seed_measurements=None):
+        self.corpus = FrozenCorpus()
         self.worker, self.directory = worker, directory
         directory.mkdir(parents=True, exist_ok=True)
         self.records = {}
@@ -33,21 +35,38 @@ class Evaluator:
                 raise ValueError("cannot seed an existing measurement log")
             for line in Path(seed_measurements).read_text().splitlines():
                 record = json.loads(line)
-                if record.get("status") == "accepted" and record["binary_hash"] == binary_hash:
+                if record.get("status") == "accepted":
+                    self._check_cached_record(record)
                     self._append({**record,"cache_seed":True,"seed_source":str(seed_measurements)})
         if self.path.exists():
             for line in self.path.read_text().splitlines():
                 record = json.loads(line)
-                if record.get("status") == "accepted" and record["binary_hash"] == binary_hash:
+                if record.get("status") == "accepted":
+                    self._check_cached_record(record)
                     self.records[record["key"]] = record
+
+    def _key(self, source, actions):
+        identity = json.dumps({"source": source, "actions": actions, "binary": self.binary_hash,
+                               "input_seed": 7, "measurement_protocol": "paired-training-v2"}, sort_keys=True)
+        return hashlib.sha256(identity.encode()).hexdigest()
+
+    def _check_cached_record(self, record):
+        self.corpus.require_development(record["workload"])
+        if record["binary_hash"] != self.binary_hash or record.get("correct") is not True:
+            raise ValueError("cache requires correct outcomes from the same compiler")
+        if record.get("corpus_sha256", self.corpus.sha256) != self.corpus.sha256:
+            raise ValueError("cached outcome corpus hash mismatch")
+        workload = record["workload"]
+        source = GENERATORS[workload["family"]](*workload["shape"])
+        if record["key"] != self._key(source, record["actions"]):
+            raise ValueError("cached outcome identity mismatch")
 
     def _append(self, record):
         with self.path.open("a") as stream:
             stream.write(json.dumps(record, allow_nan=False) + "\n")
 
     def measure(self, workload, actions, *, reference=False):
-        if workload["split"] not in ("train", "validation"):
-            raise ValueError("held-out measurements are sealed")
+        self.corpus.require_development(workload)
         if time.perf_counter() - self.started >= self.max_seconds:
             raise BudgetReached("wall-time budget reached")
         if reference:
@@ -57,9 +76,7 @@ class Evaluator:
                 raise BudgetReached("candidate request budget reached")
             self.requests += 1
         source = GENERATORS[workload["family"]](*workload["shape"])
-        identity = json.dumps({"source": source, "actions": actions, "binary": self.binary_hash,
-                               "input_seed": 7, "measurement_protocol": "paired-training-v2"}, sort_keys=True)
-        key = hashlib.sha256(identity.encode()).hexdigest()
+        key = self._key(source, actions)
         if key in self.records:
             self.cache_hits += 1
             return self.records[key]
@@ -70,6 +87,7 @@ class Evaluator:
         hardware_before = self.worker.counters.copy()
         handles = []
         record = {"schema_version": 1, "key": key, "binary_hash": self.binary_hash,
+                  "corpus_sha256": self.corpus.sha256,
                   "revision": self.revision, "workload": workload, "actions": actions,
                   "input_seeds": [7,17], "status": "started"}
         try:

@@ -14,6 +14,7 @@ from sb3_contrib import MaskablePPO
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "python"))
 from rlmlir.policies import policy_digest
+from rlmlir.corpus import FrozenCorpus
 
 
 def require(condition, message):
@@ -33,9 +34,10 @@ def audit(directory):
     torch.set_num_threads(1)
     queue = read(directory / "queue.json")
     require(queue["status"] != "running", "do not audit an active campaign")
-    corpus = {w["id"]: w for w in read(ROOT / "configs/corpus.json")["workloads"]}
+    corpus = FrozenCorpus()
     actual = {job["name"]: job for job in queue["jobs"]}
     summary = {"queue_status": queue["status"], "queue_elapsed_seconds": queue["elapsed_seconds"],
+               "corpus_sha256": corpus.sha256,
                "jobs": {}, "scope": "saved evidence; no new execution or performance validation"}
     for definition in queue["definition"]:
         name = definition["name"]
@@ -44,6 +46,7 @@ def audit(directory):
             continue
         run = directory / name
         meta = read(run / "run.json")
+        require(meta["corpus_sha256"] == corpus.sha256, "training corpus hash mismatch")
         counts = meta["counters"]
         require(counts["new_measurements"] <= meta["max_new"], "distinct budget exceeded")
         require(counts["candidate_requests"] <= meta["max_requests"], "request budget exceeded")
@@ -54,7 +57,7 @@ def audit(directory):
         require(len(by_key) == len(records), "duplicate saved measurements")
         failures = []
         for record in records:
-            require(record["workload"] == corpus[record["workload"]["id"]], "workload mismatch")
+            corpus.require_development(record["workload"])
             require(record["workload"]["split"] == "train", "non-training outcome")
             require(record["binary_hash"] == meta["binary_hash"] and record["revision"] == meta["revision"], "provenance mismatch")
             if record["status"] == "failed":
@@ -74,6 +77,7 @@ def audit(directory):
             measured, baseline = by_key[outcome["measurement_key"]], by_key[outcome["reference_key"]]
             require(measured["status"] == baseline["status"] == "accepted", "failed outcome used for learning")
             require(item["workload"] == measured["workload"] == baseline["workload"], "trajectory workload mismatch")
+            require(measured["actions"] == [a for a in item["actions"] if a["kind"] != "STOP"], "trajectory schedule mismatch")
             require(all(step["mask"][step["action"]] for step in item["transitions"]), "illegal action")
             require(item["transitions"][-1]["terminal"], "unfinished saved trajectory")
             cost, reference = measured["execution_ms"], baseline["execution_ms"]
