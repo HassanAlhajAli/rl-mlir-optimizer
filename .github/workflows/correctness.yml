@@ -1,0 +1,11 @@
+name: Correctness
+on: [push, pull_request]
+jobs:
+  jit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo bash scripts/setup_ubuntu.sh
+      - run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++-18
+      - run: cmake --build build -j2
+      - run: ctest --test-dir build --output-on-failure
