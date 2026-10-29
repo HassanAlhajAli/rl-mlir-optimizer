@@ -60,14 +60,20 @@
       "source": "runs/compiler-replay-002/run.json",
       "recorded_seconds": 126.82022877100002,
       "boundary": "Correctness-only stability replay, not a performance measurement"
+    },
+    {
+      "run": "compiler-memory-replay-001",
+      "source": "runs/compiler-memory-replay-001/run.json",
+      "recorded_seconds": 178.777219796,
+      "boundary": "Protected-memory correctness diagnostic; no performance rewards"
     }
   ],
-  "recorded_seconds": 8722.189537877,
+  "recorded_seconds": 8900.966757673,
   "additional_uninstrumented_development_reserve_seconds": 7200,
   "charged_before_main_seconds": 5822.77778897,
   "approved_main_queue_ceiling_seconds": 0,
   "reserved_for_adaptation_and_final_seconds": 86400,
-  "remaining_after_these_allocations_seconds": 70477.81046212299,
+  "remaining_after_these_allocations_seconds": 70299.03324232699,
   "notes": [
     "Queue elapsed includes child runs; children are not counted again.",
     "Recorded seconds use available timer boundaries, not a claim of complete wall-time instrumentation.",
@@ -76,5 +82,5 @@
     "Main queue completed/stopped: its eight-hour reservation is replaced by 6372.591520136001 actual seconds. No replacement queue is authorized by this ledger.",
     "A second hour is conservatively reserved for compiler-failure debugging, failed builds and checks. This reduces remaining capacity within 48 hours; it is not measured usage or an increase of the allowance. A separately timed correctness replay will be charged separately."
   ],
-  "charged_current_seconds": 15922.189537877
+  "charged_current_seconds": 16100.966757673
 }

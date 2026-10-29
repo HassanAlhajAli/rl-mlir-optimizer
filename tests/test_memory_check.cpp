@@ -2,6 +2,7 @@
 #include <csignal>
 #include <iostream>
 #include <stdexcept>
+#include <sys/resource.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
@@ -34,6 +35,8 @@ void mustFault(Entry entry, bool alignEnd) {
   pid_t child = fork();
   require(child >= 0, "fork failed");
   if (child == 0) {
+    const rlimit noCore{0, 0};
+    if (setrlimit(RLIMIT_CORE, &noCore)) _exit(3);
     try { rlmlir::checkMemory(kernel(entry), inputs, 1, alignEnd); }
     catch (...) { _exit(2); }
     _exit(0);

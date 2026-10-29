@@ -1,0 +1,52 @@
+{
+  "archive": "raw.zip",
+  "sha256": "70b25183753956cc986a389d46d2c93e0feed073a1aa6f73aac6f9e8cc48a983",
+  "bytes": 124890,
+  "files": [
+    {
+      "path": "compiler-memory-replay-001/checks.jsonl",
+      "bytes": 772877,
+      "sha256": "88ac7b6654141b9523dc9f1bbf2b7a7410f6f06565f3795d992e31038238d301"
+    },
+    {
+      "path": "compiler-memory-replay-001/run.json",
+      "bytes": 1555,
+      "sha256": "abace08b7890e559ef68d36e28329d08e9c736b7fb1e1c59f971077aa3eee147"
+    },
+    {
+      "path": "memory-guard-verification-001/ctest.log",
+      "bytes": 821,
+      "sha256": "1204a20579a151d03898e7793412d172fc387b8c2ec1a6e3e0f1fad18eb7d52c"
+    },
+    {
+      "path": "memory-guard-verification-001/families-guarded.log",
+      "bytes": 447,
+      "sha256": "82aa355bee5d0a35b99d8acb6aac735fcaadceab71e6f079f6b5cc8470b51484"
+    },
+    {
+      "path": "memory-guard-verification-001/no-core-guards.log",
+      "bytes": 452,
+      "sha256": "ff28c9d655b4e58ac674fda1aa964d695cc023a143ef112567f21d0f3e533d0e"
+    },
+    {
+      "path": "memory-guard-verification-001/provenance-tests.log",
+      "bytes": 100,
+      "sha256": "d98fc6047bfd5ab432bb55eaddc86de220347f506ca3934c7158f0392fb56567"
+    },
+    {
+      "path": "memory-guard-verification-001/python.log",
+      "bytes": 100,
+      "sha256": "74d4d5df6c86a0d695151e3ae09a16916f946a596c5cca4106cdfb56aad421d3"
+    },
+    {
+      "path": "memory-guard-verification-001/replay.log",
+      "bytes": 1574,
+      "sha256": "0a90773902500b568ebeb7ea3e5cf61d1de086bf72859f81a361ccff66856422"
+    },
+    {
+      "path": "memory-guard-verification-001/stale-policy-rejection.log",
+      "bytes": 1222,
+      "sha256": "c8cd03b53890035bc3acfb21d8b56c732bfeb8a0b0271366f02513cedcae2111"
+    }
+  ]
+}

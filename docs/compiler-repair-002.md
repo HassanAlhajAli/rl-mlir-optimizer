@@ -75,8 +75,9 @@ policy updates. That audit does not select checkpoints or establish RL benefit.
 
 ## Follow-up: distinguish answer correctness from buffer safety
 
-The next bounded diagnostic adds `--guard-memory` to the replay command and
-uses a fresh `runs/compiler-memory-replay-001` output. It checks both buffer
+The [completed bounded diagnostic](../results/compiler-memory-replay-001/observations.md)
+adds `--guard-memory` to the replay command and uses the fresh
+`runs/compiler-memory-replay-001` output. It checks both buffer
 placements against inaccessible boundary pages, read-only inputs and output
 padding sentinels. Each candidate/anchor is checked with both input seeds,
 both placements, and three invocations. The 1,200-second overall and existing
@@ -86,4 +87,6 @@ The guard implementation is tested by deliberately faulty functions in isolated
 child processes before replay. This work changes only the diagnostic runtime
 and worker command, not the compiler transformation or timing paths. Compare
 the new saved LLVM hashes to `compiler-replay-002` to verify that the generated
-IR is unchanged. No training or performance finding follows from this check.
+IR is unchanged. All 833 records and 6,664 numerical comparisons passed;
+all 1,666 LLVM hashes matched. No training or performance finding follows from
+this check. The original SIGSEGV remains unexplained.
