@@ -36,3 +36,29 @@ def matmul_case(m: int, n: int, k: int, seed: int = 7):
     reference = [math.fsum(a[i * k + q] * b[q * n + j] for q in range(k))
                  for i in range(m) for j in range(n)]
     return [a, b, c], reference
+
+
+def matvec(m: int, k: int) -> str:
+    if any(type(d) is not int or d < 0 for d in (m, k)):
+        raise ValueError("dimensions must be nonnegative integers")
+    return f'''module {{
+  func.func @kernel(%a: memref<{m}x{k}xf64>, %b: memref<{k}xf64>, %c: memref<{m}xf64>) {{
+    %zero = arith.constant 0.0 : f64
+    linalg.fill ins(%zero : f64) outs(%c : memref<{m}xf64>)
+    linalg.generic {{indexing_maps = [affine_map<(i,k)->(i,k)>,
+      affine_map<(i,k)->(k)>, affine_map<(i,k)->(i)>],
+      iterator_types = ["parallel", "reduction"]}}
+      ins(%a, %b : memref<{m}x{k}xf64>, memref<{k}xf64>)
+      outs(%c : memref<{m}xf64>) {{
+      ^bb0(%x: f64, %y: f64, %sum: f64):
+        %p = arith.mulf %x, %y : f64
+        %s = arith.addf %sum, %p : f64
+        linalg.yield %s : f64
+    }}
+    return
+  }}
+}}'''
+
+
+def matvec_case(m: int, k: int, seed: int = 7):
+    return matmul_case(m, 1, k, seed)

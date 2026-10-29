@@ -4,8 +4,8 @@ This file distinguishes the approved scope from completed work. Issue #1 tracks 
 
 | Gate | State | Evidence required |
 |---|---|---|
-| A: environment/JIT pilot | Starting | Correct generated kernel, metadata, reproducible timing |
-| B: compiler/runtime | Pending | Two families, transformations, cache/ownership checks |
+| A: environment/JIT pilot | Correctness passed; timing stability under investigation | Two preserved pilots show host variability |
+| B: compiler/runtime | Core implemented and locally checked | 81 scheduled kernels, strict math, legality, rollback and cache tests pass; machine-code inspection follows |
 | C: optimization pilot | Pending | Repeatable training-only schedule tradeoffs |
 | D: PPO | Pending | Frozen corpus, learnable diagnostic, two objectives |
 | E: pretraining | Pending | Provenance-complete trajectories and imitation validation |

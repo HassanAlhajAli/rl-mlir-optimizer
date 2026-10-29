@@ -1,4 +1,5 @@
 #include "compiler.h"
+#include "cache.h"
 #include "runtime.h"
 #include "llvm/Support/JSON.h"
 #include "llvm/Support/raw_ostream.h"
@@ -30,6 +31,7 @@ std::vector<std::vector<double>> readBuffers(const llvm::json::Object &request) 
 
 int main() {
   rlmlir::Compiler compiler;
+  rlmlir::ExecutableCache cache;
   std::map<int64_t, std::shared_ptr<rlmlir::CompiledKernel>> handles;
   int64_t nextHandle = 1;
   std::string line;
@@ -42,24 +44,51 @@ int main() {
       if (!request) throw std::runtime_error("request must be a JSON object");
       auto command = request->getString("command");
       if (!command) throw std::runtime_error("command is required");
+      if (line.size() > 64000000) throw std::runtime_error("request exceeds 64 MB");
       if (*command == "info") {
         response["llvm_version"] = "18.1.3";
         response["target"] = "x86-64-v3";
         response["schema_version"] = 1;
-      } else if (*command == "compile") {
+        response["cache_entries"] = static_cast<int64_t>(cache.size());
+        response["active_handles"] = static_cast<int64_t>(handles.size());
+      } else if (*command == "analyze" || *command == "compile") {
         auto source = request->getString("source");
         if (!source) throw std::runtime_error("source is required");
-        auto kernel = compiler.compile(source->str());
+        if (source->size() > 1000000) throw std::runtime_error("source exceeds 1 MB");
+        auto *actions = request->getArray("actions");
+        if (request->get("actions") && !actions) throw std::runtime_error("actions must be an array");
+        llvm::json::Array empty;
+        if (*command == "analyze") {
+          response = compiler.analyze(source->str(), actions ? *actions : empty);
+        } else {
+        if (handles.size() >= 128) throw std::runtime_error("active handle limit reached");
+        std::string key = "llvm18.1.3|x86-64-v3|O3|strict-fp64|" + source->str() + "\n";
+        llvm::raw_string_ostream stream(key);
+        llvm::json::Array keyActions = actions ? *actions : empty;
+        stream << llvm::json::Value(std::move(keyActions));
+        auto kernel = cache.find(key);
+        const bool hit = static_cast<bool>(kernel);
+        if (!hit) {
+          cache.reserveSlot();
+          kernel = compiler.compile(source->str(), actions ? *actions : empty);
+          cache.insert(key, kernel);
+        }
         auto id = nextHandle++;
         handles[id] = kernel;
         response["handle"] = id;
-        response["lowering_ms"] = kernel->loweringMs;
-        response["codegen_ms"] = kernel->codegenMs;
+        response["cache_hit"] = hit;
+        response["lowering_ms"] = hit ? 0 : kernel->loweringMs;
+        response["codegen_ms"] = hit ? 0 : kernel->codegenMs;
         response["lowered_ir"] = kernel->loweredIR;
+        response["transformed_ir"] = kernel->transformedIR;
+        response["llvm_ir"] = kernel->llvmIR;
+        }
       } else if (*command == "invoke" || *command == "benchmark") {
         auto id = request->getInteger("handle");
         if (!id || !handles.count(*id)) throw std::runtime_error("unknown executable handle");
         rlmlir::Invocation invocation(handles.at(*id), readBuffers(*request));
+        if (request->get("count") && !request->getInteger("count"))
+          throw std::runtime_error("count must be an integer");
         int64_t count = request->getInteger("count").value_or(1);
         if (count < 1 || count > 10000000) throw std::runtime_error("count outside 1..10000000");
         // JSON decoding and buffer allocation are orchestration costs, outside execution.
@@ -73,6 +102,15 @@ int main() {
       } else if (*command == "release") {
         auto id = request->getInteger("handle");
         if (!id || !handles.erase(*id)) throw std::runtime_error("unknown executable handle");
+      } else if (*command == "clear_cache") {
+        cache.clearUnused();
+        response["remaining_entries"] = static_cast<int64_t>(cache.size());
+      } else if (*command == "dump_object") {
+        auto id = request->getInteger("handle");
+        auto path = request->getString("path");
+        if (!id || !handles.count(*id) || !path || path->empty())
+          throw std::runtime_error("dump_object requires a live handle and output path");
+        handles.at(*id)->engine->dumpToObjectFile(*path);
       } else {
         throw std::runtime_error("unknown command");
       }

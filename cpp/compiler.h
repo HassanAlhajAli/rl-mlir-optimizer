@@ -2,6 +2,7 @@
 
 #include "mlir/ExecutionEngine/ExecutionEngine.h"
 #include "mlir/IR/MLIRContext.h"
+#include "llvm/Support/JSON.h"
 #include <memory>
 #include <string>
 #include <vector>
@@ -16,6 +17,8 @@ struct CompiledKernel {
   std::vector<Shape> shapes;
   std::string sourceIR;
   std::string loweredIR;
+  std::string transformedIR;
+  std::string llvmIR;
   double loweringMs = 0;
   double codegenMs = 0;
 };
@@ -23,7 +26,8 @@ struct CompiledKernel {
 class Compiler {
 public:
   Compiler();
-  std::shared_ptr<CompiledKernel> compile(const std::string &source);
+  std::shared_ptr<CompiledKernel> compile(const std::string &source, const llvm::json::Array &actions = {});
+  llvm::json::Object analyze(const std::string &source, const llvm::json::Array &actions);
 
 private:
   mlir::MLIRContext context;

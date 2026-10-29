@@ -91,6 +91,7 @@ def main():
             record["rounds"].append(entry)
             (args.output / "lowered.mlir").write_text(built["lowered_ir"])
             worker.request("release", handle=handle)
+            worker.request("clear_cache")
             (args.output / "measurements.json").write_text(json.dumps(record, indent=2) + "\n")
     record["elapsed_seconds"] = time.perf_counter() - campaign_start
     samples = [r["per_invocation_ms"] for r in record["rounds"]]
