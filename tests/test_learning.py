@@ -98,6 +98,19 @@ def test_seeded_measurements_do_not_reset_request_limit(tmp_path):
         resumed.measure(workload,[])
 
 
+def test_evaluator_counters_exclude_previous_worker_activity(tmp_path):
+    with Worker(ROOT/"build/rlmlir-worker") as worker:
+        worker.request("info")
+        first = Evaluator(worker,tmp_path/"first","binary","revision")
+        worker.request("info")
+        assert first.counters()["worker_counts"]["info_requests"] == 1
+        second = Evaluator(worker,tmp_path/"second","binary","revision")
+        assert second.counters()["worker_counts"] == {}
+        worker.request("info")
+        assert second.counters()["worker_counts"]["info_requests"] == 1
+        assert worker.counters["info_requests"] == 3
+
+
 class KnownChoice(gym.Env):
     """Two contexts, different correct actions, and one always-illegal action."""
     def __init__(self):

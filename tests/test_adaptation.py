@@ -84,6 +84,7 @@ def test_exact_budget_reset_and_first_group_control():
             result = adapt(worker,DeterministicEvaluator(),workload,100,policy,method=method,budget=8,seed=7)
             assert result["counters"]["candidate_requests"] == 8
             assert all(g["update"] is None for g in result["groups"])
+            assert result["initial_policy_digest"] == result["final_policy_digest"]
             first.append([r["actions"] for r in result["requests"]])
         assert first[0] == first[1] == first[2]
         for budget in (16,32):

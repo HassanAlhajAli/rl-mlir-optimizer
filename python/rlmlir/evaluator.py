@@ -4,6 +4,7 @@ import hashlib
 import json
 import statistics
 import time
+from collections import Counter
 from pathlib import Path
 
 from .kernels import GENERATORS, REFERENCES
@@ -25,6 +26,7 @@ class Evaluator:
         self.requests = self.new_measurements = self.cache_hits = 0
         self.reference_requests = 0
         self.started = time.perf_counter()
+        self.worker_counts_at_start = Counter(getattr(worker,"counters",{}))
         self.path = directory / "measurements.jsonl"
         if seed_measurements is not None:
             if self.path.exists():
@@ -131,5 +133,6 @@ class Evaluator:
     def counters(self):
         return {"candidate_requests": self.requests, "reference_requests": self.reference_requests,
                 "new_measurements": self.new_measurements, "cache_hits": self.cache_hits,
-                "worker_counts": dict(self.worker.counters),
+                "worker_counts": dict(self.worker.counters - self.worker_counts_at_start),
+                "worker_counts_scope": "since_evaluator_creation",
                 "elapsed_seconds": time.perf_counter() - self.started}

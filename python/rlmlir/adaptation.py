@@ -8,7 +8,7 @@ import numpy as np
 import torch
 
 from .objective import deployment_ms
-from .policies import actor_parameters, tensors
+from .policies import actor_parameters, tensors, policy_digest
 from .selection import heuristic, sample_schedule
 
 
@@ -88,6 +88,7 @@ def adapt(worker, evaluator, workload, reuse, initial_policy, *, method, budget,
     if evaluator.requests or evaluator.records:
         raise ValueError("each adaptation context requires an independent empty measurement cache")
     start = time.perf_counter()
+    initial_digest = policy_digest(initial_policy)
     rng = np.random.default_rng(seed)
     torch.manual_seed(seed)
     policy, reference = copy.deepcopy(initial_policy), copy.deepcopy(initial_policy)
@@ -131,7 +132,11 @@ def adapt(worker, evaluator, workload, reuse, initial_policy, *, method, budget,
             update = update_group(policy,reference,group,optimizer,method)
         groups.append({"requests":offset+8,"unique_schedules":len(seen),"update":update,
                        "best_cost_ms":best["cost_ms"],"elapsed_ms":(time.perf_counter()-start)*1000})
+    final_digest = policy_digest(policy)
+    if policy_digest(initial_policy) != initial_digest:
+        raise RuntimeError("adaptation mutated the shared initial policy")
     return {"schema_version":1,"method":method,"budget":budget,"seed":seed,
+            "initial_policy_digest":initial_digest,"final_policy_digest":final_digest,
             "workload":workload,"reuse":reuse,"requests":requests,"groups":groups,
             "best":best,"tuning_ms":(time.perf_counter()-start)*1000,
             "counters":evaluator.counters()}

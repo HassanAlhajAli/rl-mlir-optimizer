@@ -26,12 +26,14 @@ def provenance(root: Path):
 
 
 def initialize(worker):
+    before = worker.counters.copy()
     start = time.perf_counter()
     warm = worker.request("compile",source=matmul(1,1,1))
     worker.request("release",handle=warm["handle"])
     worker.request("clear_cache")
+    info = worker.request("info")
     return {"compiler_initialization_ms":(time.perf_counter()-start)*1000,
-            "worker":worker.request("info")}
+            "initialization_counts":dict(worker.counters-before),"worker":info}
 
 
 @contextmanager

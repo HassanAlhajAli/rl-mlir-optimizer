@@ -76,12 +76,7 @@ def main():
         raise SystemExit("cumulative budget already exhausted; do not silently enlarge it")
     (args.output/"run.json").write_text(json.dumps(meta,indent=2)+"\n")
     with Worker(executable) as worker:
-        from rlmlir.kernels import matmul
-        initialization_start = time.perf_counter()
-        warm = worker.request("compile",source=matmul(1,1,1))
-        worker.request("release",handle=warm["handle"])
-        worker.request("clear_cache")
-        meta["compiler_initialization_ms"] = (time.perf_counter()-initialization_start)*1000
+        meta.update(initialize(worker))
         evaluator = Evaluator(worker,args.output/"measurements",binary_hash,revision,
                               max_new=remaining_new,max_requests=remaining_requests,max_seconds=remaining_seconds,
                               seed_measurements=args.resume/"measurements/measurements.jsonl" if args.resume else None)

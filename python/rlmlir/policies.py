@@ -27,6 +27,14 @@ def actor_parameters(policy):
     return list(policy.mlp_extractor.policy_net.parameters()) + list(policy.action_net.parameters())
 
 
+def policy_digest(policy):
+    digest = hashlib.sha256()
+    for name,value in sorted(policy.state_dict().items()):
+        digest.update(name.encode())
+        digest.update(value.detach().cpu().contiguous().numpy().tobytes())
+    return digest.hexdigest()
+
+
 def save_policy(policy, path: Path, metadata):
     path.parent.mkdir(parents=True, exist_ok=True)
     torch.save({"schema_version": 1, "observation_version":metadata.get("observation_version",OBSERVATION_VERSION),

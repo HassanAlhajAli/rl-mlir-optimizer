@@ -70,10 +70,12 @@ def main():
                                       max_new=budget,max_requests=budget,max_seconds=remaining)
                 result = adapt(worker,evaluator,workload,args.reuse,policy,method=method,budget=budget,seed=args.seed)
                 buffers, expected = REFERENCES[workload["family"]](*workload["shape"],seed=7)
+                before_deploy = worker.counters.copy()
                 deployment = worker.request("deploy",source=GENERATORS[workload["family"]](*workload["shape"]),
                                             actions=result["best"]["schedule"],buffers=buffers,count=args.reuse)
                 error = validate(deployment.pop("output"),expected)
                 result["deployment"] = {**deployment,"max_abs_error":error,"correct":True}
+                result["deployment_worker_counts"] = dict(worker.counters-before_deploy)
                 result["adapted_total_ms"] = adapted_deployment_ms(result["tuning_ms"],deployment["total_ms"])
                 (directory/"result.json").write_text(json.dumps(result)+"\n")
                 summaries.append({"method":method,"budget":budget,"tuning_ms":result["tuning_ms"],
