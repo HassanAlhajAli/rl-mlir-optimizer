@@ -21,3 +21,5 @@ add_test(NAME schedules COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/
 set_tests_properties(schedules PROPERTIES TIMEOUT 180)
 add_test(NAME runtime COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/test_runtime.py $<TARGET_FILE:rlmlir-worker>)
 set_tests_properties(runtime PROPERTIES TIMEOUT 180)
+add_test(NAME families COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/test_families.py $<TARGET_FILE:rlmlir-worker>)
+set_tests_properties(families PROPERTIES TIMEOUT 180)

@@ -18,6 +18,29 @@ mlir::linalg::GenericOp findGeneric(mlir::ModuleOp module) {
   return found;
 }
 
+std::vector<int64_t> coefficients(mlir::AffineExpr expression, unsigned dimensions) {
+  std::vector<int64_t> result(dimensions + 1, 0);
+  if (auto dimension = mlir::dyn_cast<mlir::AffineDimExpr>(expression)) {
+    result.at(dimension.getPosition()) = 1;
+  } else if (auto constant = mlir::dyn_cast<mlir::AffineConstantExpr>(expression)) {
+    if (constant.getValue() < 0 || constant.getValue() > 10000000)
+      throw std::runtime_error("unsupported affine offset");
+    result.back() = constant.getValue();
+  } else if (auto binary = mlir::dyn_cast<mlir::AffineBinaryOpExpr>(expression)) {
+    auto left = coefficients(binary.getLHS(), dimensions);
+    auto right = coefficients(binary.getRHS(), dimensions);
+    if (binary.getKind() == mlir::AffineExprKind::Add) {
+      for (unsigned i = 0; i <= dimensions; ++i) result[i] = left[i] + right[i];
+    } else if (binary.getKind() == mlir::AffineExprKind::Mul &&
+               llvm::all_of(llvm::ArrayRef<int64_t>(right).drop_back(), [](auto c) { return c == 0; }) && right.back() <= 1024) {
+      for (unsigned i = 0; i <= dimensions; ++i) result[i] = left[i] * right.back();
+    } else throw std::runtime_error("only bounded nonnegative affine additions/scaling are supported");
+  } else throw std::runtime_error("unsupported affine expression");
+  if (llvm::any_of(result, [](auto c) { return c > 10000000; }))
+    throw std::runtime_error("affine coefficient exceeds the supported bound");
+  return result;
+}
+
 std::vector<Shape> validate(mlir::ModuleOp module) {
   auto function = module.lookupSymbol<mlir::func::FuncOp>("kernel");
   if (!function || function.getNumArguments() != 3 || function.getNumResults() ||
@@ -45,15 +68,13 @@ std::vector<Shape> validate(mlir::ModuleOp module) {
       generic.getDpsInputOperand(1)->get() != function.getArgument(1) ||
       generic.getDpsInitOperand(0)->get() != function.getArgument(2))
     throw std::runtime_error("calculation must read buffers 0/1 and write buffer 2");
-  if (!llvm::all_of(generic.getIndexingMapsArray(), [](mlir::AffineMap map) { return map.isProjectedPermutation(); }))
-    throw std::runtime_error("v1 pilot accepts only projected-permutation indexing maps");
   module.walk([&](mlir::linalg::FillOp fill) {
     if (fill.getOutputs()[0] != function.getArgument(2) ||
         fill->getBlock() != generic->getBlock() || !fill->isBeforeInBlock(generic))
       throw std::runtime_error("output initialization must precede the calculation");
   });
-  if (generic.getNumLoops() > 4 || generic.getNumReductionLoops() > 1)
-    throw std::runtime_error("pilot supports at most four loops and one reduction axis");
+  if (generic.getNumLoops() > 4)
+    throw std::runtime_error("at most four loop dimensions are supported");
   std::vector<Shape> shapes;
   for (auto type : function.getArgumentTypes()) {
     auto memref = mlir::dyn_cast<mlir::MemRefType>(type);
@@ -68,6 +89,29 @@ std::vector<Shape> validate(mlir::ModuleOp module) {
       count *= d;
     }
     shapes.emplace_back(memref.getShape().begin(), memref.getShape().end());
+  }
+  const auto ranges = generic.getStaticLoopRanges();
+  if (ranges.size() != generic.getNumLoops() || llvm::any_of(ranges, [](auto d) { return d < 0 || d > 10000000; }))
+    throw std::runtime_error("could not establish bounded static loop ranges");
+  const auto maps = generic.getIndexingMapsArray();
+  const auto iterators = generic.getIteratorTypesArray();
+  std::vector<unsigned> outputUses(ranges.size(), 0);
+  for (auto expression : maps.back().getResults()) {
+    auto dimension = mlir::dyn_cast<mlir::AffineDimExpr>(expression);
+    if (!dimension) throw std::runtime_error("output map must contain only parallel dimensions");
+    ++outputUses[dimension.getPosition()];
+  }
+  for (unsigned i = 0; i < ranges.size(); ++i)
+    if (outputUses[i] != (iterators[i] == mlir::utils::IteratorType::parallel ? 1u : 0u))
+      throw std::runtime_error("output indexing must uniquely cover the parallel dimensions");
+  for (unsigned operand = 0; operand < maps.size(); ++operand) {
+    for (unsigned resultIndex = 0; resultIndex < maps[operand].getNumResults(); ++resultIndex) {
+      auto linear = coefficients(maps[operand].getResult(resultIndex), ranges.size());
+      int64_t maximum = linear.back();
+      for (unsigned i = 0; i < ranges.size(); ++i) maximum += linear[i] * std::max<int64_t>(0, ranges[i] - 1);
+      if (!llvm::is_contained(ranges, 0) && maximum >= shapes[operand][resultIndex])
+        throw std::runtime_error("indexing map can access beyond an input/output buffer");
+    }
   }
   return shapes;
 }
@@ -95,6 +139,31 @@ PreparedKernel prepare(mlir::MLIRContext &context, const std::string &source,
   auto original = findGeneric(*result.module);
   auto originalBounds = original.getStaticLoopRanges();
   auto types = original.getIteratorTypesArray();
+  const bool projected = llvm::all_of(original.getIndexingMapsArray(), [](mlir::AffineMap map) { return map.isProjectedPermutation(); });
+  const auto reductionCount = original.getNumReductionLoops();
+  llvm::json::Array accessStrides, shapes, arithmetic;
+  for (unsigned operand = 0; operand < result.shapes.size(); ++operand) {
+    const auto &shape = result.shapes[operand];
+    llvm::json::Array shapeJson;
+    for (auto dimension : shape) shapeJson.push_back(dimension);
+    shapes.push_back(std::move(shapeJson));
+    std::vector<int64_t> strides(originalBounds.size(), 0);
+    int64_t memoryStride = 1;
+    auto map = original.getIndexingMapsArray()[operand];
+    for (size_t i = shape.size(); i-- > 0;) {
+      auto linear = coefficients(map.getResult(i), originalBounds.size());
+      for (unsigned axis = 0; axis < strides.size(); ++axis) strides[axis] += linear[axis] * memoryStride;
+      memoryStride *= shape[i];
+    }
+    llvm::json::Array strideJson;
+    for (auto stride : strides) strideJson.push_back(stride);
+    accessStrides.push_back(std::move(strideJson));
+  }
+  for (llvm::StringRef name : {"arith.addf", "arith.mulf", "arith.subf"}) {
+    int64_t count = 0;
+    original.walk([&](mlir::Operation *op) { count += op->getName().getStringRef() == name; });
+    arithmetic.push_back(count);
+  }
   std::vector<int64_t> bounds(originalBounds.begin(), originalBounds.end());
   std::vector<unsigned> order(bounds.size());
   std::iota(order.begin(), order.end(), 0);
@@ -102,6 +171,7 @@ PreparedKernel prepare(mlir::MLIRContext &context, const std::string &source,
   bool terminal = false, vectorized = false;
   unsigned steps = 0;
   const auto canVectorize = [&]() {
+    if (!projected || reductionCount > 1) return false;
     int64_t volume = 1;
     for (unsigned i = 0; i < bounds.size(); ++i) {
       if (bounds[i] <= 0) return false;
@@ -129,6 +199,8 @@ PreparedKernel prepare(mlir::MLIRContext &context, const std::string &source,
           (*size != 4 && *size != 8 && *size != 16 && *size != 32 && *size != 64))
         throw std::runtime_error("invalid tile axis or size");
       auto &history = tiles[*axis];
+      if (reductionCount > 1 && types[*axis] == mlir::utils::IteratorType::reduction)
+        throw std::runtime_error("multi-axis reductions retain their original loop nesting");
       if (bounds[*axis] <= 0 || history.size() >= 2 || (!history.empty() && *size >= history.back()))
         throw std::runtime_error("tile requires a positive dimension and decreasing levels (at most two)");
       llvm::SmallVector<int64_t> sizes(bounds.size(), 0);
@@ -185,7 +257,8 @@ PreparedKernel prepare(mlir::MLIRContext &context, const std::string &source,
     tileHistory.push_back(std::move(history));
     if (terminal || steps >= 6) continue;
     for (int64_t size : {4, 8, 16, 32, 64})
-      if (bounds[i] > 0 && tiles[i].size() < 2 && (tiles[i].empty() || size < tiles[i].back()))
+      if (bounds[i] > 0 && !(reductionCount > 1 && types[i] == mlir::utils::IteratorType::reduction) &&
+          tiles[i].size() < 2 && (tiles[i].empty() || size < tiles[i].back()))
         legal.push_back(llvm::json::Object{{"kind", "TILE"}, {"axis", i}, {"size", size}});
     for (unsigned j = i + 1; j < bounds.size(); ++j)
       if (types[i] == mlir::utils::IteratorType::parallel && types[j] == mlir::utils::IteratorType::parallel)
@@ -193,6 +266,8 @@ PreparedKernel prepare(mlir::MLIRContext &context, const std::string &source,
   }
   if (!terminal && steps < 6 && canVectorize()) legal.push_back(llvm::json::Object{{"kind", "VECTORIZE"}});
   result.observation = llvm::json::Object{{"dimensions", std::move(dimensions)},
+      {"buffer_shapes", std::move(shapes)}, {"access_strides", std::move(accessStrides)},
+      {"arithmetic_counts", std::move(arithmetic)}, {"projected_indexing", projected},
       {"order", std::move(permutation)}, {"tiles", std::move(tileHistory)},
       {"steps", steps}, {"terminal", terminal || steps == 6}, {"vectorized", vectorized},
       {"legal_actions", std::move(legal)}};
