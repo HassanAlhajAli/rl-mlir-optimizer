@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "scope": "training metadata and checkpoint-selection coverage only; not a full method freeze",
+  "queue_status": "stopped",
+  "queue_elapsed_seconds": 6372.591520136001,
+  "current_contract": {
+    "binary_hash": "7c06477cadfd5d26b4b6e46e930d32ed89d1f25781bf372055142e50f75b7d8d",
+    "corpus_sha256": "1ea072ede311df0bb1375dd041c31ce134cdf38a1aeb896fa2175752e97484a1",
+    "observation_version": 2,
+    "measurement_protocol": "paired-training-v2",
+    "compiler": "LLVM/MLIR 18.1.3",
+    "target": "x86-64-v3"
+  },
+  "campaign_sha256": "6aba0ac6bb4acd033276f6f8047f99e97fe776119efcb9726ad18ca61ff1a542",
+  "queue_sha256": "77d70c444bacf908b0f34f461cb65b6aa1651b26b9e79445e0f64d9c3f1c1b44",
+  "config_sha256": "6ed61a92a719efed4d53f1142d1250df3ca5d815681a0e6b915201ff29dcaff9",
+  "jobs": [
+    {
+      "name": "ppo-reuse-7",
+      "seed": 7,
+      "objective": "reuse",
+      "max_new": 1536,
+      "max_requests": 8192,
+      "wall_limit_hours": 0.75,
+      "requested_timesteps": 16384,
+      "queue_status": "complete",
+      "validation_status": "missing",
+      "blockers": [
+        "incompatible provenance: binary_hash",
+        "separate audited validation selection is missing"
+      ],
+      "training_metadata_sha256": "15fffe6bbaf5cd36586cd4cf675509d94f0ce2c8fff17e1617a1b3fc6dd433a3",
+      "training_status": "budget_reached",
+      "training_binary_hash": "63d174c5ca0e41f6d7b2a5f076087d558526c9f383b95374385da85a9b3e466a",
+      "termination_reason": "candidate request budget reached",
+      "incompatible_fields": [
+        "binary_hash"
+      ],
+      "candidate_requests": 8192,
+      "new_measurements": 1349
+    },
+    {
+      "name": "ppo-runtime-7",
+      "seed": 7,
+      "objective": "runtime",
+      "max_new": 1536,
+      "max_requests": 8192,
+      "wall_limit_hours": 0.75,
+      "requested_timesteps": 16384,
+      "queue_status": "complete",
+      "validation_status": "missing",
+      "blockers": [
+        "incompatible provenance: binary_hash",
+        "separate audited validation selection is missing"
+      ],
+      "training_metadata_sha256": "665cd9ae4b8bcacaf88f4ef855d32bbe002ff9c4a90a00749e2a5ef749626336",
+      "training_status": "budget_reached",
+      "training_binary_hash": "63d174c5ca0e41f6d7b2a5f076087d558526c9f383b95374385da85a9b3e466a",
+      "termination_reason": "distinct measurement budget reached",
+      "incompatible_fields": [
+        "binary_hash"
+      ],
+      "candidate_requests": 1759,
+      "new_measurements": 1536
+    },
+    {
+      "name": "ppo-reuse-17",
+      "seed": 17,
+      "objective": "reuse",
+      "max_new": 1536,
+      "max_requests": 8192,
+      "wall_limit_hours": 0.75,
+      "requested_timesteps": 16384,
+      "queue_status": "complete",
+      "validation_status": "missing",
+      "blockers": [
+        "incompatible provenance: binary_hash",
+        "separate audited validation selection is missing"
+      ],
+      "training_metadata_sha256": "a4c319969e13e8b453d1ffa16333fb5f756b9167c60e5e0860cfd2fe1ab895a0",
+      "training_status": "budget_reached",
+      "training_binary_hash": "63d174c5ca0e41f6d7b2a5f076087d558526c9f383b95374385da85a9b3e466a",
+      "termination_reason": "candidate request budget reached",
+      "incompatible_fields": [
+        "binary_hash"
+      ],
+      "candidate_requests": 8192,
+      "new_measurements": 1302
+    },
+    {
+      "name": "ppo-runtime-17",
+      "seed": 17,
+      "objective": "runtime",
+      "max_new": 1536,
+      "max_requests": 8192,
+      "wall_limit_hours": 0.75,
+      "requested_timesteps": 16384,
+      "queue_status": "failed",
+      "validation_status": "missing",
+      "blockers": [
+        "training did not finish successfully within its bounded protocol",
+        "incompatible provenance: binary_hash",
+        "separate audited validation selection is missing"
+      ],
+      "training_metadata_sha256": "156d4d14768946f66e90243690ba6dfb95d0881c400039afbd8cca8693dcfb08",
+      "training_status": "stopped",
+      "training_binary_hash": "63d174c5ca0e41f6d7b2a5f076087d558526c9f383b95374385da85a9b3e466a",
+      "termination_reason": "RuntimeError('worker stopped unexpectedly (-11)')",
+      "incompatible_fields": [
+        "binary_hash"
+      ],
+      "candidate_requests": 831,
+      "new_measurements": 833
+    },
+    {
+      "name": "ppo-reuse-27",
+      "seed": 27,
+      "objective": "reuse",
+      "max_new": 1536,
+      "max_requests": 8192,
+      "wall_limit_hours": 0.75,
+      "requested_timesteps": 16384,
+      "queue_status": "not_started",
+      "validation_status": "missing",
+      "blockers": [
+        "training was not started",
+        "separate audited validation selection is missing"
+      ]
+    },
+    {
+      "name": "ppo-runtime-27",
+      "seed": 27,
+      "objective": "runtime",
+      "max_new": 1536,
+      "max_requests": 8192,
+      "wall_limit_hours": 0.75,
+      "requested_timesteps": 16384,
+      "queue_status": "not_started",
+      "validation_status": "missing",
+      "blockers": [
+        "training was not started",
+        "separate audited validation selection is missing"
+      ]
+    },
+    {
+      "name": "ppo-reuse-37",
+      "seed": 37,
+      "objective": "reuse",
+      "max_new": 1536,
+      "max_requests": 8192,
+      "wall_limit_hours": 0.75,
+      "requested_timesteps": 16384,
+      "queue_status": "not_started",
+      "validation_status": "missing",
+      "blockers": [
+        "training was not started",
+        "separate audited validation selection is missing"
+      ]
+    },
+    {
+      "name": "ppo-runtime-37",
+      "seed": 37,
+      "objective": "runtime",
+      "max_new": 1536,
+      "max_requests": 8192,
+      "wall_limit_hours": 0.75,
+      "requested_timesteps": 16384,
+      "queue_status": "not_started",
+      "validation_status": "missing",
+      "blockers": [
+        "training was not started",
+        "separate audited validation selection is missing"
+      ]
+    },
+    {
+      "name": "ppo-reuse-47",
+      "seed": 47,
+      "objective": "reuse",
+      "max_new": 1536,
+      "max_requests": 8192,
+      "wall_limit_hours": 0.75,
+      "requested_timesteps": 16384,
+      "queue_status": "not_started",
+      "validation_status": "missing",
+      "blockers": [
+        "training was not started",
+        "separate audited validation selection is missing"
+      ]
+    },
+    {
+      "name": "ppo-runtime-47",
+      "seed": 47,
+      "objective": "runtime",
+      "max_new": 1536,
+      "max_requests": 8192,
+      "wall_limit_hours": 0.75,
+      "requested_timesteps": 16384,
+      "queue_status": "not_started",
+      "validation_status": "missing",
+      "blockers": [
+        "training was not started",
+        "separate audited validation selection is missing"
+      ]
+    }
+  ],
+  "all_ten_selections_accounted_for": false,
+  "training_update_evidence_checked": false,
+  "whole_study_frozen": false,
+  "heldout_access": false
+}

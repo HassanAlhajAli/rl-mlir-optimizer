@@ -87,3 +87,7 @@ The targeted 20-check suite passed in 10.63 seconds. After the final changes, th
 complete Python suite passed 116 checks in 21.42 seconds. CI includes the new
 validation tests. These are correctness checks with synthetic data, not a native
 validation campaign.
+
+The [saved campaign coverage audit](../results/checkpoint-readiness-001/observations.md)
+confirms three completed, one failed and six unstarted jobs. All started jobs
+use the old compiler, and all ten separate validation selections are missing.
