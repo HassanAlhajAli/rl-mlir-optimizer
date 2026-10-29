@@ -1,0 +1,14 @@
+/build*/
+/.venv/
+/.cache/
+/runs/
+/models/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.env
+.env.*
+private-notes/
+*.core
