@@ -9,6 +9,16 @@ from pathlib import Path
 
 from .kernels import matmul
 
+COMPATIBILITY_FIELDS = ("binary_hash", "corpus_sha256", "observation_version",
+                        "measurement_protocol", "compiler", "target")
+
+
+def require_compatible_provenance(saved, current, *, context):
+    """Reject implicit transfer across compiler/data/measurement contracts."""
+    for field in COMPATIBILITY_FIELDS:
+        if current.get(field) is None or saved.get(field) != current[field]:
+            raise ValueError(f"{context} has incompatible or missing {field}; an explicit transfer/remeasurement protocol is required")
+
 
 def provenance(root: Path):
     from .encoding import OBSERVATION_VERSION

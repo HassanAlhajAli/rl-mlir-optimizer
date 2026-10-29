@@ -11,19 +11,18 @@ import torch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"python"))
 from rlmlir.evaluator import Evaluator
-from rlmlir.experiment import initialize, provenance, measurement_lease
+from rlmlir.experiment import initialize, provenance, measurement_lease, require_compatible_provenance
 from rlmlir.imitation import fit_actor, fit_critic
 from rlmlir.objective import deployment_ms
 from rlmlir.policies import create_policy, save_policy
 from rlmlir.worker import Worker
 
 
-def load_pool(runs,binary_hash):
+def load_pool(runs,expected_provenance):
     pool, provenance_records = [], []
     for directory in runs:
         meta = json.loads((directory/"run.json").read_text())
-        if meta["binary_hash"] != binary_hash:
-            raise ValueError("mixed compiler executables require an explicit remeasurement protocol")
+        require_compatible_provenance(meta, expected_provenance, context="experience pool")
         data = {r["key"]:r for r in (json.loads(line) for line in
                 (directory/"measurements/measurements.jsonl").read_text().splitlines()) if r["status"] == "accepted"}
         trajectory_file = directory/"trajectories.jsonl"
@@ -61,7 +60,7 @@ def main():
     torch.set_num_threads(1)
     os.sched_setaffinity(0,{min(os.sched_getaffinity(0))})
     meta = provenance(ROOT)
-    pool, sources = load_pool(args.runs,meta["binary_hash"])
+    pool, sources = load_pool(args.runs,meta)
     if {t["workload"]["split"] for t in pool} != {"train","validation"}:
         raise SystemExit("both training and validation experience are required")
     args.output.mkdir(parents=True)

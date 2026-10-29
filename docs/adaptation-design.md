@@ -34,3 +34,13 @@ noise. This control must never be described as evidence of a learning benefit.
 
 Diagnostic tests of the update mechanics and a small development run do not
 constitute the five-seed compiler study. Held-out performance remains sealed.
+
+## Compatibility before an experiment
+
+Measured adaptation requires the policy's compiler executable hash, corpus hash,
+observation version, measurement protocol, compiler release and CPU target to
+match the current experiment. Missing fields are rejected. The same check
+applies to experience pools used by imitation and the supervised predictor.
+Documentation-only source revisions may differ when this complete contract is
+unchanged. Cross-compiler transfer may be studied later under an explicit
+protocol; it is not an implicit fallback after a compiler repair.

@@ -39,7 +39,7 @@ def main():
     torch.set_num_threads(1)
     os.sched_setaffinity(0,{min(os.sched_getaffinity(0))})
     metadata = provenance(ROOT)
-    policy, policy_metadata = load_policy(args.policy)
+    policy, policy_metadata = load_policy(args.policy, expected_provenance=metadata)
     if "ppo" in args.methods and not policy_metadata.get("critic_fitted"):
         raise SystemExit("warm PPO requires a critic fitted to absolute log cost on training data")
     workloads = [w for w in load(ROOT/"configs/corpus.json",args.split) if w["id"] == args.workload_id]

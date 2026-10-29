@@ -10,10 +10,37 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"python"))
 from rlmlir.adaptation import adapt, update_group
 from rlmlir.encoding import ACTIONS, OBSERVATION_SIZE
+from rlmlir.experiment import COMPATIBILITY_FIELDS, require_compatible_provenance
 from rlmlir.imitation import fit_actor, fit_critic
 from rlmlir.policies import create_policy, actor_parameters, load_policy, save_policy
 from rlmlir.selection import sample_schedule
 from rlmlir.worker import Worker
+
+
+@pytest.mark.parametrize("field", COMPATIBILITY_FIELDS)
+def test_policy_rejects_incompatible_or_missing_provenance(tmp_path, field):
+    expected = {"binary_hash":"binary", "corpus_sha256":"corpus", "observation_version":2,
+                "measurement_protocol":"paired-training-v2", "compiler":"LLVM/MLIR 18.1.3",
+                "target":"x86-64-v3"}
+    path = tmp_path/"policy.pt"
+    save_policy(create_policy(7),path,expected)
+    changed = {**expected,field:"different"}
+    with pytest.raises(ValueError,match=field):
+        load_policy(path,expected_provenance=changed)
+    missing = {k:v for k,v in expected.items() if k != field}
+    with pytest.raises(ValueError,match=field):
+        require_compatible_provenance(missing,expected,context="experience pool")
+
+
+def test_policy_accepts_same_contract_across_documentation_revisions(tmp_path):
+    expected = {"binary_hash":"binary", "corpus_sha256":"corpus", "observation_version":2,
+                "measurement_protocol":"paired-training-v2", "compiler":"LLVM/MLIR 18.1.3",
+                "target":"x86-64-v3"}
+    policy = create_policy(7)
+    path = tmp_path/"policy.pt"
+    save_policy(policy,path,{**expected,"revision":"earlier-documentation"})
+    restored,_ = load_policy(path,expected_provenance={**expected,"revision":"new-documentation"})
+    assert all(torch.equal(v,restored.state_dict()[k]) for k,v in policy.state_dict().items())
 
 
 def group(policy, equal=False):

@@ -8,6 +8,7 @@ import torch
 from sb3_contrib.common.maskable.policies import MaskableActorCriticPolicy
 
 from .encoding import ACTIONS, OBSERVATION_SIZE, OBSERVATION_VERSION
+from .experiment import require_compatible_provenance
 
 
 def create_policy(seed=7):
@@ -42,12 +43,14 @@ def save_policy(policy, path: Path, metadata):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def load_policy(path: Path):
+def load_policy(path: Path, *, expected_provenance=None):
     saved = torch.load(path, map_location="cpu", weights_only=True)
     if saved["schema_version"] != 1:
         raise ValueError("unsupported policy checkpoint schema")
     if saved.get("observation_version",1) != OBSERVATION_VERSION:
         raise ValueError("policy uses an incompatible observation version; use its recorded source revision")
+    if expected_provenance is not None:
+        require_compatible_provenance(saved["metadata"], expected_provenance, context="policy")
     policy = create_policy()
     policy.load_state_dict(saved["state_dict"])
     return policy, saved["metadata"]

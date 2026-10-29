@@ -35,6 +35,11 @@ def main(executable):
                         buffers, expected = REFERENCES[family](*dims, seed=seed)
                         actual = worker.request("invoke", handle=built["handle"], buffers=buffers, count=3)
                         validate(actual["output"], expected)
+                        for alignment in ("start", "end"):
+                            checked = worker.request("check_memory", handle=built["handle"], buffers=buffers,
+                                                     count=3, alignment=alignment)
+                            assert checked["memory_check_passed"]
+                            validate(checked["output"], expected)
                     worker.request("release", handle=built["handle"])
                     total += 1
         # An overflowing affine access may verify as MLIR but is outside our safe subset.

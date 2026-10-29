@@ -25,7 +25,7 @@ def main():
     torch.set_num_threads(1)
     torch.manual_seed(args.seed)
     meta = provenance(ROOT)
-    pool,sources = load_pool(args.runs,meta["binary_hash"])
+    pool,sources = load_pool(args.runs,meta)
     unique = {}
     for item in pool:
         key = (item["workload"]["id"],json.dumps(item["actions"],sort_keys=True))
