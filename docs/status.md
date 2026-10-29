@@ -6,6 +6,13 @@ The [29 October development review](development-review-2026-10-29.md) consolidat
 implemented components, measured observations, compiler-version boundaries and
 the prerequisites for a new campaign.
 
+The [bounded long-lived request replay](../results/compiler-stability-003/observations.md)
+completed the original 833-record measurement path on the current backend,
+including the originally failed compile. The original SIGSEGV remains
+unexplained. The [current-backend revision](current-backend-restart.md) freezes
+a small optimization pilot and a conditional, fresh ten-job allocation before
+any replacement training. Held-out performance remains sealed.
+
 The [adaptation evidence checks](adaptation-evidence.md) now enforce fresh
 deployment costs and retain trial history across failures. Their synthetic
 verification does not resolve the stopped compiler campaign or establish a
@@ -26,7 +33,7 @@ An initial fingerprint alone is not a complete fairness result.
 | Gate | State | Evidence required |
 |---|---|---|
 | A: environment/JIT pilot | Passed for bounded development; final noise checks remain required | Correct native code; repaired landscape resolves large effects while retaining drift flags |
-| B: compiler/runtime | Revised backend passes ordinary and protected-memory 833-record replays; original crash cause unresolved | Six families; 88 schedule cases plus family/runtime suites; memory-guard fault controls; native-width vector lowering addresses a reproduced resource failure |
+| B: compiler/runtime | Revised backend passes ordinary, protected-memory and long-lived request-path 833-record replays; original crash cause unresolved | Six families; 88 schedule cases plus family/runtime suites; memory-guard fault controls; native-width vector lowering addresses a reproduced resource failure |
 | C: optimization pilot | Historical pilot passed; current-backend landscape remains pending | Earlier pilot:100/100 correct,6 flagged original blocks,1 repeat still flagged; estimated reuse choices differ on8/20 workloads; later compiler revision prevents transferring these conclusions |
 | D: PPO | Main campaign stopped; three jobs completed, fourth failed, six unstarted | Original checkpoints/results preserved; compiler failure diagnosis and revised-backend verification required before continuation |
 | E: pretraining | Measured development integration passed; full study pending | Hashed mixed trajectories; 143 training and 12 validation demonstration contexts; separate training-only critic fitting |

@@ -72,21 +72,31 @@
       "source": "runs/comparison-controller-integration-001/run.json",
       "recorded_seconds": 25.05308973400001,
       "boundary": "selector loading plus complete worker stage; Python startup and correctness/audit checks covered by existing reserve"
+    },
+    {
+      "run": "compiler-stability-003",
+      "source": "runs/compiler-stability-003/run.json",
+      "recorded_seconds": 926.874628689,
+      "boundary": "bounded long-lived request-path diagnostic; no performance rewards"
     }
   ],
-  "recorded_seconds": 8926.019847407002,
+  "recorded_seconds": 9852.894476096002,
   "additional_uninstrumented_development_reserve_seconds": 7200,
   "charged_before_main_seconds": 5822.77778897,
   "approved_main_queue_ceiling_seconds": 0,
+  "reserved_for_current_backend_pilot_seconds": 1200,
+  "reserved_for_conditional_replacement_ppo_seconds": 28800,
   "reserved_for_adaptation_and_final_seconds": 86400,
-  "remaining_after_these_allocations_seconds": 70273.980152593,
+  "remaining_after_these_allocations_seconds": 39347.105523904,
   "notes": [
     "Queue elapsed includes child runs; children are not counted again.",
     "Recorded seconds use available timer boundaries, not a claim of complete wall-time instrumentation.",
     "The one-hour reserve conservatively books uninstrumented development checks, debugging, standalone startup and verification overhead. It is an allocation, not measured usage.",
     "No paid compute. Replace the main reservation with actual queue elapsed after it ends; never add both.",
     "Main queue completed/stopped: its eight-hour reservation is replaced by 6372.591520136001 actual seconds. No replacement queue is authorized by this ledger.",
-    "A second hour is conservatively reserved for compiler-failure debugging, failed builds and checks. This reduces remaining capacity within 48 hours; it is not measured usage or an increase of the allowance. A separately timed correctness replay will be charged separately."
+    "A second hour is conservatively reserved for compiler-failure debugging, failed builds and checks. This reduces remaining capacity within 48 hours; it is not measured usage or an increase of the allowance.",
+    "The long-lived request-path diagnostic is separately charged at its actual 926.874628689 seconds.",
+    "The current-backend pilot and conditional replacement PPO ceilings are newly allocated from unspent allowance; they are not actual usage or a reset of the old campaign. Replace each reservation with actual elapsed time after review."
   ],
-  "charged_current_seconds": 16126.019847407002
+  "charged_current_seconds": 17052.894476096
 }

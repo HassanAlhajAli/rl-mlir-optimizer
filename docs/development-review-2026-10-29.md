@@ -81,3 +81,15 @@ boundaries differ from elapsed overnight agent work and are stated in the ledger
 
 All findings concern the pinned Intel/WSL environment. No Arm performance,
 novelty, or RL-superiority claim is established. Issue #1 remains open.
+
+## Later stability and allocation update
+
+The [long-lived replay](../results/compiler-stability-003/observations.md)
+completed the saved 833-record request path, including the originally failed
+compile, with 13,271 successful requests and no worker stderr. It repeated the
+original 599,529,512 measured invocations but could not reconstruct PPO/analyze
+interleaving or the old machine state. The SIGSEGV cause remains unknown.
+The [current-backend restart revision](current-backend-restart.md) now freezes a
+small pilot and a conditional fresh ten-job allocation. The ledger charges this
+diagnostic at 926.87 seconds; 17,052.89 seconds are now charged overall before
+the pilot. No replacement training or held-out performance has started.

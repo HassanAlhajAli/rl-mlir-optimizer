@@ -1,0 +1,27 @@
+{
+  "archive": "raw.zip",
+  "sha256": "d21be77537605c8e5ea809fdefed9a70b805af6a77ce1fc53640375341568218",
+  "bytes": 421939,
+  "files": [
+    {
+      "sha256": "e659517c81e84e5d622ed4ecdcc4d72c38a6106702edf2b347a66805cb4467e1",
+      "bytes": 2259,
+      "path": "compiler-stability-003/run.json"
+    },
+    {
+      "sha256": "94e76046d02e6d9fa18c4faaae450cf686db3ef415336a4dee7bdcceee17c200",
+      "bytes": 10171073,
+      "path": "compiler-stability-003/requests.jsonl"
+    },
+    {
+      "sha256": "7e5071ba44dd7b19397906e1e2288f8b763f56b5d7000276a15a970d983e2ec3",
+      "bytes": 166355,
+      "path": "compiler-stability-003/records.jsonl"
+    },
+    {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "path": "compiler-stability-003/worker.stderr"
+    }
+  ]
+}

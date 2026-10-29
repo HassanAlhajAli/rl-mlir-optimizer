@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "run_revision": "30b48d31200ecca294046c5a52a5309944808c3a",
+  "binary_sha256": "7c06477cadfd5d26b4b6e46e930d32ed89d1f25781bf372055142e50f75b7d8d",
+  "records_sha256": "ab715723bd441d58c29de98f2b703262973185dc2d3c359f563081bb49c14cf2",
+  "records": 833,
+  "request_counts": {
+    "info": 1,
+    "clear_cache": 833,
+    "compile": 1665,
+    "invoke": 2496,
+    "benchmark": 6611,
+    "release": 1665
+  },
+  "total_requests": 13271,
+  "total_invocations": 599529512,
+  "peak_worker_memory_kib": {
+    "VmRSS_kib": 181724,
+    "VmHWM_kib": 423464,
+    "VmSize_kib": 310396,
+    "VmPeak_kib": 607532
+  },
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "elapsed_seconds": 926.874628689,
+  "limit_seconds": 1800.0,
+  "original_failure_point_reached": true,
+  "limitations": [
+    "PPO policy/analyze interleaving and exact machine state were not recorded and cannot be reproduced",
+    "Saved benchmark counts replay the historical request path; new batch times are not research observations",
+    "The original failed record stops after its compile succeeds; prior guarded replay checked its execution"
+  ]
+}

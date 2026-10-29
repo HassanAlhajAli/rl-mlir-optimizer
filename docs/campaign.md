@@ -101,3 +101,15 @@ The repaired vector backend changes generated code. A new study needs an
 explicit protocol/allocation revision and verified compiler stability, with all
 old costs charged and all ten objective/seed combinations still visible. Do not
 bypass the binary-hash resume guard or silently replenish exhausted requests.
+
+## Current-backend continuation revision, 2026-10-29
+
+The [long-lived request-path replay](compiler-stability-003.md) completed all
+833 saved runtime/17 records and the originally failed compile, while retaining
+per-request logs, stderr and memory observations. Its pass does not establish
+the cause of the old SIGSEGV. The [restart specification](current-backend-restart.md)
+now freezes a 100-candidate, 20-minute-ceiling current-backend pilot before any
+replacement training. It conditionally allocates a fresh eight-hour ten-job
+queue under the same per-job limits, keeping all previous costs charged and
+24 hours reserved for adaptation/final measurement. Review the pilot first;
+the original queue remains stopped and held-out performance remains sealed.
