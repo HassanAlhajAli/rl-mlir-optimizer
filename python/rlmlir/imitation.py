@@ -59,24 +59,26 @@ def fit_critic(policy, training, *, seed=7, epochs=50):
     """Training-only terminal return targets; actor weights remain untouched."""
     if not training or any(t["workload"]["split"] != "train" for t in training):
         raise ValueError("critic requires training-only trajectories")
-    observations, targets = [], []
+    contexts = {}
     for item in training:
         target = -math.log(item["cost_ms"])
-        # Contexts have equal total weight via a deterministic one-state draw
-        # per context on each epoch, not by flattening long trajectories.
-        observations.append([s["observation"] for s in item["transitions"]])
-        targets.append(target)
+        key = (item["workload"].get("id","diagnostic"),item.get("reuse",1))
+        contexts.setdefault(key,[]).append(([s["observation"] for s in item["transitions"]],target))
+    contexts = list(contexts.values())
     parameters = list(policy.mlp_extractor.value_net.parameters()) + list(policy.value_net.parameters())
     optimizer = torch.optim.Adam(parameters,lr=3e-4)
     rng = np.random.default_rng(seed)
     history = []
     for epoch in range(epochs):
-        indices = rng.permutation(len(training))
+        # One trajectory and state per context per epoch gives equal context
+        # weight despite unequal trajectory counts and sequence lengths.
+        chosen = [context[rng.integers(len(context))] for context in contexts]
+        indices = rng.permutation(len(contexts))
         losses = []
         for start in range(0,len(indices),128):
             selected = indices[start:start+128]
-            obs = torch.tensor(np.asarray([observations[i][rng.integers(len(observations[i]))] for i in selected]),dtype=torch.float32)
-            target = torch.tensor([targets[i] for i in selected],dtype=torch.float32)
+            obs = torch.tensor(np.asarray([chosen[i][0][rng.integers(len(chosen[i][0]))] for i in selected]),dtype=torch.float32)
+            target = torch.tensor([chosen[i][1] for i in selected],dtype=torch.float32)
             loss = (policy.predict_values(obs).flatten()-target).square().mean()
             optimizer.zero_grad()
             loss.backward()

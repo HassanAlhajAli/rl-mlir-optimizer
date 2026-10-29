@@ -16,6 +16,7 @@ from rlmlir.evaluator import Evaluator, BudgetReached
 from rlmlir.objective import deployment_ms
 from rlmlir.selection import heuristic, sample_schedule
 from rlmlir.worker import Worker
+from rlmlir.experiment import initialize, provenance
 
 
 def main():
@@ -47,6 +48,7 @@ def main():
                 "random_per_context":args.random_per_context,"reuse_counts":[1,100,10000]}
     (args.output/"run.json").write_text(json.dumps(metadata,indent=2)+"\n")
     with Worker(binary) as worker:
+        metadata.update(provenance(ROOT), **initialize(worker))
         evaluator = Evaluator(worker,args.output/"measurements",metadata["binary_hash"],revision,
                               max_new=args.max_new,max_requests=args.max_new*4,max_seconds=args.hours*3600)
         try:
