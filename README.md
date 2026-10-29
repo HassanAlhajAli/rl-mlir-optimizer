@@ -1,12 +1,13 @@
 # RL for MLIR optimization
 
-A research project studying compiler schedule selection and limited-feedback adaptation. The planned system combines MLIR/LLVM transformations, a C++ JIT runtime, and PPO/imitation/GRPO comparisons.
+A research project studying compiler schedule selection and limited-feedback adaptation. The implemented development system combines MLIR/LLVM transformations, a C++ JIT runtime, PPO, imitation and budgeted GRPO/PPO/search comparisons. The full research evaluation remains in progress.
 
 **Status: the main PPO campaign stopped after three completed jobs and a compiler crash in the fourth.** A revised vector backend passes local correctness checks and an 833-case persistent-worker replay. The original crash remains unexplained, and training is stopped. Six numerical families are supported with conservative legality masks. Earlier bounded PPO, imitation and adaptation integration remains recorded at its original compiler version. The small adaptation example did not demonstrate an advantage from learning over frozen-policy sampling. The main comparison is incomplete.
 
 The question is whether learning improves total deployment cost, including compilation and reuse, and whether adapting to a new program repays its measurement cost. A simpler baseline winning is a valid outcome.
 
 - [Research protocol](docs/protocol.md)
+- [29 October development review and next prerequisites](docs/development-review-2026-10-29.md)
 - [Milestones](docs/status.md)
 - [Build and run checks](docs/build.md)
 - [Compiler/runtime design](docs/compiler-runtime.md)
