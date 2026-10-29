@@ -93,3 +93,12 @@ The [current-backend restart revision](current-backend-restart.md) now freezes a
 small pilot and a conditional fresh ten-job allocation. The ledger charges this
 diagnostic at 926.87 seconds; 17,052.89 seconds are now charged overall before
 the pilot. No replacement training or held-out performance has started.
+
+The [current-backend pilot](../results/optimization-pilot-003/observations.md)
+then completed 100 correct candidates in 337.81 seconds. Twelve original
+timing blocks were flagged, with four unresolved repeats. Estimated choices
+depend on reuse on 13/20 workloads, but are selection-biased development
+estimates rather than final deployment results. The [revised allocation](current-backend-restart.md)
+now permits a fresh ten-job PPO queue on the same backend, with all previous
+costs charged. The ledger's charged total is 17,390.70 seconds before that
+queue. The original crash remains unexplained.

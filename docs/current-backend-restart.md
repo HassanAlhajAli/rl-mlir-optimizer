@@ -76,3 +76,34 @@ It does not change the action vocabulary, objectives, reward, validation split,
 five-seed requirement, final statistical rules or the sealed held-out set.
 Separate validation checkpoint selection and all baseline/adaptation method
 freezes remain prerequisites for final evaluation.
+
+## Pilot review and training decision, 2026-10-29
+
+The [current-backend pilot](../results/optimization-pilot-003/observations.md)
+completed all 100 candidate compilations and independent numerical checks in
+337.81 seconds. Twelve original timing blocks were flagged and four repeats
+remained flagged across three workloads. They remain in the analysis; no block
+was silently discarded. Estimated reuse-dependent choices occur on 13/20
+workloads, including 12/17 without unresolved drift. Thus the development
+motivation to compare reuse-aware and execution-only objectives remains, while
+full deployment cost and H1's final result remain unproven. The changed backend
+produced a different lowest-median runtime schedule on 13/20 workloads from
+the old pilot; old timing and checkpoints cannot be transferred.
+
+The bounded stability replay and this pilot both completed without compiler
+or numerical failure. The original SIGSEGV remains unexplained, and the four
+unresolved timing flags are a measurement limitation. On that evidence, the
+conditional fresh ten-job PPO queue is eligible to start under the existing
+allocated eight-hour ceiling. Use `configs/ppo-campaign.json` unchanged and
+fresh `runs/ppo-campaign-002` (configuration SHA-256
+`6ed61a92a719efed4d53f1142d1250df3ca5d815681a0e6b915201ff29dcaff9`);
+do not use `--resume` or import old measurement
+caches. Stop on any unexpected compiler or correctness failure and preserve
+the failed request. Inspect all ten statuses, costs, requests and policy updates
+before validation selection or downstream training. No held-out access follows
+from a successful queue.
+
+The pilot's actual 337.807086738 seconds replaces its 1,200-second reservation.
+The ledger now charges 17,390.70 seconds overall, retains the 28,800-second
+queue ceiling and 86,400-second adaptation/final reserve, and leaves 40,209.30
+seconds unallocated within the original 48-hour allowance.

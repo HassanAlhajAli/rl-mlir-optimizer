@@ -113,3 +113,10 @@ replacement training. It conditionally allocates a fresh eight-hour ten-job
 queue under the same per-job limits, keeping all previous costs charged and
 24 hours reserved for adaptation/final measurement. Review the pilot first;
 the original queue remains stopped and held-out performance remains sealed.
+
+The current-backend pilot subsequently completed 100 correct candidates in
+337.81 seconds. Four repeat timing blocks remained flagged. Its 13/20
+reuse-dependent estimated choices preserve the development motivation, while
+the old and new timings are kept separate. The [pilot review and queue decision](current-backend-restart.md)
+allows a fresh `ppo-campaign-002` under the already reserved eight-hour ceiling,
+with the original failure, request counts and costs unchanged.

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "seed": 117,
+  "rounds": 5,
+  "batch_target_ms": 300,
+  "minimum_batch_ms": 100,
+  "drift_limit": 0.05,
+  "reuse_counts": [1, 100, 10000],
+  "matmul_shapes": [[16,16,16],[32,32,32],[64,64,64],[128,32,64],[31,65,17],[8,64,128],[64,8,32],[32,128,8],[127,63,33],[48,96,24]],
+  "matvec_shapes": [[8,64],[16,128],[31,65],[64,128],[128,32],[128,256],[256,256],[256,64],[512,16],[512,128]],
+  "schedules": ["baseline", "row_tile4", "row_tile16", "parallel_tile8_vector", "parallel_tile16_vector"]
+}

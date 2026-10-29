@@ -1,0 +1,372 @@
+{
+  "source_revision": "cecbfa3a02e913eb00f87f670fcae02d61d5a8d1",
+  "candidates": 100,
+  "original_blocks": 100,
+  "flagged_original_blocks": 12,
+  "repeat_blocks": 12,
+  "flagged_repeat_blocks": 4,
+  "elapsed_seconds": 337.807086738,
+  "workloads": [
+    {
+      "workload": "matmul-127x63x33",
+      "median_ms": {
+        "baseline": 0.02274701413602827,
+        "row_tile4": 0.022480249633267425,
+        "row_tile16": 0.02302266044722974,
+        "parallel_tile8_vector": 0.11896556354679802,
+        "parallel_tile16_vector": 0.058224748382185
+      },
+      "observed_lowest_runtime": "row_tile4",
+      "descriptive_runtime_ratio": 1.011866616568442,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "row_tile4"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matmul-128x32x64",
+      "median_ms": {
+        "baseline": 0.053688697272320764,
+        "row_tile4": 0.05366784737156512,
+        "row_tile16": 0.053507299082292764,
+        "parallel_tile8_vector": 0.03233353762258271,
+        "parallel_tile16_vector": 0.03026146814706953
+      },
+      "observed_lowest_runtime": "parallel_tile16_vector",
+      "descriptive_runtime_ratio": 1.7741603616650663,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "parallel_tile16_vector"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matmul-16x16x16",
+      "median_ms": {
+        "baseline": 0.00037591973200912915,
+        "row_tile4": 0.000379774663317448,
+        "row_tile16": 0.0003807497691375313,
+        "parallel_tile8_vector": 0.0005796834325663112,
+        "parallel_tile16_vector": 0.0005625506403770928
+      },
+      "observed_lowest_runtime": "baseline",
+      "descriptive_runtime_ratio": 1.0,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "baseline"
+      },
+      "distinct_object_hashes": 4
+    },
+    {
+      "workload": "matmul-31x65x17",
+      "median_ms": {
+        "baseline": 0.0024763395556485646,
+        "row_tile4": 0.0024858940407039283,
+        "row_tile16": 0.002490934591043518,
+        "parallel_tile8_vector": 0.01885752437912353,
+        "parallel_tile16_vector": 0.004445933005501728
+      },
+      "observed_lowest_runtime": "baseline",
+      "descriptive_runtime_ratio": 1.0,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "baseline"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matmul-32x128x8",
+      "median_ms": {
+        "baseline": 0.0015794337343733305,
+        "row_tile4": 0.0016324824751427773,
+        "row_tile16": 0.0015912915841230183,
+        "parallel_tile8_vector": 0.004130762244202318,
+        "parallel_tile16_vector": 0.004017116748583119
+      },
+      "observed_lowest_runtime": "baseline",
+      "descriptive_runtime_ratio": 1.0,
+      "estimated_cost_choices": {
+        "1": "row_tile16",
+        "100": "row_tile16",
+        "10000": "row_tile16"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matmul-32x32x32",
+      "median_ms": {
+        "baseline": 0.002669464366718396,
+        "row_tile4": 0.0023170794396224024,
+        "row_tile16": 0.002793263318729371,
+        "parallel_tile8_vector": 0.004275422169110079,
+        "parallel_tile16_vector": 0.004080820633108893
+      },
+      "observed_lowest_runtime": "row_tile4",
+      "descriptive_runtime_ratio": 1.1520815044448451,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "row_tile4"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matmul-48x96x24",
+      "median_ms": {
+        "baseline": 0.006951457504845309,
+        "row_tile4": 0.005796919983333333,
+        "row_tile16": 0.005790392582170015,
+        "parallel_tile8_vector": 0.013470035087025318,
+        "parallel_tile16_vector": 0.013376492972286191
+      },
+      "observed_lowest_runtime": "row_tile16",
+      "descriptive_runtime_ratio": 1.2005157519458156,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "row_tile4"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matmul-64x64x64",
+      "median_ms": {
+        "baseline": 0.05361379668540989,
+        "row_tile4": 0.05433681838768115,
+        "row_tile16": 0.05420452327471553,
+        "parallel_tile8_vector": 0.03397765526009111,
+        "parallel_tile16_vector": 0.0343918111292369
+      },
+      "observed_lowest_runtime": "parallel_tile8_vector",
+      "descriptive_runtime_ratio": 1.5779133749815473,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "parallel_tile8_vector"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matmul-64x8x32",
+      "median_ms": {
+        "baseline": 0.003006913011181107,
+        "row_tile4": 0.0029710433620604585,
+        "row_tile16": 0.00299155013607219,
+        "parallel_tile8_vector": 0.0021297428893666515,
+        "parallel_tile16_vector": 0.0021869809081376205
+      },
+      "observed_lowest_runtime": "parallel_tile8_vector",
+      "descriptive_runtime_ratio": 1.4118666747023678,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "baseline"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matmul-8x64x128",
+      "median_ms": {
+        "baseline": 0.019499012497210443,
+        "row_tile4": 0.019616771963352257,
+        "row_tile16": 0.01949176265416597,
+        "parallel_tile8_vector": 0.012255804285514543,
+        "parallel_tile16_vector": 0.01199678845621801
+      },
+      "observed_lowest_runtime": "parallel_tile16_vector",
+      "descriptive_runtime_ratio": 1.6253526990470506,
+      "estimated_cost_choices": {
+        "1": "row_tile4",
+        "100": "row_tile4",
+        "10000": "parallel_tile8_vector"
+      },
+      "distinct_object_hashes": 3
+    },
+    {
+      "workload": "matvec-128x256",
+      "median_ms": {
+        "baseline": 0.010850668052583307,
+        "row_tile4": 0.01073058071012517,
+        "row_tile16": 0.010688284280500521,
+        "parallel_tile8_vector": 0.0041788230258766245,
+        "parallel_tile16_vector": 0.004219173840611117
+      },
+      "observed_lowest_runtime": "parallel_tile8_vector",
+      "descriptive_runtime_ratio": 2.5965847286167563,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "parallel_tile8_vector"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matvec-128x32",
+      "median_ms": {
+        "baseline": 0.00041889396814221596,
+        "row_tile4": 0.0007102411727554423,
+        "row_tile16": 0.0004944839145216803,
+        "parallel_tile8_vector": 0.0004487049922818437,
+        "parallel_tile16_vector": 0.00044361692027211207
+      },
+      "observed_lowest_runtime": "baseline",
+      "descriptive_runtime_ratio": 1.0,
+      "estimated_cost_choices": {
+        "1": "row_tile4",
+        "100": "row_tile4",
+        "10000": "row_tile4"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matvec-16x128",
+      "median_ms": {
+        "baseline": 0.0005374103015430088,
+        "row_tile4": 0.0005430979759482183,
+        "row_tile16": 0.0005380524464644229,
+        "parallel_tile8_vector": 0.00022758598961806912,
+        "parallel_tile16_vector": 0.00023056795742876248
+      },
+      "observed_lowest_runtime": "parallel_tile8_vector",
+      "descriptive_runtime_ratio": 2.361350549060078,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "parallel_tile16_vector"
+      },
+      "distinct_object_hashes": 2
+    },
+    {
+      "workload": "matvec-256x256",
+      "median_ms": {
+        "baseline": 0.02157400386590154,
+        "row_tile4": 0.021610049622043406,
+        "row_tile16": 0.021440508099517086,
+        "parallel_tile8_vector": 0.00942804140530951,
+        "parallel_tile16_vector": 0.009420397461693236
+      },
+      "observed_lowest_runtime": "parallel_tile16_vector",
+      "descriptive_runtime_ratio": 2.2901373273929564,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "parallel_tile8_vector"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matvec-256x64",
+      "median_ms": {
+        "baseline": 0.003517502624922714,
+        "row_tile4": 0.003660470886226124,
+        "row_tile16": 0.003732436029488111,
+        "parallel_tile8_vector": 0.0019008204721086643,
+        "parallel_tile16_vector": 0.0019192267670335172
+      },
+      "observed_lowest_runtime": "parallel_tile8_vector",
+      "descriptive_runtime_ratio": 1.8505180665592225,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "parallel_tile8_vector"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matvec-31x65",
+      "median_ms": {
+        "baseline": 0.000430266291830697,
+        "row_tile4": 0.000424205650737998,
+        "row_tile16": 0.00042731607002283964,
+        "parallel_tile8_vector": 0.0006385595539929613,
+        "parallel_tile16_vector": 0.0006396092736952772
+      },
+      "observed_lowest_runtime": "row_tile4",
+      "descriptive_runtime_ratio": 1.0142870352673408,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "baseline"
+      },
+      "distinct_object_hashes": 4
+    },
+    {
+      "workload": "matvec-512x128",
+      "median_ms": {
+        "baseline": 0.01743815969173739,
+        "row_tile4": 0.017481429814328764,
+        "row_tile16": 0.01792162903944729,
+        "parallel_tile8_vector": 0.009112970758168285,
+        "parallel_tile16_vector": 0.009167393330299353
+      },
+      "observed_lowest_runtime": "parallel_tile8_vector",
+      "descriptive_runtime_ratio": 1.9135537855322249,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "parallel_tile8_vector"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matvec-512x16",
+      "median_ms": {
+        "baseline": 0.0010275468229526744,
+        "row_tile4": 0.0014783826693041064,
+        "row_tile16": 0.001028958976649228,
+        "parallel_tile8_vector": 0.001017409932088537,
+        "parallel_tile16_vector": 0.0011328306983105962
+      },
+      "observed_lowest_runtime": "parallel_tile8_vector",
+      "descriptive_runtime_ratio": 1.0099634282548515,
+      "estimated_cost_choices": {
+        "1": "row_tile4",
+        "100": "row_tile4",
+        "10000": "baseline"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matvec-64x128",
+      "median_ms": {
+        "baseline": 0.0021494997463251905,
+        "row_tile4": 0.0021459478223669684,
+        "row_tile16": 0.00222526114434522,
+        "parallel_tile8_vector": 0.0010000942680843607,
+        "parallel_tile16_vector": 0.0010149896458149018
+      },
+      "observed_lowest_runtime": "parallel_tile8_vector",
+      "descriptive_runtime_ratio": 2.149297136201439,
+      "estimated_cost_choices": {
+        "1": "baseline",
+        "100": "baseline",
+        "10000": "parallel_tile8_vector"
+      },
+      "distinct_object_hashes": 5
+    },
+    {
+      "workload": "matvec-8x64",
+      "median_ms": {
+        "baseline": 0.0001128735334204215,
+        "row_tile4": 0.00011115928378914314,
+        "row_tile16": 0.00011819801698257726,
+        "parallel_tile8_vector": 5.6895248501313273e-05,
+        "parallel_tile16_vector": 5.797748519084762e-05
+      },
+      "observed_lowest_runtime": "parallel_tile8_vector",
+      "descriptive_runtime_ratio": 1.9838833012183104,
+      "estimated_cost_choices": {
+        "1": "parallel_tile8_vector",
+        "100": "parallel_tile8_vector",
+        "10000": "parallel_tile8_vector"
+      },
+      "distinct_object_hashes": 3
+    }
+  ],
+  "workloads_with_reuse_dependent_estimated_choice": 13
+}
