@@ -67,3 +67,6 @@ stub raises if any invalid case gets as far as a compiler request.
 The saved integration and interrupted PPO auditors apply the same manifest
 guard without executing generated code. Their evidence is retained separately
 from the original experiment records.
+
+The [verification report](../results/split-guard-001/observations.md) records
+46 passing Python checks and the strengthened audits of the saved experiments.

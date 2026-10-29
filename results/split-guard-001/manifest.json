@@ -1,0 +1,28 @@
+{
+  "archive": "raw.zip",
+  "bytes": 3263,
+  "sha256": "2ac07525a58b7303485f941d5095b12d2da009765a55b663b0bdefbe1aea6495",
+  "verification_revision": "1840cdf3ea43e3225b3c411b89bb1236043ed2c0",
+  "files": [
+    {
+      "path": "pytest.log",
+      "bytes": 100,
+      "sha256": "7159aae841092097ee7f8c7f7f4ac07ed3bfe561c213a0c457cee5e352e9dc9b"
+    },
+    {
+      "path": "integration-audit.json",
+      "bytes": 4127,
+      "sha256": "3b1c6f7939ec67b4cb264c848a054ab6c9e7abe342b6068dd62361150c256383"
+    },
+    {
+      "path": "main-audit.json",
+      "bytes": 3794,
+      "sha256": "dcb810d632ca2c8a1b0d526d35c36d3e08cf6f40ea800da029b34f6e9b40572f"
+    },
+    {
+      "path": "experience-audit.json",
+      "bytes": 2229,
+      "sha256": "1d29b6cfd10b37adbc9434d50330c2b3e73d8e079f0ab6adfc765092cafb5c33"
+    }
+  ]
+}
