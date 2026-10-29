@@ -2,7 +2,7 @@
 
 A research project studying compiler schedule selection and limited-feedback adaptation. The planned system combines MLIR/LLVM transformations, a C++ JIT runtime, and PPO/imitation/GRPO comparisons.
 
-**Status: compiler/JIT, PPO, imitation and adaptation have passed a bounded integration. The main comparison is not complete.** Six numerical families are supported with conservative legality masks. Matrix multiplication and matrix-vector multiplication support tiling, parallel-loop interchange and masked vectorization. Timing noise and repaired failures are preserved in the evidence. The small adaptation example did not demonstrate an advantage from learning over frozen-policy sampling.
+**Status: the main PPO campaign stopped after three completed jobs and a compiler crash in the fourth.** A revised vector backend passes local correctness checks; longer-run verification is underway. Six numerical families are supported with conservative legality masks. Earlier bounded PPO, imitation and adaptation integration remains recorded at its original compiler version. The small adaptation example did not demonstrate an advantage from learning over frozen-policy sampling. The main comparison is incomplete.
 
 The question is whether learning improves total deployment cost, including compilation and reuse, and whether adapting to a new program repays its measurement cost. A simpler baseline winning is a valid outcome.
 
@@ -15,6 +15,7 @@ The question is whether learning improves total deployment cost, including compi
 - [Repaired compiler pilot](results/optimization-pilot-002/observations.md)
 - [Fresh deployment diagnostic](results/deployment-confirmation-001/observations.md)
 - [Compiler failure and repair](docs/compiler-repair-001.md)
+- [Main campaign interruption and vector repair](docs/compiler-repair-002.md)
 - [Budgeted adaptation design](docs/adaptation-design.md)
 - [PPO, imitation and adaptation integration](results/integration-003/observations.md)
 - [Bounded campaign and continuation](docs/campaign.md)

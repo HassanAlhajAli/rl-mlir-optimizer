@@ -111,6 +111,14 @@ def test_evaluator_counters_exclude_previous_worker_activity(tmp_path):
         assert worker.counters["info_requests"] == 3
 
 
+def test_worker_child_has_hard_memory_limit():
+    import resource
+    with Worker(ROOT/"build/rlmlir-worker") as worker:
+        soft, hard = resource.prlimit(worker.process.pid, resource.RLIMIT_AS)
+        assert soft == hard == worker.memory_limit_bytes == 4 * 1024**3
+        assert worker.request("info")["ok"]
+
+
 class KnownChoice(gym.Env):
     """Two contexts, different correct actions, and one always-illegal action."""
     def __init__(self):

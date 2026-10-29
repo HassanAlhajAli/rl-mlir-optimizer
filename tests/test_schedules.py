@@ -6,7 +6,7 @@ import random
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "python"))
-from rlmlir.kernels import matmul, matmul_case, matvec, matvec_case
+from rlmlir.kernels import matmul, matmul_case, matvec, matvec_case, GENERATORS, REFERENCES
 from rlmlir.worker import Worker
 
 
@@ -56,6 +56,22 @@ def main(executable):
         for dims in [(96,78,98), (95,79,97), (64,65,67)]:
             buffers, expected = matmul_case(*dims, seed=17)
             check(worker, matmul(*dims), buffers, expected, regression)
+        # Main PPO exploration exposed a wide-vector shuffle expansion inside
+        # LLVM InstCombine. The former backend exceeded 3 GiB on this schedule.
+        wide = [{"kind":"TILE","axis":0,"size":16},
+                {"kind":"TILE","axis":0,"size":8},
+                {"kind":"TILE","axis":2,"size":32},
+                {"kind":"TILE","axis":2,"size":16}, {"kind":"VECTORIZE"}]
+        for dims in [(32,128,8), (17,127,9), (16,64,7)]:
+            buffers, expected = matmul_case(*dims, seed=17)
+            check(worker, matmul(*dims), buffers, expected, wide)
+        # Preserve the original later SIGSEGV input as well. It did not fail
+        # in isolation, so this test is coverage rather than proof of its cause.
+        row_actions = [{"kind":"TILE","axis":1,"size":8},
+                       {"kind":"TILE","axis":0,"size":64},
+                       {"kind":"TILE","axis":0,"size":16}]
+        buffers, expected = REFERENCES["row_reduce"](336,205,seed=17)
+        check(worker, GENERATORS["row_reduce"](336,205), buffers, expected, row_actions)
         source = matmul(4, 4, 4)
         before = worker.request("analyze", source=source)
         illegal = [[{"kind": "INTERCHANGE", "a": 0, "b": 2}],
@@ -86,7 +102,7 @@ def main(executable):
                 if action["kind"] in ("STOP", "VECTORIZE"):
                     break
             check(worker, source, buffers, expected, actions)
-    print("84 scheduled kernels matched references; masks, strict math, stack-growth regression and rollback passed")
+    print("88 scheduled kernels matched references; masks, strict math, stack/wide-vector regressions and rollback passed")
 
 
 if __name__ == "__main__":

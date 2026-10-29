@@ -15,6 +15,7 @@
 #include "llvm/MC/TargetRegistry.h"
 #include "llvm/TargetParser/Host.h"
 #include "llvm/Support/TargetSelect.h"
+#include "llvm/Support/FileSystem.h"
 #include "llvm/Target/TargetMachine.h"
 #include "llvm/IR/Module.h"
 #include <chrono>
@@ -115,6 +116,13 @@ std::shared_ptr<CompiledKernel> Compiler::compile(const std::string &source, con
   if (!machine) throw std::runtime_error("failed to create x86-64-v3 target");
   auto optimizer = mlir::makeOptimizingTransformer(3, 0, machine.get());
   auto captureLLVM = [&](llvm::Module *llvmModule) -> llvm::Error {
+    // Opt-in crash diagnostics preserve the exact input to LLVM optimization.
+    if (const char *path = std::getenv("RLMLIR_DEBUG_LLVM")) {
+      std::error_code error;
+      llvm::raw_fd_ostream stream(path, error, llvm::sys::fs::OF_Text);
+      if (error) return llvm::errorCodeToError(error);
+      llvmModule->print(stream, nullptr);
+    }
     if (auto error = optimizer(llvmModule)) return error;
     llvm::raw_string_ostream stream(result->llvmIR);
     llvmModule->print(stream, nullptr);

@@ -48,18 +48,27 @@
       "source": "runs/adaptation-accounting-001/run.json",
       "recorded_seconds": 29.06081032300001,
       "boundary": "sum of tuning plus fresh deployment plus compiler initialization; excludes Python/model startup"
+    },
+    {
+      "run": "ppo-campaign-001",
+      "source": "runs/ppo-campaign-001/queue.json",
+      "recorded_seconds": 6372.591520136001,
+      "boundary": "Whole stopped queue; do not also count its children"
     }
   ],
-  "recorded_seconds": 2222.77778897,
-  "additional_uninstrumented_development_reserve_seconds": 3600,
+  "recorded_seconds": 8595.369309106001,
+  "additional_uninstrumented_development_reserve_seconds": 7200,
   "charged_before_main_seconds": 5822.77778897,
-  "approved_main_queue_ceiling_seconds": 28800,
+  "approved_main_queue_ceiling_seconds": 0,
   "reserved_for_adaptation_and_final_seconds": 86400,
-  "remaining_after_these_allocations_seconds": 51777.22221102999,
+  "remaining_after_these_allocations_seconds": 70604.630690894,
   "notes": [
     "Queue elapsed includes child runs; children are not counted again.",
     "Recorded seconds use available timer boundaries, not a claim of complete wall-time instrumentation.",
     "The one-hour reserve conservatively books uninstrumented development checks, debugging, standalone startup and verification overhead. It is an allocation, not measured usage.",
-    "No paid compute. Replace the main reservation with actual queue elapsed after it ends; never add both."
-  ]
+    "No paid compute. Replace the main reservation with actual queue elapsed after it ends; never add both.",
+    "Main queue completed/stopped: its eight-hour reservation is replaced by 6372.591520136001 actual seconds. No replacement queue is authorized by this ledger.",
+    "A second hour is conservatively reserved for compiler-failure debugging, failed builds and checks. This reduces remaining capacity within 48 hours; it is not measured usage or an increase of the allowance. A separately timed correctness replay will be charged separately."
+  ],
+  "charged_current_seconds": 15795.369309106001
 }

@@ -90,3 +90,14 @@ lists recorded development costs, an explicit reserve for uninstrumented setup,
 the eight-hour main queue ceiling and at least 24 hours reserved for adaptation
 and final measurement within the cumulative 48-hour allowance. A reservation is
 not actual elapsed usage. Replace it with the completed queue's elapsed time.
+
+## Main queue interruption, 2026-10-29
+
+`ppo-campaign-001` stopped after 6372.59 seconds: reuse/7, runtime/7 and reuse/17
+completed within limits; runtime/17 failed during compilation; the remaining six
+jobs were not started. See [diagnosis and repair](compiler-repair-002.md).
+The original queue is preserved and must not be restarted automatically.
+The repaired vector backend changes generated code. A new study needs an
+explicit protocol/allocation revision and verified compiler stability, with all
+old costs charged and all ten objective/seed combinations still visible. Do not
+bypass the binary-hash resume guard or silently replenish exhausted requests.

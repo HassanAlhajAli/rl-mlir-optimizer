@@ -229,15 +229,21 @@ PreparedKernel prepare(mlir::MLIRContext &context, const std::string &source,
       std::swap(order[pa], order[pb]);
     } else if (*kind == "VECTORIZE") {
       if (!canVectorize()) throw std::runtime_error("vector tile is empty or exceeds 1024 elements");
-      llvm::SmallVector<int64_t> scalarReduction(bounds.size(), 0), vectorSizes;
+      // Legal schedule tiles describe locality, not physical SIMD width. Build
+      // a small inner tile before vectorization so LLVM never receives enormous
+      // transpose/shuffle expressions. x86-64-v3 has four FP64 lanes per AVX2
+      // vector. Only the innermost parallel axis uses those lanes; reductions
+      // remain scalar and ordered. Remainders use the existing masked transfers.
+      auto laneAxis = std::find_if(order.rbegin(), order.rend(), [&](unsigned axis) {
+        return types[axis] == mlir::utils::IteratorType::parallel;
+      });
+      llvm::SmallVector<int64_t> nativeTile(bounds.size(), 1), vectorSizes(bounds.size(), 1);
       for (unsigned position = 0; position < order.size(); ++position) {
         auto axis = order[position];
-        const bool reduction = types[axis] == mlir::utils::IteratorType::reduction;
-        scalarReduction[position] = reduction ? 1 : 0;
-        vectorSizes.push_back(reduction ? 1 : bounds[axis]);
+        if (laneAxis != order.rend() && axis == *laneAxis)
+          nativeTile[position] = vectorSizes[position] = std::min<int64_t>(bounds[axis], 4);
       }
-      // Keep each reduction step scalar and in order. SIMD is across independent outputs.
-      if (llvm::is_contained(scalarReduction, 1)) op = tile(rewriter, op, scalarReduction);
+      op = tile(rewriter, op, nativeTile);
       rewriter.setInsertionPoint(op);
       llvm::SmallVector<bool> scalable(vectorSizes.size(), false);
       if (mlir::failed(mlir::linalg::vectorize(rewriter, op, vectorSizes, scalable)))

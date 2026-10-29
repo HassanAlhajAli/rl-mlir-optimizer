@@ -2,6 +2,7 @@
 #include "cache.h"
 #include "runtime.h"
 #include "llvm/Support/JSON.h"
+#include "llvm/Support/InitLLVM.h"
 #include "llvm/Support/raw_ostream.h"
 #include <chrono>
 #include <iostream>
@@ -29,7 +30,8 @@ std::vector<std::vector<double>> readBuffers(const llvm::json::Object &request) 
 }
 } // namespace
 
-int main() {
+int main(int argc, char **argv) {
+  llvm::InitLLVM initialization(argc, argv);
   rlmlir::Compiler compiler;
   rlmlir::ExecutableCache cache;
   std::map<int64_t, std::shared_ptr<rlmlir::CompiledKernel>> handles;
@@ -48,6 +50,7 @@ int main() {
       if (*command == "info") {
         response["llvm_version"] = "18.1.3";
         response["target"] = "x86-64-v3";
+        response["vector_lowering"] = "native-inner-tile-v2";
         response["schema_version"] = 1;
         response["cache_entries"] = static_cast<int64_t>(cache.size());
         response["active_handles"] = static_cast<int64_t>(handles.size());
@@ -63,7 +66,7 @@ int main() {
           response = compiler.analyze(source->str(), actions ? *actions : empty);
         } else {
         if (handles.size() >= 128) throw std::runtime_error("active handle limit reached");
-        std::string key = "llvm18.1.3|x86-64-v3|O3|strict-fp64|" + source->str() + "\n";
+        std::string key = "llvm18.1.3|x86-64-v3|O3|strict-fp64|native-inner-tile-v2|" + source->str() + "\n";
         llvm::raw_string_ostream stream(key);
         llvm::json::Array keyActions = actions ? *actions : empty;
         stream << llvm::json::Value(std::move(keyActions));

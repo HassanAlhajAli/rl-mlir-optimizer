@@ -33,7 +33,8 @@ def initialize(worker):
     worker.request("clear_cache")
     info = worker.request("info")
     return {"compiler_initialization_ms":(time.perf_counter()-start)*1000,
-            "initialization_counts":dict(worker.counters-before),"worker":info}
+            "initialization_counts":dict(worker.counters-before),"worker":info,
+            "worker_timeout_seconds":worker.timeout,"worker_memory_limit_bytes":worker.memory_limit_bytes}
 
 
 @contextmanager

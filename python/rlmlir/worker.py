@@ -2,14 +2,29 @@
 import json
 import subprocess
 import selectors
+import resource
 from collections import Counter
 from pathlib import Path
 
 
 class Worker:
-    def __init__(self, executable: str | Path, timeout: float = 120):
+    def __init__(self, executable: str | Path, timeout: float = 120, memory_limit_bytes: int = 4 * 1024**3):
+        if timeout <= 0 or memory_limit_bytes <= 0:
+            raise ValueError("worker time and memory limits must be positive")
         self.process = subprocess.Popen([str(executable)], stdin=subprocess.PIPE,
                                         stdout=subprocess.PIPE, text=True, bufsize=1)
+        self.memory_limit_bytes = memory_limit_bytes
+        # Limit the child before sending any compiler request. prlimit avoids
+        # Python preexec hooks after a potentially multithreaded trainer forks.
+        try:
+            resource.prlimit(self.process.pid, resource.RLIMIT_AS,
+                             (memory_limit_bytes, memory_limit_bytes))
+        except BaseException:
+            self.process.kill()
+            self.process.wait()
+            self.process.stdin.close()
+            self.process.stdout.close()
+            raise
         self.timeout = timeout
         self.selector = selectors.DefaultSelector()
         self.selector.register(self.process.stdout, selectors.EVENT_READ)
