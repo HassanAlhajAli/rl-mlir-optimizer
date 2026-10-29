@@ -1,7 +1,8 @@
 # Development split protection and final evaluation status
 
 Held-out performance remains sealed. The full method freeze and final measurement
-orchestrator are not yet implemented, and the interrupted training study is not
+orchestrator are not yet implemented. A [development frozen-selector controller](deployment-comparison.md)
+is available for integration checking; the interrupted training study is not
 ready for final evaluation. These safeguards strengthen the existing development
 boundary; they do not declare a completed evaluation gate.
 

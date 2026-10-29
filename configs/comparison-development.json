@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "split": "validation",
+  "workload_ids": ["b492eae50d11c001"],
+  "reuse_counts": [1, 100, 10000],
+  "rounds": 5,
+  "order_seed": 971,
+  "hint_factor": 1.0,
+  "policies": {},
+  "predictor": null
+}
