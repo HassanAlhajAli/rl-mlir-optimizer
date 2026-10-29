@@ -67,3 +67,26 @@ from the same training pool. Its deterministic legal candidate pool is capped
 at256 unique schedules and1024 generation attempts; small action spaces may
 yield fewer. Generation and inference are charged. A lower prediction error
 does not itself establish better deployment performance.
+
+## Integration decision, 2026-10-29
+
+Integration-003 completed all six stages in 1053.55s. The saved-record audit
+checked all 787 measurements, trajectory and IR provenance, both PPO weight
+updates, demonstration rechecks, exact adaptation requests and fresh deployment
+costs. All numerical checks passed; 14 timing records retained unresolved drift.
+The single validation adaptation example showed no advantage from policy
+updates over frozen sampling. That is a valid result for this development gate.
+
+The audit identified lifetime hardware counters being mistaken for per-method
+totals. Commit 460ef02 repairs their scope without changing the compiler,
+features, reward, action space or budgets. A separate six-case measured check
+verified the new counters and independent policy reset identities. See the
+[integration report](../results/integration-003/observations.md).
+
+The main queue is now authorized by the approved gate. Its ten jobs and uniform
+limits remain unchanged. Use fresh `runs/ppo-campaign-001`; validation checkpoint
+selection is a later serial stage. The [compute ledger](compute-ledger.json)
+lists recorded development costs, an explicit reserve for uninstrumented setup,
+the eight-hour main queue ceiling and at least 24 hours reserved for adaptation
+and final measurement within the cumulative 48-hour allowance. A reservation is
+not actual elapsed usage. Replace it with the completed queue's elapsed time.

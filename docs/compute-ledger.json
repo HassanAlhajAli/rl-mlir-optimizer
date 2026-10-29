@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-29",
+  "total_allowance_seconds": 172800,
+  "recorded_entries": [
+    {
+      "run": "jit-pilot-001",
+      "source": "runs/jit-pilot-001/measurements.json",
+      "recorded_seconds": 1.6044814589999987
+    },
+    {
+      "run": "jit-pilot-002",
+      "source": "runs/jit-pilot-002/measurements.json",
+      "recorded_seconds": 20.552527636000008
+    },
+    {
+      "run": "optimization-pilot-001",
+      "source": "runs/optimization-pilot-001/metadata.json",
+      "recorded_seconds": 381.148182099
+    },
+    {
+      "run": "deployment-confirmation-001",
+      "source": "runs/deployment-confirmation-001/metadata.json",
+      "recorded_seconds": 28.920412155999998
+    },
+    {
+      "run": "ppo-integration-001",
+      "source": "runs/ppo-integration-001/run.json",
+      "recorded_seconds": 61.858293372000006
+    },
+    {
+      "run": "ppo-integration-002",
+      "source": "runs/ppo-integration-002/run.json",
+      "recorded_seconds": 317.996846242
+    },
+    {
+      "run": "optimization-pilot-002",
+      "source": "runs/optimization-pilot-002/metadata.json",
+      "recorded_seconds": 328.08319176099997
+    },
+    {
+      "run": "integration-003",
+      "source": "runs/integration-003/queue.json",
+      "recorded_seconds": 1053.5530439220001
+    },
+    {
+      "run": "adaptation-accounting-001",
+      "source": "runs/adaptation-accounting-001/run.json",
+      "recorded_seconds": 29.06081032300001,
+      "boundary": "sum of tuning plus fresh deployment plus compiler initialization; excludes Python/model startup"
+    }
+  ],
+  "recorded_seconds": 2222.77778897,
+  "additional_uninstrumented_development_reserve_seconds": 3600,
+  "charged_before_main_seconds": 5822.77778897,
+  "approved_main_queue_ceiling_seconds": 28800,
+  "reserved_for_adaptation_and_final_seconds": 86400,
+  "remaining_after_these_allocations_seconds": 51777.22221102999,
+  "notes": [
+    "Queue elapsed includes child runs; children are not counted again.",
+    "Recorded seconds use available timer boundaries, not a claim of complete wall-time instrumentation.",
+    "The one-hour reserve conservatively books uninstrumented development checks, debugging, standalone startup and verification overhead. It is an allocation, not measured usage.",
+    "No paid compute. Replace the main reservation with actual queue elapsed after it ends; never add both."
+  ]
+}

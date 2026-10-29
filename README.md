@@ -2,7 +2,7 @@
 
 A research project studying compiler schedule selection and limited-feedback adaptation. The planned system combines MLIR/LLVM transformations, a C++ JIT runtime, and PPO/imitation/GRPO comparisons.
 
-**Status: compiler/JIT core tested; bounded PPO integration completed. The main comparison is not complete.** Six numerical families are supported with conservative legality masks. Matrix multiplication and matrix-vector multiplication support tiling, parallel-loop interchange and masked vectorization. Timing noise and a repaired compiler failure are preserved in the evidence.
+**Status: compiler/JIT, PPO, imitation and adaptation have passed a bounded integration. The main comparison is not complete.** Six numerical families are supported with conservative legality masks. Matrix multiplication and matrix-vector multiplication support tiling, parallel-loop interchange and masked vectorization. Timing noise and repaired failures are preserved in the evidence. The small adaptation example did not demonstrate an advantage from learning over frozen-policy sampling.
 
 The question is whether learning improves total deployment cost, including compilation and reuse, and whether adapting to a new program repays its measurement cost. A simpler baseline winning is a valid outcome.
 
@@ -16,6 +16,7 @@ The question is whether learning improves total deployment cost, including compi
 - [Fresh deployment diagnostic](results/deployment-confirmation-001/observations.md)
 - [Compiler failure and repair](docs/compiler-repair-001.md)
 - [Budgeted adaptation design](docs/adaptation-design.md)
+- [PPO, imitation and adaptation integration](results/integration-003/observations.md)
 - [Bounded campaign and continuation](docs/campaign.md)
 - [Original protocol issue](https://github.com/HassanAlhajAli/rl-mlir-optimizer/issues/1)
 

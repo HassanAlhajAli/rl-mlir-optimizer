@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "queue_elapsed_seconds": 1053.5530439220001,
+  "measurements": {
+    "adaptation/frozen-16/measurements": {
+      "accepted": 7,
+      "flagged_original": 0,
+      "unresolved_drift": 0,
+      "splits": {
+        "validation": 7
+      }
+    },
+    "adaptation/frozen-8/measurements": {
+      "accepted": 4,
+      "flagged_original": 0,
+      "unresolved_drift": 0,
+      "splits": {
+        "validation": 4
+      }
+    },
+    "adaptation/grpo-16/measurements": {
+      "accepted": 7,
+      "flagged_original": 1,
+      "unresolved_drift": 1,
+      "splits": {
+        "validation": 7
+      }
+    },
+    "adaptation/grpo-8/measurements": {
+      "accepted": 4,
+      "flagged_original": 0,
+      "unresolved_drift": 0,
+      "splits": {
+        "validation": 4
+      }
+    },
+    "adaptation/mutation-16/measurements": {
+      "accepted": 8,
+      "flagged_original": 1,
+      "unresolved_drift": 0,
+      "splits": {
+        "validation": 8
+      }
+    },
+    "adaptation/mutation-8/measurements": {
+      "accepted": 4,
+      "flagged_original": 0,
+      "unresolved_drift": 0,
+      "splits": {
+        "validation": 4
+      }
+    },
+    "adaptation/ppo-16/measurements": {
+      "accepted": 7,
+      "flagged_original": 0,
+      "unresolved_drift": 0,
+      "splits": {
+        "validation": 7
+      }
+    },
+    "adaptation/ppo-8/measurements": {
+      "accepted": 4,
+      "flagged_original": 0,
+      "unresolved_drift": 0,
+      "splits": {
+        "validation": 4
+      }
+    },
+    "adaptation/random-16/measurements": {
+      "accepted": 15,
+      "flagged_original": 2,
+      "unresolved_drift": 2,
+      "splits": {
+        "validation": 15
+      }
+    },
+    "adaptation/random-8/measurements": {
+      "accepted": 8,
+      "flagged_original": 1,
+      "unresolved_drift": 1,
+      "splits": {
+        "validation": 8
+      }
+    },
+    "experience-train/measurements": {
+      "accepted": 37,
+      "flagged_original": 7,
+      "unresolved_drift": 2,
+      "splits": {
+        "train": 37
+      }
+    },
+    "experience-validation/measurements": {
+      "accepted": 19,
+      "flagged_original": 2,
+      "unresolved_drift": 1,
+      "splits": {
+        "validation": 19
+      }
+    },
+    "ppo-reuse/measurements": {
+      "accepted": 224,
+      "flagged_original": 14,
+      "unresolved_drift": 0,
+      "splits": {
+        "train": 224
+      }
+    },
+    "ppo-runtime/measurements": {
+      "accepted": 219,
+      "flagged_original": 15,
+      "unresolved_drift": 3,
+      "splits": {
+        "train": 219
+      }
+    },
+    "pretrain/rechecks": {
+      "accepted": 220,
+      "flagged_original": 9,
+      "unresolved_drift": 4,
+      "splits": {
+        "train": 206,
+        "validation": 14
+      }
+    }
+  },
+  "trajectory_counts": {
+    "experience-train": 72,
+    "experience-validation": 36,
+    "ppo-reuse": 152,
+    "ppo-runtime": 145
+  },
+  "ppo_updates": {
+    "ppo-reuse": {
+      "optimizer_epochs": 20,
+      "initial_policy_digest": "374054bc54c5b8fc38ca2ed822f6dc63002a83297d38e8351c13c434ab1af7ea",
+      "final_policy_digest": "f78e417f2b2d256240d6693d1a9e9cf1cb5c0c2a7abcc7fed7473fce430192df"
+    },
+    "ppo-runtime": {
+      "optimizer_epochs": 20,
+      "initial_policy_digest": "374054bc54c5b8fc38ca2ed822f6dc63002a83297d38e8351c13c434ab1af7ea",
+      "final_policy_digest": "64a5b4e75a85d78db0bb95005fea14b835343954393ca8f579c91a9da35b4f45"
+    }
+  },
+  "demonstration_splits": {
+    "train": 143,
+    "validation": 12
+  },
+  "demonstration_near_ties": 1,
+  "demonstration_unresolved_drift": 3,
+  "adaptation_controls": {
+    "8": {
+      "first_eight_identical": true,
+      "all_candidates_identical": true
+    },
+    "16": {
+      "first_eight_identical": true,
+      "all_candidates_identical": true
+    }
+  },
+  "historical_counter_scope": "integration-003 worker_counts are worker lifetime totals; do not sum method totals",
+  "limitations": "Development only; one validation adaptation context; no held-out performance or superiority test."
+}
