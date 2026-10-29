@@ -68,9 +68,11 @@ class CompilerEnv(gym.Env):
         if self.objective == "runtime":
             reference_cost, cost = baseline["execution_ms"], measured["execution_ms"]
         else:
-            reference_cost = deployment_ms(baseline["compile_ms"], baseline["execution_ms"], self.reuse)
+            reference_cost = deployment_ms(baseline["compile_ms"], baseline["execution_ms"], self.reuse,
+                                           installation_ms=baseline.get("installation_ms",0.))
             cost = deployment_ms(measured["compile_ms"], measured["execution_ms"], self.reuse,
-                                 selection_ms=self.analysis_ms + self.policy_ms)
+                                 selection_ms=self.analysis_ms + self.policy_ms,
+                                 installation_ms=measured.get("installation_ms",0.))
         score = reward(reference_cost, cost)
         self.episodes += 1
         info = {"reward": score, "cost_ms": cost, "reference_cost_ms": reference_cost,

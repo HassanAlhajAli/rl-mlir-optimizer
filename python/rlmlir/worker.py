@@ -16,6 +16,8 @@ class Worker:
         self.counters = Counter()
 
     def request(self, command: str, **fields):
+        self.counters["attempted_requests"] += 1
+        self.counters["attempted_" + command] += 1
         self.process.stdin.write(json.dumps({"command": command, **fields}, allow_nan=False) + "\n")
         self.process.stdin.flush()
         if not self.selector.select(timeout=self.timeout):

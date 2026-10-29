@@ -49,7 +49,7 @@ class Evaluator:
             self.requests += 1
         source = GENERATORS[workload["family"]](*workload["shape"])
         identity = json.dumps({"source": source, "actions": actions, "binary": self.binary_hash,
-                               "input_seed": 7, "measurement_protocol": "paired-training-v1"}, sort_keys=True)
+                               "input_seed": 7, "measurement_protocol": "paired-training-v2"}, sort_keys=True)
         key = hashlib.sha256(identity.encode()).hexdigest()
         if key in self.records:
             self.cache_hits += 1
@@ -70,10 +70,14 @@ class Evaluator:
             handles.append(handle)
             if built["cache_hit"]:
                 raise RuntimeError("unexpected warm compile in a new training measurement")
-            record["compile_ms"] = built["lowering_ms"] + built["codegen_ms"]
+            record["compile_ms"] = built["compile_ms"]
             record["lowering_ms"], record["codegen_ms"] = built["lowering_ms"], built["codegen_ms"]
             buffers, expected = REFERENCES[workload["family"]](*workload["shape"], seed=7)
+            first = self.worker.request("invoke", handle=handle, buffers=buffers, count=1)
+            record["first_invocation_ms"] = first["batch_ms"]
+            validate(first["output"], expected)
             check = self.worker.request("invoke", handle=handle, buffers=buffers, count=3)
+            record["installation_ms"] = check["installation_ms"]
             errors = [validate(check["output"], expected)]
             other, answer = REFERENCES[workload["family"]](*workload["shape"], seed=17)
             errors.append(validate(self.worker.request("invoke", handle=handle, buffers=other)["output"], answer))

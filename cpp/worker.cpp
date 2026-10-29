@@ -52,6 +52,7 @@ int main() {
         response["cache_entries"] = static_cast<int64_t>(cache.size());
         response["active_handles"] = static_cast<int64_t>(handles.size());
       } else if (*command == "analyze" || *command == "compile") {
+        auto compileStart = Clock::now();
         auto source = request->getString("source");
         if (!source) throw std::runtime_error("source is required");
         if (source->size() > 1000000) throw std::runtime_error("source exceeds 1 MB");
@@ -75,6 +76,7 @@ int main() {
         }
         auto id = nextHandle++;
         handles[id] = kernel;
+        response["compile_ms"] = std::chrono::duration<double, std::milli>(Clock::now() - compileStart).count();
         response["handle"] = id;
         response["cache_hit"] = hit;
         response["lowering_ms"] = hit ? 0 : kernel->loweringMs;
@@ -113,7 +115,10 @@ int main() {
       } else if (*command == "invoke" || *command == "benchmark") {
         auto id = request->getInteger("handle");
         if (!id || !handles.count(*id)) throw std::runtime_error("unknown executable handle");
-        rlmlir::Invocation invocation(handles.at(*id), readBuffers(*request));
+        auto buffers = readBuffers(*request);
+        auto installStart = Clock::now();
+        rlmlir::Invocation invocation(handles.at(*id), buffers);
+        response["installation_ms"] = std::chrono::duration<double, std::milli>(Clock::now() - installStart).count();
         if (request->get("count") && !request->getInteger("count"))
           throw std::runtime_error("count must be an integer");
         int64_t count = request->getInteger("count").value_or(1);
