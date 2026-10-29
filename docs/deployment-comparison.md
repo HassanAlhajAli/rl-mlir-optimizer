@@ -3,7 +3,9 @@
 `scripts/compare_deployments.py` compares frozen schedule selectors on canonical
 training or validation workloads. It does not permit held-out performance access
 or perform learning updates. Final method freezing, the full baseline registry,
-adaptation orchestration and final statistical analysis remain unfinished.
+adaptation orchestration and final statistical analysis remain unfinished. A
+[development summarizer](comparison-analysis.md) now implements complete-grid,
+paired estimates and family-balanced uncertainty without opening the final study.
 
 The controller accepts the fixed reference and locality heuristic, plus named
 compatible actor checkpoints, an optional compatible cost predictor and an

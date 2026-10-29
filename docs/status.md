@@ -7,6 +7,11 @@ deployment costs and retain trial history across failures. Their synthetic
 verification does not resolve the stopped compiler campaign or establish a
 current-backend adaptation result.
 
+The [development results summarizer](comparison-analysis.md) now audits complete
+coverage, retains drift attempts and reports paired per-workload, per-family and
+equal-family estimates. Its cluster uncertainty does not replace the full method
+freeze, seed comparisons, fresh confirmation or final study.
+
 | Gate | State | Evidence required |
 |---|---|---|
 | A: environment/JIT pilot | Passed for bounded development; final noise checks remain required | Correct native code; repaired landscape resolves large effects while retaining drift flags |

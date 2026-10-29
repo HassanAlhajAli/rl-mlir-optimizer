@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "python"))
 sys.path.insert(0, str(ROOT / "scripts"))
 import compare_deployments
 from audit_comparison import audit
+from summarize_comparison import analyze
 from rlmlir.comparison import DevelopmentComparison, interleaved_order
 from rlmlir.corpus import DEFAULT_CORPUS, FrozenCorpus, load
 from rlmlir.kernels import REFERENCES
@@ -256,6 +257,12 @@ def test_saved_evidence_audit_rejects_accounting_or_coverage_changes(tmp_path, m
     monkeypatch.setattr(sys, "argv", ["compare_deployments", "--config", str(path), "--output", str(output)])
     compare_deployments.main()
     assert audit(output)["cases"] == len(selectors)
+    if tamper is None:
+        summary = analyze(output)
+        assert summary["coverage"]["cases"] == len(selectors)
+        assert summary["integrity_audit"]["status"] == "passed"
+        assert not summary["native_execution"] and not summary["superiority_claim_authorized"]
+        assert len(summary["source_hashes"]["events.jsonl"]) == 64
     if tamper == "counter":
         state = json.loads((output / "run.json").read_text())
         state["worker_counts"]["actual_invocations"] += 1
@@ -273,3 +280,5 @@ def test_saved_evidence_audit_rejects_accounting_or_coverage_changes(tmp_path, m
     if tamper:
         with pytest.raises(ValueError):
             audit(output)
+        with pytest.raises(ValueError):
+            analyze(output)

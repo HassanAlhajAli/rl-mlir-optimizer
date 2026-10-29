@@ -62,3 +62,22 @@ this tool summarizes frozen-selector complete deployments only.
 
 Read-only analysis must retain source hashes and the integrity-audit result. It
 must not load a policy, execute native code, edit input evidence or start timing.
+
+## Implemented entry point
+
+`python/rlmlir/analysis.py` implements the rules above. The command first runs
+the saved-evidence integrity audit, then verifies the complete grid again before
+calculating an estimate. Use a new output path:
+
+```sh
+.venv/bin/python scripts/summarize_comparison.py \
+  runs/comparison-controller-integration-001 \
+  --baseline reference --output runs/development-analysis-001/report.json
+```
+
+The JSON report contains every paired round and attempt cost, workload and family
+estimates, equal-family aggregates and uncertainty limitations. Tests use known
+answers and deliberate corruptions, including a family-count imbalance that
+would produce a misleading gain under simple pooling. The statistics do not
+repair incomplete evidence or convert development measurements into a final
+confirmatory study.
