@@ -11,7 +11,7 @@ import torch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"python"))
 from rlmlir.evaluator import Evaluator
-from rlmlir.experiment import initialize, provenance
+from rlmlir.experiment import initialize, provenance, measurement_lease
 from rlmlir.imitation import fit_actor, fit_critic
 from rlmlir.objective import deployment_ms
 from rlmlir.policies import create_policy, save_policy
@@ -38,6 +38,8 @@ def load_pool(runs,binary_hash):
                 raise ValueError("pool predates complete cost measurement protocol")
             selection = item["outcome"].get("analysis_ms",0.) + item["outcome"].get("policy_ms",0.)
             item["selection_ms"] = selection
+            item["compile_install_ms"] = record["compile_ms"]+record["installation_ms"]
+            item["execution_ms"] = record["execution_ms"]
             item["cost_ms"] = deployment_ms(record["compile_ms"],record["execution_ms"],item["reuse"],
                                             selection_ms=selection,installation_ms=record["installation_ms"])
             item["origin"] = str(directory)
@@ -123,4 +125,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    with measurement_lease(ROOT):
+        main()
