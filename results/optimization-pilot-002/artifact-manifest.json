@@ -1,0 +1,3005 @@
+{
+  "archive_sha256": "41f32f047119e7cfec9f12f7ea1e50c30d457cfef28d3e964122b74678a8a51c",
+  "files": [
+    {
+      "path": "matmul-127x63x33/baseline/assembly.txt",
+      "bytes": 18067,
+      "sha256": "25140691a3a76dbff5b62f5b17124b8a115f323b001cd760e023d095d0829e48"
+    },
+    {
+      "path": "matmul-127x63x33/baseline/kernel.o",
+      "bytes": 3376,
+      "sha256": "29e7a5617cbf97a05324d18fb8f45f69d9bcb09e53cb680d4cdc61bc1bf9e1f5"
+    },
+    {
+      "path": "matmul-127x63x33/baseline/lowered.mlir",
+      "bytes": 9060,
+      "sha256": "88f80ef0dfbaf285e8c009456b0066e4ff2753dfbfd10dc225f86c2a2d349d85"
+    },
+    {
+      "path": "matmul-127x63x33/baseline/optimized.ll",
+      "bytes": 34613,
+      "sha256": "ea5d2ee050c93d3495bf60014f16cf22b677372197f52b055a15f40b067a1056"
+    },
+    {
+      "path": "matmul-127x63x33/baseline/source.mlir",
+      "bytes": 684,
+      "sha256": "cc776b6f427819e2d45261d6bd5aa4b7a914873f02e294755078d033e7f36885"
+    },
+    {
+      "path": "matmul-127x63x33/baseline/transformed.mlir",
+      "bytes": 767,
+      "sha256": "ce29a7412f69c18a4c00a10bf2c81762b9bff0e94d08b372dd4e5b0ce82e48ec"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile16_vector/assembly.txt",
+      "bytes": 92778,
+      "sha256": "3fc915b4e403c98edfd3071f37b4777a95205d18d77ab03ce067882dc421f32a"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile16_vector/kernel.o",
+      "bytes": 14904,
+      "sha256": "7b371c8f1ce9722be78f9933228628e9b8050e36dc1fd7fb00190d346a50d9fc"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile16_vector/lowered.mlir",
+      "bytes": 429594,
+      "sha256": "09f7213e7b787fffb6d1e8d7ddc96a2fb7f64b76b43e4fccaebc8554beb20f26"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile16_vector/optimized.ll",
+      "bytes": 1609686,
+      "sha256": "daad645c4a9e6e365729cae34179086783bcaffed5be1f437e672134dd0b8ed9"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile16_vector/source.mlir",
+      "bytes": 684,
+      "sha256": "cc776b6f427819e2d45261d6bd5aa4b7a914873f02e294755078d033e7f36885"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile16_vector/transformed.mlir",
+      "bytes": 4998,
+      "sha256": "6d0f0e28559d64839b6f01921e8837c7fee6fe2b4c3b504a36f3991260fb6aed"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile8_vector/assembly.txt",
+      "bytes": 24305,
+      "sha256": "72a427ccb6baba95ec265e3f61a99c38e459f1a951a32bfec92e8f522c759ce1"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile8_vector/kernel.o",
+      "bytes": 4528,
+      "sha256": "509c3d8fbcd47f814beceb84b004522d412cf56c94340f7f14989fa3f85aa457"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile8_vector/lowered.mlir",
+      "bytes": 128812,
+      "sha256": "4e69ec9d4caa59d6f7ba3812a60e25354b197aa8c95c0c28577a8002e16ecc09"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile8_vector/optimized.ll",
+      "bytes": 123548,
+      "sha256": "f127ecfc59713d6441f611186f3c88c97d6921cb361a1558e775e61c22cc46b5"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile8_vector/source.mlir",
+      "bytes": 684,
+      "sha256": "cc776b6f427819e2d45261d6bd5aa4b7a914873f02e294755078d033e7f36885"
+    },
+    {
+      "path": "matmul-127x63x33/parallel_tile8_vector/transformed.mlir",
+      "bytes": 4950,
+      "sha256": "dfe10f452355ac656d9e0113b22a059bafed73efcf4dbf9ac73fd4b59ba6d731"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile16/assembly.txt",
+      "bytes": 19069,
+      "sha256": "cf48b0c1e322f70ce64b35a787067118d3a7435f7636a5b3d56dc2f86aff9df3"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile16/kernel.o",
+      "bytes": 3536,
+      "sha256": "eecbc8bea8573c686e5f1acb5d9f067244a81f82bee7c65cdeea0c4dfbfc66e5"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile16/lowered.mlir",
+      "bytes": 13807,
+      "sha256": "d830ce9854ae5f30e41afae05051add5957c0ca1e474ed71c92920f55da06665"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile16/optimized.ll",
+      "bytes": 35646,
+      "sha256": "b0b96a1abaafb83766be0ed7154ff99e1db407372c9966e72efbef34f8ad7642"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile16/source.mlir",
+      "bytes": 684,
+      "sha256": "cc776b6f427819e2d45261d6bd5aa4b7a914873f02e294755078d033e7f36885"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile16/transformed.mlir",
+      "bytes": 1503,
+      "sha256": "3336dba7bbd7bcb51b25e7fe1c18db74dcccce4e41dea36a991f5652ab9295a1"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile4/assembly.txt",
+      "bytes": 19065,
+      "sha256": "242c37aed9e9f6c58a2da66736e7018e66bef92d330d5216781279dff29be0ae"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile4/kernel.o",
+      "bytes": 3536,
+      "sha256": "e607170005ab625d769ea99a0dc8dc5dc34a0a38c849d602c6b0e9a9be2bab3e"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile4/lowered.mlir",
+      "bytes": 13806,
+      "sha256": "fc6a24019ecafb0e0bfafd164a3a94f0aa3c933c7210c1f6d3a7d8f2dd637d16"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile4/optimized.ll",
+      "bytes": 35643,
+      "sha256": "23e42906b60f4d1140afbc674a665edc1793a010a6a8f3ef657c01a0fa3868f8"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile4/source.mlir",
+      "bytes": 684,
+      "sha256": "cc776b6f427819e2d45261d6bd5aa4b7a914873f02e294755078d033e7f36885"
+    },
+    {
+      "path": "matmul-127x63x33/row_tile4/transformed.mlir",
+      "bytes": 1497,
+      "sha256": "7b5b04fff215e76562dec23ae8469ab8d47cabbc1293a782672fc6a13ace86ca"
+    },
+    {
+      "path": "matmul-128x32x64/baseline/assembly.txt",
+      "bytes": 9489,
+      "sha256": "275469baf4031a7ca3947f564ad32c43a9977860d3505126683abc0fc2c4c6cd"
+    },
+    {
+      "path": "matmul-128x32x64/baseline/kernel.o",
+      "bytes": 1832,
+      "sha256": "544f27370afec381723b286fbc119e017c87cacad2ebc77c00bd672f4827a3e4"
+    },
+    {
+      "path": "matmul-128x32x64/baseline/lowered.mlir",
+      "bytes": 9060,
+      "sha256": "15752a58ec7c889a03856cbc475870678146518cdab8bf7e8b52857ae6538a22"
+    },
+    {
+      "path": "matmul-128x32x64/baseline/optimized.ll",
+      "bytes": 15241,
+      "sha256": "3cd4f7910863eb57d18b7aa5a33f8f031d88c56d6c67c8d94d717f8af9dbe887"
+    },
+    {
+      "path": "matmul-128x32x64/baseline/source.mlir",
+      "bytes": 684,
+      "sha256": "c3a5d3d08d7d952d717895b33db0fe61e61455a6e4c75e458fa296ad3ee396f2"
+    },
+    {
+      "path": "matmul-128x32x64/baseline/transformed.mlir",
+      "bytes": 767,
+      "sha256": "e0759c15d03096b7959c85701854d3fe468279511d5429b1c3e5747e72f50946"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile16_vector/assembly.txt",
+      "bytes": 60473,
+      "sha256": "c8c5cc5583f887fe8c54f4b53cd6f2350c42c0181d7c99af88d7790ab629b258"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile16_vector/kernel.o",
+      "bytes": 9536,
+      "sha256": "950634eee101f4283ae95b284ff4f6ceacc60feb8723dcd15ddd92c7055f5173"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile16_vector/lowered.mlir",
+      "bytes": 351413,
+      "sha256": "c7adc4c00320cc875960e9610d73b975a01c70ccb71c4bdbb684fad160dc7546"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile16_vector/optimized.ll",
+      "bytes": 1589252,
+      "sha256": "2b645e3c557e251bfaf85dcde1736d4eb126cbb87ec4a36ca9387f8ffc3063ca"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile16_vector/source.mlir",
+      "bytes": 684,
+      "sha256": "c3a5d3d08d7d952d717895b33db0fe61e61455a6e4c75e458fa296ad3ee396f2"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile16_vector/transformed.mlir",
+      "bytes": 3305,
+      "sha256": "5b55751b40c66de67d23c251be32a596fa36cc7eefe0f130747c199795217eef"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile8_vector/assembly.txt",
+      "bytes": 15741,
+      "sha256": "5025f19daa6955bb15eb550fbd7bf175cdc6cf6ac0651e11ee6daaa87d289963"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile8_vector/kernel.o",
+      "bytes": 2848,
+      "sha256": "185daf42363a37dbcfd47ecd73cfcb59a81c24f541f8cb5a2cb4b9e20dbe431e"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile8_vector/lowered.mlir",
+      "bytes": 100371,
+      "sha256": "3260f483265a94cec981b941a7be1d42215cf279c30118c781ad2e44f702c01e"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile8_vector/optimized.ll",
+      "bytes": 118444,
+      "sha256": "b4960cff594173c789e16ff0e9d2ff51a35dd7d520223fc7047116f8bce731f5"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile8_vector/source.mlir",
+      "bytes": 684,
+      "sha256": "c3a5d3d08d7d952d717895b33db0fe61e61455a6e4c75e458fa296ad3ee396f2"
+    },
+    {
+      "path": "matmul-128x32x64/parallel_tile8_vector/transformed.mlir",
+      "bytes": 3254,
+      "sha256": "67e19927200c7ecab0c848f348f7e0301d4ac12cd8a340a700aabb9b377c5e36"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile16/assembly.txt",
+      "bytes": 15353,
+      "sha256": "b6896aed20df9692594c401e3b81beaad1def7615becf11e37af8b84576e0f48"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile16/kernel.o",
+      "bytes": 2688,
+      "sha256": "f8da92d72224a61615ebcb50f0d0587e2ba9999d184808d5db3ca2fe8526ca09"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile16/lowered.mlir",
+      "bytes": 13516,
+      "sha256": "8a0fe4f71fe46e74982bb2c97eca033eb419043cd7f3fb1df12668455a141dfd"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile16/optimized.ll",
+      "bytes": 28437,
+      "sha256": "ddf3da93b08276c233e8958554123b3b9c0277a79c8abcd16a9ac3341bb75d7c"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile16/source.mlir",
+      "bytes": 684,
+      "sha256": "c3a5d3d08d7d952d717895b33db0fe61e61455a6e4c75e458fa296ad3ee396f2"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile16/transformed.mlir",
+      "bytes": 1394,
+      "sha256": "adfe2c3908105bcf4c607bd0e1b0e4d999c800664d23e72934e2a7f5638fc0fb"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile4/assembly.txt",
+      "bytes": 19642,
+      "sha256": "55edca0136ed3a88512c4906d3814ff1f7b6e06a694576572ece0421a17643e3"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile4/kernel.o",
+      "bytes": 3384,
+      "sha256": "45044fce8715ca9c172d09ff537c7ab77888904eef3fd9f7c1a49e00d8770d75"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile4/lowered.mlir",
+      "bytes": 13513,
+      "sha256": "0879b94ece4e408ba4d02ae32e5ed4854aa9fa35fb18fa2df6e720ac79ef51db"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile4/optimized.ll",
+      "bytes": 34535,
+      "sha256": "3883d65760390efe377ba7732f2f7c374e6a7ea240fb5e1786242025e037b06c"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile4/source.mlir",
+      "bytes": 684,
+      "sha256": "c3a5d3d08d7d952d717895b33db0fe61e61455a6e4c75e458fa296ad3ee396f2"
+    },
+    {
+      "path": "matmul-128x32x64/row_tile4/transformed.mlir",
+      "bytes": 1383,
+      "sha256": "fc06de262dcc8d4ac48f04f1a7e7ee25d9d7da618b6e9b2f22617b29d9753c34"
+    },
+    {
+      "path": "matmul-16x16x16/baseline/assembly.txt",
+      "bytes": 11292,
+      "sha256": "b9d9b4942937a1b899cdc91717afc6fb8729aaa289f4125dae7610b563e56643"
+    },
+    {
+      "path": "matmul-16x16x16/baseline/kernel.o",
+      "bytes": 2256,
+      "sha256": "d15aedd3569d9b5454a0e3a43991c15e6168182fd7b04e691e4a698b3f63f7a6"
+    },
+    {
+      "path": "matmul-16x16x16/baseline/lowered.mlir",
+      "bytes": 8965,
+      "sha256": "cdbe9b4920a07f5a1c9879618cebee996151c5b288b47f95aa78937b69a1cdb3"
+    },
+    {
+      "path": "matmul-16x16x16/baseline/optimized.ll",
+      "bytes": 20408,
+      "sha256": "026007e47ed660aed0c1cf40ddd2c7072ac143fbdff90c068c973ef4ba07a26b"
+    },
+    {
+      "path": "matmul-16x16x16/baseline/source.mlir",
+      "bytes": 679,
+      "sha256": "8a10d9f2d777dcead66c356e2012d41dabb09319b539e70fe1a55afe96a43ae3"
+    },
+    {
+      "path": "matmul-16x16x16/baseline/transformed.mlir",
+      "bytes": 762,
+      "sha256": "9f91c65936caae3ea8c910cdc0bc6397e6913533f09cc900a53e48800f2cefbb"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile16_vector/assembly.txt",
+      "bytes": 58742,
+      "sha256": "905949c2eabfdc04c897b3c616607001e291d0fd91573ffc8b1f8a48915cac53"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile16_vector/kernel.o",
+      "bytes": 9456,
+      "sha256": "f21afa5a4fcf4eca69223f324704725ece9fe05dae91b6cbd7714e51115c5b97"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile16_vector/lowered.mlir",
+      "bytes": 347985,
+      "sha256": "c0401a9d5c59d7203bdbb3f64125b754df1f288e880c0993eff7953f4d449565"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile16_vector/optimized.ll",
+      "bytes": 1590946,
+      "sha256": "b0e0de88de7a36c71ebb02c4ef763b8a115385d032e6011bdacd4b8e636ec531"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile16_vector/source.mlir",
+      "bytes": 679,
+      "sha256": "8a10d9f2d777dcead66c356e2012d41dabb09319b539e70fe1a55afe96a43ae3"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile16_vector/transformed.mlir",
+      "bytes": 3315,
+      "sha256": "a3020fb5a4ffa11845d7c4e501f782143d109dd76693969cd165a88e8e733009"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile8_vector/assembly.txt",
+      "bytes": 15800,
+      "sha256": "47d0d69dbb99aa6d7188091b8e339aa06941b4739b0c69505b75303797547832"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile8_vector/kernel.o",
+      "bytes": 2912,
+      "sha256": "bb7a568b753a86f2c3323a04b659a07154721f63822b3a02dbad6b31bb1c5e7a"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile8_vector/lowered.mlir",
+      "bytes": 100265,
+      "sha256": "2a472be5c883791035ff196523f13926e722fa27038a0b7ce209741bc79b8969"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile8_vector/optimized.ll",
+      "bytes": 118218,
+      "sha256": "e6290d54081f04557b6fff7128a09c57d753ea2cd312560a787393a82140e4cc"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile8_vector/source.mlir",
+      "bytes": 679,
+      "sha256": "8a10d9f2d777dcead66c356e2012d41dabb09319b539e70fe1a55afe96a43ae3"
+    },
+    {
+      "path": "matmul-16x16x16/parallel_tile8_vector/transformed.mlir",
+      "bytes": 3258,
+      "sha256": "a723d0d57f0e8f707e5a5e0cbef7fdc059b3f98b8480468901903a9c8a780388"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile16/assembly.txt",
+      "bytes": 11292,
+      "sha256": "b9d9b4942937a1b899cdc91717afc6fb8729aaa289f4125dae7610b563e56643"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile16/kernel.o",
+      "bytes": 2256,
+      "sha256": "d15aedd3569d9b5454a0e3a43991c15e6168182fd7b04e691e4a698b3f63f7a6"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile16/lowered.mlir",
+      "bytes": 8965,
+      "sha256": "cdbe9b4920a07f5a1c9879618cebee996151c5b288b47f95aa78937b69a1cdb3"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile16/optimized.ll",
+      "bytes": 20408,
+      "sha256": "026007e47ed660aed0c1cf40ddd2c7072ac143fbdff90c068c973ef4ba07a26b"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile16/source.mlir",
+      "bytes": 679,
+      "sha256": "8a10d9f2d777dcead66c356e2012d41dabb09319b539e70fe1a55afe96a43ae3"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile16/transformed.mlir",
+      "bytes": 1390,
+      "sha256": "b43f3fe5ab73af4fb1ed7501f6b49a6c673da3a38539c7c8cf84da77498ab0e7"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile4/assembly.txt",
+      "bytes": 12241,
+      "sha256": "3713e02d6be11f5e94fe9f6647f8eba53ebd6547a734c15cd82dbce7e06dcc3e"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile4/kernel.o",
+      "bytes": 2368,
+      "sha256": "ead9df0b8170e5d02b7eb7095ef5c0dd5be4687482f15357a2880945f4a91a05"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile4/lowered.mlir",
+      "bytes": 13414,
+      "sha256": "296729029929beadf6adc9ef2a66a3da1fca352573a9c5bafe77f1091ed11736"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile4/optimized.ll",
+      "bytes": 21184,
+      "sha256": "4af9b3776591067b2debeced725bf199fbcd991e8a84d820a923fdefac232414"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile4/source.mlir",
+      "bytes": 679,
+      "sha256": "8a10d9f2d777dcead66c356e2012d41dabb09319b539e70fe1a55afe96a43ae3"
+    },
+    {
+      "path": "matmul-16x16x16/row_tile4/transformed.mlir",
+      "bytes": 1375,
+      "sha256": "db03af6a077519de5ae8ebda1359a70eaf0dd969828f92331fbbfed3c2197c5e"
+    },
+    {
+      "path": "matmul-31x65x17/baseline/assembly.txt",
+      "bytes": 10405,
+      "sha256": "b31eda8493f1138e45134805b4acc4edeebaaab3e414386c6a04c705b07d0250"
+    },
+    {
+      "path": "matmul-31x65x17/baseline/kernel.o",
+      "bytes": 2144,
+      "sha256": "a83fe79b7fe395b954579849027cccbb98ac7c5baa63687d35b29d779d5d4fcf"
+    },
+    {
+      "path": "matmul-31x65x17/baseline/lowered.mlir",
+      "bytes": 9059,
+      "sha256": "9e6bfa493738b233b5b6eac9b42a28057871428ab334c18f31a6634da327ff73"
+    },
+    {
+      "path": "matmul-31x65x17/baseline/optimized.ll",
+      "bytes": 20983,
+      "sha256": "02dfc6f44408668e2ac7ae20c34343b79b1758f65daae770b371bf55c4dc039f"
+    },
+    {
+      "path": "matmul-31x65x17/baseline/source.mlir",
+      "bytes": 679,
+      "sha256": "7a3d6b36e458eaf39d0c52d246b97bef97a48fa305ee16391f23ab2c09b47b7a"
+    },
+    {
+      "path": "matmul-31x65x17/baseline/transformed.mlir",
+      "bytes": 762,
+      "sha256": "4fbe9c89d13518994b1d3e971110edfe26dea7b67660ad4153b27802a7030ea9"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile16_vector/assembly.txt",
+      "bytes": 93681,
+      "sha256": "7e81d9f50170ebf5d0929e398960a678e0185e684ec6e02d7647829ec43f9f1e"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile16_vector/kernel.o",
+      "bytes": 15032,
+      "sha256": "f927c9930f7da73b2a544800fb73be1884c16c900a94bd4df2bd2caa1e49abbf"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile16_vector/lowered.mlir",
+      "bytes": 429593,
+      "sha256": "19e1074888402aeefc3cbf97c90f45546813e7d666338a45915076c94e0573b3"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile16_vector/optimized.ll",
+      "bytes": 1609954,
+      "sha256": "1d038597baa3d2b067377407b2e4790d7a8ac73755943a32e7a9d249b9e01336"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile16_vector/source.mlir",
+      "bytes": 679,
+      "sha256": "7a3d6b36e458eaf39d0c52d246b97bef97a48fa305ee16391f23ab2c09b47b7a"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile16_vector/transformed.mlir",
+      "bytes": 4989,
+      "sha256": "eba34ac36b0e119cf54be8a2d5137a5ff673e50f0e80b108563a3e0b5ab618ac"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile8_vector/assembly.txt",
+      "bytes": 24283,
+      "sha256": "f1dcf51423ba35bcc155b2ec42bb701679590a883bcccb3ed9f80a532d6dac45"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile8_vector/kernel.o",
+      "bytes": 4496,
+      "sha256": "c52b5599bcc0924710eb4a0a9a9aea46737669bab09904dd674a2064c8e22f78"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile8_vector/lowered.mlir",
+      "bytes": 128811,
+      "sha256": "22c5ff6cd5fd0ecff0404394237bfb88b2c6e4237c6bee1275d8b11ab2ecaea1"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile8_vector/optimized.ll",
+      "bytes": 123817,
+      "sha256": "ce1acefeefd11f8dd78b713c76035154470c359b3cafbeb6de0c7902253d8210"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile8_vector/source.mlir",
+      "bytes": 679,
+      "sha256": "7a3d6b36e458eaf39d0c52d246b97bef97a48fa305ee16391f23ab2c09b47b7a"
+    },
+    {
+      "path": "matmul-31x65x17/parallel_tile8_vector/transformed.mlir",
+      "bytes": 4941,
+      "sha256": "b05be6bb8900236733c7a3af23932a731cb8a5085dde80fe0e23db3d67bb771c"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile16/assembly.txt",
+      "bytes": 18364,
+      "sha256": "37d5baf53bae5d7f04367b12944b5087fbdfd16b15c8ab31fba52cd90568c991"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile16/kernel.o",
+      "bytes": 3248,
+      "sha256": "8dcca0c8422f5bc1eeb9835a2e1013622471eea0ea582bf3381e28770bb16233"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile16/lowered.mlir",
+      "bytes": 13806,
+      "sha256": "f682788c03f97259152810339337c50733f4b3bcb1350db17a6372616db2b647"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile16/optimized.ll",
+      "bytes": 38406,
+      "sha256": "9aed268f416c1e9740065dae964f594133d59893ed80e57f07b8f96d4c09cdd6"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile16/source.mlir",
+      "bytes": 679,
+      "sha256": "7a3d6b36e458eaf39d0c52d246b97bef97a48fa305ee16391f23ab2c09b47b7a"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile16/transformed.mlir",
+      "bytes": 1494,
+      "sha256": "f6588c95b570d34a62db744d0299ef9de353bb1139d183d6ff27d0e428d61215"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile4/assembly.txt",
+      "bytes": 11439,
+      "sha256": "c47d0aa72c9cb31577f02b00a4e63dd68b8d715bd0cbe843dad017bdda16b8bf"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile4/kernel.o",
+      "bytes": 2272,
+      "sha256": "22fa770b7d63297686d6442f7453ba7ab554e9fb981ca8cd849f913577d60fc1"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile4/lowered.mlir",
+      "bytes": 13805,
+      "sha256": "b3f8d4a6dd30a03b52ec1865fe475cf85756f924e53ebba96f17a38154cd48b9"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile4/optimized.ll",
+      "bytes": 21943,
+      "sha256": "605394802d5741aef3e96cdbbf1b05bfefdb837998d40f6c26b004362ee793e0"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile4/source.mlir",
+      "bytes": 679,
+      "sha256": "7a3d6b36e458eaf39d0c52d246b97bef97a48fa305ee16391f23ab2c09b47b7a"
+    },
+    {
+      "path": "matmul-31x65x17/row_tile4/transformed.mlir",
+      "bytes": 1488,
+      "sha256": "e50b5dd062efbf025acb033291c27b7089964165477c9ca81b3fd665f069c040"
+    },
+    {
+      "path": "matmul-32x128x8/baseline/assembly.txt",
+      "bytes": 20813,
+      "sha256": "876ec77b5a053f910ad22bd1a4f7f4f95b529ccc13cd740469bd5cc986235ea0"
+    },
+    {
+      "path": "matmul-32x128x8/baseline/kernel.o",
+      "bytes": 3488,
+      "sha256": "6577acc9fe3e1d14beadce3d57c6c99a1b98768aab3f4ba17ec4d02ad85132a1"
+    },
+    {
+      "path": "matmul-32x128x8/baseline/lowered.mlir",
+      "bytes": 9062,
+      "sha256": "07d547459ff726995a1e24092db9a76225fc87910af99ab939c2c46c1d233a02"
+    },
+    {
+      "path": "matmul-32x128x8/baseline/optimized.ll",
+      "bytes": 41209,
+      "sha256": "fc3652d3389c4fb3bd055801170890b70618fcc6529f6fd5c8fbe47dd63bdfe6"
+    },
+    {
+      "path": "matmul-32x128x8/baseline/source.mlir",
+      "bytes": 680,
+      "sha256": "ba290d47f0259fd7ddca7008693312274fde66ee4c275eb3ce52433c191c1b3a"
+    },
+    {
+      "path": "matmul-32x128x8/baseline/transformed.mlir",
+      "bytes": 763,
+      "sha256": "08c1085e83a396eeb0c7a5e1ce5a1980bd465d16cf8917208d11c836daa798a6"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile16_vector/assembly.txt",
+      "bytes": 60604,
+      "sha256": "49f96ce777fca89f7bf35750bcf41fff56af5031b15d4c34fcf49a3cfb7f6f1b"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile16_vector/kernel.o",
+      "bytes": 9568,
+      "sha256": "49ebb212fbd18b454d7ef21501051ee4f25774bed351647d643cfedbfe6d72f3"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile16_vector/lowered.mlir",
+      "bytes": 351416,
+      "sha256": "2e0a53773075eba39caab627ced3d903b656227edd65fb8924727e1d7f8307ef"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile16_vector/optimized.ll",
+      "bytes": 1589250,
+      "sha256": "deeae2c3eaa20720bdd4db99fb851398a54feb23039731696af59def3fd1ec20"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile16_vector/source.mlir",
+      "bytes": 680,
+      "sha256": "ba290d47f0259fd7ddca7008693312274fde66ee4c275eb3ce52433c191c1b3a"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile16_vector/transformed.mlir",
+      "bytes": 3300,
+      "sha256": "340cfbaf00f760a1e0a8f9fc7c4165abbceeb9f6b7228b6832a8456135fdcdf5"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile8_vector/assembly.txt",
+      "bytes": 15784,
+      "sha256": "411f7bcd24cee89be422a547a839116d8658bc1c288b41c461128c4237e351cf"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile8_vector/kernel.o",
+      "bytes": 2848,
+      "sha256": "baaf83c699f6cdc24d732ed9b7ba3019580b5e9a5c6a984ed688d64332202136"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile8_vector/lowered.mlir",
+      "bytes": 100324,
+      "sha256": "026bfb10e0bf99b53b67a8cf15f4eb49e82e6358f6570f62eab6eebe0ba394b5"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile8_vector/optimized.ll",
+      "bytes": 118439,
+      "sha256": "f0004328f6cf5dab6e2703e018e2e99aa9ae88e5e4672f2a964e59d074614872"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile8_vector/source.mlir",
+      "bytes": 680,
+      "sha256": "ba290d47f0259fd7ddca7008693312274fde66ee4c275eb3ce52433c191c1b3a"
+    },
+    {
+      "path": "matmul-32x128x8/parallel_tile8_vector/transformed.mlir",
+      "bytes": 3255,
+      "sha256": "32efa7b5b7511cb827678a00ff614f4564e849c9c4940c6b6f981425db041e77"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile16/assembly.txt",
+      "bytes": 10986,
+      "sha256": "6eeb6721d0705a395f56588e11081cfe8c536a48e22d81c2a979222ae7dbb9f2"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile16/kernel.o",
+      "bytes": 2288,
+      "sha256": "093e0948f0be7607a094c0a9f9875114207ec2d624e5493b9f2ca8bac0e37a20"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile16/lowered.mlir",
+      "bytes": 13518,
+      "sha256": "6044bd79e8cb8ecb7da9c33682861f5435d7ecf1c879772c1d7de904ed10a3b6"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile16/optimized.ll",
+      "bytes": 23226,
+      "sha256": "441be206283859e0920fa824334f4f5685b667525c86cf7d01ba6630dc1e922c"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile16/source.mlir",
+      "bytes": 680,
+      "sha256": "ba290d47f0259fd7ddca7008693312274fde66ee4c275eb3ce52433c191c1b3a"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile16/transformed.mlir",
+      "bytes": 1387,
+      "sha256": "48a00e0004ad22d9a26b86892ce23224a859cdb145ee6cebfb90d22f30d37a73"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile4/assembly.txt",
+      "bytes": 18943,
+      "sha256": "4e44fed34f2f50861f7253e42feb5ac9f90936888b2747ad43e426fa3ce2e161"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile4/kernel.o",
+      "bytes": 3632,
+      "sha256": "88665d156d52549599ca9ebecf50d187073374c70a5732fa31ec6c6152f81cc8"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile4/lowered.mlir",
+      "bytes": 13515,
+      "sha256": "90b366bf5587e35af297b28790405421600bb0af1e1885f58b82475c4ee19a25"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile4/optimized.ll",
+      "bytes": 40023,
+      "sha256": "541869d5623ccd5bea14be7e205c9a8afaa211eaf5b2acf44bc4a9837cd5ccf6"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile4/source.mlir",
+      "bytes": 680,
+      "sha256": "ba290d47f0259fd7ddca7008693312274fde66ee4c275eb3ce52433c191c1b3a"
+    },
+    {
+      "path": "matmul-32x128x8/row_tile4/transformed.mlir",
+      "bytes": 1376,
+      "sha256": "196b01361f47893ce043962aa63931d72720a3ecd942a1242190a6e393ce648b"
+    },
+    {
+      "path": "matmul-32x32x32/baseline/assembly.txt",
+      "bytes": 21432,
+      "sha256": "a3ad1d53f6b9824c93449ec01929120a74b2f75553ec68fd78a4215f1470efd9"
+    },
+    {
+      "path": "matmul-32x32x32/baseline/kernel.o",
+      "bytes": 3792,
+      "sha256": "359295cea453f3b2c9d163ba0c53e9507fbbd5285b251576afcd98b69c9a866b"
+    },
+    {
+      "path": "matmul-32x32x32/baseline/lowered.mlir",
+      "bytes": 8965,
+      "sha256": "5a1a084e9b1e0d05ca53afcd854768730c71055d6a73b281d204fbc8e5c43d3f"
+    },
+    {
+      "path": "matmul-32x32x32/baseline/optimized.ll",
+      "bytes": 34608,
+      "sha256": "5517b6791e8896d0b33fe7dbd5ed9fd8f589f8d639bd33ee214d925e1c238410"
+    },
+    {
+      "path": "matmul-32x32x32/baseline/source.mlir",
+      "bytes": 679,
+      "sha256": "18f569a8cf00fca97339e8b7c0889e71c32433d10ba72f5e917d4cf4699e5bf6"
+    },
+    {
+      "path": "matmul-32x32x32/baseline/transformed.mlir",
+      "bytes": 762,
+      "sha256": "596fd86a9db3fe21b51146ba161f3c4afa728c585a3de60e4013b3ff1a0cc628"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile16_vector/assembly.txt",
+      "bytes": 60426,
+      "sha256": "c8c9bbd2f6e26bfe8c008af1b9aabe3eb4e2728ff0cb276f65ed7e9852f66403"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile16_vector/kernel.o",
+      "bytes": 9680,
+      "sha256": "f21d0b4d2141278f0dfa5d39d2b3168fa6b97292cc47b7828bcde63f29e55184"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile16_vector/lowered.mlir",
+      "bytes": 351307,
+      "sha256": "f6839460a5239d6c14f08ba27839beb5b52aecf65e155f6111cb4bbfc294e325"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile16_vector/optimized.ll",
+      "bytes": 1589008,
+      "sha256": "7c670105133bf5fe7d9bbe3ad297c859d076bec81d0d1e44c7c1e8c860867d0a"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile16_vector/source.mlir",
+      "bytes": 679,
+      "sha256": "18f569a8cf00fca97339e8b7c0889e71c32433d10ba72f5e917d4cf4699e5bf6"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile16_vector/transformed.mlir",
+      "bytes": 3309,
+      "sha256": "6eec0a12e4934b892bd066515c3be87a77c98c317340c8efa567c1e62ba8f074"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile8_vector/assembly.txt",
+      "bytes": 15931,
+      "sha256": "5b465129f9fe6fcb92f6e453dabac4a1ecbdd9987a350bbd05f1c882b96a744c"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile8_vector/kernel.o",
+      "bytes": 2928,
+      "sha256": "3dcec570253a158f2754c1617e3ab7d95772580819bd794b1c29b431f0221519"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile8_vector/lowered.mlir",
+      "bytes": 100265,
+      "sha256": "6430c8856b4b3891a39d9c50d570d6fb7ed037d7113e81a89e3d8fa246f0ab64"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile8_vector/optimized.ll",
+      "bytes": 118291,
+      "sha256": "cbbe8a78dabe516205704be0e381d0bffe127ac4c55f7ab5ce355ab228cf6720"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile8_vector/source.mlir",
+      "bytes": 679,
+      "sha256": "18f569a8cf00fca97339e8b7c0889e71c32433d10ba72f5e917d4cf4699e5bf6"
+    },
+    {
+      "path": "matmul-32x32x32/parallel_tile8_vector/transformed.mlir",
+      "bytes": 3258,
+      "sha256": "7754ee6f23e1e4cd64c5ea6f0e1e70b1d0993caae7b303918279dc358996549c"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile16/assembly.txt",
+      "bytes": 22072,
+      "sha256": "98cd4d6964884f33f58b3c42fb6d047779f740f3a3fe213739fb72264ad34404"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile16/kernel.o",
+      "bytes": 3856,
+      "sha256": "e582e870f6cff4f4992c0cd794b86ff65b10f5091baf663e81847d7323ee45f9"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile16/lowered.mlir",
+      "bytes": 13417,
+      "sha256": "abbc7c33242387e137c0f45bd8bf3ad38800e2eaead6cdedbc4e1f753b75145e"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile16/optimized.ll",
+      "bytes": 35228,
+      "sha256": "0d27f9bcdcb0a2ad37192a516fbb15bc2506bf4782deaae308ecedc596136c45"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile16/source.mlir",
+      "bytes": 679,
+      "sha256": "18f569a8cf00fca97339e8b7c0889e71c32433d10ba72f5e917d4cf4699e5bf6"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile16/transformed.mlir",
+      "bytes": 1386,
+      "sha256": "fb58a215e6538309fc50544591cee4e87dbdb733100e63610fb0f181d61036f8"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile4/assembly.txt",
+      "bytes": 22345,
+      "sha256": "b9b58e4e764b4b33c556cc6a7e15e67c620502cb2efe81e8f64d8662ab258dcb"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile4/kernel.o",
+      "bytes": 3856,
+      "sha256": "131e12d43ad2572e9480c84ec9e089380882e5683e95da2ce0cc8123bb0b359a"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile4/lowered.mlir",
+      "bytes": 13414,
+      "sha256": "47c1ea11eff1f1f3beb360a6a93d687bbf432090c44a5cc78c0e75a4d16f0abf"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile4/optimized.ll",
+      "bytes": 35406,
+      "sha256": "6965c79944cb96b9065510d16e3a19ab77dbae7906fcd9da9606b5bc016bf6bd"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile4/source.mlir",
+      "bytes": 679,
+      "sha256": "18f569a8cf00fca97339e8b7c0889e71c32433d10ba72f5e917d4cf4699e5bf6"
+    },
+    {
+      "path": "matmul-32x32x32/row_tile4/transformed.mlir",
+      "bytes": 1375,
+      "sha256": "73404eba95c9af6ac80a55a071924a21c96e8c2491f7d7f03560969c778bfa23"
+    },
+    {
+      "path": "matmul-48x96x24/baseline/assembly.txt",
+      "bytes": 13798,
+      "sha256": "bb18dda2c0528bd76f1530d2d56f24cb04aaa456df1402b1e34b7ea4a4c629ac"
+    },
+    {
+      "path": "matmul-48x96x24/baseline/kernel.o",
+      "bytes": 2704,
+      "sha256": "a5410116831cf7e53b8b75c0d388101187abb8f4d603789d61644965df2f61d0"
+    },
+    {
+      "path": "matmul-48x96x24/baseline/lowered.mlir",
+      "bytes": 9059,
+      "sha256": "32b5872b94d5d26b67227504d47222bba8ffdb6e9ee989113991a045d71dac1a"
+    },
+    {
+      "path": "matmul-48x96x24/baseline/optimized.ll",
+      "bytes": 26766,
+      "sha256": "18090142091ef0c8f26cc1abae62e40fcd717ab985a08f67aa7ec8fa81b50f59"
+    },
+    {
+      "path": "matmul-48x96x24/baseline/source.mlir",
+      "bytes": 679,
+      "sha256": "c43ff5da4a371cc48738e335c119bca6760ffdbcc137722086cdea791ede2d88"
+    },
+    {
+      "path": "matmul-48x96x24/baseline/transformed.mlir",
+      "bytes": 762,
+      "sha256": "069fe21858d437e9a7b0fe36f3fef243bdeb432e9857e3e8bc522e018ced42c5"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile16_vector/assembly.txt",
+      "bytes": 60558,
+      "sha256": "78cfe3c7048f8ecba4f416e8c50bd1e3f98753479f3e613aaf88408d05dd6cac"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile16_vector/kernel.o",
+      "bytes": 9536,
+      "sha256": "1dac8b568f83a7ad77383d57336635da141dcbc6afe6f1e784da4eb79e5cd247"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile16_vector/lowered.mlir",
+      "bytes": 351412,
+      "sha256": "f2a6e79a8fa0bdaf788080bec49d9ca8bad370a1376cbb0d145f2adda575a757"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile16_vector/optimized.ll",
+      "bytes": 1589244,
+      "sha256": "48a0f4434a290486cd9dd7c00e678caf2e33a9acad77223cc71e72da3a7d7bdb"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile16_vector/source.mlir",
+      "bytes": 679,
+      "sha256": "c43ff5da4a371cc48738e335c119bca6760ffdbcc137722086cdea791ede2d88"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile16_vector/transformed.mlir",
+      "bytes": 3297,
+      "sha256": "75489967a0899fa5d438eedff212cb4a9a91e5a28b45d528dafb389d86bccd9b"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile8_vector/assembly.txt",
+      "bytes": 15735,
+      "sha256": "6e5547c6eacdff396b805da6e3bcaa81f84cdf2247f54510f7d80ceaaaa3ac4e"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile8_vector/kernel.o",
+      "bytes": 2848,
+      "sha256": "4011768dbf4fe86f6a39558ddc1972f0f25dce013f8f4043affeeb83f8604c64"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile8_vector/lowered.mlir",
+      "bytes": 100370,
+      "sha256": "481d379b6f6d18f396bcbd1cd4319cd31dcbb857d3aef075eccfc3b2252f9032"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile8_vector/optimized.ll",
+      "bytes": 118417,
+      "sha256": "5b8d739ae06de13f0eaffbc1c3dcdc169e44e1232f0c6a4dc54dad6bf4e8faeb"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile8_vector/source.mlir",
+      "bytes": 679,
+      "sha256": "c43ff5da4a371cc48738e335c119bca6760ffdbcc137722086cdea791ede2d88"
+    },
+    {
+      "path": "matmul-48x96x24/parallel_tile8_vector/transformed.mlir",
+      "bytes": 3246,
+      "sha256": "bf800b63db5e5de880689cdf03d5049b36c5b02602f033b948c1ba950c53a7b1"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile16/assembly.txt",
+      "bytes": 14725,
+      "sha256": "dc3ca1dc6029c7fa4a20363ced96b9010019e571140da849d4add44a932e69d0"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile16/kernel.o",
+      "bytes": 2832,
+      "sha256": "0f2d9854e996bb6b3778889d345b394be4ce5a5761deadff6e8462fcc096eabc"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile16/lowered.mlir",
+      "bytes": 13515,
+      "sha256": "4c872471de4a675d0e22577190ab7b5f3a85ba4427d214977dd573b59cbd8c1f"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile16/optimized.ll",
+      "bytes": 27696,
+      "sha256": "2a5176d5ec737b8c45c626c871e31794bb4bd4a5ec66edba37dbb9a17020d1fa"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile16/source.mlir",
+      "bytes": 679,
+      "sha256": "c43ff5da4a371cc48738e335c119bca6760ffdbcc137722086cdea791ede2d88"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile16/transformed.mlir",
+      "bytes": 1386,
+      "sha256": "df7d8ab7be8330d7864306b559121be0c01cb81e69239e9879cdff29d1838675"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile4/assembly.txt",
+      "bytes": 14721,
+      "sha256": "4af52b998cc99a53d3c8eac5eb4bc1bf92ed622f6bf8a1517d45fd9621e98135"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile4/kernel.o",
+      "bytes": 2832,
+      "sha256": "406401b899f7401bf19c54ce49b8ffcf9744942aafbaa199b4ad72df87878702"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile4/lowered.mlir",
+      "bytes": 13512,
+      "sha256": "e372d6895cfef85bba120a5bbf8440407c8e779d606b4bf38804c16716284a5a"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile4/optimized.ll",
+      "bytes": 27690,
+      "sha256": "86e60b4d816fc28aa95315c9ae14aee46eeb7eb7baa38fdf1e135811c2912f26"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile4/source.mlir",
+      "bytes": 679,
+      "sha256": "c43ff5da4a371cc48738e335c119bca6760ffdbcc137722086cdea791ede2d88"
+    },
+    {
+      "path": "matmul-48x96x24/row_tile4/transformed.mlir",
+      "bytes": 1375,
+      "sha256": "46d2e5bc3009874415b4d6a00a1e8b683336477a9ac2533c7da7b4e1a4e28fee"
+    },
+    {
+      "path": "matmul-64x64x64/baseline/assembly.txt",
+      "bytes": 9545,
+      "sha256": "79213206ab26a9548a8992ee457cfbcca974aa5f4ab97c39efda887fddeeaf53"
+    },
+    {
+      "path": "matmul-64x64x64/baseline/kernel.o",
+      "bytes": 1832,
+      "sha256": "6d3a5c09e0401aec539bf06f03717a75cc6b3d186535d25a2e8cda49b3758946"
+    },
+    {
+      "path": "matmul-64x64x64/baseline/lowered.mlir",
+      "bytes": 8965,
+      "sha256": "578a4c89da2153e2c14c1fe1dce678de5ed954647b9738c3100b357e584f670f"
+    },
+    {
+      "path": "matmul-64x64x64/baseline/optimized.ll",
+      "bytes": 15058,
+      "sha256": "25a57f64e2563c8c98f4d72a0dc9f101539790e7ade63f878c57fd02d834484c"
+    },
+    {
+      "path": "matmul-64x64x64/baseline/source.mlir",
+      "bytes": 679,
+      "sha256": "7d905c5af7ca2faec74e16e1d1b7f2470f2f84df4a65baa02526f9deb1af82a1"
+    },
+    {
+      "path": "matmul-64x64x64/baseline/transformed.mlir",
+      "bytes": 762,
+      "sha256": "01e684e804fd6b2cc3824aaede08bdd744fff3027a6b5922d8e93649610f9070"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile16_vector/assembly.txt",
+      "bytes": 60577,
+      "sha256": "e7fd028964f42558d2d845f2025206914780077f8716dd1f61de6e9f3498f242"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile16_vector/kernel.o",
+      "bytes": 9680,
+      "sha256": "739d335fb49081500c9fa63798e6bc75beaeee673d38cfe8b7682e15de8b4503"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile16_vector/lowered.mlir",
+      "bytes": 351307,
+      "sha256": "4aefe20f01e8f2ed48a1db34e56dd7ffa36a77529716f450844bc5f12cdac324"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile16_vector/optimized.ll",
+      "bytes": 1589067,
+      "sha256": "9b55983852cb4dce8d91eb4462ae34e0c85b80ed228d3c253e03aeec3e29c198"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile16_vector/source.mlir",
+      "bytes": 679,
+      "sha256": "7d905c5af7ca2faec74e16e1d1b7f2470f2f84df4a65baa02526f9deb1af82a1"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile16_vector/transformed.mlir",
+      "bytes": 3309,
+      "sha256": "1a2873ffac0473285dba4b367c4c819892e8a5948fee14d4a1afb90ac7fc241a"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile8_vector/assembly.txt",
+      "bytes": 15957,
+      "sha256": "ffc602d579035f03905fd7688c55af9c3173c5584dcbe10ec99ee180c122119a"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile8_vector/kernel.o",
+      "bytes": 2928,
+      "sha256": "90f71921992fd8af4d77612d9d874817f57418220f3b6c21358589d4b37ecb1d"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile8_vector/lowered.mlir",
+      "bytes": 100265,
+      "sha256": "a84a2ab2492a067ffcbeacbec22628bd6db276ff0b7d54b1ea6d5c97e526b70d"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile8_vector/optimized.ll",
+      "bytes": 118297,
+      "sha256": "20e2d8d83882773c6639af8207831d27bca722c2f72628daefd0957471184b82"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile8_vector/source.mlir",
+      "bytes": 679,
+      "sha256": "7d905c5af7ca2faec74e16e1d1b7f2470f2f84df4a65baa02526f9deb1af82a1"
+    },
+    {
+      "path": "matmul-64x64x64/parallel_tile8_vector/transformed.mlir",
+      "bytes": 3258,
+      "sha256": "402d9d5c921e30a55fb2a4e9057ba3eca57d37339fb7b5b0e47e89d5e9081e50"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile16/assembly.txt",
+      "bytes": 22582,
+      "sha256": "b996fbe5f599e77a4682b0c94d58b89ad1c8f695eef5f780091f58f5a87f6772"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile16/kernel.o",
+      "bytes": 3496,
+      "sha256": "b3555c4010910ec0bf8d1a418ab4a8269f72cf4e931a43135cd3bf54cf74861f"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile16/lowered.mlir",
+      "bytes": 13417,
+      "sha256": "ca2b85df05203cca5404cb45fa9cbefeb41691c69aae44718101ed632cd49ec6"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile16/optimized.ll",
+      "bytes": 39232,
+      "sha256": "1384f2e3764a1f4eac3dfe20191300cedf3ee00c13dcccfac546072eee0cae58"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile16/source.mlir",
+      "bytes": 679,
+      "sha256": "7d905c5af7ca2faec74e16e1d1b7f2470f2f84df4a65baa02526f9deb1af82a1"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile16/transformed.mlir",
+      "bytes": 1386,
+      "sha256": "89d1976e6c450cc933b12c916d58479eaeb6eea0c01dfb3b585a6f685dadd7b2"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile4/assembly.txt",
+      "bytes": 22613,
+      "sha256": "aae083c482a78a47eec99aa7da38344041cb2683b580c7907f07bd4f4b0654c7"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile4/kernel.o",
+      "bytes": 3784,
+      "sha256": "7929fd130b174fe21ab92a1c81bf2b195000b2d017bc925498fd2447b230d19e"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile4/lowered.mlir",
+      "bytes": 13414,
+      "sha256": "8d5adc1b349044850a18d8f139e9fcbe226ee31c88f3809b6239706150af5dff"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile4/optimized.ll",
+      "bytes": 33899,
+      "sha256": "77be3e37ce707f359b8c935c61a0d52bd56aba91b266a6b7ec82f8586ed2c809"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile4/source.mlir",
+      "bytes": 679,
+      "sha256": "7d905c5af7ca2faec74e16e1d1b7f2470f2f84df4a65baa02526f9deb1af82a1"
+    },
+    {
+      "path": "matmul-64x64x64/row_tile4/transformed.mlir",
+      "bytes": 1375,
+      "sha256": "9edf4ca3a1a70a4cc3831648f5a0658c388ef7302380bf0d194f9f422d379afc"
+    },
+    {
+      "path": "matmul-64x8x32/baseline/assembly.txt",
+      "bytes": 8739,
+      "sha256": "eb9c4dd6ef9804f3d6741f3a9f43dcb3184203226d3e6f301ff08b40a81d8729"
+    },
+    {
+      "path": "matmul-64x8x32/baseline/kernel.o",
+      "bytes": 1968,
+      "sha256": "ff4b4add6cbed6ef15fbea9e906a3694bbcb9221a555be21d26e06541c384e76"
+    },
+    {
+      "path": "matmul-64x8x32/baseline/lowered.mlir",
+      "bytes": 9054,
+      "sha256": "197e60b08fde59216363c78e0b435a7d1c1c5f849da7500753e2aea2e44428be"
+    },
+    {
+      "path": "matmul-64x8x32/baseline/optimized.ll",
+      "bytes": 15832,
+      "sha256": "52b524f579455e1b12913e6a42c177fb9cdeee38535a994a11638dfbdfaa2cd9"
+    },
+    {
+      "path": "matmul-64x8x32/baseline/source.mlir",
+      "bytes": 674,
+      "sha256": "d1b966470ba7d0fe839536ed7c0519f7aef1d59a79e0c011bbc662e3b8959861"
+    },
+    {
+      "path": "matmul-64x8x32/baseline/transformed.mlir",
+      "bytes": 757,
+      "sha256": "ed6a72ad06e1e9081bdf741b5a3b224c99939606547265278753a562c1073d12"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile16_vector/assembly.txt",
+      "bytes": 29507,
+      "sha256": "ca05b9d190e5b51f354036ab2cceb9269fff6e57ff9525221a960967299310ee"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile16_vector/kernel.o",
+      "bytes": 5056,
+      "sha256": "1769872a31c70e864aa57a0d3b3e13d0c60468e292a4f43af820b583f33e26fd"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile16_vector/lowered.mlir",
+      "bytes": 217782,
+      "sha256": "ed90dd44e3805ea06b52ee82d7beb1d6f187ac25d4e74f36704a00a08c782a46"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile16_vector/optimized.ll",
+      "bytes": 439299,
+      "sha256": "c4e75b6f5747248514cc3044bd4676d6103f86d2f6306169387a94864623beac"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile16_vector/source.mlir",
+      "bytes": 674,
+      "sha256": "d1b966470ba7d0fe839536ed7c0519f7aef1d59a79e0c011bbc662e3b8959861"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile16_vector/transformed.mlir",
+      "bytes": 4178,
+      "sha256": "0757cfea70ac2910cfd7a6411a6ad7aa14e7b19b2e1abe55c990c4f310b5e006"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile8_vector/assembly.txt",
+      "bytes": 15425,
+      "sha256": "8eb350974e89d4fa52756dc16da2d05612b5836ec38e5be7ca09355d228e9dd6"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile8_vector/kernel.o",
+      "bytes": 2864,
+      "sha256": "9cee1d35c5548776ca75dab3b8d1a8bb4483828f6cc27f3bb747a7a7d65d83bd"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile8_vector/lowered.mlir",
+      "bytes": 99956,
+      "sha256": "92cc52362523f487dd79406becadad872f9ed4a0ec54e5e939f106ee5b25d582"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile8_vector/optimized.ll",
+      "bytes": 119808,
+      "sha256": "f139b152beb18905278ffff6fed34f14cdcf808ee37ee98399232bc57905c181"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile8_vector/source.mlir",
+      "bytes": 674,
+      "sha256": "d1b966470ba7d0fe839536ed7c0519f7aef1d59a79e0c011bbc662e3b8959861"
+    },
+    {
+      "path": "matmul-64x8x32/parallel_tile8_vector/transformed.mlir",
+      "bytes": 3232,
+      "sha256": "05440cc9c2537ecf5a73c111c97ea01d5d8ce8b41af4beee7917aafd35eec534"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile16/assembly.txt",
+      "bytes": 9110,
+      "sha256": "fa8e6a0a27273a591d81e004b032807abf571ceb5c9f62919c1cf6e113547eba"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile16/kernel.o",
+      "bytes": 1968,
+      "sha256": "e843060a0ce9300aa4110065f3fe0037089e3a58e9af8d72483f43a4524c2364"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile16/lowered.mlir",
+      "bytes": 13508,
+      "sha256": "2253721bfe104a4495747af359212bc29967d45e106c8727eb555fed20516b50"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile16/optimized.ll",
+      "bytes": 16360,
+      "sha256": "0ea57b093c582a57297ad4e357f60f1e8812f7bc8cf4792883a728d8994aaf53"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile16/source.mlir",
+      "bytes": 674,
+      "sha256": "d1b966470ba7d0fe839536ed7c0519f7aef1d59a79e0c011bbc662e3b8959861"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile16/transformed.mlir",
+      "bytes": 1376,
+      "sha256": "e9e406d55760b4e4430e29be577670bb584c9999ab960ecef8ca5a4234c343d3"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile4/assembly.txt",
+      "bytes": 9108,
+      "sha256": "87e3a77ab375ff3c7bc39f77098168b765deb328a5aca6dd80556f1e322c8dc8"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile4/kernel.o",
+      "bytes": 1968,
+      "sha256": "4189fb4252d31f1880344e21ec58181c2d6529611911e7ca36ef8e2ef2d2eb00"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile4/lowered.mlir",
+      "bytes": 13505,
+      "sha256": "c0df163c4870cfe8bd171cfc948a2deff897252e9fd9981bcc2a5537c85bc4f4"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile4/optimized.ll",
+      "bytes": 16358,
+      "sha256": "ade9f7b53b988544dd2322fd29d80e921fefbe8c12fb44e34644d0abbf14887d"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile4/source.mlir",
+      "bytes": 674,
+      "sha256": "d1b966470ba7d0fe839536ed7c0519f7aef1d59a79e0c011bbc662e3b8959861"
+    },
+    {
+      "path": "matmul-64x8x32/row_tile4/transformed.mlir",
+      "bytes": 1365,
+      "sha256": "0d4a1ccb0cbbb491336526f63cf6aa190903f41f8ee5e9942ffcd4b00f9901e6"
+    },
+    {
+      "path": "matmul-8x64x128/baseline/assembly.txt",
+      "bytes": 12531,
+      "sha256": "22138be5a9d6b3c8a30bf256152ab3f2f75b8b061747f953e683eff0d2488811"
+    },
+    {
+      "path": "matmul-8x64x128/baseline/kernel.o",
+      "bytes": 2528,
+      "sha256": "84e9e4fd3e975cde2aaca4de47f661771742522c10dca31e30ff2dadd68413c1"
+    },
+    {
+      "path": "matmul-8x64x128/baseline/lowered.mlir",
+      "bytes": 9060,
+      "sha256": "c4b4ec089c62d6bf11b0dd7a27afeaada2ccd30d32bd5b3e07efbde8741ba6b1"
+    },
+    {
+      "path": "matmul-8x64x128/baseline/optimized.ll",
+      "bytes": 24233,
+      "sha256": "e25b714a2137ee55b5fa578bb935e6ca5a2b143f617e369ae1f56fbc81afff89"
+    },
+    {
+      "path": "matmul-8x64x128/baseline/source.mlir",
+      "bytes": 678,
+      "sha256": "49b0cc15158db15e56b8cfe399ecb3ad332b615c946f13efb567d90c8103dcad"
+    },
+    {
+      "path": "matmul-8x64x128/baseline/transformed.mlir",
+      "bytes": 761,
+      "sha256": "1e3ff8e8af3adae655291ddb184150abb9f00f0abcf751989ae6e036c8a64655"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile16_vector/assembly.txt",
+      "bytes": 31714,
+      "sha256": "7b02886df4fdd8c8fbca00472f00539d8117bdb13dfb99818c7a751f7df94a7e"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile16_vector/kernel.o",
+      "bytes": 5360,
+      "sha256": "60151cbdaf368cbfa9acba95642d0832ed8987a46189feb27d07e3606f8448c2"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile16_vector/lowered.mlir",
+      "bytes": 207175,
+      "sha256": "83ec5bc11aadc8977870b2ae2a8ce3da27ed603601d5e14f4ceb4651f062f661"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile16_vector/optimized.ll",
+      "bytes": 408208,
+      "sha256": "fc8898f6e646f203bef07acae1aee735d0e3f97beb2ae1e1a65a041d764e1c64"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile16_vector/source.mlir",
+      "bytes": 678,
+      "sha256": "49b0cc15158db15e56b8cfe399ecb3ad332b615c946f13efb567d90c8103dcad"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile16_vector/transformed.mlir",
+      "bytes": 4364,
+      "sha256": "c90a6046c0b4c400b33e7a331bcf8e566ea91785a9c29bbbf073ae4532cd5fc8"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile8_vector/assembly.txt",
+      "bytes": 15406,
+      "sha256": "10eab7097a8167061aeb9fcb83eb5f4da6fe24e243a49b4843a86c62a7cceed3"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile8_vector/kernel.o",
+      "bytes": 2864,
+      "sha256": "e7f56a6e6eae10b02d7aba1f217e17169f57a15acc6308bc34eced765f7812fb"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile8_vector/lowered.mlir",
+      "bytes": 99888,
+      "sha256": "ebfe3ce69ad22faa25daacb6e393f2fabd6cbc0a50ab4804d08339fb2a4a78ff"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile8_vector/optimized.ll",
+      "bytes": 117991,
+      "sha256": "0ec92e7a76c79e65e904d16496f56cc4db01f7af57ed4fcfed4571ecc068a4df"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile8_vector/source.mlir",
+      "bytes": 678,
+      "sha256": "49b0cc15158db15e56b8cfe399ecb3ad332b615c946f13efb567d90c8103dcad"
+    },
+    {
+      "path": "matmul-8x64x128/parallel_tile8_vector/transformed.mlir",
+      "bytes": 3261,
+      "sha256": "78778d3749681344fae31053f5f983c8b65435f5368c0218b25f38b5cbb6083b"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile16/assembly.txt",
+      "bytes": 12531,
+      "sha256": "22138be5a9d6b3c8a30bf256152ab3f2f75b8b061747f953e683eff0d2488811"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile16/kernel.o",
+      "bytes": 2528,
+      "sha256": "84e9e4fd3e975cde2aaca4de47f661771742522c10dca31e30ff2dadd68413c1"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile16/lowered.mlir",
+      "bytes": 9060,
+      "sha256": "c4b4ec089c62d6bf11b0dd7a27afeaada2ccd30d32bd5b3e07efbde8741ba6b1"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile16/optimized.ll",
+      "bytes": 24233,
+      "sha256": "e25b714a2137ee55b5fa578bb935e6ca5a2b143f617e369ae1f56fbc81afff89"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile16/source.mlir",
+      "bytes": 678,
+      "sha256": "49b0cc15158db15e56b8cfe399ecb3ad332b615c946f13efb567d90c8103dcad"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile16/transformed.mlir",
+      "bytes": 1494,
+      "sha256": "e284df46b169688b40a2374ff068d6b64bc22063477688c6173f5bd96f0cedb4"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile4/assembly.txt",
+      "bytes": 12531,
+      "sha256": "22138be5a9d6b3c8a30bf256152ab3f2f75b8b061747f953e683eff0d2488811"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile4/kernel.o",
+      "bytes": 2528,
+      "sha256": "84e9e4fd3e975cde2aaca4de47f661771742522c10dca31e30ff2dadd68413c1"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile4/lowered.mlir",
+      "bytes": 13515,
+      "sha256": "52cc52e6f5f3fd7002d5f3ce1bb83f0b81c54b4ce04a542d87363ad7811dea4c"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile4/optimized.ll",
+      "bytes": 24380,
+      "sha256": "e8749eadbbb5661f8decd29a087e8578c4382a514455acc73ea149d6d4f8eadc"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile4/source.mlir",
+      "bytes": 678,
+      "sha256": "49b0cc15158db15e56b8cfe399ecb3ad332b615c946f13efb567d90c8103dcad"
+    },
+    {
+      "path": "matmul-8x64x128/row_tile4/transformed.mlir",
+      "bytes": 1376,
+      "sha256": "19e8d437a279f64bb0a46d2b33c37b8be0cc93729b27e5f792348f0d29498d97"
+    },
+    {
+      "path": "matvec-128x256/baseline/assembly.txt",
+      "bytes": 7990,
+      "sha256": "0069f1c30f93e7d96561d2bac510f4ba56f6ad6585a53ae987a4594b6a68fb9c"
+    },
+    {
+      "path": "matvec-128x256/baseline/kernel.o",
+      "bytes": 1688,
+      "sha256": "748426f264e98c656b907a882430fbb3372187fac4514a6ec5b2edc2340de408"
+    },
+    {
+      "path": "matvec-128x256/baseline/lowered.mlir",
+      "bytes": 7080,
+      "sha256": "cc0e7fbd8ad933e62ddebbd10931c977e8a4bbd065834393add56aeb70d02df9"
+    },
+    {
+      "path": "matvec-128x256/baseline/optimized.ll",
+      "bytes": 12397,
+      "sha256": "59132476e84dfd165341692d188e40c7115d90d02ffacb396a49d250f3b61b68"
+    },
+    {
+      "path": "matvec-128x256/baseline/source.mlir",
+      "bytes": 624,
+      "sha256": "fee301ac1d97124c167e20d90321b31464c88f184c7210f9aa55f14e0896bfa8"
+    },
+    {
+      "path": "matvec-128x256/baseline/transformed.mlir",
+      "bytes": 724,
+      "sha256": "b914db17770cd4c71ecdba2f486abaf8ee049416e677480f6311591836524d0c"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile16_vector/assembly.txt",
+      "bytes": 13345,
+      "sha256": "8952e18813ce0342a256eb8730d59d240878835f4823ab59e3d9bc0c52d58610"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile16_vector/kernel.o",
+      "bytes": 2376,
+      "sha256": "8847d891c19189068f3e444764de190258ff7fe2a922527fb599373351d0bbf3"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile16_vector/lowered.mlir",
+      "bytes": 25715,
+      "sha256": "24187b536c87c308e397c925ab49aaf33e51c2e88b189d37909958233fba0975"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile16_vector/optimized.ll",
+      "bytes": 18079,
+      "sha256": "ba735ce05edf89853fd73931385005e06c909c04cd565d62e117dfd8e7670a6d"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile16_vector/source.mlir",
+      "bytes": 624,
+      "sha256": "fee301ac1d97124c167e20d90321b31464c88f184c7210f9aa55f14e0896bfa8"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile16_vector/transformed.mlir",
+      "bytes": 2315,
+      "sha256": "e3fc0820559458932b5687248e8b19d5d85e38da7ff1f59b4149b89decf83614"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile8_vector/assembly.txt",
+      "bytes": 9288,
+      "sha256": "72c9b10e7dad465b4824d7fdc1fac9d6a17c819a119c60e83b630494f0e64462"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile8_vector/kernel.o",
+      "bytes": 1856,
+      "sha256": "88079c463b977fc6d0d01cb641b2e1d124c7b6f37e1f5794d01bff8e43e58a92"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile8_vector/lowered.mlir",
+      "bytes": 20438,
+      "sha256": "f349a86803242023c02f8410800adf10eb881834d51455efcf3d379fa9cd0c17"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile8_vector/optimized.ll",
+      "bytes": 13247,
+      "sha256": "f0be53c323115dc284b0c98f31e8cf94228bbe141039a4d021f909cddf94836a"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile8_vector/source.mlir",
+      "bytes": 624,
+      "sha256": "fee301ac1d97124c167e20d90321b31464c88f184c7210f9aa55f14e0896bfa8"
+    },
+    {
+      "path": "matvec-128x256/parallel_tile8_vector/transformed.mlir",
+      "bytes": 2291,
+      "sha256": "06bf9f8e31e7d1891b3405f329483aa8794b8034faa195e7c7d9ae00df039fe9"
+    },
+    {
+      "path": "matvec-128x256/row_tile16/assembly.txt",
+      "bytes": 31805,
+      "sha256": "6f7a575e8608119e60d32df5c01a7df11b920755f3134167290ad6064caffbc1"
+    },
+    {
+      "path": "matvec-128x256/row_tile16/kernel.o",
+      "bytes": 4560,
+      "sha256": "b49ddc8064dbfa48901f6f61c3ca8f8f845c601e381d9bf4af6af8337eb79d93"
+    },
+    {
+      "path": "matvec-128x256/row_tile16/lowered.mlir",
+      "bytes": 10928,
+      "sha256": "4ff57e95c53296ab6fbb2f79cd64b4ba2349be85d9973c33a8def4256a0d1c92"
+    },
+    {
+      "path": "matvec-128x256/row_tile16/optimized.ll",
+      "bytes": 54052,
+      "sha256": "0cdccf31aec180f33e8e885645ed140b3f50afd446007b71ce7e2a9c8ce70543"
+    },
+    {
+      "path": "matvec-128x256/row_tile16/source.mlir",
+      "bytes": 624,
+      "sha256": "fee301ac1d97124c167e20d90321b31464c88f184c7210f9aa55f14e0896bfa8"
+    },
+    {
+      "path": "matvec-128x256/row_tile16/transformed.mlir",
+      "bytes": 1295,
+      "sha256": "287d407b2e4564ccb066f19f4c959d8a3b386aedc21f3189af3b945f8efd6995"
+    },
+    {
+      "path": "matvec-128x256/row_tile4/assembly.txt",
+      "bytes": 30844,
+      "sha256": "7984f0a934dc7739d4b53c1f34a18ebe7cb030e41c6383059c27bc114028b774"
+    },
+    {
+      "path": "matvec-128x256/row_tile4/kernel.o",
+      "bytes": 4520,
+      "sha256": "20ab7b46009f853cb48d1785550c0c733e1612650f49132aedc1d78b7cf6caf6"
+    },
+    {
+      "path": "matvec-128x256/row_tile4/lowered.mlir",
+      "bytes": 10925,
+      "sha256": "0ec7d9c10f176e08b603a5dbc33411196e9058ce32bec1be31ac9f6749965fb9"
+    },
+    {
+      "path": "matvec-128x256/row_tile4/optimized.ll",
+      "bytes": 50678,
+      "sha256": "a878c68a166cf429612ee83a65ea331bffd7b3097586d15291911466fc6d4c85"
+    },
+    {
+      "path": "matvec-128x256/row_tile4/source.mlir",
+      "bytes": 624,
+      "sha256": "fee301ac1d97124c167e20d90321b31464c88f184c7210f9aa55f14e0896bfa8"
+    },
+    {
+      "path": "matvec-128x256/row_tile4/transformed.mlir",
+      "bytes": 1284,
+      "sha256": "3b969cfa870724fbec115362369342228ea6387778b00cf3699265bb083a153f"
+    },
+    {
+      "path": "matvec-128x32/baseline/assembly.txt",
+      "bytes": 24857,
+      "sha256": "fb16ffbff6623fce3e6e58762227133c9b0b31bb845f6ec0721a479364790564"
+    },
+    {
+      "path": "matvec-128x32/baseline/kernel.o",
+      "bytes": 4064,
+      "sha256": "18e098d1781413b98b419b23b9da1bc1213a542b15947c8c690426760f47b95a"
+    },
+    {
+      "path": "matvec-128x32/baseline/lowered.mlir",
+      "bytes": 7078,
+      "sha256": "4194859d46fba62918c22f59a4da34b8b3c92efa43ce3123d57374394c832296"
+    },
+    {
+      "path": "matvec-128x32/baseline/optimized.ll",
+      "bytes": 51355,
+      "sha256": "b10f5333da14e5c514478f545c874486ad53dbb6068bf610636ebfe0c514ce0a"
+    },
+    {
+      "path": "matvec-128x32/baseline/source.mlir",
+      "bytes": 620,
+      "sha256": "e428bb7ff09d8d3615a27506931e140d0ddb910c9571d0bf1cb747c0292526c4"
+    },
+    {
+      "path": "matvec-128x32/baseline/transformed.mlir",
+      "bytes": 720,
+      "sha256": "1ee13fe0c56b9744a31aced564c954115d2e59f1dfa42190563e24b08783c043"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile16_vector/assembly.txt",
+      "bytes": 13196,
+      "sha256": "23f75466c09462c4675df4c6566d392c61a401b01bd841acb518140cc5cb2b82"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile16_vector/kernel.o",
+      "bytes": 2376,
+      "sha256": "a01a140214518cbfeb3c5bcbe0d8c1e81dcd011d5f285e703fabc6288c1c0371"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile16_vector/lowered.mlir",
+      "bytes": 25712,
+      "sha256": "20c6b1b9c46201f8b7adfc605a76598ddcc75ad2a9514a9762fdd214db8b1b1f"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile16_vector/optimized.ll",
+      "bytes": 18015,
+      "sha256": "ef96ad475f2166299ebff85fac2795bca8b9a31653d484c7e21883dbab9c0098"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile16_vector/source.mlir",
+      "bytes": 620,
+      "sha256": "e428bb7ff09d8d3615a27506931e140d0ddb910c9571d0bf1cb747c0292526c4"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile16_vector/transformed.mlir",
+      "bytes": 2301,
+      "sha256": "7dd05173d7897697234a09b8bb5bb04ed44ea2cae362013495781589a33eed1e"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile8_vector/assembly.txt",
+      "bytes": 9078,
+      "sha256": "82ab4b6f4a5083377f1e1ebdb8880cc422e6b3525f347ee87db9ff55cea5556b"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile8_vector/kernel.o",
+      "bytes": 1816,
+      "sha256": "8c8f1cc62a2132b0c3cb713b8be050513bc770e8db9280ebd3a3392d26478f43"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile8_vector/lowered.mlir",
+      "bytes": 20435,
+      "sha256": "790fc7aeda6bf2808ac090c0dcaa61e90f2d08e8b8fed5b596129a993e53d45d"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile8_vector/optimized.ll",
+      "bytes": 13215,
+      "sha256": "0721ece6a0216f332a00b4d77bf07957261893ed7f9d234e54f955624341ba01"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile8_vector/source.mlir",
+      "bytes": 620,
+      "sha256": "e428bb7ff09d8d3615a27506931e140d0ddb910c9571d0bf1cb747c0292526c4"
+    },
+    {
+      "path": "matvec-128x32/parallel_tile8_vector/transformed.mlir",
+      "bytes": 2277,
+      "sha256": "323dd38ea3d7385e4bf7432a67c26a1a756f4a0da032de60a8468f5341881152"
+    },
+    {
+      "path": "matvec-128x32/row_tile16/assembly.txt",
+      "bytes": 25434,
+      "sha256": "b16481db4ba9f6b3a39ccbfa76fa00f25f52ef993147cce0fbd40949887a2e89"
+    },
+    {
+      "path": "matvec-128x32/row_tile16/kernel.o",
+      "bytes": 4128,
+      "sha256": "441dd159302e4e6590482328cfef1473d80135570bc3faf6361f7b836b2e5060"
+    },
+    {
+      "path": "matvec-128x32/row_tile16/lowered.mlir",
+      "bytes": 10924,
+      "sha256": "5112e6e09482ce991304d7bea433f4eabfd4c4c122c36dc1a95de89808d89d86"
+    },
+    {
+      "path": "matvec-128x32/row_tile16/optimized.ll",
+      "bytes": 51875,
+      "sha256": "0099052cadd38d9e8c81ee5f01c8f542cf259a22b2c09cbe2dc25b1decd86533"
+    },
+    {
+      "path": "matvec-128x32/row_tile16/source.mlir",
+      "bytes": 620,
+      "sha256": "e428bb7ff09d8d3615a27506931e140d0ddb910c9571d0bf1cb747c0292526c4"
+    },
+    {
+      "path": "matvec-128x32/row_tile16/transformed.mlir",
+      "bytes": 1286,
+      "sha256": "eebc8bb49670200fbc444f394fed5575a8b590139428b7f6293c5fef10ada2bd"
+    },
+    {
+      "path": "matvec-128x32/row_tile4/assembly.txt",
+      "bytes": 8440,
+      "sha256": "b0463c2649e03d4d6220dbedc5854558b2e305ad87505a3f63536329be38c6b9"
+    },
+    {
+      "path": "matvec-128x32/row_tile4/kernel.o",
+      "bytes": 1872,
+      "sha256": "d13c5be7f67b4005de2390b71b2a223bd8b9e8325f70bcb5efc0471404a0d5c1"
+    },
+    {
+      "path": "matvec-128x32/row_tile4/lowered.mlir",
+      "bytes": 10921,
+      "sha256": "f60ad79735ef855932f6e53541aecc9497c810201ea2c7072f4a70541cf8ba3d"
+    },
+    {
+      "path": "matvec-128x32/row_tile4/optimized.ll",
+      "bytes": 15077,
+      "sha256": "873c60c61ffb481b3e8d70704fde6fb0b977a3f622553f536dc51f541b62197c"
+    },
+    {
+      "path": "matvec-128x32/row_tile4/source.mlir",
+      "bytes": 620,
+      "sha256": "e428bb7ff09d8d3615a27506931e140d0ddb910c9571d0bf1cb747c0292526c4"
+    },
+    {
+      "path": "matvec-128x32/row_tile4/transformed.mlir",
+      "bytes": 1275,
+      "sha256": "f85057a51df7a96ee46a71e2d21f70fd4b4ab7cce5e06ec203827bfdf5c3763e"
+    },
+    {
+      "path": "matvec-16x128/baseline/assembly.txt",
+      "bytes": 29486,
+      "sha256": "a458110c37b9074d624b17a5017c90c602e4c548bd5d910d0f87bef4aacaba8b"
+    },
+    {
+      "path": "matvec-16x128/baseline/kernel.o",
+      "bytes": 4520,
+      "sha256": "481f8dfa37edc09c67358889bad741f831109b10246f141d9c8a8766e52d6083"
+    },
+    {
+      "path": "matvec-16x128/baseline/lowered.mlir",
+      "bytes": 7079,
+      "sha256": "47bede534a3a00311d3b9f3914db8e3cd75018dbef47beb177b2c0be1bdb4f58"
+    },
+    {
+      "path": "matvec-16x128/baseline/optimized.ll",
+      "bytes": 54030,
+      "sha256": "2c3ed8135f2f90e06d443bb87e55f564bd6bbbee2a3340e38cd894b18d36a758"
+    },
+    {
+      "path": "matvec-16x128/baseline/source.mlir",
+      "bytes": 619,
+      "sha256": "212a9d3d1dc0038d8bbe051f8b175cc10304cb5331f7402c0fcef897937102e1"
+    },
+    {
+      "path": "matvec-16x128/baseline/transformed.mlir",
+      "bytes": 719,
+      "sha256": "0e82642b3c8e4f5cf652c8ccb2d12851259459f27eefb3637c1f328be61a6a04"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile16_vector/assembly.txt",
+      "bytes": 10560,
+      "sha256": "37d0110ec73529ededcf08d95c677c417dcecc64f4a228652f594a569624dc8c"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile16_vector/kernel.o",
+      "bytes": 1896,
+      "sha256": "32cb8b03538fa4d65411d16720d499d7776ba7e75a666343c040af52ad0147fb"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile16_vector/lowered.mlir",
+      "bytes": 23393,
+      "sha256": "9cd478da6bb24a1e05d280d87942a8a15a1ab1ae72b42aea4258097eee95a8ae"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile16_vector/optimized.ll",
+      "bytes": 16138,
+      "sha256": "03eaf1f529a8217424dce53e1e3a620286dc8e99d4cb526cf57e3e3d119ce4af"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile16_vector/source.mlir",
+      "bytes": 619,
+      "sha256": "212a9d3d1dc0038d8bbe051f8b175cc10304cb5331f7402c0fcef897937102e1"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile16_vector/transformed.mlir",
+      "bytes": 2312,
+      "sha256": "eb69ed432551cb261219b7e56437dc5b898eab4cb110a31ecbe51d177068646d"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile8_vector/assembly.txt",
+      "bytes": 11468,
+      "sha256": "427d67319a92cb861d2bd0c3124d9912d04e20a17bea868b9fbbaf57d1437429"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile8_vector/kernel.o",
+      "bytes": 1992,
+      "sha256": "41ae853494c45c8ea8ea1b94ede4cd0e3a8a0777900656f17731a247b472db01"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile8_vector/lowered.mlir",
+      "bytes": 20437,
+      "sha256": "230ee80cbac2eb27bf79fe4de1e8430349d53828483a35e05d73df7c8028444f"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile8_vector/optimized.ll",
+      "bytes": 19096,
+      "sha256": "8de06f3e6d7498d5414070a368298496bb63e57f266e6ec8124fb77dd393e779"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile8_vector/source.mlir",
+      "bytes": 619,
+      "sha256": "212a9d3d1dc0038d8bbe051f8b175cc10304cb5331f7402c0fcef897937102e1"
+    },
+    {
+      "path": "matvec-16x128/parallel_tile8_vector/transformed.mlir",
+      "bytes": 2283,
+      "sha256": "0d7a0d99db94baa443b897b871d9114b49415b89d52da8d0e2fe13358d541afd"
+    },
+    {
+      "path": "matvec-16x128/row_tile16/assembly.txt",
+      "bytes": 29486,
+      "sha256": "a458110c37b9074d624b17a5017c90c602e4c548bd5d910d0f87bef4aacaba8b"
+    },
+    {
+      "path": "matvec-16x128/row_tile16/kernel.o",
+      "bytes": 4520,
+      "sha256": "481f8dfa37edc09c67358889bad741f831109b10246f141d9c8a8766e52d6083"
+    },
+    {
+      "path": "matvec-16x128/row_tile16/lowered.mlir",
+      "bytes": 7079,
+      "sha256": "47bede534a3a00311d3b9f3914db8e3cd75018dbef47beb177b2c0be1bdb4f58"
+    },
+    {
+      "path": "matvec-16x128/row_tile16/optimized.ll",
+      "bytes": 54030,
+      "sha256": "2c3ed8135f2f90e06d443bb87e55f564bd6bbbee2a3340e38cd894b18d36a758"
+    },
+    {
+      "path": "matvec-16x128/row_tile16/source.mlir",
+      "bytes": 619,
+      "sha256": "212a9d3d1dc0038d8bbe051f8b175cc10304cb5331f7402c0fcef897937102e1"
+    },
+    {
+      "path": "matvec-16x128/row_tile16/transformed.mlir",
+      "bytes": 1291,
+      "sha256": "e45f11ad115e43f595f8a8ca13282f29a54d8bd0b3a3990c675664c055e670c0"
+    },
+    {
+      "path": "matvec-16x128/row_tile4/assembly.txt",
+      "bytes": 29486,
+      "sha256": "a458110c37b9074d624b17a5017c90c602e4c548bd5d910d0f87bef4aacaba8b"
+    },
+    {
+      "path": "matvec-16x128/row_tile4/kernel.o",
+      "bytes": 4520,
+      "sha256": "481f8dfa37edc09c67358889bad741f831109b10246f141d9c8a8766e52d6083"
+    },
+    {
+      "path": "matvec-16x128/row_tile4/lowered.mlir",
+      "bytes": 10924,
+      "sha256": "124fd92a82045b3b0154eb1625bf856620e222ecf7018dfa5b85ce2a797cfbe1"
+    },
+    {
+      "path": "matvec-16x128/row_tile4/optimized.ll",
+      "bytes": 53699,
+      "sha256": "fc2b4872d73566a3d7fefdecc49c2cd2b5b013ff0aa73df75a95dbbbd2af3a98"
+    },
+    {
+      "path": "matvec-16x128/row_tile4/source.mlir",
+      "bytes": 619,
+      "sha256": "212a9d3d1dc0038d8bbe051f8b175cc10304cb5331f7402c0fcef897937102e1"
+    },
+    {
+      "path": "matvec-16x128/row_tile4/transformed.mlir",
+      "bytes": 1276,
+      "sha256": "9ae574455f7e70d20b4da9ae1c487f9df7415ec22d799512d7175c77abb296e6"
+    },
+    {
+      "path": "matvec-256x256/baseline/assembly.txt",
+      "bytes": 8094,
+      "sha256": "11e74aa043f079ab3179f20c7415905011907bcab6b74e4bfbaa7922657965a3"
+    },
+    {
+      "path": "matvec-256x256/baseline/kernel.o",
+      "bytes": 1688,
+      "sha256": "957ee1f314b5b157054034c50b37efba12de87a5a26525b6ff48ff534079ecee"
+    },
+    {
+      "path": "matvec-256x256/baseline/lowered.mlir",
+      "bytes": 7032,
+      "sha256": "ed64e7a9b50809665dbfeabb7231054d4a300019a51a6ded7d878622876a7689"
+    },
+    {
+      "path": "matvec-256x256/baseline/optimized.ll",
+      "bytes": 12397,
+      "sha256": "16db2a580ee4850b03c490da89c36988f7bc3c8d0008c7ec910e15d3981f5dd2"
+    },
+    {
+      "path": "matvec-256x256/baseline/source.mlir",
+      "bytes": 624,
+      "sha256": "797c19e4b3ce963314bdfd9fea5a0f105704c3f05cdc397fee8912931283abfa"
+    },
+    {
+      "path": "matvec-256x256/baseline/transformed.mlir",
+      "bytes": 724,
+      "sha256": "a55858f437995024ba3914ac5c53ead65571745e60eee645115fdb15c1aa0cc8"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile16_vector/assembly.txt",
+      "bytes": 13321,
+      "sha256": "55759167fe52d65c5e7b9eacc0eaa5db0c52605d414e3b7ec88dac9c9692d326"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile16_vector/kernel.o",
+      "bytes": 2376,
+      "sha256": "b38c992dc123d6484a69663df2e3371f6a7adf70b8041d50c1b38292df28b25a"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile16_vector/lowered.mlir",
+      "bytes": 25665,
+      "sha256": "d41dc1e4d774cf79c6a3de8100d00efe38a50c145d22432ff48afeedf331d44e"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile16_vector/optimized.ll",
+      "bytes": 18079,
+      "sha256": "5eb7a9b2ab7ba97a6e2ea43c8157647350912e852a09ece679b0e718532c6006"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile16_vector/source.mlir",
+      "bytes": 624,
+      "sha256": "797c19e4b3ce963314bdfd9fea5a0f105704c3f05cdc397fee8912931283abfa"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile16_vector/transformed.mlir",
+      "bytes": 2320,
+      "sha256": "ab1a4af28074591224b9beb428312a4b676a6400716cd9e99779ad7a2b705a65"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile8_vector/assembly.txt",
+      "bytes": 9279,
+      "sha256": "abe22ca3062c036516b53d7be228fab4f0290da0f9d091dc6cc91c25c069ea53"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile8_vector/kernel.o",
+      "bytes": 1856,
+      "sha256": "67798cdeb633c30dc075d9e4efd42841bc0ee3272a0025fbb17db49abdac9060"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile8_vector/lowered.mlir",
+      "bytes": 20388,
+      "sha256": "7b9354129e6ae4fee63eb4f562351dc589805d3f9870e93f45d544a6decd9f01"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile8_vector/optimized.ll",
+      "bytes": 13247,
+      "sha256": "1134fe8bf98483447b0dbc6e185f38aac3ace253bcfff2145a4b4338798625d2"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile8_vector/source.mlir",
+      "bytes": 624,
+      "sha256": "797c19e4b3ce963314bdfd9fea5a0f105704c3f05cdc397fee8912931283abfa"
+    },
+    {
+      "path": "matvec-256x256/parallel_tile8_vector/transformed.mlir",
+      "bytes": 2296,
+      "sha256": "24787d7efcc97422fcfbadc78e1c9441522e56463a0da63417fe7bd26ae94966"
+    },
+    {
+      "path": "matvec-256x256/row_tile16/assembly.txt",
+      "bytes": 31777,
+      "sha256": "37494cf4b4d282eea860aa6a530c5e533d0d64f321d39d79d99352df73321990"
+    },
+    {
+      "path": "matvec-256x256/row_tile16/kernel.o",
+      "bytes": 4560,
+      "sha256": "4c0565b5f4e22da706ca844fb9eed4091ca1027cb0c2edfb6b1275980b6a5dab"
+    },
+    {
+      "path": "matvec-256x256/row_tile16/lowered.mlir",
+      "bytes": 10880,
+      "sha256": "3451038d31a23f3e95dfcb57e944163174a86560f2782adbb5da2bcbda655197"
+    },
+    {
+      "path": "matvec-256x256/row_tile16/optimized.ll",
+      "bytes": 54052,
+      "sha256": "e3ba36307e7d5c54e9950c19dcc542127b898a5bdf011757c12bbb0e9f5bab2e"
+    },
+    {
+      "path": "matvec-256x256/row_tile16/source.mlir",
+      "bytes": 624,
+      "sha256": "797c19e4b3ce963314bdfd9fea5a0f105704c3f05cdc397fee8912931283abfa"
+    },
+    {
+      "path": "matvec-256x256/row_tile16/transformed.mlir",
+      "bytes": 1295,
+      "sha256": "d2ac7502542d682825b3bb4fb425070a538126163d391b0c92175b499750fe5e"
+    },
+    {
+      "path": "matvec-256x256/row_tile4/assembly.txt",
+      "bytes": 30918,
+      "sha256": "72dff4a6c893c13756bd8d3757a948d13d8795a8c6b7939ac349b68cfda0b84e"
+    },
+    {
+      "path": "matvec-256x256/row_tile4/kernel.o",
+      "bytes": 4560,
+      "sha256": "96883ca8e435ced620251bd062fbec13438f710532119d1747ab6c2ea3b53fd8"
+    },
+    {
+      "path": "matvec-256x256/row_tile4/lowered.mlir",
+      "bytes": 10877,
+      "sha256": "5743a8fb83c07c9dd7147d6f336c5f752b7affd2416833abe7cd20fe7891dc91"
+    },
+    {
+      "path": "matvec-256x256/row_tile4/optimized.ll",
+      "bytes": 50678,
+      "sha256": "1ad0efe66365ed4dff8b375c124f98062452a4c7423c05d0f999ff60d70f88cd"
+    },
+    {
+      "path": "matvec-256x256/row_tile4/source.mlir",
+      "bytes": 624,
+      "sha256": "797c19e4b3ce963314bdfd9fea5a0f105704c3f05cdc397fee8912931283abfa"
+    },
+    {
+      "path": "matvec-256x256/row_tile4/transformed.mlir",
+      "bytes": 1284,
+      "sha256": "48ae1bbfa4a7719846bc088ef43f8e2d2e25bd082119b2f8c5e6f8d1bc41a670"
+    },
+    {
+      "path": "matvec-256x64/baseline/assembly.txt",
+      "bytes": 8005,
+      "sha256": "768c0cd3a477d15f208f1cce629b4fb002b2d16b831dc63c1bb4621fe5bfe87b"
+    },
+    {
+      "path": "matvec-256x64/baseline/kernel.o",
+      "bytes": 1688,
+      "sha256": "fb2b5da6beafd666934ec2a4f825b56e094690588ad6108f5d3e98015d0ab0f0"
+    },
+    {
+      "path": "matvec-256x64/baseline/lowered.mlir",
+      "bytes": 7078,
+      "sha256": "ea716b87300ff43e8edea1c4c4dca62b54168f95d789700473bde20f1157d3f4"
+    },
+    {
+      "path": "matvec-256x64/baseline/optimized.ll",
+      "bytes": 12393,
+      "sha256": "aad35442f8f250de0052997242b9290636ac54465c33a3b1eba68d1b3af5559c"
+    },
+    {
+      "path": "matvec-256x64/baseline/source.mlir",
+      "bytes": 620,
+      "sha256": "24f63223f2f223fa097794af77952dc2da348719e538cdc5bf49cb656e0e2712"
+    },
+    {
+      "path": "matvec-256x64/baseline/transformed.mlir",
+      "bytes": 720,
+      "sha256": "14d4b887a0a1b541463da6fe84b16eb0b0cbf031a0910acd4e8a1a9d1daa8065"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile16_vector/assembly.txt",
+      "bytes": 13217,
+      "sha256": "01394360c4c0d56b7cb52bc21fae6bbe3d18f080977b982449be4c6463aebd35"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile16_vector/kernel.o",
+      "bytes": 2376,
+      "sha256": "f45250c3c6d8d38b33b1882a5cb87bf8de7d62260e2a7fdfe49a4043acdb5b7f"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile16_vector/lowered.mlir",
+      "bytes": 25712,
+      "sha256": "d9bdeb52bd1d1c13b57e4b3df50845c4ebe169590043068f0590d357b631f451"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile16_vector/optimized.ll",
+      "bytes": 18023,
+      "sha256": "92d0084ffa256d06f838b68dfa3edc560c8dd60a25d56239ece3124f6704f0db"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile16_vector/source.mlir",
+      "bytes": 620,
+      "sha256": "24f63223f2f223fa097794af77952dc2da348719e538cdc5bf49cb656e0e2712"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile16_vector/transformed.mlir",
+      "bytes": 2301,
+      "sha256": "8f9c3e1b7743dbdb1a762c480aa233971e1a77b6b191fdaf1faa364dabcd9f6e"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile8_vector/assembly.txt",
+      "bytes": 9152,
+      "sha256": "d64e8d313ff5bf635a3e56ca0eb46905fb36b9feaaa4e07ed96533a0c9706363"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile8_vector/kernel.o",
+      "bytes": 1856,
+      "sha256": "22e8963c84c6d7a3772dc06ecddad40b1eba58ccadfc1ae563487fd616d7f11f"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile8_vector/lowered.mlir",
+      "bytes": 20435,
+      "sha256": "002db70527c575bd6a212c2be5976c6aa444518a105c1f9a2c526ddeaeaa0b86"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile8_vector/optimized.ll",
+      "bytes": 13223,
+      "sha256": "f484f3ee3c205376d9120088a10d41c17bd71658f56d2091986e29ec96fee405"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile8_vector/source.mlir",
+      "bytes": 620,
+      "sha256": "24f63223f2f223fa097794af77952dc2da348719e538cdc5bf49cb656e0e2712"
+    },
+    {
+      "path": "matvec-256x64/parallel_tile8_vector/transformed.mlir",
+      "bytes": 2277,
+      "sha256": "3664f5d5b11120bc2d6a742f199bb453306861d54fa1aafd5796c839ca3b3954"
+    },
+    {
+      "path": "matvec-256x64/row_tile16/assembly.txt",
+      "bytes": 31297,
+      "sha256": "d1cad54d5fa8c6a279886a6d9f23e95fb2039356e1e16ec45b4866ff5173f2f7"
+    },
+    {
+      "path": "matvec-256x64/row_tile16/kernel.o",
+      "bytes": 4512,
+      "sha256": "3258b6cbcd16e499d96e8fcc553feba9856b0e1e8ee77275ab51703009b01f49"
+    },
+    {
+      "path": "matvec-256x64/row_tile16/lowered.mlir",
+      "bytes": 10924,
+      "sha256": "d334d34eaf06530d831060eadb985bf20faeeb9ab86550e85c17b19354b243e7"
+    },
+    {
+      "path": "matvec-256x64/row_tile16/optimized.ll",
+      "bytes": 54023,
+      "sha256": "050979f346e759673c8d4977969903d92a3bb54f6b46d0cae55fe1e661081afe"
+    },
+    {
+      "path": "matvec-256x64/row_tile16/source.mlir",
+      "bytes": 620,
+      "sha256": "24f63223f2f223fa097794af77952dc2da348719e538cdc5bf49cb656e0e2712"
+    },
+    {
+      "path": "matvec-256x64/row_tile16/transformed.mlir",
+      "bytes": 1286,
+      "sha256": "ef5539a8954be2a352bea89a2ec18456d67f2a8a35dcb840d30547ca781a3d40"
+    },
+    {
+      "path": "matvec-256x64/row_tile4/assembly.txt",
+      "bytes": 30548,
+      "sha256": "11cab79df97d98cc229f82bf238eae5be58f4921f8b2c4653ebf05b7c590091b"
+    },
+    {
+      "path": "matvec-256x64/row_tile4/kernel.o",
+      "bytes": 4520,
+      "sha256": "6c5f02521139ab5bfdf73d71b9a1d8ee164dfa536241b0fe2d80f9a4eb51b0e5"
+    },
+    {
+      "path": "matvec-256x64/row_tile4/lowered.mlir",
+      "bytes": 10921,
+      "sha256": "eb42af4de6a55ab199bc55edf07d7c4c32da3f9873c70a583759a92751e00da4"
+    },
+    {
+      "path": "matvec-256x64/row_tile4/optimized.ll",
+      "bytes": 50658,
+      "sha256": "e3032a2671c2ea1484a281c1f21bfe5b83faa2920d9e90986673387904711089"
+    },
+    {
+      "path": "matvec-256x64/row_tile4/source.mlir",
+      "bytes": 620,
+      "sha256": "24f63223f2f223fa097794af77952dc2da348719e538cdc5bf49cb656e0e2712"
+    },
+    {
+      "path": "matvec-256x64/row_tile4/transformed.mlir",
+      "bytes": 1275,
+      "sha256": "f765d2321fc9d4383ceb450af28c264688439f15dd3a93af7ccd518fc63cb9b7"
+    },
+    {
+      "path": "matvec-31x65/baseline/assembly.txt",
+      "bytes": 8331,
+      "sha256": "46fa549581eba641b576ffa9fe73919da81c86ee94a2fd82b95be9ccb6150eaf"
+    },
+    {
+      "path": "matvec-31x65/baseline/kernel.o",
+      "bytes": 1592,
+      "sha256": "5aa46d21d9b07f461e875cb6963dc361d7cce48c9edb2503b8c9408be2870e7c"
+    },
+    {
+      "path": "matvec-31x65/baseline/lowered.mlir",
+      "bytes": 7077,
+      "sha256": "d94107876027eac74a919884ea6997816b053958df64432388071b1f093caedd"
+    },
+    {
+      "path": "matvec-31x65/baseline/optimized.ll",
+      "bytes": 13205,
+      "sha256": "41f100f533a082824bff39a8f6251016988053dcfd961175e4614801cddb54a6"
+    },
+    {
+      "path": "matvec-31x65/baseline/source.mlir",
+      "bytes": 615,
+      "sha256": "6bfa25f3d871c92e6d60747507a7233679f93c059b53b9a814360cfacbd57d9b"
+    },
+    {
+      "path": "matvec-31x65/baseline/transformed.mlir",
+      "bytes": 715,
+      "sha256": "0cc2baf049cb25824077f45c91e1bb731ca26f08c07e733fd2828f4e1481554c"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile16_vector/assembly.txt",
+      "bytes": 19819,
+      "sha256": "1aefb8000eba3789b9e6d90a4405c80285e5024945ab0a80f9a36fd993a19dc0"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile16_vector/kernel.o",
+      "bytes": 3592,
+      "sha256": "ca2315a4a0c003ad4dabc2568fb7873b9bde1751d1f7a5dfe82ab2902914e99e"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile16_vector/lowered.mlir",
+      "bytes": 32691,
+      "sha256": "cff6a2a143b22b7fc719ef4c3fbfe567872a26aecd231d590d8086d4c166446e"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile16_vector/optimized.ll",
+      "bytes": 53401,
+      "sha256": "a255f26026756741ecf201d6e2b438ae24eca862b122c79eaedf51c9e108ea9f"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile16_vector/source.mlir",
+      "bytes": 615,
+      "sha256": "6bfa25f3d871c92e6d60747507a7233679f93c059b53b9a814360cfacbd57d9b"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile16_vector/transformed.mlir",
+      "bytes": 3069,
+      "sha256": "e015a43a11dbea32b254aeaa7fd57a772d10daf0d200de07519c9819f76ba945"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile8_vector/assembly.txt",
+      "bytes": 17816,
+      "sha256": "e3617eb782383587dd2304e532359f650b1b337899625f5a42f5fd4b46e44e5a"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile8_vector/kernel.o",
+      "bytes": 3176,
+      "sha256": "929805dab162d03c70286a452b7c18746942012e9e37082d7ea8eb4ff454b93b"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile8_vector/lowered.mlir",
+      "bytes": 25473,
+      "sha256": "9c95de1360c38a0fe0569135d2ba5a1c0429a81a0175c7ffab8712df9746431a"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile8_vector/optimized.ll",
+      "bytes": 39073,
+      "sha256": "98ee1893220d965408216c7bcf3beba7d8f10bd0d1c329c980f9e2ed29cdd74b"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile8_vector/source.mlir",
+      "bytes": 615,
+      "sha256": "6bfa25f3d871c92e6d60747507a7233679f93c059b53b9a814360cfacbd57d9b"
+    },
+    {
+      "path": "matvec-31x65/parallel_tile8_vector/transformed.mlir",
+      "bytes": 3047,
+      "sha256": "232b1172811c15bd81a1ccf5ac1b8099fbc22bbf488cbdc78c769d178d3ad677"
+    },
+    {
+      "path": "matvec-31x65/row_tile16/assembly.txt",
+      "bytes": 37865,
+      "sha256": "45317d9c7c5d85b1efc4648782eb6085078b859799e5c8a5571255c00c2a2101"
+    },
+    {
+      "path": "matvec-31x65/row_tile16/kernel.o",
+      "bytes": 5688,
+      "sha256": "97c8655fbf2c5f57bad53d07e59d75e0795e634ff35203cfd511323491de1f4a"
+    },
+    {
+      "path": "matvec-31x65/row_tile16/lowered.mlir",
+      "bytes": 11202,
+      "sha256": "5ddd1c3a7c3ac40a9f4f01451609781df14bc5726133e51d6349061902d0fefd"
+    },
+    {
+      "path": "matvec-31x65/row_tile16/optimized.ll",
+      "bytes": 68212,
+      "sha256": "30c923c1da3c50897b8c7488ef6daeeaa24a73bde85513b046994a9c499e7883"
+    },
+    {
+      "path": "matvec-31x65/row_tile16/source.mlir",
+      "bytes": 615,
+      "sha256": "6bfa25f3d871c92e6d60747507a7233679f93c059b53b9a814360cfacbd57d9b"
+    },
+    {
+      "path": "matvec-31x65/row_tile16/transformed.mlir",
+      "bytes": 1386,
+      "sha256": "eb7ba5d2b9a3de879876d7f8f426743cf93ad09a4335b6fb52ef192ee94f128e"
+    },
+    {
+      "path": "matvec-31x65/row_tile4/assembly.txt",
+      "bytes": 37865,
+      "sha256": "45317d9c7c5d85b1efc4648782eb6085078b859799e5c8a5571255c00c2a2101"
+    },
+    {
+      "path": "matvec-31x65/row_tile4/kernel.o",
+      "bytes": 5688,
+      "sha256": "97c8655fbf2c5f57bad53d07e59d75e0795e634ff35203cfd511323491de1f4a"
+    },
+    {
+      "path": "matvec-31x65/row_tile4/lowered.mlir",
+      "bytes": 11201,
+      "sha256": "417afe538b30bf3a09a9aa0130d5563cca9b5ae9e8d1d16f4458bc56fc0051d3"
+    },
+    {
+      "path": "matvec-31x65/row_tile4/optimized.ll",
+      "bytes": 68262,
+      "sha256": "2a87cb72f88bd19a440d34f13429d6525872bc6d4fb04e8efd9ddeace78c22ff"
+    },
+    {
+      "path": "matvec-31x65/row_tile4/source.mlir",
+      "bytes": 615,
+      "sha256": "6bfa25f3d871c92e6d60747507a7233679f93c059b53b9a814360cfacbd57d9b"
+    },
+    {
+      "path": "matvec-31x65/row_tile4/transformed.mlir",
+      "bytes": 1380,
+      "sha256": "fdb8658f46a0c60d3c427efc636262b6f0d7587348ad0c7b99cf929def436679"
+    },
+    {
+      "path": "matvec-512x128/baseline/assembly.txt",
+      "bytes": 7994,
+      "sha256": "214d493fb8e328c406cc60493ee128e0e41b9c799840ad83a663abe985520286"
+    },
+    {
+      "path": "matvec-512x128/baseline/kernel.o",
+      "bytes": 1688,
+      "sha256": "9a2a60924816002136d6994121a121ce39233e63f48888619f07cdc6d60776e7"
+    },
+    {
+      "path": "matvec-512x128/baseline/lowered.mlir",
+      "bytes": 7080,
+      "sha256": "d6375fad99400d0d3f8c15e6b821a30f69f98ac4572c1d26d38352a55014c189"
+    },
+    {
+      "path": "matvec-512x128/baseline/optimized.ll",
+      "bytes": 12397,
+      "sha256": "f63f232929380d4f6a1d06bbff1db4ee4f7b71c3031d4c9cccc92e1b4afa7484"
+    },
+    {
+      "path": "matvec-512x128/baseline/source.mlir",
+      "bytes": 624,
+      "sha256": "aa7a69e328e96806e9bd8203fda09d228dd42e02ec5b1372236fd12f455cd125"
+    },
+    {
+      "path": "matvec-512x128/baseline/transformed.mlir",
+      "bytes": 724,
+      "sha256": "1336b2d7c6ba6a4005f1d2d021236b22234540d7e27ab2074705b3da183fb36d"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile16_vector/assembly.txt",
+      "bytes": 13317,
+      "sha256": "dfdaa92f9dcbbde4f53f75ae6d368d63b4070d8c0a8e88784a9294d61d7a12a3"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile16_vector/kernel.o",
+      "bytes": 2376,
+      "sha256": "45b357b65c3d3cc3b800ed071c2cb0812ef1f40e5dedc74b3591520b9bb49c29"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile16_vector/lowered.mlir",
+      "bytes": 25715,
+      "sha256": "8aaf97f15e828687b20c2a50f67ae6a20ee5720ee30680928b8870bc42ec4885"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile16_vector/optimized.ll",
+      "bytes": 18063,
+      "sha256": "fb0aecc29e05e32eb4283d6d71e4b413fc9abc6d7c0e224a45ff4b7e36391fd6"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile16_vector/source.mlir",
+      "bytes": 624,
+      "sha256": "aa7a69e328e96806e9bd8203fda09d228dd42e02ec5b1372236fd12f455cd125"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile16_vector/transformed.mlir",
+      "bytes": 2315,
+      "sha256": "36ec6c06d5c318f67433c8bd46f5280a226969f8df4867ab954b3753bb5e034c"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile8_vector/assembly.txt",
+      "bytes": 9275,
+      "sha256": "b38b955cd19f8d0c0b1aa9f3a188d5ecafe525fd119a3f570dded433f309c4de"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile8_vector/kernel.o",
+      "bytes": 1856,
+      "sha256": "94c9e440de4b86aaf18877b2580048788731cdfaab66e2e100deecd61e0e2208"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile8_vector/lowered.mlir",
+      "bytes": 20438,
+      "sha256": "084edebfbb4c16befdd23687770c7c6bf806d812dc5391e2107be29454ca7ae5"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile8_vector/optimized.ll",
+      "bytes": 13231,
+      "sha256": "30150ce3e5d494ef14898293b5e4a4bf0e2a76749cd87de81b1175ada9363ef3"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile8_vector/source.mlir",
+      "bytes": 624,
+      "sha256": "aa7a69e328e96806e9bd8203fda09d228dd42e02ec5b1372236fd12f455cd125"
+    },
+    {
+      "path": "matvec-512x128/parallel_tile8_vector/transformed.mlir",
+      "bytes": 2291,
+      "sha256": "007018243c44e14441a10141ade1f64fbada14de7f621d97b7730a70a5a623a4"
+    },
+    {
+      "path": "matvec-512x128/row_tile16/assembly.txt",
+      "bytes": 31386,
+      "sha256": "72ebbf01ac5272769e3afaf0566277f4d3eab05fc42a1204e8060f84eea2f89a"
+    },
+    {
+      "path": "matvec-512x128/row_tile16/kernel.o",
+      "bytes": 4560,
+      "sha256": "c5a37cd9443197631fc9fda43b7289f60ce4539c68948591b43e99f96bebeafa"
+    },
+    {
+      "path": "matvec-512x128/row_tile16/lowered.mlir",
+      "bytes": 10928,
+      "sha256": "cb0d1302de62d7567bef799c2ea4a25869aa2f46199aa9843a2c52e950a926dc"
+    },
+    {
+      "path": "matvec-512x128/row_tile16/optimized.ll",
+      "bytes": 54048,
+      "sha256": "f1452cc610385f691a20957fd796bf27810a681e0891dac03491bb7d3df17ae4"
+    },
+    {
+      "path": "matvec-512x128/row_tile16/source.mlir",
+      "bytes": 624,
+      "sha256": "aa7a69e328e96806e9bd8203fda09d228dd42e02ec5b1372236fd12f455cd125"
+    },
+    {
+      "path": "matvec-512x128/row_tile16/transformed.mlir",
+      "bytes": 1295,
+      "sha256": "f314b65c6afbe748f63b596b2b9fc9d1a31fe509c8f14eb80b94da56a082652f"
+    },
+    {
+      "path": "matvec-512x128/row_tile4/assembly.txt",
+      "bytes": 30602,
+      "sha256": "06e716226b1c0825a52e303b874bf4a7d47e40b84695fb6a294b922a42f4f0b8"
+    },
+    {
+      "path": "matvec-512x128/row_tile4/kernel.o",
+      "bytes": 4560,
+      "sha256": "23de50442311794609e822741fb4624a623a943a6d2f6d860d83902576ab6667"
+    },
+    {
+      "path": "matvec-512x128/row_tile4/lowered.mlir",
+      "bytes": 10925,
+      "sha256": "8ccf4ce2b66cef5dbdaa946ba00903c04cfc13e5046ab86370b4852e82af9ae0"
+    },
+    {
+      "path": "matvec-512x128/row_tile4/optimized.ll",
+      "bytes": 50678,
+      "sha256": "50a53386b221799af8b9bcfe0acc4721808f4bd642880b77474a707ca14a0cd3"
+    },
+    {
+      "path": "matvec-512x128/row_tile4/source.mlir",
+      "bytes": 624,
+      "sha256": "aa7a69e328e96806e9bd8203fda09d228dd42e02ec5b1372236fd12f455cd125"
+    },
+    {
+      "path": "matvec-512x128/row_tile4/transformed.mlir",
+      "bytes": 1284,
+      "sha256": "836fa9da63e643b1b3ea53d645879256130e1760099723d675a2844cf4652d0d"
+    },
+    {
+      "path": "matvec-512x16/baseline/assembly.txt",
+      "bytes": 13699,
+      "sha256": "7b273f8cbaaf42b9724adcfe7b91b33ca6230b75b25cd532f78f8aaa00d0337e"
+    },
+    {
+      "path": "matvec-512x16/baseline/kernel.o",
+      "bytes": 2416,
+      "sha256": "39cf529905025f9a6cf681074bcf450158a88622063a235c50b3879503b87641"
+    },
+    {
+      "path": "matvec-512x16/baseline/lowered.mlir",
+      "bytes": 7078,
+      "sha256": "c0c13cd58ec17cb2e570aae131b464010a75723074cd4a661376afefa0722cca"
+    },
+    {
+      "path": "matvec-512x16/baseline/optimized.ll",
+      "bytes": 28525,
+      "sha256": "a15c0a2926f9e16c5f5b1c00788c90dfb35e137e7c9502a409711ddcf8c2abd9"
+    },
+    {
+      "path": "matvec-512x16/baseline/source.mlir",
+      "bytes": 620,
+      "sha256": "bca41c3609ccc18d4d35c4530dee4caa34890e03b851c328cfbcc810f7005aea"
+    },
+    {
+      "path": "matvec-512x16/baseline/transformed.mlir",
+      "bytes": 720,
+      "sha256": "9a9a32ee9f163228e7f1ef04af5b2be262ef0c61c27283603f6d65bd1637e44e"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile16_vector/assembly.txt",
+      "bytes": 13296,
+      "sha256": "a13a6db5e87a24cb006beaa775e2ba72fcf67d1fe60f262babd85fd16ed84765"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile16_vector/kernel.o",
+      "bytes": 2376,
+      "sha256": "4b494847fd41717ec41b51bedffd17a88819e6104ee00a0cc74a09cc7db26eca"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile16_vector/lowered.mlir",
+      "bytes": 25663,
+      "sha256": "681b0fed230b66599a8456b6f42e69d302804d0b8d5a6e17c77487c81e824579"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile16_vector/optimized.ll",
+      "bytes": 18003,
+      "sha256": "9deed56fff7fe373c6903fbe365a53e25558b639990aea00d7895ff1bc7e445c"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile16_vector/source.mlir",
+      "bytes": 620,
+      "sha256": "bca41c3609ccc18d4d35c4530dee4caa34890e03b851c328cfbcc810f7005aea"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile16_vector/transformed.mlir",
+      "bytes": 2306,
+      "sha256": "480ef2185ec850b4830a00091381c77acb735c4d837b54267fda02505ec20cb8"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile8_vector/assembly.txt",
+      "bytes": 9182,
+      "sha256": "72c9cb0733fbbb0baa64c062e356be6287aaffafd5e488824b96f9905b9ac1ac"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile8_vector/kernel.o",
+      "bytes": 1816,
+      "sha256": "6139fec1ae2e113f3560a2bc41cc8f7fcf6b9ab749bb2ba86ec4579bb0b25387"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile8_vector/lowered.mlir",
+      "bytes": 20435,
+      "sha256": "94756dae25d2fd5195aea7156c98e608e6e2d13d9228e33f757c75db2de7d8b6"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile8_vector/optimized.ll",
+      "bytes": 13203,
+      "sha256": "55ea09be47e463366bce209b8341a0c26b9121db11146b4455c168ed639f3e04"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile8_vector/source.mlir",
+      "bytes": 620,
+      "sha256": "bca41c3609ccc18d4d35c4530dee4caa34890e03b851c328cfbcc810f7005aea"
+    },
+    {
+      "path": "matvec-512x16/parallel_tile8_vector/transformed.mlir",
+      "bytes": 2277,
+      "sha256": "6f505169e8b309ffcd15abf7f0f146bd14a20985a14d9139fe4d071ee1158fb5"
+    },
+    {
+      "path": "matvec-512x16/row_tile16/assembly.txt",
+      "bytes": 14296,
+      "sha256": "5e65fbbd39e40b463322d4fd95cc95539137a5476bc1ae42ab05e6e2bf509ea2"
+    },
+    {
+      "path": "matvec-512x16/row_tile16/kernel.o",
+      "bytes": 2496,
+      "sha256": "2149df36aa68c79c91a1f2097ccf57efdc8d9f7673f3ca64757610d6ee38cea8"
+    },
+    {
+      "path": "matvec-512x16/row_tile16/lowered.mlir",
+      "bytes": 10877,
+      "sha256": "237abafc3899d07959ad2f8fb7590cb633b05cda06d86e6579edaacbd20afe6d"
+    },
+    {
+      "path": "matvec-512x16/row_tile16/optimized.ll",
+      "bytes": 29030,
+      "sha256": "0a17ffd22e5e3d7bdc3bb1bb8ab0c2a13ada854ff90ed38e1eb1502fd6474b44"
+    },
+    {
+      "path": "matvec-512x16/row_tile16/source.mlir",
+      "bytes": 620,
+      "sha256": "bca41c3609ccc18d4d35c4530dee4caa34890e03b851c328cfbcc810f7005aea"
+    },
+    {
+      "path": "matvec-512x16/row_tile16/transformed.mlir",
+      "bytes": 1286,
+      "sha256": "10927192d64fb61c50ef26a11b6687501e2d4a93fe2791a0005e4bde6f1705a9"
+    },
+    {
+      "path": "matvec-512x16/row_tile4/assembly.txt",
+      "bytes": 5623,
+      "sha256": "885023696c88be7d6828a3bf564f42317ecb735aa63e3b9324ffd889ae34d0bf"
+    },
+    {
+      "path": "matvec-512x16/row_tile4/kernel.o",
+      "bytes": 1440,
+      "sha256": "e0e649fb035c66bffb011d6c6f3cecb1e01d5468dfebc625c5783425e99ee2f9"
+    },
+    {
+      "path": "matvec-512x16/row_tile4/lowered.mlir",
+      "bytes": 10921,
+      "sha256": "ab677dd8de0744e40cc8fb47cdf3028327cf3fb496f606a9be24838e7645d703"
+    },
+    {
+      "path": "matvec-512x16/row_tile4/optimized.ll",
+      "bytes": 9886,
+      "sha256": "8827a3060363e99e147e79ace4ea40275daa5f2c33ce793b27ea2dff04468b9e"
+    },
+    {
+      "path": "matvec-512x16/row_tile4/source.mlir",
+      "bytes": 620,
+      "sha256": "bca41c3609ccc18d4d35c4530dee4caa34890e03b851c328cfbcc810f7005aea"
+    },
+    {
+      "path": "matvec-512x16/row_tile4/transformed.mlir",
+      "bytes": 1275,
+      "sha256": "2e313c5fb629652fda20df5a8066e1925e580b064e097f419eb7ac73bf034d3e"
+    },
+    {
+      "path": "matvec-64x128/baseline/assembly.txt",
+      "bytes": 9080,
+      "sha256": "c0096f58864b711e3900b202463de9eb1a40c8a3f71d19399a410d445569cc34"
+    },
+    {
+      "path": "matvec-64x128/baseline/kernel.o",
+      "bytes": 1800,
+      "sha256": "6ebf39c35916350d03f4733f296fe561640e45e5a6f6ce4740f47793eb42ab06"
+    },
+    {
+      "path": "matvec-64x128/baseline/lowered.mlir",
+      "bytes": 7079,
+      "sha256": "59a20abff8bc53e5fa7e0716ad569814f818c8275a020b366c99c9d497fe2729"
+    },
+    {
+      "path": "matvec-64x128/baseline/optimized.ll",
+      "bytes": 12385,
+      "sha256": "117b28bc7eaf5585468975c49c68c0591dbeaad394ebb62610c2fe42b9d044e0"
+    },
+    {
+      "path": "matvec-64x128/baseline/source.mlir",
+      "bytes": 619,
+      "sha256": "a86c1ffae605f21be1565e1fb3b1d6739768684882becc054db5987782b41fc7"
+    },
+    {
+      "path": "matvec-64x128/baseline/transformed.mlir",
+      "bytes": 719,
+      "sha256": "9b14c1a75d4a79656bb0f5b34d2cadb674722dc6209ead225813ceb91e33a3c0"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile16_vector/assembly.txt",
+      "bytes": 38625,
+      "sha256": "fd3e4344b19e15b35077f5a1d603b4e730c94cd6c8e164e27fb737d010f3ba91"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile16_vector/kernel.o",
+      "bytes": 5768,
+      "sha256": "3142ca89776dd5036bb5dcab2511db7f3cd90adaa4a8f6c5f39a520692ee6e56"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile16_vector/lowered.mlir",
+      "bytes": 25714,
+      "sha256": "c3c41c7f78dc6dfe6412f6ee8a0172bc83cffa69d0db1a4c9b54511cb5289659"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile16_vector/optimized.ll",
+      "bytes": 57496,
+      "sha256": "f2dee40a116dbd1d8e8968646b2adff9c191e198fffbd73c3fa7dc26bbfbb088"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile16_vector/source.mlir",
+      "bytes": 619,
+      "sha256": "a86c1ffae605f21be1565e1fb3b1d6739768684882becc054db5987782b41fc7"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile16_vector/transformed.mlir",
+      "bytes": 2307,
+      "sha256": "6c280ceb4758c0403cb43a0e7a9d21ea891d13b2a547957f791573ccb9c4ae3c"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile8_vector/assembly.txt",
+      "bytes": 10274,
+      "sha256": "511002c2752d3527dac846ee4113f4210593d38d9ba96369fcd2f233650490a1"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile8_vector/kernel.o",
+      "bytes": 1936,
+      "sha256": "e0e33ac34c24814c064c2217f480e5a623f0cd9a0a460baaa44a0b4f7f3fead7"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile8_vector/lowered.mlir",
+      "bytes": 20437,
+      "sha256": "52f74cd21d9a6b9b8245f7217519cff28b65c2fb4eef2fdafd3532f71c972782"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile8_vector/optimized.ll",
+      "bytes": 13219,
+      "sha256": "4e3791f5b1d44b60aca90c3233db753392ce42f8c223af06f85448281ec5ce88"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile8_vector/source.mlir",
+      "bytes": 619,
+      "sha256": "a86c1ffae605f21be1565e1fb3b1d6739768684882becc054db5987782b41fc7"
+    },
+    {
+      "path": "matvec-64x128/parallel_tile8_vector/transformed.mlir",
+      "bytes": 2283,
+      "sha256": "fda65509358471c3ed2a53c8546a6cde35aa185fe70b6a2b72978f40a4c83d5e"
+    },
+    {
+      "path": "matvec-64x128/row_tile16/assembly.txt",
+      "bytes": 31921,
+      "sha256": "114d96580cf442dba5ec7a92f2c8d8aff2e950afae55437a72ca27635b558e4f"
+    },
+    {
+      "path": "matvec-64x128/row_tile16/kernel.o",
+      "bytes": 4968,
+      "sha256": "b072ae325850ef517b17db17fa28cdcc1746a3d498dcda6ae7c6bb801cfce317"
+    },
+    {
+      "path": "matvec-64x128/row_tile16/lowered.mlir",
+      "bytes": 10927,
+      "sha256": "7afdaf1f0bc5f1aca84883ac0567f420c2a7cd0524267763c9039a2337d23c34"
+    },
+    {
+      "path": "matvec-64x128/row_tile16/optimized.ll",
+      "bytes": 54045,
+      "sha256": "74f69828beb60319c46497df232e9a3504b4156c89c849c29109a5297a8a3ccd"
+    },
+    {
+      "path": "matvec-64x128/row_tile16/source.mlir",
+      "bytes": 619,
+      "sha256": "a86c1ffae605f21be1565e1fb3b1d6739768684882becc054db5987782b41fc7"
+    },
+    {
+      "path": "matvec-64x128/row_tile16/transformed.mlir",
+      "bytes": 1287,
+      "sha256": "4a7c0743cbb08d13bdeca097b9fc396ff6653e26e8afe1ebbe7a5fdcbe13713a"
+    },
+    {
+      "path": "matvec-64x128/row_tile4/assembly.txt",
+      "bytes": 31698,
+      "sha256": "b8b8d10393b1f70b378ab9f1100dccab1a1dea7ab9dcabdcc2ef204654284ccf"
+    },
+    {
+      "path": "matvec-64x128/row_tile4/kernel.o",
+      "bytes": 4888,
+      "sha256": "3fa69c474a4703d2d29b1f4f16c5113d2c52120561d23a1e81cc1282d50e9c02"
+    },
+    {
+      "path": "matvec-64x128/row_tile4/lowered.mlir",
+      "bytes": 10924,
+      "sha256": "344b67740f2cc6f039c1ac45d5bf907d7e8fd0330ca68a02aac851f2e2bc47bb"
+    },
+    {
+      "path": "matvec-64x128/row_tile4/optimized.ll",
+      "bytes": 50666,
+      "sha256": "ca226048aceb788e6d466d623874f2deb076c88438e15f8a7994438a95cdee77"
+    },
+    {
+      "path": "matvec-64x128/row_tile4/source.mlir",
+      "bytes": 619,
+      "sha256": "a86c1ffae605f21be1565e1fb3b1d6739768684882becc054db5987782b41fc7"
+    },
+    {
+      "path": "matvec-64x128/row_tile4/transformed.mlir",
+      "bytes": 1276,
+      "sha256": "e40aa8d41538dafaac0fe0ad13db0c934d7f5e6772cf52a89995cc6b4fd6221d"
+    },
+    {
+      "path": "matvec-8x64/baseline/assembly.txt",
+      "bytes": 42714,
+      "sha256": "b9c0572bde50fb02f6f4e5d69730679e35ac2bd2aeb104038e63db5171574026"
+    },
+    {
+      "path": "matvec-8x64/baseline/kernel.o",
+      "bytes": 6144,
+      "sha256": "fe155dcf6b3301d10b8ddaea7523fc4c9cb661b2c3c051c980c8c64eccc35209"
+    },
+    {
+      "path": "matvec-8x64/baseline/lowered.mlir",
+      "bytes": 7076,
+      "sha256": "4a67503e83e92b8eebe7f7036eccd340ac256067427904670ecbf134e45b532a"
+    },
+    {
+      "path": "matvec-8x64/baseline/optimized.ll",
+      "bytes": 78579,
+      "sha256": "c25810c8e073b6127c2eb3fd51ca6d0d3a3f229b0b906097208e1da3b0da48b5"
+    },
+    {
+      "path": "matvec-8x64/baseline/source.mlir",
+      "bytes": 610,
+      "sha256": "bf4d269387d57e01cddf017045c880452012127a2bd3252372719a2928a9619a"
+    },
+    {
+      "path": "matvec-8x64/baseline/transformed.mlir",
+      "bytes": 710,
+      "sha256": "240797ecec31c86646bd70fb3270cda030f556492ae6741979080626a8ccae8b"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile16_vector/assembly.txt",
+      "bytes": 6259,
+      "sha256": "d0f21d3c6cb80a97a9c4e4b3d59147f20a74717c913e730b4ad7ab1a484fc05f"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile16_vector/kernel.o",
+      "bytes": 1312,
+      "sha256": "55fe9e27e847aa4b358647def0b2ff203fb3a486f916aad4505e2d90e172ea20"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile16_vector/lowered.mlir",
+      "bytes": 18114,
+      "sha256": "c4d87ebcc30130c08cecada0bc245468fe6d3b302e146a20fbeff7669927a03f"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile16_vector/optimized.ll",
+      "bytes": 11402,
+      "sha256": "3b2f28f8099d823f00125789cbb97c9ac1edfa49cb23b9a69d5a5a3cb69b7a98"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile16_vector/source.mlir",
+      "bytes": 610,
+      "sha256": "bf4d269387d57e01cddf017045c880452012127a2bd3252372719a2928a9619a"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile16_vector/transformed.mlir",
+      "bytes": 3044,
+      "sha256": "8bccc73ada21a3571c8f39b000afb964727cb6a02922f1ec8c8973bcef7738b4"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile8_vector/assembly.txt",
+      "bytes": 6259,
+      "sha256": "d0f21d3c6cb80a97a9c4e4b3d59147f20a74717c913e730b4ad7ab1a484fc05f"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile8_vector/kernel.o",
+      "bytes": 1312,
+      "sha256": "55fe9e27e847aa4b358647def0b2ff203fb3a486f916aad4505e2d90e172ea20"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile8_vector/lowered.mlir",
+      "bytes": 18114,
+      "sha256": "fbd18788a5006bab7d5c30bc6e03541f89dd1147d31551b7753a685816fdbaa5"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile8_vector/optimized.ll",
+      "bytes": 11402,
+      "sha256": "3b2f28f8099d823f00125789cbb97c9ac1edfa49cb23b9a69d5a5a3cb69b7a98"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile8_vector/source.mlir",
+      "bytes": 610,
+      "sha256": "bf4d269387d57e01cddf017045c880452012127a2bd3252372719a2928a9619a"
+    },
+    {
+      "path": "matvec-8x64/parallel_tile8_vector/transformed.mlir",
+      "bytes": 2266,
+      "sha256": "cdf3df3cb62014e1c6affa39ff1403a2f8d086435d4755aad4680db286ddb2cb"
+    },
+    {
+      "path": "matvec-8x64/row_tile16/assembly.txt",
+      "bytes": 42714,
+      "sha256": "b9c0572bde50fb02f6f4e5d69730679e35ac2bd2aeb104038e63db5171574026"
+    },
+    {
+      "path": "matvec-8x64/row_tile16/kernel.o",
+      "bytes": 6144,
+      "sha256": "fe155dcf6b3301d10b8ddaea7523fc4c9cb661b2c3c051c980c8c64eccc35209"
+    },
+    {
+      "path": "matvec-8x64/row_tile16/lowered.mlir",
+      "bytes": 7076,
+      "sha256": "4a67503e83e92b8eebe7f7036eccd340ac256067427904670ecbf134e45b532a"
+    },
+    {
+      "path": "matvec-8x64/row_tile16/optimized.ll",
+      "bytes": 78579,
+      "sha256": "c25810c8e073b6127c2eb3fd51ca6d0d3a3f229b0b906097208e1da3b0da48b5"
+    },
+    {
+      "path": "matvec-8x64/row_tile16/source.mlir",
+      "bytes": 610,
+      "sha256": "bf4d269387d57e01cddf017045c880452012127a2bd3252372719a2928a9619a"
+    },
+    {
+      "path": "matvec-8x64/row_tile16/transformed.mlir",
+      "bytes": 1377,
+      "sha256": "41951e5d9a54d6774e76415176522819dc9be1a8dbc0c74fd17899021d1abb32"
+    },
+    {
+      "path": "matvec-8x64/row_tile4/assembly.txt",
+      "bytes": 42714,
+      "sha256": "b9c0572bde50fb02f6f4e5d69730679e35ac2bd2aeb104038e63db5171574026"
+    },
+    {
+      "path": "matvec-8x64/row_tile4/kernel.o",
+      "bytes": 6144,
+      "sha256": "fe155dcf6b3301d10b8ddaea7523fc4c9cb661b2c3c051c980c8c64eccc35209"
+    },
+    {
+      "path": "matvec-8x64/row_tile4/lowered.mlir",
+      "bytes": 10919,
+      "sha256": "f2bf33c163a695e93b471e5b0cb16a251b7b72541909fad4e5868a09596f437f"
+    },
+    {
+      "path": "matvec-8x64/row_tile4/optimized.ll",
+      "bytes": 78255,
+      "sha256": "1d36af4d6b42d63ba1ea531e451b7126c5cd3219b423f94bda90f384ed32fa64"
+    },
+    {
+      "path": "matvec-8x64/row_tile4/source.mlir",
+      "bytes": 610,
+      "sha256": "bf4d269387d57e01cddf017045c880452012127a2bd3252372719a2928a9619a"
+    },
+    {
+      "path": "matvec-8x64/row_tile4/transformed.mlir",
+      "bytes": 1259,
+      "sha256": "88238d544fe7df0eb4a40de0c56f4002639685580e54d4000cafb4d64f61b339"
+    }
+  ]
+}

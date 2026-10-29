@@ -52,7 +52,7 @@ def main():
         summary["workloads"].append(entry)
         rows.append(f"| {workload} | {reference * 1000:.3f} | {winner} | {entry['descriptive_runtime_ratio']:.2f}x | {' / '.join(choices.values())} |")
     summary["workloads_with_reuse_dependent_estimated_choice"] = sum(len(set(w["estimated_cost_choices"].values())) > 1 for w in summary["workloads"])
-    rows += ["", "The C+N*T choice estimates include measured transformations/backend compilation but no learned policy selection, which does not exist yet. "
+    rows += ["", "The C+N*T choice estimates include measured transformations/backend compilation; no learned selector was used in this pilot. "
              "Compile cost was measured once per candidate, and complete deployment batches were not measured. These estimates cannot establish H1 yet.", "",
              "Reproduce with `python3 scripts/summarize_pilot.py <run-directory>`. Source revision, protocol hash, executable hash, package versions, affinity, all calibration samples and every block are retained beside this report."]
     (args.run / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")

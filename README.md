@@ -12,9 +12,11 @@ The question is whether learning improves total deployment cost, including compi
 - [Compiler/runtime design](docs/compiler-runtime.md)
 - [Training and observation design](docs/learning.md)
 - [100-candidate development pilot](results/optimization-pilot-001/observations.md)
+- [Repaired compiler pilot](results/optimization-pilot-002/observations.md)
 - [Fresh deployment diagnostic](results/deployment-confirmation-001/observations.md)
 - [Compiler failure and repair](docs/compiler-repair-001.md)
 - [Budgeted adaptation design](docs/adaptation-design.md)
+- [Bounded campaign and continuation](docs/campaign.md)
 - [Original protocol issue](https://github.com/HassanAlhajAli/rl-mlir-optimizer/issues/1)
 
 Scope: restricted numerical kernels, FP64, LLVM/MLIR 18.1.3, x86-64-v3 on Intel under Ubuntu/WSL2. These are not Arm results. This repository is separate from the earlier gem5 and bytecode-fusion projects.
