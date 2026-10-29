@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "purpose": "fresh targeted confirmation after the exploratory pilot, not held-out evaluation",
+  "selection_rule": "inspect one large vector gain and one vector regression; both selected after pilot and disclosed",
+  "seed": 971,
+  "rounds": 5,
+  "workloads": [{"family":"matvec","shape":[128,256]}, {"family":"matmul","shape":[64,64,64]}],
+  "schedules": ["baseline", "parallel_tile8_vector", "parallel_tile16_vector"],
+  "reuse_counts": [1,100,10000]
+}

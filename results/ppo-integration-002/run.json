@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "timesteps_complete",
+  "revision": "8117ffa010683a22ffcfedb962d80f7c9014ff00",
+  "binary_hash": "0145024d4514234bb790d0b5cdfd4f8527e892858f9c66668c1feef7ee3e09c4",
+  "objective": "reuse",
+  "seed": 7,
+  "max_new": 360,
+  "max_requests": 512,
+  "wall_limit_hours": 0.5,
+  "requested_timesteps": 512,
+  "corpus_sha256": "1ea072ede311df0bb1375dd041c31ce134cdf38a1aeb896fa2175752e97484a1",
+  "role": "development run; not selected on validation and not a final result",
+  "compiler_initialization_ms": 26.442697999982556,
+  "timesteps": 512,
+  "episodes": 144,
+  "counters": {
+    "candidate_requests": 144,
+    "reference_requests": 144,
+    "new_measurements": 219,
+    "cache_hits": 69,
+    "worker_counts": {
+      "worker_requests": 3893,
+      "compile_requests": 439,
+      "actual_compilations": 354,
+      "release_requests": 439,
+      "clear_cache_requests": 220,
+      "analyze_requests": 657,
+      "invoke_requests": 438,
+      "actual_invocations": 210473554,
+      "benchmark_requests": 1700
+    },
+    "elapsed_seconds": 317.996846242
+  }
+}

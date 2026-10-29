@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "guest_cpu": 0,
+  "source_revision": "b5c6e1715615540ac426efce9df962815e240ba1",
+  "worker_sha256": "304ea103fc9df79f037e727e2d10de8efd6d51e61e4819d44120a98c516d6c96",
+  "protocol_sha256": "180041e267ea98d07217ee9dc0156d4d5a024218428b1e0239507fabdcbaafc3",
+  "selection": "inspect one large vector gain and one vector regression; both selected after pilot and disclosed",
+  "count": 90,
+  "boundary": "fresh compile + installation/owned buffer setup + N invocations; transport, compiler-service startup, independent validation and teardown excluded",
+  "elapsed_seconds": 28.920412155999998
+}

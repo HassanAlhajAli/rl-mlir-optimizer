@@ -27,4 +27,12 @@ First bounded integration run (development only):
 .venv/bin/python scripts/train_ppo.py --output runs/ppo-integration-001 --seed 7 --objective reuse --max-new 160 --max-requests 256 --hours 0.5 --timesteps 512
 ```
 
-This is not the five-seed study and does not select a final checkpoint. Imitation, GRPO, warm-PPO adaptation, supervised/search baselines and sealed final evaluation remain separate required stages. Do not describe them as implemented merely because they appear in the research protocol.
+The first run stopped before learning because of stack growth in generated code. The repaired second run completed512 steps,144 episodes and20 optimizer epochs; its checkpoint and evidence are under `results/ppo-integration-002`. This is not the five-seed study and does not select a final checkpoint.
+
+Balanced imitation and training-only critic fitting are implemented in `imitation.py`. The group controller and gradient updates in `adaptation.py` implement frozen sampling, GRPO, warm PPO, random legal sampling and prefix-mutation search. Nine Python checks cover learning, weights, exact budgets, reset isolation and zero-variance updates. These mechanics need measured comparisons after the demonstration dataset is built. The supervised cost predictor, complete baseline evaluation and sealed final study remain outstanding.
+
+`collect_experience.py` records fixed, heuristic and random trajectories. `pretrain.py` accepts only matching compiler executables and training/validation data, remeasures the best two histories plus all candidates within5% of the current leader, and retains near-tie and drift flags. Actor contexts are equally weighted; critic fitting draws one trajectory/state per training context per epoch. Validation selects the actor by demonstration likelihood, with measured deployment validation still required before final release. Pretraining is supervised learning, not offline RL.
+
+`run_adaptation.py` starts independent actors and measurement caches, enforces exact candidate budgets and measures a fresh native deployment of the selected schedule. Warm PPO requires a critic trained on absolute negative log cost. The detailed update definition is in `adaptation-design.md`. The script currently accepts development splits only. A single development run is not the final five-round study.
+
+Measurement protocol v2 includes native compile setup and owned-buffer installation in C and records first invocation separately. Original v1 measurements remain archived with their original hashes and boundaries.
