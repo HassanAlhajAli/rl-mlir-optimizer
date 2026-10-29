@@ -8,11 +8,12 @@ from pathlib import Path
 
 
 class Worker:
-    def __init__(self, executable: str | Path, timeout: float = 120, memory_limit_bytes: int = 4 * 1024**3):
+    def __init__(self, executable: str | Path, timeout: float = 120, memory_limit_bytes: int = 4 * 1024**3,
+                 stderr=None):
         if timeout <= 0 or memory_limit_bytes <= 0:
             raise ValueError("worker time and memory limits must be positive")
         self.process = subprocess.Popen([str(executable)], stdin=subprocess.PIPE,
-                                        stdout=subprocess.PIPE, text=True, bufsize=1)
+                                        stdout=subprocess.PIPE, stderr=stderr, text=True, bufsize=1)
         self.memory_limit_bytes = memory_limit_bytes
         # Limit the child before sending any compiler request. prlimit avoids
         # Python preexec hooks after a potentially multithreaded trainer forks.
