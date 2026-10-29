@@ -36,3 +36,8 @@ The [training-selected fixed baseline](fixed-baseline.md) now has a complete-gri
 collector, evidence checks, selection rule and deployment integration. It has
 synthetic correctness coverage only. The 2,048-cell current-backend training grid
 has not run and no fitted fixed artifact exists. This does not reopen training.
+
+[Checkpoint validation and ten-run coverage](checkpoint-validation.md) now require
+complete validation coverage and hashed checkpoint/evidence identities. The
+implementation passed synthetic end-to-end checks; no real current-backend
+validation selection has run. The coverage report is not a full method freeze.

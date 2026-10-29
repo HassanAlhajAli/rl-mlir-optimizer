@@ -15,6 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "python"))
 from rlmlir.policies import policy_digest
 from rlmlir.corpus import FrozenCorpus
+from rlmlir.campaign_readiness import report as readiness_report
+from rlmlir.experiment import provenance
 
 
 def require(condition, message):
@@ -93,7 +95,7 @@ def audit(directory):
         require(latest._n_updates > 0 and policy_digest(initial.policy) != policy_digest(latest.policy), "missing policy update")
         summary["jobs"][name] = {
             "status": actual[name]["status"], "objective": meta["objective"], "seed": meta["seed"],
-            "termination_reason": meta["reason"], "accepted": len(records)-len(failures), "failures": failures,
+            "termination_reason": meta.get("reason"), "accepted": len(records)-len(failures), "failures": failures,
             "candidate_requests": counts["candidate_requests"], "new_measurements": counts["new_measurements"],
             "cache_hits": counts["cache_hits"], "episodes": len(trajectories), "timesteps": meta["timesteps"],
             "optimizer_epochs": latest._n_updates, "initial_policy_digest": policy_digest(initial.policy),
@@ -109,8 +111,17 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory", type=Path)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--readiness-only", action="store_true", help="check all ten runs and validation eligibility without loading models")
+    parser.add_argument("--config", type=Path, default=ROOT / "configs/ppo-campaign.json")
+    parser.add_argument("--validations", type=Path, help="JSON mapping from each job name to its validation directory")
     args = parser.parse_args()
-    result = audit(args.directory)
+    if args.output.exists():
+        raise ValueError("audit output exists; preserve previous evidence")
+    if args.readiness_only:
+        validations = json.loads(args.validations.read_text()) if args.validations else None
+        result = readiness_report(args.directory, args.config, provenance(ROOT), validations)
+    else:
+        result = audit(args.directory)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))

@@ -36,6 +36,12 @@ security boundary against somebody rewriting the code or manifest. Correctness
 tests may inspect held-out shape metadata but do not time those programs.
 Standalone compiler correctness tools still accept arbitrary small test kernels.
 
+[Version-2 checkpoint validation and ten-run coverage](checkpoint-validation.md)
+now verify complete checkpoint/program/reuse coverage, immutable candidate
+identities, separately selected runs, and exact objective/seed accounting. The
+coverage report cannot enable held-out access or replace the remaining method
+freeze and compiler-stability evidence.
+
 ## What is still required before opening final performance
 
 - Resolve the current compiler continuation gate and freeze the study allocation.
