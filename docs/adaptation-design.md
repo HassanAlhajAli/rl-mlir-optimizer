@@ -35,6 +35,10 @@ noise. This control must never be described as evidence of a learning benefit.
 Diagnostic tests of the update mechanics and a small development run do not
 constitute the five-seed compiler study. Held-out performance remains sealed.
 
+The [version-2 evidence contract](adaptation-evidence.md) adds durable partial
+trial records and explicit deployment acceptance checks. It does not change
+these update equations or budgets.
+
 ## Compatibility before an experiment
 
 Measured adaptation requires the policy's compiler executable hash, corpus hash,

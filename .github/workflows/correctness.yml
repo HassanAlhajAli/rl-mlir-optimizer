@@ -12,4 +12,4 @@ jobs:
       - run: python3 -m venv .venv
       - run: .venv/bin/python -m pip install torch==2.15.0+cpu --index-url https://download.pytorch.org/whl/cpu
       - run: .venv/bin/python -m pip install -r requirements.lock.txt
-      - run: .venv/bin/python -m pytest tests/test_learning.py tests/test_adaptation.py tests/test_predictor.py tests/test_queue.py tests/test_corpus.py tests/test_comparison.py tests/test_fixed_baseline.py tests/test_validation.py -q
+      - run: .venv/bin/python -m pytest tests/test_learning.py tests/test_adaptation.py tests/test_adaptation_controller.py tests/test_predictor.py tests/test_queue.py tests/test_corpus.py tests/test_comparison.py tests/test_fixed_baseline.py tests/test_validation.py -q

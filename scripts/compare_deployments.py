@@ -15,17 +15,7 @@ from rlmlir.comparison import DevelopmentComparison, interleaved_order
 from rlmlir.corpus import load
 from rlmlir.experiment import initialize, measurement_lease, provenance, require_compatible_provenance
 from rlmlir.worker import Worker
-
-
-def json_safe(value):
-    """Retain invalid numeric diagnostics without emitting nonstandard JSON."""
-    if isinstance(value, float) and not math.isfinite(value):
-        return {"invalid_float": repr(value)}
-    if isinstance(value, dict):
-        return {k: json_safe(v) for k, v in value.items()}
-    if isinstance(value, (list, tuple)):
-        return [json_safe(v) for v in value]
-    return value
+from rlmlir.records import json_safe
 
 
 def prepare(config):

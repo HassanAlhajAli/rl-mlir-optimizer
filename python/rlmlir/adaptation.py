@@ -82,13 +82,31 @@ def update_group(policy, reference, trajectories, optimizer, method):
             "update_ms":(time.perf_counter()-start)*1000,"metrics":metrics}
 
 
-def adapt(worker, evaluator, workload, reuse, initial_policy, *, method, budget, seed=7):
+def adapt(worker, evaluator, workload, reuse, initial_policy, *, method, budget, seed=7, emit=None):
+    """Optional durable events retain completed requests if a later trial fails."""
+    def record(event):
+        if emit is not None:
+            emit(copy.deepcopy({"schema_version": 1, "method": method, "budget": budget, "seed": seed,
+                                "workload": workload, "reuse": reuse, **event}))
+    try:
+        return _adapt(worker, evaluator, workload, reuse, initial_policy,
+                      method=method, budget=budget, seed=seed, emit=record)
+    except BaseException as error:
+        try:
+            record({"event": "context_failed", "reason": repr(error), "counters": evaluator.counters()})
+        except Exception as logging_error:
+            error.add_note("Could not persist failure event: " + repr(logging_error))
+        raise
+
+
+def _adapt(worker, evaluator, workload, reuse, initial_policy, *, method, budget, seed, emit):
     if budget not in (8,16,32) or method not in ("frozen","grpo","ppo","random","mutation"):
         raise ValueError("unsupported method or candidate budget")
     if evaluator.requests or evaluator.records:
         raise ValueError("each adaptation context requires an independent empty measurement cache")
     start = time.perf_counter()
     initial_digest = policy_digest(initial_policy)
+    emit({"event": "context_started", "initial_policy_digest": initial_digest})
     rng = np.random.default_rng(seed)
     torch.manual_seed(seed)
     policy, reference = copy.deepcopy(initial_policy), copy.deepcopy(initial_policy)
@@ -116,27 +134,34 @@ def adapt(worker, evaluator, workload, reuse, initial_policy, *, method, budget,
             identity = json.dumps(candidate["schedule"],sort_keys=True)
             candidate["duplicate"] = identity in seen
             seen.add(identity)
+            emit({"event": "request_started", "request": index+1, "candidate": candidate})
             measurement = evaluator.measure(workload,candidate["schedule"])
             cost = deployment_ms(measurement["compile_ms"],measurement["execution_ms"],reuse,
                                  selection_ms=candidate["selection_ms"],
-                                 installation_ms=measurement.get("installation_ms",0.))
+                                 installation_ms=measurement["installation_ms"])
             candidate.update(request=index+1, cost_ms=cost, reward=-math.log(cost),
                              measurement_key=measurement["key"],
                              unresolved_drift=measurement["unresolved_drift"])
             group.append(candidate)
             requests.append(candidate)
+            emit({"event": "request_completed", "request": index+1, "candidate": candidate})
             if best is None or cost < best["cost_ms"]:
                 best = candidate
         update = None
         if method in ("grpo","ppo") and offset+8 < budget:
+            emit({"event": "update_started", "requests": offset+8})
             update = update_group(policy,reference,group,optimizer,method)
         groups.append({"requests":offset+8,"unique_schedules":len(seen),"update":update,
                        "best_cost_ms":best["cost_ms"],"elapsed_ms":(time.perf_counter()-start)*1000})
+        emit({"event": "group_completed", **groups[-1]})
     final_digest = policy_digest(policy)
     if policy_digest(initial_policy) != initial_digest:
         raise RuntimeError("adaptation mutated the shared initial policy")
-    return {"schema_version":1,"method":method,"budget":budget,"seed":seed,
+    result = {"schema_version":1,"method":method,"budget":budget,"seed":seed,
             "initial_policy_digest":initial_digest,"final_policy_digest":final_digest,
             "workload":workload,"reuse":reuse,"requests":requests,"groups":groups,
             "best":best,"tuning_ms":(time.perf_counter()-start)*1000,
             "counters":evaluator.counters()}
+    emit({"event": "context_completed", "initial_policy_digest": initial_digest,
+          "final_policy_digest": final_digest, "tuning_ms": result["tuning_ms"], "counters": result["counters"]})
+    return result

@@ -2,6 +2,19 @@
 import math
 
 
+def check_fresh_deployment(deployment, count):
+    """Check the deployment contract; callers separately verify numerical output."""
+    for name in ("compile_ms", "installation_ms", "execution_ms", "total_ms"):
+        value = deployment[name]
+        if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
+            raise RuntimeError("invalid timing: " + name)
+    if deployment["cache_hit"] is not False or type(deployment["count"]) is not int or deployment["count"] != count:
+        raise RuntimeError("deployment was not fresh or did not execute N calls")
+    parts = sum(deployment[k] for k in ("compile_ms", "installation_ms", "execution_ms"))
+    if not math.isclose(parts, deployment["total_ms"], rel_tol=1e-9, abs_tol=1e-6):
+        raise RuntimeError("deployment cost components do not sum to total")
+
+
 def validate(output, expected):
     if len(output) != len(expected):
         raise RuntimeError("output length mismatch")

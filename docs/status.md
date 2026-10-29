@@ -2,6 +2,11 @@
 
 This file distinguishes the approved scope from completed work. Issue #1 tracks the full study.
 
+The [adaptation evidence checks](adaptation-evidence.md) now enforce fresh
+deployment costs and retain trial history across failures. Their synthetic
+verification does not resolve the stopped compiler campaign or establish a
+current-backend adaptation result.
+
 | Gate | State | Evidence required |
 |---|---|---|
 | A: environment/JIT pilot | Passed for bounded development; final noise checks remain required | Correct native code; repaired landscape resolves large effects while retaining drift flags |

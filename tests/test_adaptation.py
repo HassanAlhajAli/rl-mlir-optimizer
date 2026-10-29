@@ -15,6 +15,7 @@ from rlmlir.imitation import fit_actor, fit_critic
 from rlmlir.policies import create_policy, actor_parameters, load_policy, save_policy
 from rlmlir.selection import sample_schedule
 from rlmlir.worker import Worker
+import rlmlir.adaptation as adaptation_module
 
 
 @pytest.mark.parametrize("field", COMPATIBILITY_FIELDS)
@@ -95,9 +96,49 @@ class DeterministicEvaluator:
         self.requests, self.records = 0, {}
     def measure(self,workload,actions):
         self.requests += 1
-        return {"compile_ms":10.,"execution_ms":1.,"key":str(actions),"unresolved_drift":False}
+        return {"compile_ms":10.,"installation_ms":0.,"execution_ms":1.,"key":str(actions),"unresolved_drift":False}
     def counters(self):
         return {"candidate_requests":self.requests}
+
+
+@pytest.mark.parametrize("failure", [None, "request", "update"])
+def test_events_preserve_partial_history_and_update_order(monkeypatch, failure):
+    policy = create_policy(7)
+    evaluator = DeterministicEvaluator()
+    workload = {"id": "synthetic", "family": "matvec", "shape": [3, 5], "split": "train"}
+    events = []
+    monkeypatch.setattr(adaptation_module, "sample_schedule", lambda *_a, **_k: {"schedule": [], "transitions": []})
+    measure = evaluator.measure
+    def measured(*args):
+        if failure == "request" and evaluator.requests == 2:
+            evaluator.requests += 1
+            raise RuntimeError("third request failed")
+        return measure(*args)
+    evaluator.measure = measured
+    def updated(*_args):
+        if failure == "update":
+            raise RuntimeError("policy update failed")
+        return {"skipped": False, "epochs": 4}
+    monkeypatch.setattr(adaptation_module, "update_group", updated)
+    if failure:
+        with pytest.raises(RuntimeError, match="failed"):
+            adapt(None, evaluator, workload, 100, policy, method="grpo", budget=16, emit=events.append)
+        assert events[-1]["event"] == "context_failed"
+        assert not any(e["event"] == "context_completed" for e in events)
+        completed = [e for e in events if e["event"] == "request_completed"]
+        assert len(completed) == (2 if failure == "request" else 8)
+    else:
+        result = adapt(None, evaluator, workload, 100, policy, method="grpo", budget=16, emit=events.append)
+        assert events[-1]["event"] == "context_completed"
+        position = next(i for i, e in enumerate(events) if e["event"] == "update_started")
+        assert events[position - 1]["request"] == 8
+        assert events[position + 1]["event"] == "group_completed"
+        assert events[position + 2]["request"] == 9
+        assert len([e for e in events if e["event"] == "update_started"]) == 1
+        assert result["counters"]["candidate_requests"] == 16
+    # Completed candidates are mutated in place by adaptation, but start events are snapshots.
+    assert all("cost_ms" not in e["candidate"] for e in events if e["event"] == "request_started")
+    assert all(e["workload"] == workload and e["budget"] == 16 for e in events)
 
 
 def test_exact_budget_reset_and_first_group_control():

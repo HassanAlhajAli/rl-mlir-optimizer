@@ -7,7 +7,7 @@ import time
 
 from .corpus import FrozenCorpus
 from .kernels import GENERATORS, REFERENCES
-from .measurement import calibrate, validate
+from .measurement import calibrate, validate, check_fresh_deployment
 
 
 class AnalysisOnlyWorker:
@@ -135,13 +135,7 @@ class DevelopmentComparison:
                 sample["deployment"] = {**deployment, "correct": False}
                 error = self.checked_output(record, "deployment", output, expected)
                 sample["deployment"].update(correct=True, max_abs_error=error)
-                for name in ("compile_ms", "installation_ms", "execution_ms", "total_ms"):
-                    require_timing(deployment[name], name)
-                if deployment["cache_hit"] is not False or deployment["count"] != case["reuse"]:
-                    raise RuntimeError("deployment was not fresh or did not execute N calls")
-                parts = sum(deployment[k] for k in ("compile_ms", "installation_ms", "execution_ms"))
-                if not math.isclose(parts, deployment["total_ms"], rel_tol=1e-9, abs_tol=1e-6):
-                    raise RuntimeError("deployment cost components do not sum to total")
+                check_fresh_deployment(deployment, case["reuse"])
                 measured = self.request("benchmark", handle=built["handle"], buffers=buffers, count=count)
                 self.checked_output(record, "steady", measured["output"], expected)
                 after = self.request("benchmark", handle=anchor["handle"], buffers=buffers, count=anchor_count)
