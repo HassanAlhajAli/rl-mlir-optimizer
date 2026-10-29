@@ -1,0 +1,104 @@
+"""Bounded, checkpointed measured PPO training; held-out evaluation is unavailable."""
+import argparse
+import hashlib
+import json
+import os
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+import torch
+from sb3_contrib import MaskablePPO
+from stable_baselines3.common.callbacks import BaseCallback
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "python"))
+from rlmlir.corpus import load
+from rlmlir.environment import CompilerEnv
+from rlmlir.evaluator import BudgetReached, Evaluator
+from rlmlir.worker import Worker
+
+
+class Checkpoints(BaseCallback):
+    def __init__(self, directory):
+        super().__init__()
+        self.directory = directory
+    def _on_step(self):
+        return True
+    def _on_rollout_end(self):
+        self.model.save(self.directory / f"behavior-{self.num_timesteps}")
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--objective", choices=["reuse","runtime"], default="reuse")
+    parser.add_argument("--seed", type=int, default=7)
+    parser.add_argument("--max-new", type=int, default=4096)
+    parser.add_argument("--max-requests", type=int, default=8192)
+    parser.add_argument("--hours", type=float, default=8)
+    parser.add_argument("--timesteps", type=int, default=49152)
+    args = parser.parse_args()
+    if args.output.exists():
+        raise SystemExit("output exists; explicit checkpoint continuation is required")
+    if min(args.max_new,args.max_requests,args.hours,args.timesteps) <= 0:
+        raise SystemExit("budgets must be positive")
+    if subprocess.check_output(["git", "status", "--porcelain", "--untracked-files=no"], cwd=ROOT, text=True).strip():
+        raise SystemExit("commit tracked changes before training")
+    args.output.mkdir(parents=True)
+    torch.set_num_threads(1)
+    os.sched_setaffinity(0, {min(os.sched_getaffinity(0))})
+    executable = ROOT / "build/rlmlir-worker"
+    revision = subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
+    binary_hash = hashlib.sha256(executable.read_bytes()).hexdigest()
+    meta = {"schema_version":1,"status":"running","revision":revision,"binary_hash":binary_hash,
+            "objective":args.objective,"seed":args.seed,"max_new":args.max_new,"max_requests":args.max_requests,
+            "wall_limit_hours":args.hours,"requested_timesteps":args.timesteps,
+            "corpus_sha256":(ROOT/"configs/corpus.sha256").read_text().strip(),
+            "role":"development run; not selected on validation and not a final result"}
+    (args.output/"run.json").write_text(json.dumps(meta,indent=2)+"\n")
+    with Worker(executable) as worker:
+        from rlmlir.kernels import matmul
+        initialization_start = time.perf_counter()
+        warm = worker.request("compile",source=matmul(1,1,1))
+        worker.request("release",handle=warm["handle"])
+        worker.request("clear_cache")
+        meta["compiler_initialization_ms"] = (time.perf_counter()-initialization_start)*1000
+        evaluator = Evaluator(worker,args.output/"measurements",binary_hash,revision,
+                              max_new=args.max_new,max_requests=args.max_requests,max_seconds=args.hours*3600)
+        env = CompilerEnv(worker,evaluator,load(ROOT/"configs/corpus.json","train"),objective=args.objective,
+                          trajectory_path=args.output/"trajectories.jsonl")
+        model = MaskablePPO("MlpPolicy",env,seed=args.seed,device="cpu",learning_rate=3e-4,
+                            n_steps=256,batch_size=64,n_epochs=10,gamma=1.,gae_lambda=.95,clip_range=.2,
+                            ent_coef=.01,max_grad_norm=.5,verbose=1,
+                            policy_kwargs={"net_arch":{"pi":[128,128],"vf":[128,128]}})
+        selection_started = [0.]
+        def before(module, inputs):
+            selection_started[0] = time.perf_counter()
+        def after(module, inputs, outputs):
+            env.charge_policy_time((time.perf_counter()-selection_started[0])*1000)
+            env.last_log_probability = float(outputs[2].detach().cpu().item())
+            env.policy_metadata = {"seed":args.seed,"objective":args.objective,"timesteps":model.num_timesteps}
+        pre_hook = model.policy.register_forward_pre_hook(before)
+        post_hook = model.policy.register_forward_hook(after)
+        model.save(args.output/"initial-policy")
+        try:
+            model.learn(total_timesteps=args.timesteps,callback=Checkpoints(args.output))
+            meta["status"] = "timesteps_complete"
+        except BudgetReached as error:
+            meta.update(status="budget_reached",reason=str(error))
+        except BaseException as error:
+            meta.update(status="stopped",reason=repr(error))
+            raise
+        finally:
+            pre_hook.remove()
+            post_hook.remove()
+            model.save(args.output/"latest-policy")
+            meta.update(timesteps=model.num_timesteps,episodes=env.episodes,counters=evaluator.counters())
+            (args.output/"run.json").write_text(json.dumps(meta,indent=2)+"\n")
+            print(json.dumps(meta,indent=2),flush=True)
+
+
+if __name__ == "__main__":
+    main()

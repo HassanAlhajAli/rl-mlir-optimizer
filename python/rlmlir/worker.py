@@ -2,6 +2,7 @@
 import json
 import subprocess
 import selectors
+from collections import Counter
 from pathlib import Path
 
 
@@ -12,6 +13,7 @@ class Worker:
         self.timeout = timeout
         self.selector = selectors.DefaultSelector()
         self.selector.register(self.process.stdout, selectors.EVENT_READ)
+        self.counters = Counter()
 
     def request(self, command: str, **fields):
         self.process.stdin.write(json.dumps({"command": command, **fields}, allow_nan=False) + "\n")
@@ -26,6 +28,12 @@ class Worker:
         response = json.loads(line)
         if not response.get("ok"):
             raise ValueError(response.get("error", "unspecified worker error"))
+        self.counters["worker_requests"] += 1
+        self.counters[command + "_requests"] += 1
+        if command in ("compile", "deploy") and not response.get("cache_hit", False):
+            self.counters["actual_compilations"] += 1
+        if command in ("invoke", "benchmark", "deploy"):
+            self.counters["actual_invocations"] += response["count"]
         return response
 
     def close(self):
