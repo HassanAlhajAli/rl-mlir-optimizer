@@ -33,9 +33,9 @@ The manifest tool is read-only with respect to the source runs and starts no
 compiler or training process. Compatibility with the current binary is still
 required when fitting a model; a historical audit cannot grant transfer access.
 
-## Additional rechecks: specification before implementation
+## Additional rechecks: specified before implementation
 
-Imitation's extra checks will become a separately completed, hashed evidence
+Imitation's extra checks form a separately completed, hashed evidence
 bundle. For each program/reuse context, collapse identical histories using median
 initial total and selection costs, then recheck the first two histories and all
 others within 5% of the first. Preserve the original source order for ties. Export
@@ -61,19 +61,21 @@ same complete bundle. Validation data remain exclusively for selection/validatio
 The actor selects rechecked leaders; its critic retains the initial training pool.
 Shared access does not require identical weighting or learning algorithms.
 
-Existing historical files will not be rewritten or represented as if they had
-this new export. Synthetic tests will establish the new boundary before any
-authorized measurement/training run. No budgets or failed runs are restarted.
+Existing historical files are not rewritten or represented as if they had this
+new export. Synthetic tests establish the new boundary before any authorized
+measurement/training run. No budgets or failed runs are restarted.
 
 ## Fairness limitation
 
 Matching the initial-pool fingerprint proves identical initial source access.
 It does not establish identical learned models, training algorithms or additional
 measurement access. Imitation performs separate leader rechecks before selecting
-demonstrations. Sharing those additional outcomes with the cost predictor, and
-auditing the complete measurement access of the final methods, remains unfinished.
-Do not describe the full baseline comparison as fair solely because these initial
-fingerprints match. No full-study superiority or held-out access follows.
+demonstrations. The predictor must explicitly consume their completed bundle to
+claim the same available evidence. Compare the complete `measurement_access`
+fingerprints, not just initial fingerprints. The new export/import has only
+synthetic integration evidence; no current-backend pair has yet been fitted
+through it, and a complete final-method access audit remains unfinished. No
+full-study superiority or held-out access follows.
 
 ## Commands and verification scope
 
@@ -92,6 +94,29 @@ and `fit_predictor.py` when those training stages are authorized. Both save
 Existing commands without a pin remain available for development, but still use
 the stricter loader and record a fingerprint. Fingerprints must be compared when
 declaring equal initial access.
+
+For an authorized new imitation run, `pretrain.py` writes
+`rechecks/requests.jsonl` as requests finish and `rechecks/shared-rechecks.json`
+only when collection is complete. It keeps the evaluator's full measurement log
+and IR artifacts. Use the same initial inputs for the predictor and add
+`--rechecks <pretraining-output>/rechecks`. Omitting that argument remains a
+development option, explicitly recorded as `initial_only` access. It is not an
+equal-access counterpart to the new imitation run.
+
+The bundle hashes the exact request and measurement bytes and includes the
+initial-pool fingerprint. Readers reconstruct the entire expected leader set,
+validate all joins and counts, and reject partial, altered or unrelated bundles
+before model creation. Rechecks require per-record corpus hashes; only the
+initial loader permits the explicitly counted legacy parent-hash fallback.
+Copies at new paths retain the same identity. The predictor uses all verified
+leader outcomes, including rejected demonstrations, and deduplicates cached
+measurement use before computing each history's median costs.
+
+Focused implementation locations: `python/rlmlir/rechecks.py` defines collection,
+verification and demonstration selection; `python/rlmlir/predictor.py` defines
+distinct-measurement target construction. `tests/test_rechecks.py` uses synthetic
+records and a fake evaluator, so passing these tests does not establish native
+compiler correctness or improved trained-model performance.
 
 The historical manifest command checks sources against their own recorded
 compiler contract. It does not make an old pool compatible with the current

@@ -1,6 +1,8 @@
 """Supervised compilation/execution-cost baseline, independent of RL updates."""
 import copy
+import json
 import math
+import statistics
 import numpy as np
 import torch
 
@@ -8,6 +10,28 @@ from .encoding import OBSERVATION_SIZE
 from .selection import heuristic, sample_schedule
 
 REUSE_FEATURE_INDEX = 66
+
+
+def cost_examples(pool):
+    """Each measured timing votes once, even if many trajectories reuse it."""
+    unique = {}
+    for item in pool:
+        key = (item["workload"]["id"], json.dumps(item["actions"], sort_keys=True))
+        vector = features(item["transitions"][-1]["next_observation"])
+        sample = unique.setdefault(key, {"workload_id": item["workload"]["id"],
+                                         "split": item["workload"]["split"], "features": vector, "samples": {}})
+        if sample["split"] != item["workload"]["split"] or not np.array_equal(sample["features"], vector):
+            raise ValueError("inconsistent predictor features for one program/history")
+        identity = tuple(item["measurement_identity"])
+        costs = [item["compile_install_ms"], item["execution_ms"]]
+        if identity in sample["samples"] and sample["samples"][identity] != costs:
+            raise ValueError("one measured identity has conflicting costs")
+        sample["samples"][identity] = costs
+    for sample in unique.values():
+        measurements = list(sample.pop("samples").values())
+        sample["distinct_measurements"] = len(measurements)
+        sample["log_costs"] = [math.log(statistics.median(v[i] for v in measurements)) for i in range(2)]
+    return list(unique.values())
 
 
 def features(observation):

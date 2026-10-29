@@ -78,6 +78,38 @@ def require_manifest(saved, current):
         raise ValueError("initial experience differs from the pinned manifest")
 
 
+def measurement_records(raw, expected_provenance, *, allow_parent_corpus=False):
+    """Validate measured identities without executing native code again."""
+    corpus = FrozenCorpus()
+    if expected_provenance.get("corpus_sha256") != corpus.sha256:
+        raise ValueError("experience pool does not match the frozen corpus")
+    data = {}
+    for line in raw.splitlines():
+        record = json.loads(line)
+        if record["key"] in data:
+            raise ValueError("duplicate measurement identity in experience source")
+        if record["status"] != "accepted" or record.get("correct") is not True:
+            raise ValueError("experience source contains an unaccepted measurement")
+        corpus.require_development(record["workload"])
+        corpus_hash = record.get("corpus_sha256", corpus.sha256 if allow_parent_corpus else None)
+        if record["binary_hash"] != expected_provenance["binary_hash"] or corpus_hash != corpus.sha256:
+            raise ValueError("experience measurement provenance mismatch")
+        workload = record["workload"]
+        source = GENERATORS[workload["family"]](*workload["shape"])
+        key = digest(json.dumps({"source": source, "actions": record["actions"], "binary": record["binary_hash"],
+                                "input_seed": 7, "measurement_protocol": "paired-training-v2"}, sort_keys=True).encode())
+        if record["key"] != key:
+            raise ValueError("experience measurement key mismatch")
+        for name in ("compile_ms", "installation_ms", "execution_ms"):
+            finite(record.get(name), name, nonnegative=True)
+        if record["execution_ms"] <= 0 or record["compile_ms"] + record["installation_ms"] <= 0:
+            raise ValueError("experience costs must be positive for log-cost fitting")
+        data[key] = record
+    if not data:
+        raise ValueError("empty experience measurements")
+    return data
+
+
 def load_pool(runs, expected_provenance, *, manifest_path=None):
     corpus = FrozenCorpus()
     if expected_provenance.get("corpus_sha256") != corpus.sha256:
@@ -102,29 +134,9 @@ def load_pool(runs, expected_provenance, *, manifest_path=None):
         require_compatible_provenance(meta, expected_provenance, context="experience pool")
         if meta.get("status") not in ("complete", "budget_reached", "timesteps_complete"):
             raise ValueError("experience source is failed, running or lacks a completed status")
-        data = {}
-        for line in raw["measurement"].splitlines():
-            record = json.loads(line)
-            if record["key"] in data:
-                raise ValueError("duplicate measurement identity in experience source")
-            if record["status"] != "accepted" or record.get("correct") is not True:
-                raise ValueError("experience source contains an unaccepted measurement")
-            corpus.require_development(record["workload"])
-            # Earlier records bind corpus identity through run metadata. Canonical
-            # workload validation above is still mandatory, and the gap is counted.
-            if record["binary_hash"] != expected_provenance["binary_hash"] or record.get("corpus_sha256", meta["corpus_sha256"]) != corpus.sha256:
-                raise ValueError("experience measurement provenance mismatch")
-            workload = record["workload"]
-            source = GENERATORS[workload["family"]](*workload["shape"])
-            key = digest(json.dumps({"source": source, "actions": record["actions"], "binary": record["binary_hash"],
-                                    "input_seed": 7, "measurement_protocol": "paired-training-v2"}, sort_keys=True).encode())
-            if record["key"] != key:
-                raise ValueError("experience measurement key mismatch")
-            for name in ("compile_ms", "installation_ms", "execution_ms"):
-                finite(record.get(name), name, nonnegative=True)
-            if record["execution_ms"] <= 0 or record["compile_ms"] + record["installation_ms"] <= 0:
-                raise ValueError("experience costs must be positive for log-cost fitting")
-            data[key] = record
+        # Earlier records bind corpus identity through compatible run metadata.
+        # This legacy gap is counted below, never silently backfilled on disk.
+        data = measurement_records(raw["measurement"], meta, allow_parent_corpus=True)
         items = []
         for line in raw["trajectory"].splitlines():
             item = json.loads(line)
@@ -144,7 +156,8 @@ def load_pool(runs, expected_provenance, *, manifest_path=None):
             if not math.isclose(finite(outcome["cost_ms"], "recorded cost", nonnegative=True), original_cost, rel_tol=1e-9, abs_tol=1e-9):
                 raise ValueError("trajectory outcome cost disagrees with measured costs")
             item.update(selection_ms=selection, compile_install_ms=record["compile_ms"] + record["installation_ms"],
-                        execution_ms=record["execution_ms"], cost_ms=cost, origin=str(directory))
+                        execution_ms=record["execution_ms"], cost_ms=cost, origin=str(directory),
+                        measurement_identity=[hashes["measurement_sha256"], record["key"]])
             items.append(item)
         if not items or not data:
             raise ValueError("empty experience source")

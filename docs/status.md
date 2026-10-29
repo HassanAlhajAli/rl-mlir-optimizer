@@ -12,11 +12,12 @@ coverage, retains drift attempts and reports paired per-workload, per-family and
 equal-family estimates. Its cluster uncertainty does not replace the full method
 freeze, seed comparisons, fresh confirmation or final study.
 
-[Shared initial experience](experience-provenance.md) now has verified joins,
-complete-file hashes and optional pinned manifests for imitation and the cost
-predictor. Sharing additional demonstration rechecks and auditing full final
-measurement access remain unfinished; an initial fingerprint alone is not a
-complete fairness result.
+[Shared experience](experience-provenance.md) now has verified joins, complete-file
+hashes and optional pinned initial manifests. Imitation exports all additional
+leader rechecks, which the predictor can explicitly consume with matching access
+identity. This new boundary has synthetic coverage only. No current-backend pair
+has been fitted through it; auditing final measurement access remains unfinished.
+An initial fingerprint alone is not a complete fairness result.
 
 | Gate | State | Evidence required |
 |---|---|---|
