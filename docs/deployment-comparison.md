@@ -75,3 +75,9 @@ interrupted PPO queue, replenish any seed's request budget, or establish that
 the original compiler crash is resolved. It stops at the first failure. Do not
 edit/build/test concurrently with this measured stage. This one-program check
 cannot establish learned-policy performance or generalization.
+
+The [completed integration](../results/comparison-controller-integration-001/observations.md)
+records30correct cases,31fresh deployments and one retained unresolved timing
+flag. Use a new directory for any explicitly justified future run; do not overwrite
+or automatically repeat this evidence. `scripts/audit_comparison.py` checks saved
+coverage, hashes, costs, drift handling and hardware counters without execution.

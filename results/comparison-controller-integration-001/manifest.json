@@ -1,0 +1,209 @@
+{
+  "archive": "raw.zip",
+  "bytes": 206054,
+  "sha256": "7f9398e2c7bec1e9daff252529d9aee6476d416501555e23f924d6734ded8fb0",
+  "measurement_revision": "28ea31687bfcfa63984a18fd0802135a8767e81b",
+  "auditor_sha256": "762beb492163e646443f8e80fc69f95b42660e6a7094e6efc94fecb5832db733",
+  "files": [
+    {
+      "path": "comparison-controller-integration-001/case-00000-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "6bcacaeb19f474c52205434c8a3ec19cf9c9e8c216caae8e07dad848812e4a77"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00001-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "c5e6cf3700ca290fb8466733871027a915cc8235ab7707609a8eda56de53914e"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00002-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "099dfbfeeb5eef94ac37cc40e2351856447a670ad4398d2730d91e1bd8669dce"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00003-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "cef6f15d09472c86ad3eb0ebdb3ac995510f815dbd25b8aed5b4a6f48d41c348"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00004-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "c7c1b319b4671341e0843425ce9a6d48dfc421ae41226530bd6cf2dbaf42fff7"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00005-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "4bc53bac50d4f466234fc03328c59f112f90aa03e651026bef64e9edf256c317"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00006-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "f283f2cbb09b429400f8f8ecf61974901e7608d3c1a85a192c86d8728f3d4356"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00007-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "d6801c26e997e8ff026ba0b1e373e2a5b34ce5dd34b99198982b34e0e8cc4858"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00008-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "e72f4bea835e906987bfbac923c7089971d80385b72b92eeebbb80101c677154"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00009-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "3781116d35a406a0a6fd8aa8f2b12ac019a4a2d21fcbadb3d3c2536b287c1a1b"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00010-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "a6d53e4567574421b9b3c43f583b089a88e6b4f1e314def47c64fd6542f42cbc"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00011-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "9e3f54113ec41aeb33bb8d0aa00419db47419047ab864bb403f8841dc905d3c0"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00012-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "dc8c8a599520fb390b3b09f9f3377409ec16bf7e86ce81031655516c0c01bc42"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00013-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "a5de67644c37e1348d9ddbf3fc7eddb7536779350d060d3cfed975571207c76f"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00014-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "fd4cabdaee2885c4c38af3982f9a23291ce1c9eca68ca44dc621d0adee9d77ce"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00015-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "60e8a19316d4952487373040bf4d71975cd74e12f32f5e9891ccc9087fdd7ca0"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00016-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "2848b90a10bde40985f2eb9a11a681de719183348e1776826432fac5aeb3a057"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00017-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "7440774ffe62f7e6e8ba6323e0f9551849c930e88e8b0b9b56b4d9f3889192a1"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00018-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "0f3a1502cae3c99dfb77ab92f04e53865142da8d11d1dc9aa5d84c80206bcbc6"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00019-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "735e1a869d2854a903dfbd0544e181d6ceb1bc13ce0acb854d6c81150b501a88"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00020-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "731b184376184c6c818e7c9fe8c836d940df041a2072553ce64c56da51eb9a09"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00021-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "f4ace7c42d7a4a8bacfb5ce67ecf726a2262c63650a42440fed5b05380e5e028"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00022-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "952ebcad812b776cd14fedccc890a7952a197603eed08d33201384f86a8a27a4"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00023-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "a25b111f5cb386bb7ab2fac43f5f540c7ddfa8569de33199127b7122b783a73d"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00024-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "248b41b3cd3d0097727d00036bb64d35d440c9c971738a209ee3eb6608830e7c"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00025-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "c2b05f4198223adbed5092adadb5176d8ad14799b9cfee63622fe4cbc19fece5"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00026-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "325be3e5825b0470bf0e2ceb7097ae3d0f1689dc1f02e348810b97fc2e1ead4e"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00027-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "9fa8d68465af70a9c9bfa0b4f7290569a80a732d11be4b7c1f66418137c2e67d"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00028-ir.json.gz",
+      "bytes": 3935,
+      "sha256": "93d377ebbb6301e9a348441bc141af802c30df2fe34cd275202adec17b757704"
+    },
+    {
+      "path": "comparison-controller-integration-001/case-00029-ir.json.gz",
+      "bytes": 8502,
+      "sha256": "1ab352a0160216db0d9b7123a41ee7bb65883ee7f0f8761e6b1e0060978643b4"
+    },
+    {
+      "path": "comparison-controller-integration-001/config.json",
+      "bytes": 223,
+      "sha256": "5cf5992dc9d191241e102f7575e341af3217ebacf45a8a9b19e0fcfc79eceedf"
+    },
+    {
+      "path": "comparison-controller-integration-001/events.jsonl",
+      "bytes": 188101,
+      "sha256": "430271353ba7e704f3121b72948bbd33992965244cbb00173c6ad675ba47d52f"
+    },
+    {
+      "path": "comparison-controller-integration-001/run.json",
+      "bytes": 6548,
+      "sha256": "8dbe5ee21447cf749651a66470c0891ee5d8fa8a6f9ebb74d0d5badeed98132e"
+    },
+    {
+      "path": "comparison-controller-verification-001/auditor-tests.log",
+      "bytes": 99,
+      "sha256": "3a5c77e3e6c0fd850d73ba4d9fb8e546f350edb27394269668482d89ae6fa33e"
+    },
+    {
+      "path": "comparison-controller-verification-001/configuration-check.log",
+      "bytes": 220,
+      "sha256": "341b8488027a8bd4b16827d8df137a7393b4b1380fa8439625d81a5e5b2d7267"
+    },
+    {
+      "path": "comparison-controller-verification-001/controller-tests.log",
+      "bytes": 99,
+      "sha256": "99f8f8234f268758fab0b86c8b1f53d094f44e367653c6c8a5c2ec56d48e7b80"
+    },
+    {
+      "path": "comparison-controller-verification-001/final-controller-tests.log",
+      "bytes": 99,
+      "sha256": "68cd6657d234392f8730f6c9c1a091035373644f4440b4b96b67ef3f58ce09dc"
+    },
+    {
+      "path": "comparison-controller-verification-001/full-python-tests.log",
+      "bytes": 100,
+      "sha256": "31318d7742e8210baec3c39ef50ee70050c940e23244501700d66f6b5e92d683"
+    },
+    {
+      "path": "comparison-controller-verification-001/native-integration.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "comparison-controller-verification-001/native-audit.json",
+      "bytes": 1148,
+      "sha256": "2795d99cb885511f093aaf5244287d2bad6c0aceea3d77bf250be8674b33b3be"
+    }
+  ]
+}

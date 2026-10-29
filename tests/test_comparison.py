@@ -3,6 +3,7 @@ import copy
 import json
 import sys
 from collections import Counter
+from contextlib import nullcontext
 from pathlib import Path
 
 import pytest
@@ -11,8 +12,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "python"))
 sys.path.insert(0, str(ROOT / "scripts"))
 import compare_deployments
+from audit_comparison import audit
 from rlmlir.comparison import DevelopmentComparison, interleaved_order
-from rlmlir.corpus import DEFAULT_CORPUS, load
+from rlmlir.corpus import DEFAULT_CORPUS, FrozenCorpus, load
 from rlmlir.kernels import REFERENCES
 
 
@@ -226,3 +228,37 @@ def test_comparison_configuration_cannot_unseal_performance():
     config["split"] = "heldout_shape"
     with pytest.raises(ValueError, match="sealed"):
         compare_deployments.prepare(config)
+
+
+@pytest.mark.parametrize("tamper", [None, "cost", "counter", "missing_case"])
+def test_saved_evidence_audit_rejects_accounting_or_coverage_changes(tmp_path, monkeypatch, tamper):
+    workload = load(DEFAULT_CORPUS, "train")[0]
+    worker = SimulatedWorker(workload)
+    monkeypatch.setattr(compare_deployments, "Worker", lambda *_: nullcontext(worker))
+    monkeypatch.setattr(compare_deployments, "provenance", lambda *_: {
+        "revision": "synthetic-test", "binary_hash": "synthetic-test", "corpus_sha256": FrozenCorpus().sha256})
+    monkeypatch.setattr(compare_deployments, "initialize", lambda *_: {"initialization_counts": {}})
+    monkeypatch.setattr(compare_deployments, "selectors_for", lambda *_: ({"reference": fixed, "heuristic": fixed}, {}))
+    monkeypatch.setattr(compare_deployments.os, "sched_setaffinity", lambda *_: None)
+    config = json.loads((ROOT / "configs/comparison-development.json").read_text())
+    config.update(split="train", workload_ids=[workload["id"]], rounds=1, reuse_counts=[1])
+    path = tmp_path / "config.json"
+    path.write_text(json.dumps(config))
+    output = tmp_path / "comparison"
+    monkeypatch.setattr(sys, "argv", ["compare_deployments", "--config", str(path), "--output", str(output)])
+    compare_deployments.main()
+    assert audit(output)["cases"] == 2
+    if tamper == "counter":
+        state = json.loads((output / "run.json").read_text())
+        state["worker_counts"]["actual_invocations"] += 1
+        (output / "run.json").write_text(json.dumps(state))
+    elif tamper:
+        events = [json.loads(line) for line in (output / "events.jsonl").read_text().splitlines()]
+        if tamper == "cost":
+            events[1]["attempts"][0]["total_with_selection_ms"] += 1.
+        else:
+            events = events[:-2]
+        (output / "events.jsonl").write_text("\n".join(json.dumps(e) for e in events) + "\n")
+    if tamper:
+        with pytest.raises(ValueError):
+            audit(output)

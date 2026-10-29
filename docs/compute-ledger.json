@@ -66,14 +66,20 @@
       "source": "runs/compiler-memory-replay-001/run.json",
       "recorded_seconds": 178.777219796,
       "boundary": "Protected-memory correctness diagnostic; no performance rewards"
+    },
+    {
+      "run": "comparison-controller-integration-001",
+      "source": "runs/comparison-controller-integration-001/run.json",
+      "recorded_seconds": 25.05308973400001,
+      "boundary": "selector loading plus complete worker stage; Python startup and correctness/audit checks covered by existing reserve"
     }
   ],
-  "recorded_seconds": 8900.966757673,
+  "recorded_seconds": 8926.019847407002,
   "additional_uninstrumented_development_reserve_seconds": 7200,
   "charged_before_main_seconds": 5822.77778897,
   "approved_main_queue_ceiling_seconds": 0,
   "reserved_for_adaptation_and_final_seconds": 86400,
-  "remaining_after_these_allocations_seconds": 70299.03324232699,
+  "remaining_after_these_allocations_seconds": 70273.980152593,
   "notes": [
     "Queue elapsed includes child runs; children are not counted again.",
     "Recorded seconds use available timer boundaries, not a claim of complete wall-time instrumentation.",
@@ -82,5 +88,5 @@
     "Main queue completed/stopped: its eight-hour reservation is replaced by 6372.591520136001 actual seconds. No replacement queue is authorized by this ledger.",
     "A second hour is conservatively reserved for compiler-failure debugging, failed builds and checks. This reduces remaining capacity within 48 hours; it is not measured usage or an increase of the allowance. A separately timed correctness replay will be charged separately."
   ],
-  "charged_current_seconds": 16100.966757673
+  "charged_current_seconds": 16126.019847407002
 }
