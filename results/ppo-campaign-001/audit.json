@@ -1,0 +1,118 @@
+{
+  "queue_status": "stopped",
+  "queue_elapsed_seconds": 6372.591520136001,
+  "jobs": {
+    "ppo-reuse-7": {
+      "status": "complete",
+      "objective": "reuse",
+      "seed": 7,
+      "termination_reason": "candidate request budget reached",
+      "accepted": 1349,
+      "failures": [],
+      "candidate_requests": 8192,
+      "new_measurements": 1349,
+      "cache_hits": 15036,
+      "episodes": 8192,
+      "timesteps": 12022,
+      "optimizer_epochs": 460,
+      "initial_policy_digest": "374054bc54c5b8fc38ca2ed822f6dc63002a83297d38e8351c13c434ab1af7ea",
+      "final_policy_digest": "4c2d98d4d31d177c255b8ba9bc48afd99f2ed733329df4cde11d2ecdefc13171",
+      "elapsed_seconds": 1681.815460558,
+      "original_drift_flags": 130,
+      "unresolved_drift": 31,
+      "split_counts": {
+        "train": 1349
+      }
+    },
+    "ppo-runtime-7": {
+      "status": "complete",
+      "objective": "runtime",
+      "seed": 7,
+      "termination_reason": "distinct measurement budget reached",
+      "accepted": 1536,
+      "failures": [],
+      "candidate_requests": 1759,
+      "new_measurements": 1536,
+      "cache_hits": 1981,
+      "episodes": 1758,
+      "timesteps": 5583,
+      "optimizer_epochs": 210,
+      "initial_policy_digest": "374054bc54c5b8fc38ca2ed822f6dc63002a83297d38e8351c13c434ab1af7ea",
+      "final_policy_digest": "3071c6b09a515c2eeae3835c0a3cbd7dd1ff6de2ed44ed8be30944050d810abd",
+      "elapsed_seconds": 1875.0971268140001,
+      "original_drift_flags": 153,
+      "unresolved_drift": 37,
+      "split_counts": {
+        "train": 1536
+      }
+    },
+    "ppo-reuse-17": {
+      "status": "complete",
+      "objective": "reuse",
+      "seed": 17,
+      "termination_reason": "candidate request budget reached",
+      "accepted": 1302,
+      "failures": [],
+      "candidate_requests": 8192,
+      "new_measurements": 1302,
+      "cache_hits": 15083,
+      "episodes": 8192,
+      "timesteps": 11941,
+      "optimizer_epochs": 460,
+      "initial_policy_digest": "c5b7052ac363ba28682ea0bea8c9c71f34735df4c34eb2d74206275ce759ac5a",
+      "final_policy_digest": "adacd0bb704c230db890f0faca5bcd9fec79f962465703510f0988b0f34ece25",
+      "elapsed_seconds": 1637.5734555990002,
+      "original_drift_flags": 134,
+      "unresolved_drift": 32,
+      "split_counts": {
+        "train": 1302
+      }
+    },
+    "ppo-runtime-17": {
+      "status": "failed",
+      "objective": "runtime",
+      "seed": 17,
+      "termination_reason": "RuntimeError('worker stopped unexpectedly (-11)')",
+      "accepted": 832,
+      "failures": [
+        {
+          "key": "f51c2dec57202774571bd96c5a92409ab222c643c022dc9113fc4c7b17297e50",
+          "reason": "RuntimeError('worker stopped unexpectedly (-11)')"
+        }
+      ],
+      "candidate_requests": 831,
+      "new_measurements": 833,
+      "cache_hits": 829,
+      "episodes": 830,
+      "timesteps": 2752,
+      "optimizer_epochs": 100,
+      "initial_policy_digest": "c5b7052ac363ba28682ea0bea8c9c71f34735df4c34eb2d74206275ce759ac5a",
+      "final_policy_digest": "0ca08882946a2648c37f4353cf2201d2e58605386a5bed3ae520cc06c9862010",
+      "elapsed_seconds": 1178.1054771650006,
+      "original_drift_flags": 110,
+      "unresolved_drift": 27,
+      "split_counts": {
+        "train": 833
+      }
+    },
+    "ppo-reuse-27": {
+      "status": "not_started"
+    },
+    "ppo-runtime-27": {
+      "status": "not_started"
+    },
+    "ppo-reuse-37": {
+      "status": "not_started"
+    },
+    "ppo-runtime-37": {
+      "status": "not_started"
+    },
+    "ppo-reuse-47": {
+      "status": "not_started"
+    },
+    "ppo-runtime-47": {
+      "status": "not_started"
+    }
+  },
+  "scope": "saved evidence; no new execution or performance validation"
+}

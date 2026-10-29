@@ -1,0 +1,147 @@
+{
+  "archive": "raw.zip",
+  "bytes": 7371722,
+  "sha256": "ec789b47408aa1063119d488a39de9762a316abc6a804b504582924ffe647743",
+  "files": [
+    {
+      "path": "compiler-crash-002/bounded-original.stderr",
+      "bytes": 3011,
+      "sha256": "9e625afdbf8b9ec4cc5596012b40b0ad54a098c459ec228d62a4c4cd9756fecf"
+    },
+    {
+      "path": "compiler-crash-002/bounded-original.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compiler-crash-002/compile-replay-gdb.txt",
+      "bytes": 109881336,
+      "sha256": "dc4792ff55c0292ba20f9c98a5bd36494c55c4c4935027cc31b68a63cd3d6a55"
+    },
+    {
+      "path": "compiler-crash-002/cse-preoptimization.ll",
+      "bytes": 403987,
+      "sha256": "c24e2cd799cbe1e9c4c20797db07e3b29abeb1e1d4737c3e0c2ea75cdc09f336"
+    },
+    {
+      "path": "compiler-crash-002/cse.stderr",
+      "bytes": 2783,
+      "sha256": "a3b0a8c9af9ebbcdb07cabd2de6448fa2ac4da4a14a807e938a5c016f0f97739"
+    },
+    {
+      "path": "compiler-crash-002/cse.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compiler-crash-002/failure.json",
+      "bytes": 998,
+      "sha256": "d2332d0f00938c286820a7146236a645cadad969cb56dacaf06f67912e02cbf9"
+    },
+    {
+      "path": "compiler-crash-002/gdb.txt",
+      "bytes": 315732,
+      "sha256": "267feaf808a7403bc426d78a876a2861ee38fe9f8df4aae9c936e076f08aae87"
+    },
+    {
+      "path": "compiler-crash-002/instcombine-record.json",
+      "bytes": 2667,
+      "sha256": "c76f255fd31eff28d0ced638c737b121cd029f6cf39e597fc9e498cf3d44506a"
+    },
+    {
+      "path": "compiler-crash-002/instcombine-request.json",
+      "bytes": 940,
+      "sha256": "c8b036152a2cb59bf6a34da6dbe8a74038d03be412cceb5e2087726eb981280c"
+    },
+    {
+      "path": "compiler-crash-002/mask-diagnostic.log",
+      "bytes": 7586,
+      "sha256": "06647c4413f5c2ae0245bea61e59c3685d0b49c54f7ac783ad792b4a83f947bf"
+    },
+    {
+      "path": "compiler-crash-002/native-build-final.log",
+      "bytes": 189,
+      "sha256": "110bf775a99ea44bcafed19826ca4e7ec647f5ab3be197a59d15dbf711815156"
+    },
+    {
+      "path": "compiler-crash-002/native-build-retry.log",
+      "bytes": 117,
+      "sha256": "904dee3a3e1e790dbbf0275b9919a62655df06e6451690faf25035714ef66612"
+    },
+    {
+      "path": "compiler-crash-002/native-ctest.log",
+      "bytes": 725,
+      "sha256": "49d53602f6ee9b0e22c5a6a51333583f58d37d1b84e843a90b376c1af12456bf"
+    },
+    {
+      "path": "compiler-crash-002/preoptimization.ll",
+      "bytes": 889682,
+      "sha256": "353e0a0dc954f12503bca094b9248b1684b5d8000624247366d814f2466ebf20"
+    },
+    {
+      "path": "compiler-crash-002/python-tests-all.log",
+      "bytes": 100,
+      "sha256": "acf4103d7bfcaaf291b8315da359fac20790e0edf5692f8d96493b47a09af5d5"
+    },
+    {
+      "path": "compiler-crash-002/python-tests.log",
+      "bytes": 99,
+      "sha256": "adcd553401db3f61dcf101be3d97ad941bdde04070c046565a7a6dc87ad942d9"
+    },
+    {
+      "path": "compiler-crash-002/rejected-unroll.patch",
+      "bytes": 4585,
+      "sha256": "f367cf2aa78a8e943a582927654e075b41e2ed5a8287525c7ca7cef675d66fde"
+    },
+    {
+      "path": "compiler-crash-002/replay.log",
+      "bytes": 1674,
+      "sha256": "a632a76146cd4b21985cf0cb496ecd610e6bde36e53e78d15ec46e6b7fe5f7eb"
+    },
+    {
+      "path": "compiler-crash-002/request.json",
+      "bytes": 764,
+      "sha256": "876b5b25f586da6b14e9e81e28be9648ba29dc9a6ee37d36f280853b80d2da69"
+    },
+    {
+      "path": "compiler-crash-002/source.mlir",
+      "bytes": 575,
+      "sha256": "3d166af4c14b7c4993d7b94b3a2c882a3a06766568fee919bc4b0f3f9be82cc2"
+    },
+    {
+      "path": "compiler-crash-002/unroll-first-ctest.log",
+      "bytes": 6050,
+      "sha256": "7f670fccffb4a5ed96254c8506e5a77c031ba1749e88e0ba53fd57e1ce26ac0b"
+    },
+    {
+      "path": "compiler-crash-002/unroll-odd-ctest.log",
+      "bytes": 8498,
+      "sha256": "9769a9dbecd982938cb65ebd2e9bc569def48188709afb255a631d59a3015b05"
+    },
+    {
+      "path": "compiler-crash-002/unroll-preoptimization.ll",
+      "bytes": 5540088,
+      "sha256": "6f02d6e0f86151baf8d73218e09cb1b5527a9aa03c167d75a95f6100fd790db1"
+    },
+    {
+      "path": "compiler-crash-002/unroll.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compiler-crash-002/unroll.stdout",
+      "bytes": 10203185,
+      "sha256": "b01b725edb541992920c3085b676c85a1d4edbb494f31e898d4f5dc00f30c6e6"
+    },
+    {
+      "path": "compiler-replay-002/checks.jsonl",
+      "bytes": 709167,
+      "sha256": "7513afab5de18b70539b82611c98a1d4f1fa0ddae87cfb3846564bf390fc9e5d"
+    },
+    {
+      "path": "compiler-replay-002/run.json",
+      "bytes": 1521,
+      "sha256": "84b9d62524aa6666a4c4e026f8e8f8c3b95c920a5f11ffcccacc79b0bc71bfdf"
+    }
+  ]
+}

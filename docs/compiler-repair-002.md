@@ -48,7 +48,10 @@ All 17 Python tests passed, including the child-process memory limit. One
 parallel build also crashed in Clang's optimizer; a saved serial retry and the
 final serial build succeeded. Its cause is not established either.
 
-Longer-lived correctness replay is the next diagnostic. The script below
+The [longer-lived correctness replay](../results/compiler-repair-002/observations.md)
+completed all 833 records, with 3,332 numerical comparisons, 1,538 actual
+compilations and a recorded peak RSS of about 417 MiB. It took 126.82 seconds.
+The script below
 recompiles every saved training record in order, including the originally
 failed one, checks candidate and anchor against two independent reference
 inputs, and records process memory. It deliberately does not reproduce the
@@ -63,3 +66,9 @@ original calibration counts or claim to reproduce performance:
 The main campaign remains stopped. Old results and checkpoints must stay
 separate from any revised backend study. No request limit or hardware allowance
 has been increased, and there has been no automatic restart.
+
+The [interrupted campaign evidence](../results/ppo-campaign-001/observations.md)
+preserves all ten objective/seed statuses, all 5,020 measurement records, saved
+trajectories and the initial/latest checkpoints of each attempted run. A
+read-only audit verified hashes, numerical acceptance, rewards, budgets and
+policy updates. That audit does not select checkpoints or establish RL benefit.

@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "status": "stopped",
+  "elapsed_seconds": 6372.591520136001,
+  "jobs": [
+    {
+      "name": "ppo-reuse-7",
+      "status": "complete",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-reuse-7",
+        "--objective",
+        "reuse",
+        "--seed",
+        "7",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ],
+      "pid": 379,
+      "exit_code": 0,
+      "elapsed_seconds": 1681.815460558
+    },
+    {
+      "name": "ppo-runtime-7",
+      "status": "complete",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-runtime-7",
+        "--objective",
+        "runtime",
+        "--seed",
+        "7",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ],
+      "pid": 442,
+      "exit_code": 0,
+      "elapsed_seconds": 1875.0971268140001
+    },
+    {
+      "name": "ppo-reuse-17",
+      "status": "complete",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-reuse-17",
+        "--objective",
+        "reuse",
+        "--seed",
+        "17",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ],
+      "pid": 539,
+      "exit_code": 0,
+      "elapsed_seconds": 1637.5734555990002
+    },
+    {
+      "name": "ppo-runtime-17",
+      "status": "failed",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-runtime-17",
+        "--objective",
+        "runtime",
+        "--seed",
+        "17",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ],
+      "pid": 606,
+      "exit_code": 1,
+      "elapsed_seconds": 1178.1054771650006
+    }
+  ],
+  "definition": [
+    {
+      "name": "ppo-reuse-7",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-reuse-7",
+        "--objective",
+        "reuse",
+        "--seed",
+        "7",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-runtime-7",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-runtime-7",
+        "--objective",
+        "runtime",
+        "--seed",
+        "7",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-reuse-17",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-reuse-17",
+        "--objective",
+        "reuse",
+        "--seed",
+        "17",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-runtime-17",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-runtime-17",
+        "--objective",
+        "runtime",
+        "--seed",
+        "17",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-reuse-27",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-reuse-27",
+        "--objective",
+        "reuse",
+        "--seed",
+        "27",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-runtime-27",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-runtime-27",
+        "--objective",
+        "runtime",
+        "--seed",
+        "27",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-reuse-37",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-reuse-37",
+        "--objective",
+        "reuse",
+        "--seed",
+        "37",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-runtime-37",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-runtime-37",
+        "--objective",
+        "runtime",
+        "--seed",
+        "37",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-reuse-47",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-reuse-47",
+        "--objective",
+        "reuse",
+        "--seed",
+        "47",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-runtime-47",
+      "argv": [
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/.venv/bin/python",
+        "scripts/train_ppo.py",
+        "--output",
+        "/mnt/c/Disk D/Career/Job Search/Interview Preparation/Huawei - AI for CPU Architecture/rl-mlir-optimizer/runs/ppo-campaign-001/ppo-runtime-47",
+        "--objective",
+        "runtime",
+        "--seed",
+        "47",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    }
+  ],
+  "controller_pid": 269
+}
