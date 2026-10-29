@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / "python"))
 from rlmlir.kernels import matmul, matmul_case, matvec, matvec_case
 from rlmlir.measurement import validate, schedule
 from rlmlir.worker import Worker
+from rlmlir.experiment import measurement_lease
 
 
 def main():
@@ -70,4 +71,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    with measurement_lease(ROOT):
+        main()

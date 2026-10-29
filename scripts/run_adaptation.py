@@ -13,7 +13,7 @@ sys.path.insert(0,str(ROOT/"python"))
 from rlmlir.adaptation import adapt
 from rlmlir.corpus import load
 from rlmlir.evaluator import Evaluator
-from rlmlir.experiment import initialize, provenance
+from rlmlir.experiment import initialize, provenance, measurement_lease
 from rlmlir.kernels import GENERATORS, REFERENCES
 from rlmlir.measurement import validate
 from rlmlir.objective import adapted_deployment_ms
@@ -92,4 +92,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    with measurement_lease(ROOT):
+        main()

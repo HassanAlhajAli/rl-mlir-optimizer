@@ -164,6 +164,9 @@ PreparedKernel prepare(mlir::MLIRContext &context, const std::string &source,
     original.walk([&](mlir::Operation *op) { count += op->getName().getStringRef() == name; });
     arithmetic.push_back(count);
   }
+  int64_t usedScalarLoads = 0;
+  for (auto argument : original.getBody()->getArguments())
+    usedScalarLoads += !argument.use_empty();
   std::vector<int64_t> bounds(originalBounds.begin(), originalBounds.end());
   std::vector<unsigned> order(bounds.size());
   std::iota(order.begin(), order.end(), 0);
@@ -268,6 +271,7 @@ PreparedKernel prepare(mlir::MLIRContext &context, const std::string &source,
   result.observation = llvm::json::Object{{"dimensions", std::move(dimensions)},
       {"buffer_shapes", std::move(shapes)}, {"access_strides", std::move(accessStrides)},
       {"arithmetic_counts", std::move(arithmetic)}, {"projected_indexing", projected},
+      {"memory_counts", llvm::json::Array{usedScalarLoads, 1}}, {"observation_version", 2},
       {"order", std::move(permutation)}, {"tiles", std::move(tileHistory)},
       {"steps", steps}, {"terminal", terminal || steps == 6}, {"vectorized", vectorized},
       {"legal_actions", std::move(legal)}};

@@ -71,6 +71,33 @@ def test_budget_stops_before_compilation(tmp_path):
     assert evaluator.requests == 1
 
 
+def test_seeded_measurements_do_not_reset_request_limit(tmp_path):
+    # A resumed cache may save hardware work, but a logical request still costs
+    # a request slot. The measurement identity is obtained from a real zero-
+    # hardware failure record's key through the same public evaluator boundary.
+    from collections import Counter
+    class RejectCompiler:
+        counters = Counter()
+        class Process:
+            def poll(self): return 1
+        process = Process()
+        def request(self,*args,**kwargs):
+            raise RuntimeError("expected diagnostic stop")
+    workload = {"family":"matmul","shape":[1,1,1],"split":"train"}
+    first = Evaluator(RejectCompiler(),tmp_path/"first","binary","revision",max_new=1)
+    with pytest.raises(RuntimeError,match="diagnostic"):
+        first.measure(workload,[])
+    record = json.loads(first.path.read_text())
+    record.update(status="accepted",compile_ms=1.,execution_ms=1.,correct=True)
+    first.path.write_text(json.dumps(record)+"\n")
+    resumed = Evaluator(RejectCompiler(),tmp_path/"resumed","binary","revision",max_new=0,
+                        max_requests=1,seed_measurements=first.path)
+    assert resumed.measure(workload,[])["key"] == record["key"]
+    assert resumed.cache_hits == 1 and resumed.new_measurements == 0
+    with pytest.raises(BudgetReached,match="request"):
+        resumed.measure(workload,[])
+
+
 class KnownChoice(gym.Env):
     """Two contexts, different correct actions, and one always-illegal action."""
     def __init__(self):

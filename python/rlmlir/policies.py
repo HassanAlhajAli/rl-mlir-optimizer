@@ -7,7 +7,7 @@ import numpy as np
 import torch
 from sb3_contrib.common.maskable.policies import MaskableActorCriticPolicy
 
-from .encoding import ACTIONS, OBSERVATION_SIZE
+from .encoding import ACTIONS, OBSERVATION_SIZE, OBSERVATION_VERSION
 
 
 def create_policy(seed=7):
@@ -29,7 +29,8 @@ def actor_parameters(policy):
 
 def save_policy(policy, path: Path, metadata):
     path.parent.mkdir(parents=True, exist_ok=True)
-    torch.save({"schema_version": 1, "state_dict": policy.state_dict(), "metadata": metadata}, path)
+    torch.save({"schema_version": 1, "observation_version":metadata.get("observation_version",OBSERVATION_VERSION),
+                "state_dict": policy.state_dict(), "metadata": metadata}, path)
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
@@ -37,6 +38,8 @@ def load_policy(path: Path):
     saved = torch.load(path, map_location="cpu", weights_only=True)
     if saved["schema_version"] != 1:
         raise ValueError("unsupported policy checkpoint schema")
+    if saved.get("observation_version",1) != OBSERVATION_VERSION:
+        raise ValueError("policy uses an incompatible observation version; use its recorded source revision")
     policy = create_policy()
     policy.load_state_dict(saved["state_dict"])
     return policy, saved["metadata"]

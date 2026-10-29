@@ -8,6 +8,7 @@ ACTIONS += [{"kind":"TILE", "axis":axis, "size":size} for axis in range(4) for s
 ACTIONS += [{"kind":"INTERCHANGE", "a":a, "b":b} for a in range(4) for b in range(a+1,4)]
 ACTION_INDEX = {json.dumps(a, sort_keys=True): i for i,a in enumerate(ACTIONS)}
 OBSERVATION_SIZE = 235
+OBSERVATION_VERSION = 2
 
 
 def action_mask(state):
@@ -24,6 +25,8 @@ def log_feature(value):
 
 
 def encode(state, actions, reuse):
+    if state.get("observation_version") != OBSERVATION_VERSION:
+        raise ValueError("worker and observation encoder versions do not match")
     result = []
     dims = state["dimensions"]
     for i in range(4):
@@ -40,8 +43,10 @@ def encode(state, actions, reuse):
         result.append(len(shape)/4.)
         result.extend(log_feature(shape[i]) if i < len(shape) else 0. for i in range(4))
     result.extend(log_feature(c) for c in state["arithmetic_counts"])
-    # Nominal structured-op memory accesses: two inputs and one output.
-    result.extend([2./4., 1./4., float(state["vectorized"]), state["steps"]/6., min(1., math.log10(1+reuse)/6.)])
+    # Loads include a used accumulator and exclude unused generic operands.
+    # Counts describe one scalar iteration; output initialization is separate.
+    result.extend([c/4. for c in state["memory_counts"]])
+    result.extend([float(state["vectorized"]), state["steps"]/6., min(1., math.log10(1+reuse)/6.)])
     for step in range(6):
         selected = ACTION_INDEX[json.dumps(actions[step], sort_keys=True)] if step < len(actions) else -1
         result.extend(float(index == selected) for index in range(len(ACTIONS)))

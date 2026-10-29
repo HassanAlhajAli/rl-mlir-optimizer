@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "role": "PPO training only. Requires successful integration queue and inspected outputs. Validation checkpoint selection is separate.",
+  "jobs": [
+    {
+      "name": "ppo-reuse-7",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-reuse-7",
+        "--objective",
+        "reuse",
+        "--seed",
+        "7",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-runtime-7",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-runtime-7",
+        "--objective",
+        "runtime",
+        "--seed",
+        "7",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-reuse-17",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-reuse-17",
+        "--objective",
+        "reuse",
+        "--seed",
+        "17",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-runtime-17",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-runtime-17",
+        "--objective",
+        "runtime",
+        "--seed",
+        "17",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-reuse-27",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-reuse-27",
+        "--objective",
+        "reuse",
+        "--seed",
+        "27",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-runtime-27",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-runtime-27",
+        "--objective",
+        "runtime",
+        "--seed",
+        "27",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-reuse-37",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-reuse-37",
+        "--objective",
+        "reuse",
+        "--seed",
+        "37",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-runtime-37",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-runtime-37",
+        "--objective",
+        "runtime",
+        "--seed",
+        "37",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-reuse-47",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-reuse-47",
+        "--objective",
+        "reuse",
+        "--seed",
+        "47",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    },
+    {
+      "name": "ppo-runtime-47",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-runtime-47",
+        "--objective",
+        "runtime",
+        "--seed",
+        "47",
+        "--max-new",
+        "1536",
+        "--max-requests",
+        "8192",
+        "--hours",
+        "0.75",
+        "--timesteps",
+        "16384"
+      ]
+    }
+  ]
+}

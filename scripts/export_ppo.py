@@ -20,6 +20,7 @@ def main():
     latest = MaskablePPO.load(args.run/"latest-policy.zip",device="cpu")
     initial = MaskablePPO.load(args.run/"initial-policy.zip",device="cpu")
     metadata = json.loads((args.run/"run.json").read_text())
+    metadata.setdefault("observation_version",1)
     changed = [name for name,value in latest.policy.state_dict().items()
                if not torch.equal(value,initial.policy.state_dict()[name])]
     metadata.update(critic_fitted=False, critic_target="reference-relative PPO return, not adaptation log cost",

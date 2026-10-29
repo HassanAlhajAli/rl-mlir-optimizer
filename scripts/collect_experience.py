@@ -16,7 +16,7 @@ from rlmlir.evaluator import Evaluator, BudgetReached
 from rlmlir.objective import deployment_ms
 from rlmlir.selection import heuristic, sample_schedule
 from rlmlir.worker import Worker
-from rlmlir.experiment import initialize, provenance
+from rlmlir.experiment import initialize, provenance, measurement_lease
 
 
 def main():
@@ -85,4 +85,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    with measurement_lease(ROOT):
+        main()

@@ -16,7 +16,7 @@ class BudgetReached(RuntimeError):
 
 class Evaluator:
     def __init__(self, worker, directory: Path, binary_hash: str, revision: str,
-                 max_new=4096, max_requests=8192, max_seconds=48*3600):
+                 max_new=4096, max_requests=8192, max_seconds=48*3600, seed_measurements=None):
         self.worker, self.directory = worker, directory
         directory.mkdir(parents=True, exist_ok=True)
         self.records = {}
@@ -26,6 +26,13 @@ class Evaluator:
         self.reference_requests = 0
         self.started = time.perf_counter()
         self.path = directory / "measurements.jsonl"
+        if seed_measurements is not None:
+            if self.path.exists():
+                raise ValueError("cannot seed an existing measurement log")
+            for line in Path(seed_measurements).read_text().splitlines():
+                record = json.loads(line)
+                if record.get("status") == "accepted" and record["binary_hash"] == binary_hash:
+                    self._append({**record,"cache_seed":True,"seed_source":str(seed_measurements)})
         if self.path.exists():
             for line in self.path.read_text().splitlines():
                 record = json.loads(line)

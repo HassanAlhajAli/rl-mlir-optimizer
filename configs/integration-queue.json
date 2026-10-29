@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "role": "Development integration only. Review outputs before the main five-seed campaign.",
+  "jobs": [
+    {
+      "name": "ppo-reuse",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-reuse",
+        "--objective",
+        "reuse",
+        "--seed",
+        "7",
+        "--max-new",
+        "360",
+        "--max-requests",
+        "512",
+        "--hours",
+        "0.5",
+        "--timesteps",
+        "512"
+      ]
+    },
+    {
+      "name": "ppo-runtime",
+      "argv": [
+        "{python}",
+        "scripts/train_ppo.py",
+        "--output",
+        "{output}/ppo-runtime",
+        "--objective",
+        "runtime",
+        "--seed",
+        "7",
+        "--max-new",
+        "360",
+        "--max-requests",
+        "512",
+        "--hours",
+        "0.5",
+        "--timesteps",
+        "512"
+      ]
+    },
+    {
+      "name": "experience-train",
+      "argv": [
+        "{python}",
+        "scripts/collect_experience.py",
+        "--output",
+        "{output}/experience-train",
+        "--split",
+        "train",
+        "--per-family",
+        "2",
+        "--random-per-context",
+        "1",
+        "--max-new",
+        "128",
+        "--hours",
+        "0.5"
+      ]
+    },
+    {
+      "name": "experience-validation",
+      "argv": [
+        "{python}",
+        "scripts/collect_experience.py",
+        "--output",
+        "{output}/experience-validation",
+        "--split",
+        "validation",
+        "--per-family",
+        "1",
+        "--random-per-context",
+        "1",
+        "--max-new",
+        "64",
+        "--hours",
+        "0.25"
+      ]
+    },
+    {
+      "name": "pretrain",
+      "argv": [
+        "{python}",
+        "scripts/pretrain.py",
+        "--runs",
+        "{output}/ppo-reuse",
+        "{output}/ppo-runtime",
+        "{output}/experience-train",
+        "{output}/experience-validation",
+        "--output",
+        "{output}/pretrain",
+        "--max-rechecks",
+        "700",
+        "--hours",
+        "0.5"
+      ]
+    },
+    {
+      "name": "adaptation",
+      "argv": [
+        "{python}",
+        "scripts/run_adaptation.py",
+        "--policy",
+        "{output}/pretrain/policy.pt",
+        "--output",
+        "{output}/adaptation",
+        "--workload-id",
+        "b492eae50d11c001",
+        "--reuse",
+        "10000",
+        "--budgets",
+        "8",
+        "16",
+        "--hours",
+        "0.5"
+      ]
+    }
+  ]
+}
