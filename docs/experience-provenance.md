@@ -74,3 +74,8 @@ through the compatible parent run's corpus hash plus exact canonical workload
 validation. The manifest counts every such record explicitly. A present but
 incorrect per-record corpus hash is rejected; the loader never rewrites older
 records or claims that missing fields were originally recorded.
+
+The [historical integration audit](../results/initial-experience-audit-001/observations.md)
+verified499 accepted measurements and405 complete trajectories without executing
+native code or training a model. It explicitly reports missing per-record corpus
+hashes and the additional-recheck fairness gap.
