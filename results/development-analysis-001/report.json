@@ -1,0 +1,1088 @@
+{
+  "schema_version": 1,
+  "analysis_protocol": "development-comparison-analysis-v1",
+  "baseline": "reference",
+  "scope": "exploratory development frozen-selector comparison",
+  "heldout_access": false,
+  "superiority_claim_authorized": false,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261029,
+  "rounds": 5,
+  "fewer_than_five_rounds": false,
+  "weighting": "equal workloads within family, then equal represented families; reuse counts separate",
+  "repeat_rule": "arithmetic mean of all attempts in a case, including flagged attempts",
+  "coverage": {
+    "cases": 30,
+    "attempts": 31,
+    "original_flagged_cases": 1,
+    "unresolved_cases": 1
+  },
+  "per_workload": [
+    {
+      "workload_id": "b492eae50d11c001",
+      "family": "matvec",
+      "group": "matvec:2,13",
+      "shape": [
+        33,
+        210
+      ],
+      "method": "heuristic",
+      "reuse": 1,
+      "mean_log_speedup": -0.8040588302446622,
+      "geometric_mean_speedup": 0.44750891027130374,
+      "latency_reduction_percent": -123.45923780461638,
+      "regression": true,
+      "steady_geometric_mean_speedup": 0.3449544082763447,
+      "paired_rounds": [
+        {
+          "round": 0,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.821752999987325,
+              "compile_ms": 23.836815,
+              "installation_ms": 0.016761,
+              "execution_ms": 0.010996,
+              "total_ms": 25.686324999987324,
+              "steady_ms_per_call": 0.005939209680451128
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.821752999987325,
+                "compile_ms": 23.836815,
+                "installation_ms": 0.016761,
+                "execution_ms": 0.010996,
+                "total_ms": 25.686324999987324,
+                "steady_ms_per_call": 0.005939209680451128
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.008837000009975782,
+              "compile_ms": 11.302894,
+              "installation_ms": 0.007727,
+              "execution_ms": 0.002225,
+              "total_ms": 11.321683000009976,
+              "steady_ms_per_call": 0.0021453864823348695
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.008837000009975782,
+                "compile_ms": 11.302894,
+                "installation_ms": 0.007727,
+                "execution_ms": 0.002225,
+                "total_ms": 11.321683000009976,
+                "steady_ms_per_call": 0.0021453864823348695
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.8192390124807414,
+          "log_steady_speedup": -1.018256359698933
+        },
+        {
+          "round": 1,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.8521260000028406,
+              "compile_ms": 23.644103,
+              "installation_ms": 0.00817,
+              "execution_ms": 0.006767,
+              "total_ms": 25.51116600000284,
+              "steady_ms_per_call": 0.005888304228470223
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.8521260000028406,
+                "compile_ms": 23.644103,
+                "installation_ms": 0.00817,
+                "execution_ms": 0.006767,
+                "total_ms": 25.51116600000284,
+                "steady_ms_per_call": 0.005888304228470223
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.009729000012725919,
+              "compile_ms": 11.631776,
+              "installation_ms": 0.01598,
+              "execution_ms": 0.002254,
+              "total_ms": 11.659739000012726,
+              "steady_ms_per_call": 0.0021619384513673887
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.009729000012725919,
+                "compile_ms": 11.631776,
+                "installation_ms": 0.01598,
+                "execution_ms": 0.002254,
+                "total_ms": 11.659739000012726,
+                "steady_ms_per_call": 0.0021619384513673887
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.7829744422215796,
+          "log_steady_speedup": -1.0019627988951623
+        },
+        {
+          "round": 2,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.8122199999908162,
+              "compile_ms": 23.583221,
+              "installation_ms": 0.016461,
+              "execution_ms": 0.006273,
+              "total_ms": 25.418174999990818,
+              "steady_ms_per_call": 0.005908521534026382
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.8122199999908162,
+                "compile_ms": 23.583221,
+                "installation_ms": 0.016461,
+                "execution_ms": 0.006273,
+                "total_ms": 25.418174999990818,
+                "steady_ms_per_call": 0.005908521534026382
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.008603999987144562,
+              "compile_ms": 11.451415,
+              "installation_ms": 0.014168,
+              "execution_ms": 0.002294,
+              "total_ms": 11.476480999987144,
+              "steady_ms_per_call": 0.002143913936867183
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.008603999987144562,
+                "compile_ms": 11.451415,
+                "installation_ms": 0.014168,
+                "execution_ms": 0.002294,
+                "total_ms": 11.476480999987144,
+                "steady_ms_per_call": 0.002143913936867183
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.7951646585221632,
+          "log_steady_speedup": -1.013762535658306
+        },
+        {
+          "round": 3,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.8406979999952,
+              "compile_ms": 23.325409,
+              "installation_ms": 0.016072,
+              "execution_ms": 0.006779,
+              "total_ms": 25.1889579999952,
+              "steady_ms_per_call": 0.006014271407264432
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.8406979999952,
+                "compile_ms": 23.325409,
+                "installation_ms": 0.016072,
+                "execution_ms": 0.006779,
+                "total_ms": 25.1889579999952,
+                "steady_ms_per_call": 0.006014271407264432
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.008402000005958143,
+              "compile_ms": 11.164222,
+              "installation_ms": 0.008144,
+              "execution_ms": 0.002205,
+              "total_ms": 11.182973000005958,
+              "steady_ms_per_call": 0.0021435062617861807
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.008402000005958143,
+                "compile_ms": 11.164222,
+                "installation_ms": 0.008144,
+                "execution_ms": 0.002205,
+                "total_ms": 11.182973000005958,
+                "steady_ms_per_call": 0.0021435062617861807
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.8120133702227679,
+          "log_steady_speedup": -1.0316922844484244
+        },
+        {
+          "round": 4,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.760877999998911,
+              "compile_ms": 23.361715,
+              "installation_ms": 0.015732,
+              "execution_ms": 0.007943,
+              "total_ms": 25.146267999998912,
+              "steady_ms_per_call": 0.007612706807822379
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.760877999998911,
+                "compile_ms": 23.361715,
+                "installation_ms": 0.015732,
+                "execution_ms": 0.007943,
+                "total_ms": 25.146267999998912,
+                "steady_ms_per_call": 0.007612706807822379
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.011094000001321547,
+              "compile_ms": 11.148976,
+              "installation_ms": 0.014048,
+              "execution_ms": 0.002309,
+              "total_ms": 11.176427000001322,
+              "steady_ms_per_call": 0.0021679405794653686
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.011094000001321547,
+                "compile_ms": 11.148976,
+                "installation_ms": 0.014048,
+                "execution_ms": 0.002309,
+                "total_ms": 11.176427000001322,
+                "steady_ms_per_call": 0.0021679405794653686
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.8109026677760585,
+          "log_steady_speedup": -1.2560411243341063
+        }
+      ],
+      "mean_method_costs": {
+        "selection_ms": 1.8175349999950186,
+        "compile_ms": 23.5502526,
+        "installation_ms": 0.0146392,
+        "execution_ms": 0.0077516,
+        "total_ms": 25.39017839999502,
+        "steady_ms_per_call": 0.006272602731606909
+      },
+      "mean_baseline_costs": {
+        "selection_ms": 0.00933320000342519,
+        "compile_ms": 11.339856600000001,
+        "installation_ms": 0.0120134,
+        "execution_ms": 0.0022574,
+        "total_ms": 11.363460600003425,
+        "steady_ms_per_call": 0.002152537142364198
+      },
+      "warning_free_paired_rounds": 5,
+      "unresolved_paired_rounds": 0
+    },
+    {
+      "workload_id": "b492eae50d11c001",
+      "family": "matvec",
+      "group": "matvec:2,13",
+      "shape": [
+        33,
+        210
+      ],
+      "method": "heuristic",
+      "reuse": 100,
+      "mean_log_speedup": -0.826052221501498,
+      "geometric_mean_speedup": 0.437774114698439,
+      "latency_reduction_percent": -128.42830729926794,
+      "regression": true,
+      "steady_geometric_mean_speedup": 0.3634135795546664,
+      "paired_rounds": [
+        {
+          "round": 0,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 3.5599280000013778,
+              "compile_ms": 23.398443,
+              "installation_ms": 0.015777,
+              "execution_ms": 0.600042,
+              "total_ms": 27.574190000001376,
+              "steady_ms_per_call": 0.0058067033141581525
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 3.5599280000013778,
+                "compile_ms": 23.398443,
+                "installation_ms": 0.015777,
+                "execution_ms": 0.600042,
+                "total_ms": 27.574190000001376,
+                "steady_ms_per_call": 0.0058067033141581525
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.007839000005560592,
+              "compile_ms": 11.650742,
+              "installation_ms": 0.014007,
+              "execution_ms": 0.202148,
+              "total_ms": 11.87473600000556,
+              "steady_ms_per_call": 0.0021373934554075554
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.007839000005560592,
+                "compile_ms": 11.650742,
+                "installation_ms": 0.014007,
+                "execution_ms": 0.202148,
+                "total_ms": 11.87473600000556,
+                "steady_ms_per_call": 0.0021373934554075554
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.8424670721797147,
+          "log_steady_speedup": -0.9994259188519141
+        },
+        {
+          "round": 1,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 2.3891109999993887,
+              "compile_ms": 23.539714,
+              "installation_ms": 0.017237,
+              "execution_ms": 0.613701,
+              "total_ms": 26.55976299999939,
+              "steady_ms_per_call": 0.005927188398268398
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 2.3891109999993887,
+                "compile_ms": 23.539714,
+                "installation_ms": 0.017237,
+                "execution_ms": 0.613701,
+                "total_ms": 26.55976299999939,
+                "steady_ms_per_call": 0.005927188398268398
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.008472000004644542,
+              "compile_ms": 11.641286,
+              "installation_ms": 0.009448,
+              "execution_ms": 0.210039,
+              "total_ms": 11.869245000004645,
+              "steady_ms_per_call": 0.0021503466786962893
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.008472000004644542,
+                "compile_ms": 11.641286,
+                "installation_ms": 0.009448,
+                "execution_ms": 0.210039,
+                "total_ms": 11.869245000004645,
+                "steady_ms_per_call": 0.0021503466786962893
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.8054468005053175,
+          "log_steady_speedup": -1.0139208937009228
+        },
+        {
+          "round": 2,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.8118200000003526,
+              "compile_ms": 24.50829,
+              "installation_ms": 0.015328,
+              "execution_ms": 0.576126,
+              "total_ms": 26.911564000000354,
+              "steady_ms_per_call": 0.00594315380521554
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.8118200000003526,
+                "compile_ms": 24.50829,
+                "installation_ms": 0.015328,
+                "execution_ms": 0.576126,
+                "total_ms": 26.911564000000354,
+                "steady_ms_per_call": 0.00594315380521554
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.008723999997073406,
+              "compile_ms": 11.608876,
+              "installation_ms": 0.014766,
+              "execution_ms": 0.210731,
+              "total_ms": 11.843096999997073,
+              "steady_ms_per_call": 0.0021711342898572844
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.008723999997073406,
+                "compile_ms": 11.608876,
+                "installation_ms": 0.014766,
+                "execution_ms": 0.210731,
+                "total_ms": 11.843096999997073,
+                "steady_ms_per_call": 0.0021711342898572844
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.8208109165102226,
+          "log_steady_speedup": -1.006990190908005
+        },
+        {
+          "round": 3,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.8395330000089416,
+              "compile_ms": 23.71537,
+              "installation_ms": 0.017896,
+              "execution_ms": 0.592034,
+              "total_ms": 26.16483300000894,
+              "steady_ms_per_call": 0.0060170536892361105
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.8395330000089416,
+                "compile_ms": 23.71537,
+                "installation_ms": 0.017896,
+                "execution_ms": 0.592034,
+                "total_ms": 26.16483300000894,
+                "steady_ms_per_call": 0.0060170536892361105
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.008168999997337778,
+              "compile_ms": 11.033297,
+              "installation_ms": 0.014305,
+              "execution_ms": 0.213427,
+              "total_ms": 11.269197999997338,
+              "steady_ms_per_call": 0.0021374036377054474
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.008168999997337778,
+                "compile_ms": 11.033297,
+                "installation_ms": 0.014305,
+                "execution_ms": 0.213427,
+                "total_ms": 11.269197999997338,
+                "steady_ms_per_call": 0.0021374036377054474
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.842343094090714,
+          "log_steady_speedup": -1.0350058800854693
+        },
+        {
+          "round": 4,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.72297999999671,
+              "compile_ms": 23.451004,
+              "installation_ms": 0.020224,
+              "execution_ms": 0.60324,
+              "total_ms": 25.79744799999671,
+              "steady_ms_per_call": 0.0060271930344412954
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.72297999999671,
+                "compile_ms": 23.451004,
+                "installation_ms": 0.020224,
+                "execution_ms": 0.60324,
+                "total_ms": 25.79744799999671,
+                "steady_ms_per_call": 0.0060271930344412954
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.008171000004608686,
+              "compile_ms": 11.139489,
+              "installation_ms": 0.01431,
+              "execution_ms": 0.209213,
+              "total_ms": 11.371183000004608,
+              "steady_ms_per_call": 0.0022046207696312776
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.008171000004608686,
+                "compile_ms": 11.139489,
+                "installation_ms": 0.01431,
+                "execution_ms": 0.209213,
+                "total_ms": 11.371183000004608,
+                "steady_ms_per_call": 0.0022046207696312776
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.8191932242215212,
+          "log_steady_speedup": -1.0057258947219907
+        }
+      ],
+      "mean_method_costs": {
+        "selection_ms": 2.264674400001354,
+        "compile_ms": 23.7225642,
+        "installation_ms": 0.0172924,
+        "execution_ms": 0.5970286,
+        "total_ms": 26.601559600001355,
+        "steady_ms_per_call": 0.005944258448263899
+      },
+      "mean_baseline_costs": {
+        "selection_ms": 0.008275000001845001,
+        "compile_ms": 11.414738,
+        "installation_ms": 0.013367200000000001,
+        "execution_ms": 0.2091116,
+        "total_ms": 11.645491800001846,
+        "steady_ms_per_call": 0.0021601797662595705
+      },
+      "warning_free_paired_rounds": 5,
+      "unresolved_paired_rounds": 0
+    },
+    {
+      "workload_id": "b492eae50d11c001",
+      "family": "matvec",
+      "group": "matvec:2,13",
+      "shape": [
+        33,
+        210
+      ],
+      "method": "heuristic",
+      "reuse": 10000,
+      "mean_log_speedup": -0.9357334136416243,
+      "geometric_mean_speedup": 0.3922980432615198,
+      "latency_reduction_percent": -154.90823040719695,
+      "regression": true,
+      "steady_geometric_mean_speedup": 0.36225911436887215,
+      "paired_rounds": [
+        {
+          "round": 0,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.8099189999958298,
+              "compile_ms": 23.351521,
+              "installation_ms": 0.017231,
+              "execution_ms": 57.601853,
+              "total_ms": 82.78052399999584,
+              "steady_ms_per_call": 0.005821063717937097
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.8099189999958298,
+                "compile_ms": 23.351521,
+                "installation_ms": 0.017231,
+                "execution_ms": 57.601853,
+                "total_ms": 82.78052399999584,
+                "steady_ms_per_call": 0.005821063717937097
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.010398000000577667,
+              "compile_ms": 10.989315,
+              "installation_ms": 0.007695,
+              "execution_ms": 21.312997,
+              "total_ms": 32.32040500000058,
+              "steady_ms_per_call": 0.0021422958376545983
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.010398000000577667,
+                "compile_ms": 10.989315,
+                "installation_ms": 0.007695,
+                "execution_ms": 21.312997,
+                "total_ms": 32.32040500000058,
+                "steady_ms_per_call": 0.0021422958376545983
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.9404940518169154,
+          "log_steady_speedup": -0.9996049391419204
+        },
+        {
+          "round": 1,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.7949509999937163,
+              "compile_ms": 23.335034,
+              "installation_ms": 0.01551,
+              "execution_ms": 59.023782,
+              "total_ms": 84.16927699999371,
+              "steady_ms_per_call": 0.006011289881182173
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.7949509999937163,
+                "compile_ms": 23.335034,
+                "installation_ms": 0.01551,
+                "execution_ms": 59.023782,
+                "total_ms": 84.16927699999371,
+                "steady_ms_per_call": 0.006011289881182173
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.00912999999513886,
+              "compile_ms": 11.699079,
+              "installation_ms": 0.012849,
+              "execution_ms": 21.73851,
+              "total_ms": 33.45956799999514,
+              "steady_ms_per_call": 0.0021113692101698608
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.00912999999513886,
+                "compile_ms": 11.699079,
+                "installation_ms": 0.012849,
+                "execution_ms": 21.73851,
+                "total_ms": 33.45956799999514,
+                "steady_ms_per_call": 0.0021113692101698608
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.9224921888909448,
+          "log_steady_speedup": -1.0463026962056086
+        },
+        {
+          "round": 2,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.9064749999984087,
+              "compile_ms": 23.372459,
+              "installation_ms": 0.015822,
+              "execution_ms": 60.108876,
+              "total_ms": 85.40363199999841,
+              "steady_ms_per_call": 0.006038316566883713
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.9064749999984087,
+                "compile_ms": 23.372459,
+                "installation_ms": 0.015822,
+                "execution_ms": 60.108876,
+                "total_ms": 85.40363199999841,
+                "steady_ms_per_call": 0.006038316566883713
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.009288000001106411,
+              "compile_ms": 11.402046,
+              "installation_ms": 0.010527,
+              "execution_ms": 21.736975,
+              "total_ms": 33.15883600000111,
+              "steady_ms_per_call": 0.0021629552271077543
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.009288000001106411,
+                "compile_ms": 11.402046,
+                "installation_ms": 0.010527,
+                "execution_ms": 21.736975,
+                "total_ms": 33.15883600000111,
+                "steady_ms_per_call": 0.0021629552271077543
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.9460794020463195,
+          "log_steady_speedup": -1.026649811691577
+        },
+        {
+          "round": 3,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.7973799999992934,
+              "compile_ms": 23.5427885,
+              "installation_ms": 0.0201725,
+              "execution_ms": 59.908640500000004,
+              "total_ms": 85.26898149999928,
+              "steady_ms_per_call": 0.0060119168508287295
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.7973799999992934,
+                "compile_ms": 23.629697,
+                "installation_ms": 0.019957,
+                "execution_ms": 59.863929,
+                "total_ms": 85.31096299999929,
+                "steady_ms_per_call": 0.006010858870472683
+              },
+              {
+                "selection_ms": 1.7973799999992934,
+                "compile_ms": 23.45588,
+                "installation_ms": 0.020388,
+                "execution_ms": 59.953352,
+                "total_ms": 85.2269999999993,
+                "steady_ms_per_call": 0.0060129748311847754
+              }
+            ],
+            "attempts": 2,
+            "flagged_attempts": 2,
+            "original_flagged": true,
+            "unresolved_drift": true
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.00823599999932867,
+              "compile_ms": 11.527837,
+              "installation_ms": 0.019391,
+              "execution_ms": 21.937965,
+              "total_ms": 33.49342899999933,
+              "steady_ms_per_call": 0.0022613960829493086
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.00823599999932867,
+                "compile_ms": 11.527837,
+                "installation_ms": 0.019391,
+                "execution_ms": 21.937965,
+                "total_ms": 33.49342899999933,
+                "steady_ms_per_call": 0.0022613960829493086
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.9344614779332581,
+          "log_steady_speedup": -0.9777612828787001
+        },
+        {
+          "round": 4,
+          "method": {
+            "mean_costs": {
+              "selection_ms": 1.776413000001753,
+              "compile_ms": 24.004854,
+              "installation_ms": 0.017851,
+              "execution_ms": 59.861001,
+              "total_ms": 85.66011900000176,
+              "steady_ms_per_call": 0.005950752044417663
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 1.776413000001753,
+                "compile_ms": 24.004854,
+                "installation_ms": 0.017851,
+                "execution_ms": 59.861001,
+                "total_ms": 85.66011900000176,
+                "steady_ms_per_call": 0.005950752044417663
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "baseline": {
+            "mean_costs": {
+              "selection_ms": 0.008502000000021326,
+              "compile_ms": 11.59007,
+              "installation_ms": 0.01659,
+              "execution_ms": 22.009084,
+              "total_ms": 33.62424600000002,
+              "steady_ms_per_call": 0.002131569679849341
+            },
+            "attempt_costs": [
+              {
+                "selection_ms": 0.008502000000021326,
+                "compile_ms": 11.59007,
+                "installation_ms": 0.01659,
+                "execution_ms": 22.009084,
+                "total_ms": 33.62424600000002,
+                "steady_ms_per_call": 0.002131569679849341
+              }
+            ],
+            "attempts": 1,
+            "flagged_attempts": 0,
+            "original_flagged": false,
+            "unresolved_drift": false
+          },
+          "log_speedup": -0.9351399475206841,
+          "log_steady_speedup": -1.0266589583786612
+        }
+      ],
+      "mean_method_costs": {
+        "selection_ms": 1.8170275999978003,
+        "compile_ms": 23.5213313,
+        "installation_ms": 0.0173173,
+        "execution_ms": 59.300830500000004,
+        "total_ms": 84.65650669999779,
+        "steady_ms_per_call": 0.005966667812249875
+      },
+      "mean_baseline_costs": {
+        "selection_ms": 0.009110799999234587,
+        "compile_ms": 11.4416694,
+        "installation_ms": 0.0134104,
+        "execution_ms": 21.7471062,
+        "total_ms": 33.21129679999923,
+        "steady_ms_per_call": 0.0021619172075461727
+      },
+      "warning_free_paired_rounds": 4,
+      "unresolved_paired_rounds": 1
+    }
+  ],
+  "per_family": [
+    {
+      "family": "matvec",
+      "method": "heuristic",
+      "reuse": 1,
+      "workloads": 1,
+      "groups": 1,
+      "regressions": 1,
+      "mean_log_speedup": -0.8040588302446622,
+      "geometric_mean_speedup": 0.44750891027130374,
+      "latency_reduction_percent": -123.45923780461638
+    },
+    {
+      "family": "matvec",
+      "method": "heuristic",
+      "reuse": 100,
+      "workloads": 1,
+      "groups": 1,
+      "regressions": 1,
+      "mean_log_speedup": -0.826052221501498,
+      "geometric_mean_speedup": 0.437774114698439,
+      "latency_reduction_percent": -128.42830729926794
+    },
+    {
+      "family": "matvec",
+      "method": "heuristic",
+      "reuse": 10000,
+      "workloads": 1,
+      "groups": 1,
+      "regressions": 1,
+      "mean_log_speedup": -0.9357334136416243,
+      "geometric_mean_speedup": 0.3922980432615198,
+      "latency_reduction_percent": -154.90823040719695
+    }
+  ],
+  "aggregate": [
+    {
+      "method": "heuristic",
+      "reuse": 1,
+      "families": [
+        "matvec"
+      ],
+      "workloads": 1,
+      "regressions": 1,
+      "mean_log_speedup": -0.8040588302446622,
+      "geometric_mean_speedup": 0.44750891027130374,
+      "latency_reduction_percent": -123.45923780461638,
+      "uncertainty": {
+        "unit": "frozen corpus group within family",
+        "groups_per_family": {
+          "matvec": 1
+        },
+        "replicates": 2000,
+        "seed": 20261029,
+        "level": 0.95,
+        "small_cluster_warning": true,
+        "speedup_interval": null,
+        "latency_reduction_interval_percent": null,
+        "reason": "At least one family has fewer than two independent shape groups."
+      }
+    },
+    {
+      "method": "heuristic",
+      "reuse": 100,
+      "families": [
+        "matvec"
+      ],
+      "workloads": 1,
+      "regressions": 1,
+      "mean_log_speedup": -0.826052221501498,
+      "geometric_mean_speedup": 0.437774114698439,
+      "latency_reduction_percent": -128.42830729926794,
+      "uncertainty": {
+        "unit": "frozen corpus group within family",
+        "groups_per_family": {
+          "matvec": 1
+        },
+        "replicates": 2000,
+        "seed": 20261029,
+        "level": 0.95,
+        "small_cluster_warning": true,
+        "speedup_interval": null,
+        "latency_reduction_interval_percent": null,
+        "reason": "At least one family has fewer than two independent shape groups."
+      }
+    },
+    {
+      "method": "heuristic",
+      "reuse": 10000,
+      "families": [
+        "matvec"
+      ],
+      "workloads": 1,
+      "regressions": 1,
+      "mean_log_speedup": -0.9357334136416243,
+      "geometric_mean_speedup": 0.3922980432615198,
+      "latency_reduction_percent": -154.90823040719695,
+      "uncertainty": {
+        "unit": "frozen corpus group within family",
+        "groups_per_family": {
+          "matvec": 1
+        },
+        "replicates": 2000,
+        "seed": 20261029,
+        "level": 0.95,
+        "small_cluster_warning": true,
+        "speedup_interval": null,
+        "latency_reduction_interval_percent": null,
+        "reason": "At least one family has fewer than two independent shape groups."
+      }
+    }
+  ],
+  "integrity_audit": {
+    "status": "passed",
+    "scope": "saved evidence; no kernel execution",
+    "revision": "28ea31687bfcfa63984a18fd0802135a8767e81b",
+    "binary_hash": "7c06477cadfd5d26b4b6e46e930d32ed89d1f25781bf372055142e50f75b7d8d",
+    "corpus_sha256": "1ea072ede311df0bb1375dd041c31ce134cdf38a1aeb896fa2175752e97484a1",
+    "cases": 30,
+    "fresh_deployments": 31,
+    "original_flagged_blocks": 1,
+    "unresolved_drift": 1,
+    "worker_stage_elapsed_seconds": 24.46385755,
+    "worker_counts": {
+      "attempted_requests": 595,
+      "attempted_compile": 61,
+      "worker_requests": 595,
+      "compile_requests": 61,
+      "actual_compilations": 77,
+      "attempted_release": 61,
+      "release_requests": 61,
+      "attempted_clear_cache": 31,
+      "clear_cache_requests": 31,
+      "attempted_info": 1,
+      "info_requests": 1,
+      "attempted_analyze": 75,
+      "analyze_requests": 75,
+      "attempted_invoke": 120,
+      "invoke_requests": 120,
+      "actual_invocations": 8520870,
+      "attempted_benchmark": 215,
+      "benchmark_requests": 215,
+      "attempted_deploy": 31,
+      "deploy_requests": 31
+    },
+    "events_sha256": "430271353ba7e704f3121b72948bbd33992965244cbb00173c6ad675ba47d52f"
+  },
+  "numerical_output_rechecked": false,
+  "native_execution": false,
+  "source_hashes": {
+    "run.json": "8dbe5ee21447cf749651a66470c0891ee5d8fa8a6f9ebb74d0d5badeed98132e",
+    "config.json": "5cf5992dc9d191241e102f7575e341af3217ebacf45a8a9b19e0fcfc79eceedf",
+    "events.jsonl": "430271353ba7e704f3121b72948bbd33992965244cbb00173c6ad675ba47d52f"
+  },
+  "analysis_revision": "154caf9e2527ad5916d36ea0ae265c1663545f29"
+}

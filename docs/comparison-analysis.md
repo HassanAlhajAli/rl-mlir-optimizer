@@ -81,3 +81,8 @@ answers and deliberate corruptions, including a family-count imbalance that
 would produce a misleading gain under simple pooling. The statistics do not
 repair incomplete evidence or convert development measurements into a final
 confirmatory study.
+
+The [saved integration summary](../results/development-analysis-001/observations.md)
+is a first exploratory application. It retains the heuristic's regressions and
+the unresolved timing warning, and omits generalization uncertainty because
+only one shape group was measured.
