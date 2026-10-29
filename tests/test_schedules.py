@@ -47,6 +47,15 @@ def main(executable):
             buffers, expected = matvec_case(*dims)
             for actions in [[], [{"kind": "VECTORIZE"}], [{"kind": "TILE", "axis": 0, "size": 4}, {"kind": "VECTORIZE"}]]:
                 check(worker, source, buffers, expected, actions)
+        # The first measured PPO trial found stack growth in vector-to-SCF
+        # temporaries inside nested reduction tiles. These sizes exceeded the
+        # default stack before buffer-loop-hoisting was added to the backend.
+        regression = [{"kind":"TILE","axis":1,"size":4},
+                      {"kind":"TILE","axis":2,"size":16},
+                      {"kind":"TILE","axis":2,"size":8}, {"kind":"VECTORIZE"}]
+        for dims in [(96,78,98), (95,79,97), (64,65,67)]:
+            buffers, expected = matmul_case(*dims, seed=17)
+            check(worker, matmul(*dims), buffers, expected, regression)
         source = matmul(4, 4, 4)
         before = worker.request("analyze", source=source)
         illegal = [[{"kind": "INTERCHANGE", "a": 0, "b": 2}],
@@ -77,7 +86,7 @@ def main(executable):
                 if action["kind"] in ("STOP", "VECTORIZE"):
                     break
             check(worker, source, buffers, expected, actions)
-    print("81 scheduled kernels matched references; masks, strict math and rollback checks passed")
+    print("84 scheduled kernels matched references; masks, strict math, stack-growth regression and rollback passed")
 
 
 if __name__ == "__main__":

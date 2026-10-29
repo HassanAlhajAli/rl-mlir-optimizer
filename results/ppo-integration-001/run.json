@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "status": "stopped",
+  "revision": "7f2276aac8114b16c960c1a491b1e90526066c5f",
+  "binary_hash": "957e29db9a74dbe771f8dd00b7f998e71eca3d1ebded345445e948cb1aca4006",
+  "objective": "reuse",
+  "seed": 7,
+  "max_new": 160,
+  "max_requests": 256,
+  "wall_limit_hours": 0.5,
+  "requested_timesteps": 512,
+  "corpus_sha256": "1ea072ede311df0bb1375dd041c31ce134cdf38a1aeb896fa2175752e97484a1",
+  "role": "development run; not selected on validation and not a final result",
+  "compiler_initialization_ms": 201.40404100000353,
+  "reason": "RuntimeError('worker stopped unexpectedly (-11)')",
+  "timesteps": 95,
+  "episodes": 25,
+  "counters": {
+    "candidate_requests": 26,
+    "reference_requests": 26,
+    "new_measurements": 50,
+    "cache_hits": 2,
+    "worker_counts": {
+      "worker_requests": 852,
+      "compile_requests": 100,
+      "actual_compilations": 76,
+      "release_requests": 99,
+      "clear_cache_requests": 51,
+      "analyze_requests": 122,
+      "invoke_requests": 98,
+      "actual_invocations": 20370536,
+      "benchmark_requests": 382
+    },
+    "elapsed_seconds": 61.858293372000006
+  }
+}

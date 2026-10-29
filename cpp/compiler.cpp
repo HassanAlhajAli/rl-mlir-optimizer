@@ -89,8 +89,10 @@ std::shared_ptr<CompiledKernel> Compiler::compile(const std::string &source, con
   mlir::PassManager passes(&context);
   if (std::getenv("RLMLIR_DEBUG_PASSES")) passes.addInstrumentation(std::make_unique<TracePasses>());
   passes.enableVerifier(true);
+  // Vector-to-SCF creates fixed-size stack temporaries. Hoist them out of loops
+  // before LLVM lowering, otherwise alloca grows the stack on every iteration.
   const char *pipeline =
-      "canonicalize,func.func(convert-linalg-to-loops,convert-vector-to-scf),"
+      "canonicalize,func.func(convert-linalg-to-loops,convert-vector-to-scf,buffer-loop-hoisting),"
       "expand-strided-metadata,lower-affine,convert-scf-to-cf,convert-vector-to-llvm,"
       "finalize-memref-to-llvm,convert-arith-to-llvm,convert-func-to-llvm,"
       "convert-cf-to-llvm,reconcile-unrealized-casts";
