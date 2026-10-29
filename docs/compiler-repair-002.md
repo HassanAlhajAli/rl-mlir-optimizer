@@ -72,3 +72,18 @@ preserves all ten objective/seed statuses, all 5,020 measurement records, saved
 trajectories and the initial/latest checkpoints of each attempted run. A
 read-only audit verified hashes, numerical acceptance, rewards, budgets and
 policy updates. That audit does not select checkpoints or establish RL benefit.
+
+## Follow-up: distinguish answer correctness from buffer safety
+
+The next bounded diagnostic adds `--guard-memory` to the replay command and
+uses a fresh `runs/compiler-memory-replay-001` output. It checks both buffer
+placements against inaccessible boundary pages, read-only inputs and output
+padding sentinels. Each candidate/anchor is checked with both input seeds,
+both placements, and three invocations. The 1,200-second overall and existing
+worker resource limits remain in force. Any failure stops this diagnostic.
+
+The guard implementation is tested by deliberately faulty functions in isolated
+child processes before replay. This work changes only the diagnostic runtime
+and worker command, not the compiler transformation or timing paths. Compare
+the new saved LLVM hashes to `compiler-replay-002` to verify that the generated
+IR is unchanged. No training or performance finding follows from this check.

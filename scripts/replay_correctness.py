@@ -20,6 +20,7 @@ def main():
     parser.add_argument("--records", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--seconds", type=float, default=1200)
+    parser.add_argument("--guard-memory", action="store_true", help="check both protected buffer placements; no timing")
     args = parser.parse_args()
     if args.seconds <= 0:
         parser.error("seconds must be positive")
@@ -34,7 +35,7 @@ def main():
              "binary_sha256": hashlib.sha256(executable.read_bytes()).hexdigest(),
              "revision": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
              "dirty_diff_sha256": hashlib.sha256(subprocess.check_output(["git", "diff"], cwd=ROOT)).hexdigest(),
-             "completed": 0, "limit_seconds": args.seconds}
+             "completed": 0, "limit_seconds": args.seconds, "guard_memory": args.guard_memory}
     started = time.perf_counter()
 
     def save():
@@ -70,8 +71,15 @@ def main():
                         handles.append(built["handle"])
                         errors = []
                         for buffers, expected in inputs:
-                            output = worker.request("invoke", handle=built["handle"], buffers=buffers, count=3)
-                            errors.append(validate(output["output"], expected))
+                            for placement in (("start", "end") if args.guard_memory else (None,)):
+                                if placement is None:
+                                    output = worker.request("invoke", handle=built["handle"], buffers=buffers, count=3)
+                                else:
+                                    output = worker.request("check_memory", handle=built["handle"], buffers=buffers,
+                                                            count=3, alignment=placement)
+                                    if not output["memory_check_passed"]:
+                                        raise RuntimeError("missing memory check acceptance")
+                                errors.append(validate(output["output"], expected))
                         check["variants"].append({"actions": actions, "correct": True,
                                                   "max_abs_errors": errors,
                                                   "llvm_sha256": hashlib.sha256(built["llvm_ir"].encode()).hexdigest()})

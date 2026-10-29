@@ -1,6 +1,7 @@
 #include "compiler.h"
 #include "cache.h"
 #include "runtime.h"
+#include "memory_check.h"
 #include "llvm/Support/JSON.h"
 #include "llvm/Support/InitLLVM.h"
 #include "llvm/Support/raw_ostream.h"
@@ -134,6 +135,20 @@ int main(int argc, char **argv) {
         llvm::json::Array output;
         for (double value : invocation.output()) output.push_back(value);
         response["output"] = std::move(output);
+      } else if (*command == "check_memory") {
+        auto id = request->getInteger("handle");
+        auto alignment = request->getString("alignment");
+        auto count = request->getInteger("count");
+        if (!id || !handles.count(*id) || !alignment || !count ||
+            (*alignment != "start" && *alignment != "end"))
+          throw std::runtime_error("check_memory requires handle, count and start/end alignment");
+        auto output = rlmlir::checkMemory(handles.at(*id), readBuffers(*request), *count, *alignment == "end");
+        llvm::json::Array values;
+        for (double value : output) values.push_back(value);
+        response["output"] = std::move(values);
+        response["count"] = *count;
+        response["memory_check_passed"] = true;
+        // No timing fields: protected-buffer execution is never a benchmark.
       } else if (*command == "release") {
         auto id = request->getInteger("handle");
         if (!id || !handles.erase(*id)) throw std::runtime_error("unknown executable handle");

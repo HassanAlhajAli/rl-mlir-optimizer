@@ -49,7 +49,7 @@ class Worker:
         self.counters[command + "_requests"] += 1
         if command in ("compile", "deploy") and not response.get("cache_hit", False):
             self.counters["actual_compilations"] += 1
-        if command in ("invoke", "benchmark", "deploy"):
+        if command in ("invoke", "benchmark", "deploy", "check_memory"):
             self.counters["actual_invocations"] += response["count"]
         return response
 

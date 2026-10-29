@@ -15,3 +15,25 @@ The runtime owns buffers and memref ABI descriptors. The JSON interface copies i
 Cache hits report zero new lowering/code-generation time. Their dispatch/lookup time must still be measured by the caller. A fresh deployment measurement explicitly clears unused code or uses a fresh worker. Process-local compiler version/target/math settings, vector-lowering version and source/shape/schedule form compiled identity. Policy decision caching is not implemented; the policies themselves are implemented and have bounded integration evidence.
 
 The serial worker supports `info`, `analyze`, `compile`, `invoke`, `benchmark`, `release`, `clear_cache`, and `dump_object`. JSON on stdout, diagnostics on stderr. This is a trusted local research worker, not a hardened service for arbitrary untrusted MLIR. Calls allocate/validate buffers outside the execution timer; repeated invocations use the already-validated owned buffers. This boundary is part of the running-service deployment model.
+
+## Protected-memory diagnostic
+
+`check_memory` is a separate correctness-only command. It invokes an already
+compiled handle with independent page-protected buffers, marks both inputs
+read-only, and checks sentinel padding around the output after each invocation.
+The required `alignment` is `start` or `end`: replay both placements to test
+accesses at each exact boundary. Counts are limited to 1..1000. Empty buffers
+are supported. Executable ownership is retained throughout the call.
+
+Boundary violations intentionally terminate the worker with a native fault;
+padding writes return an error. The caller must preserve the current record
+and stop, as it does for other unexpected failures. This command returns no
+timing fields and is never used to assign a performance reward. Normal
+`invoke`, `benchmark` and `deploy` allocation/timing paths are unchanged.
+
+The `memory_guards` CTest deliberately executes bad functions in child
+processes. It verifies actual traps for input writes and boundary reads/writes,
+plus detection of padding corruption, valid repeated calls, and empty buffers.
+Passing this diagnostic is additional evidence, not a proof of memory safety:
+it does not cover all possible wild addresses, internal JIT temporaries, or
+compiler-library allocations.

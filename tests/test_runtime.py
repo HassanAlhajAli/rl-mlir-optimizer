@@ -28,6 +28,12 @@ def main(executable):
             worker.request("release", handle=built["handle"])
         assert worker.request("info")["cache_entries"] == 32
         assert worker.request("invoke", handle=first["handle"], buffers=[[2], [3], [99]])["output"] == [6]
+        for alignment in ("start", "end"):
+            guarded = worker.request("check_memory", handle=first["handle"], buffers=[[2],[3],[99]], count=3, alignment=alignment)
+            assert guarded["memory_check_passed"] and guarded["output"] == [6]
+            assert "batch_ms" not in guarded and "installation_ms" not in guarded
+        rejects(worker, "check_memory", handle=first["handle"], buffers=[[2],[3],[0]], count=1001, alignment="end")
+        rejects(worker, "check_memory", handle=first["handle"], buffers=[[2],[3],[0]], count=1, alignment="unknown")
         assert worker.request("clear_cache")["remaining_entries"] == 1
         rejects(worker, "invoke", handle=first["handle"], buffers=[[2, 4], [3], [0]])
         rejects(worker, "invoke", handle=first["handle"], buffers=[[2], [3], [0]], count=-1)
