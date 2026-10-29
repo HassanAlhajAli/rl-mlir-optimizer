@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "audit_revision": "809e1822761c5af7a355f8d46cbb36732250c400",
+  "native_execution": false,
+  "numerical_output_rechecked": false,
+  "scope": "Saved correctness flags, deployment cost/count/cache contracts, logical budgets, best-observed selection, available reset identities and counters only.",
+  "limitations": "Missing historical events/digests/counters are reported, not reconstructed. This is not a current-backend performance or full learning-provenance audit.",
+  "campaigns": [
+    {
+      "path": "runs/integration-003/adaptation",
+      "run_sha256": "e33265ab4915cf4990d969f80f4febf345ced28d8e4e5becd087262cdce7d7c8",
+      "binary_hash": "63d174c5ca0e41f6d7b2a5f076087d558526c9f383b95374385da85a9b3e466a",
+      "cases": [
+        {
+          "path": "runs/integration-003/adaptation/frozen-16/result.json",
+          "sha256": "42f48e47646a0e7ee5ab531c21ff36f27d9230c59f3e523a287e405d20ba2984",
+          "method": "frozen",
+          "budget": 16,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": false,
+          "deployment_counters_recorded": false,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/integration-003/adaptation/frozen-8/result.json",
+          "sha256": "ca417277ab55faf7e17c9978e23e00c73eefa3882083c92a112c03ff596dd211",
+          "method": "frozen",
+          "budget": 8,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": false,
+          "deployment_counters_recorded": false,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/integration-003/adaptation/grpo-16/result.json",
+          "sha256": "c0345d7bf54353d14453d435a907447897fa8510ba52669abd681bc0100b85ef",
+          "method": "grpo",
+          "budget": 16,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": false,
+          "deployment_counters_recorded": false,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/integration-003/adaptation/grpo-8/result.json",
+          "sha256": "758dbf894ee38391c3c2ece878abf5f1ace420a413ba8bab09029e2234cae392",
+          "method": "grpo",
+          "budget": 8,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": false,
+          "deployment_counters_recorded": false,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/integration-003/adaptation/mutation-16/result.json",
+          "sha256": "c914f6051baa661c595ecc2b3efd395cedd067b31ffcdd587b06c9aa9684f2b4",
+          "method": "mutation",
+          "budget": 16,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": false,
+          "deployment_counters_recorded": false,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/integration-003/adaptation/mutation-8/result.json",
+          "sha256": "df0339b9f06a57951a69a02801c6b63fe7f2d10f0d0504ce234a74edcc648e13",
+          "method": "mutation",
+          "budget": 8,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": false,
+          "deployment_counters_recorded": false,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/integration-003/adaptation/ppo-16/result.json",
+          "sha256": "364442c50da40716ba6a59a356fad6bdcfe945676ceecf2d3091d486e4faae7c",
+          "method": "ppo",
+          "budget": 16,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": false,
+          "deployment_counters_recorded": false,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/integration-003/adaptation/ppo-8/result.json",
+          "sha256": "eafd6ffae078594ac7153fa73b8043aabc0e42d069d213d43b56b2ba22c751de",
+          "method": "ppo",
+          "budget": 8,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": false,
+          "deployment_counters_recorded": false,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/integration-003/adaptation/random-16/result.json",
+          "sha256": "744d413a1d9de3f971611d0d360830bc4fd5cbffc0cba3c77a282d3968037aae",
+          "method": "random",
+          "budget": 16,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": false,
+          "deployment_counters_recorded": false,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/integration-003/adaptation/random-8/result.json",
+          "sha256": "2f988713befc4f698563e955b5a267ea5d34217df83c5ca1175244fe445f7b2d",
+          "method": "random",
+          "budget": 8,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": false,
+          "deployment_counters_recorded": false,
+          "event_log_present": false
+        }
+      ]
+    },
+    {
+      "path": "runs/adaptation-accounting-001",
+      "run_sha256": "ec64153ac423f28f50a25062845ed052ed8c19b0b2a076461f044bc5218aee34",
+      "binary_hash": "63d174c5ca0e41f6d7b2a5f076087d558526c9f383b95374385da85a9b3e466a",
+      "cases": [
+        {
+          "path": "runs/adaptation-accounting-001/frozen-16/result.json",
+          "sha256": "f3c0a2566d9ab9c3e7e4e34767c2fa23dc42046817f213ac51eabe52a11aa1ce",
+          "method": "frozen",
+          "budget": 16,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": true,
+          "deployment_counters_recorded": true,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/adaptation-accounting-001/frozen-8/result.json",
+          "sha256": "7a3660c42e1625a967fbe6cf1041a3a114a67e69367b60cd72f2c15540e67135",
+          "method": "frozen",
+          "budget": 8,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": true,
+          "deployment_counters_recorded": true,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/adaptation-accounting-001/grpo-16/result.json",
+          "sha256": "40432f9391ae4a5a39b4706d636bd32558bf7dbade66e50a64305c74103536da",
+          "method": "grpo",
+          "budget": 16,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": true,
+          "deployment_counters_recorded": true,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/adaptation-accounting-001/grpo-8/result.json",
+          "sha256": "dfe3496b8b6259a32838007e76cddcf2c0645ecc6484052b38475193cd305ae5",
+          "method": "grpo",
+          "budget": 8,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": true,
+          "deployment_counters_recorded": true,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/adaptation-accounting-001/ppo-16/result.json",
+          "sha256": "559a84db998dae7511d5bafffeab7c8ac2dbdb718abc2e894fda2bd427b61ed2",
+          "method": "ppo",
+          "budget": 16,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": true,
+          "deployment_counters_recorded": true,
+          "event_log_present": false
+        },
+        {
+          "path": "runs/adaptation-accounting-001/ppo-8/result.json",
+          "sha256": "2e93fd6fa30e88a23e432502213c40d810d98ddaa63aac90ceb3757299e8b3e7",
+          "method": "ppo",
+          "budget": 8,
+          "deployment_contract_passed": true,
+          "reset_digest_recorded": true,
+          "deployment_counters_recorded": true,
+          "event_log_present": false
+        }
+      ]
+    }
+  ]
+}

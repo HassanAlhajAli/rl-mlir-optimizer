@@ -67,6 +67,10 @@ budgets, shared-policy identity, deadlines and early configuration rejection.
 including preservation of requests before an interrupted trial or update.
 These tests are correctness evidence, not a performance experiment.
 
+The [read-only historical audit](../results/adaptation-contract-audit-001/observations.md)
+passed deployment/count/cost and request-budget checks on 16 saved cases. It
+reports missing older fields explicitly and does not rerun numerical output.
+
 The main PPO campaign remains stopped at its preserved compiler failure. This
 controller improvement does not authorize a restart or transfer old measurements
 to the revised compiler binary.
