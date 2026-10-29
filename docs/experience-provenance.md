@@ -33,6 +33,38 @@ The manifest tool is read-only with respect to the source runs and starts no
 compiler or training process. Compatibility with the current binary is still
 required when fitting a model; a historical audit cannot grant transfer access.
 
+## Additional rechecks: specification before implementation
+
+Imitation's extra checks will become a separately completed, hashed evidence
+bundle. For each program/reuse context, collapse identical histories using median
+initial total and selection costs, then recheck the first two histories and all
+others within 5% of the first. Preserve the original source order for ties. Export
+every requested leader, including losing candidates, with its source trajectory
+indices, accepted measurement key and recomputed total cost. The initial manifest
+binds those indices to complete observations and actions; they are not fabricated
+replacement trajectories.
+
+Record each completed request as it happens. Publish a completion manifest only
+after every planned request has an accepted outcome, all measurements are joined,
+and request/distinct/cache counts agree. Preserve partial logs on failure, but
+reject incomplete bundles for fitting. Measurement completion is separate from
+whether subsequent actor training succeeds. The consumer checks exact initial
+pool identity, compiler/corpus compatibility, byte hashes, full leader coverage,
+schedule joins, costs and split membership before constructing a model.
+
+The predictor may explicitly consume this same bundle. Each independently logged
+measurement contributes once per program/history cost target; repeated cached
+trajectories and reuse contexts do not multiply a timing's weight. Targets use
+the median of initial and recheck compilation/setup and execution measurements.
+Both learners record the same measurement-access fingerprint when supplied the
+same complete bundle. Validation data remain exclusively for selection/validation.
+The actor selects rechecked leaders; its critic retains the initial training pool.
+Shared access does not require identical weighting or learning algorithms.
+
+Existing historical files will not be rewritten or represented as if they had
+this new export. Synthetic tests will establish the new boundary before any
+authorized measurement/training run. No budgets or failed runs are restarted.
+
 ## Fairness limitation
 
 Matching the initial-pool fingerprint proves identical initial source access.
