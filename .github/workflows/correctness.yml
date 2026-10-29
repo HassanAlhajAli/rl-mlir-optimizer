@@ -9,3 +9,7 @@ jobs:
       - run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++-18
       - run: cmake --build build -j2
       - run: ctest --test-dir build --output-on-failure
+      - run: python3 -m venv .venv
+      - run: .venv/bin/python -m pip install torch==2.15.0+cpu --index-url https://download.pytorch.org/whl/cpu
+      - run: .venv/bin/python -m pip install -r requirements.lock.txt
+      - run: .venv/bin/python -m pytest tests/test_learning.py tests/test_adaptation.py -q
