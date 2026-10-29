@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "kind": "environment-pilot",
+  "source_revision": "dd70e64fb80ed09c9b8e6bc97669190f3508fc62",
+  "worker_sha256": "24cc9e14e12a4dadfade121c0769bd39f24832ea4b9932cc1b7c7d195c7a161c",
+  "source_ir_sha256": "18f569a8cf00fca97339e8b7c0889e71c32433d10ba72f5e917d4cf4699e5bf6",
+  "shape": [
+    32,
+    32,
+    32
+  ],
+  "input_seed": 7,
+  "cpu": "Intel(R) Core(TM) Ultra 9 275HX",
+  "guest_cpu": 0,
+  "os": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "packages": "clang-18\t1:18.1.3-1ubuntu1\nlibmlir-18-dev:amd64\t1:18.1.3-1ubuntu1\nllvm-18-dev\t1:18.1.3-1ubuntu1\nmlir-18-tools\t1:18.1.3-1ubuntu1\n",
+  "target": "x86-64-v3",
+  "rounds": [
+    {
+      "round": 0,
+      "correct": true,
+      "compile_request_ms": 67.34487599999994,
+      "lowering_ms": 16.884427,
+      "codegen_ms": 50.21811,
+      "first_invocation_ms": 0.002487,
+      "count": 53239,
+      "batch_ms": 140.369678,
+      "per_invocation_ms": 0.002636594939799771,
+      "lowered_ir_sha256": "5a1a084e9b1e0d05ca53afcd854768730c71055d6a73b281d204fbc8e5c43d3f"
+    },
+    {
+      "round": 1,
+      "correct": true,
+      "compile_request_ms": 17.392143999998666,
+      "lowering_ms": 1.09636,
+      "codegen_ms": 16.021566,
+      "first_invocation_ms": 0.003884,
+      "count": 34345,
+      "batch_ms": 127.843189,
+      "per_invocation_ms": 0.003722323162032319,
+      "lowered_ir_sha256": "5a1a084e9b1e0d05ca53afcd854768730c71055d6a73b281d204fbc8e5c43d3f"
+    },
+    {
+      "round": 2,
+      "correct": true,
+      "compile_request_ms": 15.827486999995699,
+      "lowering_ms": 1.12024,
+      "codegen_ms": 14.471818,
+      "first_invocation_ms": 0.003778,
+      "count": 34101,
+      "batch_ms": 109.089364,
+      "per_invocation_ms": 0.003199007771033108,
+      "lowered_ir_sha256": "5a1a084e9b1e0d05ca53afcd854768730c71055d6a73b281d204fbc8e5c43d3f"
+    },
+    {
+      "round": 3,
+      "correct": true,
+      "compile_request_ms": 15.521096000000512,
+      "lowering_ms": 1.106255,
+      "codegen_ms": 14.221815,
+      "first_invocation_ms": 0.002533,
+      "count": 45507,
+      "batch_ms": 128.098465,
+      "per_invocation_ms": 0.002814917814841673,
+      "lowered_ir_sha256": "5a1a084e9b1e0d05ca53afcd854768730c71055d6a73b281d204fbc8e5c43d3f"
+    },
+    {
+      "round": 4,
+      "correct": true,
+      "compile_request_ms": 16.22273899999982,
+      "lowering_ms": 1.127585,
+      "codegen_ms": 14.854376,
+      "first_invocation_ms": 0.002452,
+      "count": 54546,
+      "batch_ms": 113.113131,
+      "per_invocation_ms": 0.0020737199978000218,
+      "lowered_ir_sha256": "5a1a084e9b1e0d05ca53afcd854768730c71055d6a73b281d204fbc8e5c43d3f"
+    }
+  ],
+  "limitations": [
+    "development kernel only",
+    "WSL guest affinity is not physical isolation",
+    "no optimization or learning comparison",
+    "JSON and input allocation excluded from execution"
+  ],
+  "worker": {
+    "llvm_version": "18.1.3",
+    "ok": true,
+    "schema_version": 1,
+    "target": "x86-64-v3"
+  },
+  "elapsed_seconds": 1.6044814589999987,
+  "median_invocation_ms": 0.002814917814841673,
+  "relative_range": 0.5856665354633184,
+  "status": "complete"
+}

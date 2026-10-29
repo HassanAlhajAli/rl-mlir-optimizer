@@ -25,7 +25,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--worker", type=Path, default=ROOT / "build/rlmlir-worker")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--batch-ms", type=float, default=1000)
     args = parser.parse_args()
+    if not 100 <= args.batch_ms <= 5000:
+        raise SystemExit("batch duration must be between 100 and 5000 ms")
     if args.output.exists():
         raise SystemExit("refusing to overwrite a previous pilot")
     # The child inherits guest affinity. WSL may still move the underlying vCPU.
@@ -42,7 +45,7 @@ def main():
     record = {"schema_version": 1, "kind": "environment-pilot", "source_revision": revision,
               "worker_sha256": hashlib.sha256(args.worker.read_bytes()).hexdigest(),
               "source_ir_sha256": sha(source), "shape": [32, 32, 32], "input_seed": 7,
-              "cpu": cpu_model, "guest_cpu": cpu, "os": platform.platform(),
+              "cpu": cpu_model, "guest_cpu": cpu, "os": platform.platform(), "minimum_batch_ms": args.batch_ms,
               "packages": packages, "target": "x86-64-v3", "rounds": [],
               "limitations": ["development kernel only", "WSL guest affinity is not physical isolation",
                               "no optimization or learning comparison", "JSON and input allocation excluded from execution"]}
@@ -65,16 +68,25 @@ def main():
             count = 1
             while True:
                 timing = worker.request("benchmark", handle=handle, buffers=buffers, count=count)
-                if timing["batch_ms"] >= 100:
+                if timing["batch_ms"] >= args.batch_ms:
                     break
-                count = min(10000000, max(count + 1, math.ceil(count * 120 / max(timing["batch_ms"], .001))))
+                count = min(10000000, max(count + 1, math.ceil(count * args.batch_ms * 1.2 / max(timing["batch_ms"], .001))))
                 if count == 10000000:
                     raise RuntimeError("could not calibrate a bounded timing batch")
             batch = worker.request("benchmark", handle=handle, buffers=buffers, count=count)
+            anchor = worker.request("benchmark", handle=handle, buffers=buffers, count=count)
+            drift = abs(anchor["batch_ms"] - batch["batch_ms"]) / batch["batch_ms"]
+            repeat = None
+            if drift > .05 or batch["batch_ms"] < args.batch_ms:
+                # Retain the original block and repeat once. Never select the faster result.
+                repeat = worker.request("benchmark", handle=handle, buffers=buffers, count=count)
             entry = {"round": round_index, "correct": True, "compile_request_ms": compile_request_ms,
                      "lowering_ms": built["lowering_ms"], "codegen_ms": built["codegen_ms"],
                      "first_invocation_ms": first["batch_ms"], "count": count,
                      "batch_ms": batch["batch_ms"], "per_invocation_ms": batch["batch_ms"] / count,
+                     "anchor_batch_ms": anchor["batch_ms"], "anchor_drift": drift,
+                     "flagged": drift > .05 or batch["batch_ms"] < args.batch_ms,
+                     "repeat_batch_ms": None if repeat is None else repeat["batch_ms"],
                      "lowered_ir_sha256": sha(built["lowered_ir"])}
             record["rounds"].append(entry)
             (args.output / "lowered.mlir").write_text(built["lowered_ir"])
