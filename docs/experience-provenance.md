@@ -136,3 +136,8 @@ The [historical integration audit](../results/initial-experience-audit-001/obser
 verified499 accepted measurements and405 complete trajectories without executing
 native code or training a model. It explicitly reports missing per-record corpus
 hashes and the additional-recheck fairness gap.
+
+The [shared-recheck verification](../results/shared-recheck-audit-001/observations.md)
+records the new synthetic integration checks and a read-only comparison showing
+that all 255 planned leader requests match the original integration's candidate
+sets across 155 contexts. It does not retrofit old evidence or train new models.

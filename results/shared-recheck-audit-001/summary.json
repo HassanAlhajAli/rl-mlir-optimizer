@@ -1,0 +1,16 @@
+{
+  "audit_revision": "207dace37a1501e2ea2b9e510bfe88fc0a2f143c",
+  "initial_pool_fingerprint": "688f6a8f9138802e42f245be573a77753b89b24e8892cab736448b9b32cadc50",
+  "initial_trajectories": 405,
+  "contexts": 155,
+  "leader_requests": 255,
+  "leader_keys_match_original": true,
+  "source_demonstration_sha256": "8ef63239dfc31a75a51a57ec0fe70349cd6fc00623fa289e6b9ba414deeda0d4",
+  "predictor_unique_histories": 273,
+  "predictor_histories_by_split": {
+    "train": 254,
+    "validation": 19
+  },
+  "distinct_measurement_contributions": 351,
+  "no_native_execution_or_training": true
+}
