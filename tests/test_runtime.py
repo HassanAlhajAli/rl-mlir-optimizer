@@ -36,6 +36,9 @@ def main(executable):
         rejects(worker, "compile", source=source.replace("arith.mulf %x, %y", "arith.mulf %x, %y fastmath<fast>"))
         worker.request("release", handle=first["handle"])
         assert worker.request("clear_cache")["remaining_entries"] == 0
+        deployed = worker.request("deploy", source=source, actions=[], buffers=[[2], [3], [99]], count=5)
+        assert deployed["output"] == [6] and not deployed["cache_hit"]
+        assert abs(deployed["total_ms"] - sum(deployed[k] for k in ["compile_ms", "installation_ms", "execution_ms"])) < 1e-6
         # Capacity pressure is explicit, rather than evicting a live function pointer.
         handles = [worker.request("compile", source=matmul(1, 1, k))["handle"] for k in range(1, 33)]
         rejects(worker, "compile", source=matmul(1, 1, 40))

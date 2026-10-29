@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "kind": "training-only-optimization-pilot",
+  "source_revision": "60ea94797674679f9df4183b207a0f0121390e4d",
+  "worker_sha256": "21dd5ff0c9f104df1be19558628932b15c4b50599b1b2d80da25bb09c7b0886d",
+  "protocol_sha256": "2e776657195e32ce31d0b44a53e7aa1c5f057579849b3297b5b3dc8989f457bc",
+  "guest_cpu": 0,
+  "os": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "cpu": "Intel(R) Core(TM) Ultra 9 275HX",
+  "packages": "clang-18\t1:18.1.3-1ubuntu1\nlibmlir-18-dev:amd64\t1:18.1.3-1ubuntu1\nllvm-18-dev\t1:18.1.3-1ubuntu1\nmlir-18-tools\t1:18.1.3-1ubuntu1\n",
+  "completed_workloads": 20,
+  "distinct_candidates": 100,
+  "warning": "Exploratory training-only measurements; no learned-method comparison or final performance claim.",
+  "worker": {
+    "active_handles": 0,
+    "cache_entries": 0,
+    "llvm_version": "18.1.3",
+    "ok": true,
+    "schema_version": 1,
+    "target": "x86-64-v3"
+  },
+  "initialization_ms": 48.01961599999993,
+  "elapsed_seconds": 381.148182099
+}

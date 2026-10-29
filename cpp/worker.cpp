@@ -83,6 +83,33 @@ int main() {
         response["transformed_ir"] = kernel->transformedIR;
         response["llvm_ir"] = kernel->llvmIR;
         }
+      } else if (*command == "deploy") {
+        auto source = request->getString("source");
+        auto *actions = request->getArray("actions");
+        auto count = request->getInteger("count");
+        if (!source || source->size() > 1000000 || !actions || !count || *count < 1 || *count > 10000000)
+          throw std::runtime_error("deploy requires source, actions array and bounded integer count");
+        auto buffers = readBuffers(*request);
+        // A fresh deployment: parsing the transport and receiving data precede this clock.
+        // Compile, executable installation, owned-buffer construction and all N calls follow it.
+        auto start = Clock::now();
+        auto kernel = compiler.compile(source->str(), *actions);
+        auto compiled = Clock::now();
+        rlmlir::Invocation invocation(kernel, buffers);
+        auto installed = Clock::now();
+        for (int64_t n = 0; n < *count; ++n) invocation.run();
+        auto finished = Clock::now();
+        response["total_ms"] = std::chrono::duration<double, std::milli>(finished - start).count();
+        response["compile_ms"] = std::chrono::duration<double, std::milli>(compiled - start).count();
+        response["installation_ms"] = std::chrono::duration<double, std::milli>(installed - compiled).count();
+        response["execution_ms"] = std::chrono::duration<double, std::milli>(finished - installed).count();
+        response["lowering_ms"] = kernel->loweringMs;
+        response["codegen_ms"] = kernel->codegenMs;
+        response["cache_hit"] = false;
+        response["count"] = *count;
+        llvm::json::Array output;
+        for (double value : invocation.output()) output.push_back(value);
+        response["output"] = std::move(output);
       } else if (*command == "invoke" || *command == "benchmark") {
         auto id = request->getInteger("handle");
         if (!id || !handles.count(*id)) throw std::runtime_error("unknown executable handle");
