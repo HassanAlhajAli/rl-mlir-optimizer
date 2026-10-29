@@ -42,3 +42,35 @@ demonstrations. Sharing those additional outcomes with the cost predictor, and
 auditing the complete measurement access of the final methods, remains unfinished.
 Do not describe the full baseline comparison as fair solely because these initial
 fingerprints match. No full-study superiority or held-out access follows.
+
+## Commands and verification scope
+
+Create a local manifest from the preserved development integration sources:
+
+```sh
+.venv/bin/python scripts/freeze_experience.py \
+  --runs runs/integration-003/ppo-reuse runs/integration-003/ppo-runtime \
+         runs/integration-003/experience-train runs/integration-003/experience-validation \
+  --output runs/initial-experience-audit-001/manifest.json
+```
+
+Pass the same `--pool-manifest <path>` and ordered `--runs ...` to `pretrain.py`
+and `fit_predictor.py` when those training stages are authorized. Both save
+`initial-pool-manifest.json` and `initial_pool_fingerprint` in their model metadata.
+Existing commands without a pin remain available for development, but still use
+the stricter loader and record a fingerprint. Fingerprints must be compared when
+declaring equal initial access.
+
+The historical manifest command checks sources against their own recorded
+compiler contract. It does not make an old pool compatible with the current
+compiler; both learning commands retain that separate guard. Positive compile
+setup and execution costs are required because the models use log-cost targets.
+The byte-level checks do not re-audit saved IR artifacts, regenerate observations
+or verify masks against the native compiler. That stronger evidence comes from
+the source experiment's own audit and must remain available.
+
+Older measurements may lack a per-record corpus hash. They are accepted only
+through the compatible parent run's corpus hash plus exact canonical workload
+validation. The manifest counts every such record explicitly. A present but
+incorrect per-record corpus hash is rejected; the loader never rewrites older
+records or claims that missing fields were originally recorded.

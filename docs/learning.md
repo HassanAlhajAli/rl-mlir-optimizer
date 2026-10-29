@@ -29,10 +29,16 @@ First bounded integration run (development only):
 
 The first run stopped before learning because of stack growth in generated code. The repaired second run completed512 steps,144 episodes and20 optimizer epochs; its checkpoint and evidence are under `results/ppo-integration-002`. This is not the five-seed study and does not select a final checkpoint.
 
-Balanced imitation and training-only critic fitting are implemented in `imitation.py`. The group controller and gradient updates in `adaptation.py` implement frozen sampling, GRPO, warm PPO, random legal sampling and prefix-mutation search. Nine Python checks cover learning, weights, exact budgets, reset isolation and zero-variance updates. These mechanics need measured comparisons after the demonstration dataset is built. The supervised cost predictor, complete baseline evaluation and sealed final study remain outstanding.
+Balanced imitation and training-only critic fitting are implemented in `imitation.py`. The group controller and gradient updates in `adaptation.py` implement frozen sampling, GRPO, warm PPO, random legal sampling and prefix-mutation search. Correctness checks cover learning, weights, exact budgets, reset isolation and zero-variance updates. The supervised cost predictor is implemented in `predictor.py`; complete baseline evaluation and the sealed final study remain outstanding. Measured development integration is documented separately and does not complete the full study.
 
 `collect_experience.py` records fixed, heuristic and random trajectories. `pretrain.py` accepts only matching compiler executables and training/validation data, remeasures the best two histories plus all candidates within5% of the current leader, and retains near-tie and drift flags. Actor contexts are equally weighted; critic fitting draws one trajectory/state per training context per epoch. Validation selects the actor by demonstration likelihood, with measured deployment validation still required before final release. Pretraining is supervised learning, not offline RL.
 
 `run_adaptation.py` starts independent actors and measurement caches, enforces exact candidate budgets and measures a fresh native deployment of the selected schedule. Warm PPO requires a critic trained on absolute negative log cost. The detailed update definition is in `adaptation-design.md`. The script currently accepts development splits only. A single development run is not the final five-round study.
 
 Measurement protocol v2 includes native compile setup and owned-buffer installation in C and records first invocation separately. Original v1 measurements remain archived with their original hashes and boundaries.
+
+Both imitation and the predictor now use the [shared initial-experience loader](experience-provenance.md).
+It verifies complete histories, accepted measurement joins, costs and file hashes,
+and supports a pinned manifest. Additional imitation leader rechecks are not yet
+shared with the predictor; equal initial access must not be confused with equal
+access to all subsequent measurements.

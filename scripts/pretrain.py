@@ -11,47 +11,12 @@ import torch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"python"))
 from rlmlir.evaluator import Evaluator
-from rlmlir.corpus import FrozenCorpus
-from rlmlir.experiment import initialize, provenance, measurement_lease, require_compatible_provenance
+from rlmlir.experiment import initialize, provenance, measurement_lease
+from rlmlir.experience import load_pool, pool_manifest
 from rlmlir.imitation import fit_actor, fit_critic
 from rlmlir.objective import deployment_ms
 from rlmlir.policies import create_policy, save_policy
 from rlmlir.worker import Worker
-
-
-def load_pool(runs,expected_provenance):
-    corpus = FrozenCorpus()
-    if expected_provenance.get("corpus_sha256") != corpus.sha256:
-        raise ValueError("experience pool does not match the frozen corpus")
-    pool, provenance_records = [], []
-    for directory in runs:
-        meta = json.loads((directory/"run.json").read_text())
-        require_compatible_provenance(meta, expected_provenance, context="experience pool")
-        data = {r["key"]:r for r in (json.loads(line) for line in
-                (directory/"measurements/measurements.jsonl").read_text().splitlines()) if r["status"] == "accepted"}
-        trajectory_file = directory/"trajectories.jsonl"
-        provenance_records.append({"run":str(directory),"revision":meta["revision"],
-                                   "trajectory_sha256":hashlib.sha256(trajectory_file.read_bytes()).hexdigest()})
-        for line in trajectory_file.read_text().splitlines():
-            item = json.loads(line)
-            corpus.require_development(item["workload"])
-            record = data[item["outcome"]["measurement_key"]]
-            corpus.require_development(record["workload"])
-            if (record["workload"] != item["workload"] or record.get("correct") is not True
-                    or record["binary_hash"] != expected_provenance["binary_hash"]
-                    or record["actions"] != [a for a in item["actions"] if a["kind"] != "STOP"]):
-                raise ValueError("trajectory does not match its accepted measurement")
-            if "installation_ms" not in record:
-                raise ValueError("pool predates complete cost measurement protocol")
-            selection = item["outcome"].get("analysis_ms",0.) + item["outcome"].get("policy_ms",0.)
-            item["selection_ms"] = selection
-            item["compile_install_ms"] = record["compile_ms"]+record["installation_ms"]
-            item["execution_ms"] = record["execution_ms"]
-            item["cost_ms"] = deployment_ms(record["compile_ms"],record["execution_ms"],item["reuse"],
-                                            selection_ms=selection,installation_ms=record["installation_ms"])
-            item["origin"] = str(directory)
-            pool.append(item)
-    return pool, provenance_records
 
 
 def main():
@@ -62,16 +27,20 @@ def main():
     parser.add_argument("--epochs",type=int,default=100)
     parser.add_argument("--max-rechecks",type=int,default=4096)
     parser.add_argument("--hours",type=float,default=4)
+    parser.add_argument("--pool-manifest",type=Path,help="pin the initial experience bytes before training")
     args = parser.parse_args()
     if args.output.exists():
         raise SystemExit("output exists")
     torch.set_num_threads(1)
     os.sched_setaffinity(0,{min(os.sched_getaffinity(0))})
     meta = provenance(ROOT)
-    pool, sources = load_pool(args.runs,meta)
+    pool, sources = load_pool(args.runs,meta,manifest_path=args.pool_manifest)
     if {t["workload"]["split"] for t in pool} != {"train","validation"}:
         raise SystemExit("both training and validation experience are required")
     args.output.mkdir(parents=True)
+    manifest = pool_manifest(pool,sources,meta)
+    (args.output/"initial-pool-manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
+    meta["initial_pool_fingerprint"] = manifest["fingerprint"]
     meta.update(schema_version=1,status="running",role="development imitation pretraining",seed=args.seed,sources=sources)
     grouped = {}
     for item in pool:
